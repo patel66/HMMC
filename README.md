@@ -14,13 +14,15 @@ User Stories MVP#
 5. As a coach, I want to see how my school ranks with other schools in my city.
 
 
-#############
-User Stories#
-#############
+#############################################
+User Stories Possible Feature Implementation#
+#############################################
 
-1. As a coach I want to send challenges to schools in my city.
-2. As a coach I want to reward students in the leaderboard.
-3. As a coach I want to add in miles to classrooms in my school.
-4. As a coach I want to see the top-ranking of classrooms in my school.
-5. As a coach I want to reward topranking classrooms in terms of miles in my school.
-
+1. As a coach, I want to send challenges to schools in my city.
+2. As a coach, I want to reward students in the leaderboard.
+3. As a coach, I want to add in miles to classrooms in my school.
+4. As a coach, I want to see the top-ranking of classrooms in my school.
+5. As a coach, I want to reward topranking classrooms in terms of miles in my school.
+6. As a coach, I want to reward my school if our school wins the challenge
+7. As a coach, I want to add in other exercise methods that students do aside from running.
+8. As a coach, I want to reward students who eat healthy
