@@ -1,7 +1,13 @@
 require 'spec_helper'
 
-describe HMMC
+describe HMMC::Databases::InMemory do
+  let(:db) {HMMC.db}
 
+  it "creates a user" do
+    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+  end
+end
+# attr_accessor :id, :name, :email, :password
 # require 'spec_helper'
 
 # describe RabbitDice::Databases::InMemory do
