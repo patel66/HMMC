@@ -6,7 +6,3 @@ module HMMC
   end
 end
 
-
-# module RabbitDice
-#   module Databases
-#     class InMemory
