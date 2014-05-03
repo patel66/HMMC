@@ -1,5 +1,5 @@
 module HMMC
   class User < Entity
-    attr_accessor :id, :name, :email, :password
+    attr_accessor :id, :school, :name, :email, :password
   end
 end
