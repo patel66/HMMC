@@ -1,4 +1,5 @@
 module HMMC
+
   class School < Entity           
     attr_accessor :id, :user_id, :name, :address, :total_miles, :miles
 
@@ -10,5 +11,5 @@ module HMMC
     	@miles = data[:miles]
     	@total_miles = data[:total_miles]
     end
-  end
+
 end

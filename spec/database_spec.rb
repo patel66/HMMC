@@ -5,37 +5,32 @@ describe HMMC::Databases::InMemory do
 
   it "creates a user" do
     user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+    #  expect(users.size).to eq 1
+    # # expect(@users)
+    expect(user.name).to eq "John"
+    expect(user.email).to eq "John@mail.com"
+    expect(user.password).to eq "123"
+
+  end
+
+  it "create_school" do
+    school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+    expect(school.name).to eq "Kempner HighSchool"
+    expect(school.address[:city]).to eq "Sugar Land"
+  end
+
+  it "gets a user" do
+    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+    retreived_user = db.get_user(user.id)
+    expect(retreived_user.name).to eq "John"
+
+  end
+
+
+  it "gets a school" do
+    school = db.create_school(:schoolname=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+    retreived_school = db.get_school(school.id)
+    expect(retreived_school.address[:city]).to eq "Sugar Land"
   end
 end
-# attr_accessor :id, :name, :email, :password
-# require 'spec_helper'
 
-# describe RabbitDice::Databases::InMemory do
-#   let(:db) { RabbitDice.db }
-
-#   it "create a game" do
-#     game = db.create_game :players => ['Alice', 'Bob', 'Carl']
-
-#     expect(game.players).to include('Alice', 'Bob', 'Carl')
-#     expect(game.winner).to be_nil
-#     expect(game.dice_cup).to be_a RabbitDice::DiceCup
-
-#     expect(game.turns.count).to eq 1
-#     expect(game.turns.first.player).to match /^Alice|Bob|Carl$/
-#     expect(game.turns.first.rolls.count).to eq 0
-#   end
-
-#   it "gets a game" do
-#     created_game = db.create_game :players => ['Dan', 'Earl', 'Fred']
-#     game = db.get_game(created_game.id)
-
-#     # I'm repeating myself, but that's ok if it's one test. maybe
-#     expect(game.players).to include('Dan', 'Earl', 'Fred')
-#     expect(game.winner).to be_nil
-#     expect(game.dice_cup).to be_a RabbitDice::DiceCup
-
-#     expect(game.turns.count).to eq 1
-#     expect(game.turns.first.player).to match /^Dan|Earl|Fred$/
-#     expect(game.turns.first.rolls.count).to eq 0
-#   end
-# end
