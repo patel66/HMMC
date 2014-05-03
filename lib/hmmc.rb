@@ -1,6 +1,9 @@
 require 'pry-debugger'
 
 module HMMC
+  def self.db
+    @__db_instance ||= Databases::InMemory.new
+  end
 end
 
 require_relative "hmmc/use_case.rb"
