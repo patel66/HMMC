@@ -1,5 +1,5 @@
 module HMMC
-  class Class
+  class ClassRoom < Entity
     attr_accessor :school_id, :miles, :name
   end
 end
