@@ -24,4 +24,16 @@ describe HMMC::School do
     expect(highschool.classrooms.length).to eq 2
     expect(highschool.classrooms[1].name).to eq "Math"
   end
+
+  it "School shoud initialize with zero miles" do
+    highschool = HMMC::School.new
+    expect(highschool.total_miles).to eq 0
+  end
+
+  it "User should be able to add to the total miles of a school" do
+    highschool = HMMC::School.new
+    expect(highschool.total_miles).to eq 0
+    highschool.add_miles(100)
+    expect(highschool.total_miles).to eq 100
+  end
 end

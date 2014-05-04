@@ -5,6 +5,7 @@ module HMMC
 
     def initialize(attrs={})
       @classrooms = []
+      @total_miles = 0
       super(attrs)
     end
 
@@ -20,6 +21,11 @@ module HMMC
 
     def add_classroom(newclass)
       @classrooms << newclass
+    end
+
+    def add_miles(miles)
+      @total_miles += miles
+
     end
   end
 end

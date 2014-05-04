@@ -2,6 +2,10 @@ module HMMC
   class StudentRanking < Entity
     attr_accessor :id, :school_id, :students
 
+    def initialize(attrs={})
+      @students = {}
+      super(attrs)
+    end
     # def initialize(attrs)
     #   students[attrs] = 0
     # end
