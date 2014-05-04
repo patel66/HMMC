@@ -33,12 +33,6 @@ module HMMC
       @classrooms << newclass
     end
 
-    # def add_miles(miles)
-    #   @total_miles += miles
-
-    # end
-
-
     def total_miles
       return 0 if @classrooms.empty?
 
@@ -46,20 +40,8 @@ module HMMC
 
     end
 
-
-  #   @school = School.find_by_id(1)
-
-  #   @school.total_miles # 0
-
-  #   Classroom.create({id: 1, school_id: 1, name: 'math', miles: 20})
-
-  #   @school.total_miles #20
-
-  #   Classroom.create({id: 2, school_id: 1, name: 'math 2', miles: 10})
-
-  #   @school.total_miles #30
-
-  #   name,       id, school_id
-  #   mathmatics, 15, 1,
+    def get_classrooms
+      @classrooms.sort_by{|classroom| classroom.miles}.reverse
+    end
   end
 end

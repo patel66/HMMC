@@ -86,6 +86,12 @@ describe HMMC::School do
 
     expect(school.total_miles).to eq 60
 
-    expect()
+    english_class = db.create_classroom(:school_id => school.id, :miles=> 0, :name=> "english class")
+    school.add_classroom(english_class)
+    english_class.add_miles(10)
+    expect(school.total_miles).to eq 70
+
+    expect(school.get_classrooms).to eq [math_class,history_class,english_class]
   end
+
 end
