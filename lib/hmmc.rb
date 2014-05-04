@@ -17,6 +17,6 @@ require_relative "hmmc/entities/user.rb"
 
 require_relative "hmmc/entities/school.rb"
 
-require_relative "hmmc/entities/class.rb"
+require_relative "hmmc/entities/class_room.rb"
 require_relative "hmmc/entities/student_ranking.rb"
 

@@ -25,7 +25,15 @@ module HMMC
 
     def add_miles(miles)
       @total_miles += miles
+    end
+
+    def add_total_miles
+      miles_all_class = @classrooms.map {|classroom| classroom.miles}.reduce(0,:+)
+        # array.map {|num| num}.reduce(0,:+)
+      @total_miles += miles_all_class
+      @total_miles
 
     end
+
   end
 end

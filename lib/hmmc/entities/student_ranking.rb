@@ -16,6 +16,10 @@ module HMMC
     # def add_miles(studentname,miles)
 
     # end
+
+    def add_student(name,miles)
+      @students[name] = miles
+    end
   end
 end
 # studenranking, id, :school_id
