@@ -53,5 +53,11 @@ describe HMMC::Databases::InMemory do
 
   end
 
+  it "creates a student ranking" do
+    school = db.create_school(:schoolname=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+
+
+  end
+
 end
 
