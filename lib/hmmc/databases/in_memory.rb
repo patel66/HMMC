@@ -5,8 +5,10 @@ module HMMC
       def initialize
         @user_id_counter = 0
         @school_id_counter = 0
+        @classroom_id_counter = 0
         @users = {}
         @schools = {}
+        @classrooms = {}
       end
 
       def create_user(attrs)
@@ -31,6 +33,17 @@ module HMMC
       def get_school(id)
         school = @schools[id]
         school
+      end
+
+      def create_classroom(attrs)
+        classroom = ClassRoom.new(:miles => attrs[:miles], :name => attrs[:name],:school_id => attrs[:school_id])
+        classroom.id = (@classroom_id_counter +=1)
+        @classrooms[classroom.id] = classroom
+      end
+
+      def get_classroom(id)
+        classroom = @classrooms[id]
+        classroom
       end
 
     end

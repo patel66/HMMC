@@ -32,5 +32,26 @@ describe HMMC::Databases::InMemory do
     retreived_school = db.get_school(school.id)
     expect(retreived_school.address[:city]).to eq "Sugar Land"
   end
+
+  it "creates a classroom" do
+     school = db.create_school(:schoolname=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+    classroom = db.create_classroom(:school_id => school.id, :miles=> 0, :name=> "History")
+    expect(classroom.miles).to eq 0
+    expect(classroom.name).to eq "History"
+    expect(classroom.school_id).to eq school.id
+
+  end
+
+  it "gets a classroom" do
+    school = db.create_school(:schoolname=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+
+    classroom = db.create_classroom(:school_id => school.id, :miles=> 0, :name=> "History")
+
+    retreived_classroom = db.get_classroom(classroom.id)
+
+    expect(retreived_classroom.name).to eq "History"
+
+  end
+
 end
 
