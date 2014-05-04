@@ -11,5 +11,6 @@ module HMMC
     	@miles = data[:miles]
     	@total_miles = data[:total_miles]
     end
+  end
 
 end

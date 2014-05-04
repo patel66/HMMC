@@ -36,8 +36,3 @@ module HMMC
     end
   end
 end
-
-<<<<<<< HEAD
-=======
-
->>>>>>> e24e9522d48b349029ccbbd0109005262e5ad3a8

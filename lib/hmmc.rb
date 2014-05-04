@@ -14,7 +14,4 @@ Dir[File.dirname(__FILE__) + '/databases/*.rb'].each {|file| require_relative fi
 require_relative "hmmc/entity.rb"
 require_relative "hmmc/databases/in_memory.rb"
 require_relative "hmmc/entities/user.rb"
-<<<<<<< HEAD
-=======
 require_relative "hmmc/entities/school.rb"
->>>>>>> e24e9522d48b349029ccbbd0109005262e5ad3a8
