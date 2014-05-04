@@ -52,6 +52,7 @@ describe HMMC::Databases::InMemory do
     retreived_classroom = db.get_classroom(classroom.id)
 
     expect(retreived_classroom.name).to eq "History"
+    expect(retreived_classroom.school_id).to eq school.id
 
   end
 

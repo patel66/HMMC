@@ -1,6 +1,6 @@
 module HMMC
   class User < Entity
-
+     # one-to-one relationship
     attr_accessor :id, :name, :email, :password, :school
 
     # def intialize(data)
