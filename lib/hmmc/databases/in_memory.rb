@@ -6,9 +6,11 @@ module HMMC
         @user_id_counter = 0
         @school_id_counter = 0
         @classroom_id_counter = 0
+        @student_rank_id_counter = 0
         @users = {}
         @schools = {}
         @classrooms = {}
+        @student_rankings = {}
       end
 
       def create_user(attrs)
@@ -45,6 +47,18 @@ module HMMC
         classroom = @classrooms[id]
         classroom
       end
+
+      def create_ranking(attrs)
+        student_rank = StudentRanking.new(:school_id => attrs[:school_id], :students=> attrs[:students])
+        student_rank.id = (@student_rank_id_counter +=1)
+        @student_rankings[student_rank.id] = student_rank
+      end
+
+      def get_rank(id)
+        student_rank = @student_rankings[id]
+        student_rank
+      end
+
 
     end
   end

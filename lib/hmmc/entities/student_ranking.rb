@@ -14,3 +14,5 @@ module HMMC
     # end
   end
 end
+# studenranking, id, :school_id
+# students is a hash with studentname => integer of miles
