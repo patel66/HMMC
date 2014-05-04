@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe HMMC::Databases::InMemory do
   let(:db) {HMMC.db}
+  before {db.clear_everything}
 
   it "creates a user" do
     user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
@@ -14,7 +15,8 @@ describe HMMC::Databases::InMemory do
   end
 
   it "create_school" do
-    school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0)
+    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+    school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0, :user_id => user.id)
     expect(school.name).to eq "Kempner HighSchool"
     expect(school.address[:city]).to eq "Sugar Land"
   end
@@ -68,5 +70,12 @@ describe HMMC::Databases::InMemory do
      expect(retreived_rank.students[:Jessica]).to eq 20
   end
 
+  it "gets the school from the user" do
+    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+    school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0, :user_id => user.id)
+    retreived_school = db.get_school(school.id)
+    expect(retreived_school.user_id).to eq user.id
+
+  end
 end
 

@@ -2,7 +2,23 @@ module HMMC
   module Databases
     class InMemory
 
-      def initialize
+      def initialize(config=nil)
+        # @user_id_counter = 0
+        # @school_id_counter = 0
+        # @classroom_id_counter = 0
+        # @student_rank_id_counter = 0
+        # @users = {}
+        # @schools = {}
+        # @classrooms = {}
+        # @student_rankings = {}
+        clear_everything
+      end
+
+      # def initialize(config=nil)
+      #   clear_everything
+      # end
+
+      def clear_everything
         @user_id_counter = 0
         @school_id_counter = 0
         @classroom_id_counter = 0
@@ -13,6 +29,7 @@ module HMMC
         @student_rankings = {}
       end
 
+
       def create_user(attrs)
         # attr_accessor :id, :school, :name, :email, :password
         user = User.new(:name => attrs[:name], :email=> attrs[:email], :password=> attrs[:password])
@@ -22,7 +39,7 @@ module HMMC
       end
 
       def create_school(attrs)
-        school = School.new(:name=>attrs[:name], :address=> attrs[:address], :miles => attrs[:miles])
+        school = School.new(:name=>attrs[:name], :address=> attrs[:address], :miles => attrs[:miles], :user_id =>attrs[:user_id])
         school.id = (@school_id_counter +=1)
         @schools[school.id] = school
       end
