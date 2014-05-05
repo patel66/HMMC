@@ -8,6 +8,12 @@ module HMMC
       super(attrs)
     end
 
+    # def index
+    #   @students = Student.all.limit(10) #
+    #   render :index
+    # end
+
+
     def add_classroom(newclass)
       @classrooms << newclass
     end
