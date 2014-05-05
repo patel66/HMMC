@@ -17,6 +17,7 @@ Dir[File.dirname(__FILE__) + '/entities/*.rb'].each {|file| require_relative fil
 Dir[File.dirname(__FILE__) + '/databases/*.rb'].each {|file| require_relative file }
 
 require_relative "hmmc/entity.rb"
+require_relative "hmmc/use_case.rb"
 require_relative "hmmc/databases/in_memory.rb"
 require_relative "hmmc/databases/sqlite_db.rb"
 require_relative "hmmc/entities/user.rb"
@@ -25,4 +26,5 @@ require_relative "hmmc/entities/school.rb"
 
 require_relative "hmmc/entities/class_room.rb"
 require_relative "hmmc/entities/student_ranking.rb"
+require_relative "hmmc/use_cases/add_miles_class.rb"
 
