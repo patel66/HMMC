@@ -12,7 +12,6 @@ describe HMMC::GetSchoolMiles do
 
   context "error" do
     it "ensures school id is valid" do
-      # binding.pry
       result = described_class.run(school_id: 9999)
 
       expect(result.success?).to eq(false)

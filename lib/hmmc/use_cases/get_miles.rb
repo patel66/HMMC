@@ -1,7 +1,7 @@
 module HMMC
   class GetSchoolMiles < UseCase
     def run(params)
-      # binding.pry 
+
       school_id = params[:school_id]
       school = HMMC.db.get_school(school_id)
 
@@ -11,7 +11,7 @@ module HMMC
 
       #If all else is good, creates a user model.
       school_miles = school.total_miles
-binding.pry
+
       success(:miles => school_miles, :school => school)
     end
 

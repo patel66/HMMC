@@ -8,21 +8,6 @@ module HMMC
       super(attrs)
     end
 
-
-
-    # def initialize(data)
-    # 	@id = data[:id]
-    # 	@user_id = data[:user_id]
-    # 	@name = data[:name]
-    # 	@address = data[:address]
-    # 	@miles = data[:miles]
-    # 	@total_miles = data[:total_miles]
-    # end
-
-    # coach is going to input # miles per classroom
-    # every friday the coach is going to choose the top 10 students who exercised the most
-    #
-
     # def index
     #   @students = Student.all.limit(10) #
     #   render :index

@@ -23,18 +23,18 @@ module HMMC
 
       def create_user(attrs)
         attrs[:id] = (@user_id_counter +=1)
-        # user.id = (@user_id_counter +=1)
+
         @users[attrs[:id]] = attrs
         User.new(:name => attrs[:name], :email => attrs[:email], :password => attrs[:password], :id => attrs[:id])
-        # you are not saving it here,
+
       end
 
       def create_school(attrs)
         attrs[:id] = (@school_id_counter +=1)
-        # school.id = (@school_id_counter +=1)
+
         @schools[attrs[:id]] = attrs
         School.new(attrs)
-        # School.new(:name => attrs[:name], :address => attrs[:address], :miles => attrs[:miles], :user_id => attrs[:user_id], :city => attrs[:city], :state => attrs[:state], :street => attrs[:street])
+
       end
 
       def get_user(id)
@@ -42,42 +42,29 @@ module HMMC
         user # not save, so how to get user name etc
       end
 
-      # def update_user(user)
-      #   attrs = @users[user.id]
-      #   attrs.merge!(:name => user.name, :email => user.e)
-      #   attrs[:name] = user.name
-      #   attrs[:email] = user.email
-      # end
+
 
       def get_school(id)
-        # @school[attrs[:id]]
         school_attrs = @schools[id]
-        # binding.pry
+        return nil if school_attrs.nil?
         school = School.new(school_attrs)
-        school # not save, so how to get school name etc
-        # School.new(:name => attrs[:name], :user_id => attrs[:user_id], :address => attrs[:address], :city => [:city], :state => attrs[:state], :street => [:street])
+        school
       end
+
+
 
       def get_all_schools
         allschools = schools.values
       end
 
-      # def get_classrooms_by_school(school_id)
-      #   # get classrooms for school
-      # end
 
-      # def update_school(school)
-      #   school.classrooms.each do |classroom|
-      #     # if classoom does not exist, create it
-      #   end
-      # end
 
       def create_classroom(attrs)
-          # combine with school_update, for adding classe
-          # to school, and school_id validation
+        # combine with school_update, for adding classe
+        # to school, and school_id validation
 
         attrs[:id] = (@classroom_id_counter += 1)
-        #classroom.id = (@classroom_id_counter +=1)
+
         @classrooms[attrs[:id]] = attrs
         Classroom.new(attrs)
       end

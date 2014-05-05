@@ -6,8 +6,6 @@
 
     it "creates a user" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-      #  expect(users.size).to eq 1
-      # # expect(@users)
       expect(user.name).to eq "John"
       expect(user.email).to eq "John@mail.com"
       expect(user.password).to eq "123"
@@ -80,7 +78,6 @@
     end
 
     it "updates a classroom miles" do
-      # binding.pry
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
       classroom = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
