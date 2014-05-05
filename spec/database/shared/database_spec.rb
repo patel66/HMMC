@@ -1,5 +1,6 @@
 
   shared_examples 'a database' do
+
     let(:db) { described_class.new }
     before { db.clear_everything }
 
