@@ -52,10 +52,25 @@ module HMMC
       def get_school(id)
         # @school[attrs[:id]]
         school_attrs = @schools[id]
+        # binding.pry
         school = School.new(school_attrs)
         school # not save, so how to get school name etc
         # School.new(:name => attrs[:name], :user_id => attrs[:user_id], :address => attrs[:address], :city => [:city], :state => attrs[:state], :street => [:street])
       end
+
+      def get_all_schools
+        allschools = schools.values
+      end
+
+      # def get_classrooms_by_school(school_id)
+      #   # get classrooms for school
+      # end
+
+      # def update_school(school)
+      #   school.classrooms.each do |classroom|
+      #     # if classoom does not exist, create it
+      #   end
+      # end
 
       def create_classroom(attrs)
           # combine with school_update, for adding classe
@@ -67,12 +82,13 @@ module HMMC
         Classroom.new(attrs)
       end
 
-
-
       def get_classroom(id)
         classroom_attrs = @classrooms[id]
         classroom = Classroom.new(classroom_attrs)
         classroom
+      end
+
+      def get_all_classrooms
       end
 
       def create_ranking(attrs)
@@ -99,18 +115,19 @@ module HMMC
         @sessions.delete[sid]
       end
 
+
       def update_classroom_miles(attrs)
         retreived_classroom = get_classroom(attrs[:classroom_id])
         retreived_classroom.miles = attrs[:miles]
         retreived_classroom
       end
+
+      def get_user_by_sid(sid)
+        session = @sessions[sid]
+        uid = session[user_id]
+        user = get_user(uid)
+
+      end
     end
   end
 end
-
-
-
-
-
-
-

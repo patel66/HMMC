@@ -1,14 +1,13 @@
 module HMMC
 
   class School < Entity
-                        #do i need this? user
     attr_accessor :id, :user_id, :name, :address, :classrooms, :city, :state, :street
 
     def initialize(attrs={})
       @classrooms = []
-      # @total_miles = 0
       super(attrs)
     end
+
 
 
     # def initialize(data)
@@ -29,20 +28,20 @@ module HMMC
     #   render :index
     # end
 
+
     def add_classroom(newclass)
       @classrooms << newclass
     end
 
     def total_miles
       return 0 if @classrooms.empty?
-
       @classrooms.map {|classroom| classroom.miles}.reduce(0,:+)
-
     end
 
     def get_classrooms
       @classrooms.sort_by{|classroom| classroom.miles}.reverse
     end
+
   end
 end
 

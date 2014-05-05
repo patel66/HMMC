@@ -6,6 +6,7 @@ require 'yaml'
 require 'timecop'
 require 'securerandom'
 
+
 module HMMC
   def self.db
     @__db_instance ||= Databases::InMemory.new
@@ -24,9 +25,14 @@ require_relative "hmmc/databases/sqlite_db.rb"
 require_relative "hmmc/entities/user.rb"
 
 require_relative "hmmc/entities/school.rb"
-
 require_relative "hmmc/entities/class_room.rb"
 require_relative "hmmc/entities/student_ranking.rb"
+
+# usecases
 require_relative "hmmc/use_cases/add_miles_class.rb"
+require_relative "hmmc/use_cases/get_miles.rb"
+require_relative "hmmc/use_cases/create_user.rb"
+require_relative "hmmc/use_cases/login_user.rb"
 require_relative "hmmc/use_cases/check_sign_in.rb"
+require_relative "hmmc/use_cases/sign_up.rb"
 
