@@ -9,7 +9,7 @@ module HMMC
       # @total_miles = 0
       super(attrs)
     end
-  end
+
 
 
     # def initialize(data)

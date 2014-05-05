@@ -79,4 +79,21 @@
 
     end
 
+    it "updates a classroom miles" do
+      # binding.pry
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      classroom = db.create_classroom(:school_id => school.id, :miles => 0, :name=> "History")
+
+
+      school.add_classroom(classroom)
+
+      expect(classroom.miles).to eq 0
+
+      classroom.update_miles(:miles => 20)
+
+
+
+    end
+
 end

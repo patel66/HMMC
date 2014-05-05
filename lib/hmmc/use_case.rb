@@ -1,3 +1,4 @@
+require 'ostruct'
 module HMMC
   class UseCase
 
