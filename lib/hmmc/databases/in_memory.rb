@@ -58,6 +58,9 @@ module HMMC
       end
 
       def create_classroom(attrs)
+          # combine with school_update, for adding classe
+          # to school, and school_id validation
+
         attrs[:id] = (@classroom_id_counter += 1)
         #classroom.id = (@classroom_id_counter +=1)
         @classrooms[attrs[:id]] = attrs

@@ -95,4 +95,11 @@
       expect(updated_classroom.miles).to eq 20
     end
 
+    it "updates a school to have classrooms" do
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      classroom = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
+
+    end
+
 end
