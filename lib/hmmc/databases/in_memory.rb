@@ -38,20 +38,42 @@ module HMMC
         user
       end
 
-      def get_school(id)
+      def get_school(id, classroom: false)
         school = @schools[id]
+        # if classroom
+        #   school.classrooms = get_classrooms_by_school(school.id)
+        # end
         school
       end
 
+      def get_all_schools
+        allschools = schools.values
+      end
+
+      # def get_classrooms_by_school(school_id)
+      #   # get classrooms for school
+      # end
+
+      # def update_school(school)
+      #   school.classrooms.each do |classroom|
+      #     # if classoom does not exist, create it
+      #   end
+      # end
+
       def create_classroom(attrs)
-        classroom = Classroom.new(:miles => attrs[:miles], :name => attrs[:name],:school_id => attrs[:school_id])
+        classroom = Classroom.new(:miles => attrs[:miles], :name => attrs[:name], :school_id => attrs[:school_id])
         classroom.id = (@classroom_id_counter +=1)
+
+        # @schools[classroom.school_id]
         @classrooms[classroom.id] = classroom
       end
 
       def get_classroom(id)
         classroom = @classrooms[id]
         classroom
+      end
+
+      def get_all_classrooms
       end
 
       def create_ranking(attrs)
@@ -68,10 +90,3 @@ module HMMC
     end
   end
 end
-
-
-
-
-
-
-

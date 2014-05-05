@@ -6,6 +6,7 @@ module HMMC
       email = params[:email]
       password = params[:password]
       school = params[:school]
+
       if validate_password(password) == false
         return failure :invalid_password
       end
