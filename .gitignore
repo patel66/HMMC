@@ -1,0 +1,6 @@
+.bundle
+vendor/bundle
+.DS_Store
+Gemfile.lock
+*.db
+HMMC_test
