@@ -58,12 +58,6 @@ module HMMC
         school_classrooms.map { |attrs| Classroom.new(attrs) }
       end
 
-      # @classrooms = {
-      #   1 => {
-      #     school_id: 1,
-      #     name: 'Kempner'
-      #   }
-      # }
 
       def get_all_schools
         allschools = schools.values
