@@ -16,8 +16,8 @@
     it "create_school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
+      expect(school.city).to eq "Sugar Land"
       expect(school.name).to eq "Kempner HighSchool"
-      #expect(school.city).to eq "Sugar Land" why doesn't this work?
     end
 
     it "gets a user" do

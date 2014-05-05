@@ -39,7 +39,7 @@ module HMMC
       end
 
       def create_school(attrs)
-        school = School.new(:name=>attrs[:name], :address=> attrs[:address], :miles => attrs[:miles], :user_id =>attrs[:user_id])
+        school = School.new(:name=>attrs[:name], :address=> attrs[:address], :miles => attrs[:miles], :user_id =>attrs[:user_id], :city=> attrs[:city], :state=> attrs[:state], :street=> attrs[:street])
         school.id = (@school_id_counter +=1)
         @schools[school.id] = school
       end
