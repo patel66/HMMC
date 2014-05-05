@@ -29,11 +29,12 @@ module HMMC
       end
 
       def create_user(attrs)
-        user = User.create(attrs)
-        HMMC::User.new(user.attributes)
+        ar_user = User.create(attrs)
+        HMMC::User.new(ar_user.attributes)
       end
 
       def create_school(attrs)
+
         school = School.create(attrs)
         HMMC::School.new(school.attributes)
       end
@@ -58,6 +59,12 @@ module HMMC
         classroom = Classroom.find(id)
         HMMC::Classroom.new(classroom.attributes)
       end
+
+      def update_class_miles(attrs)
+        classroom = Classroom.find(attrs[:id])
+
+      end
+
     end
   end
 end

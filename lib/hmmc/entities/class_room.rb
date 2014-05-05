@@ -10,7 +10,6 @@ module HMMC
     def add_miles(miles)
       @miles += miles
 
-
     end
 
     def edit_miles(miles)

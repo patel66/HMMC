@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505024539) do
+ActiveRecord::Schema.define(version: 20140505185926) do
 
   create_table "classrooms", force: true do |t|
     t.string  "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140505024539) do
     t.string  "name"
     t.integer "user_id"
     t.string  "address"
-    t.string  "classrooms"
     t.string  "state"
     t.string  "city"
     t.string  "street"

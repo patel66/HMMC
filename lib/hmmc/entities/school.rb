@@ -10,7 +10,6 @@ module HMMC
 
     def add_classroom(newclass)
       @classrooms << newclass
-
     end
 
     def total_miles
