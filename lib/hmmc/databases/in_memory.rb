@@ -84,8 +84,8 @@ module HMMC
       end
 
       def create_session(attrs)
-        sid = SecureRandom.uuid 
-        @sessions[sid]= { id: sid, user_id: attrs[:user_id]} 
+        sid = SecureRandom.uuid
+        @sessions[sid]= { id: sid, user_id: attrs[:user_id]}
       end
 
       def get_session(sid)
@@ -96,6 +96,11 @@ module HMMC
         @sessions.delete[sid]
       end
 
+      def update_classroom_miles(attrs)
+        retreived_classroom = get_classroom(attrs[:classroom_id])
+        retreived_classroom.miles = attrs[:miles]
+        retreived_classroom
+      end
     end
   end
 end

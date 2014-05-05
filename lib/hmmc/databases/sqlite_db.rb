@@ -35,34 +35,39 @@ module HMMC
 
       def create_school(attrs)
 
-        school = School.create(attrs)
-        HMMC::School.new(school.attributes)
+        ar_school = School.create(attrs)
+        HMMC::School.new(ar_school.attributes)
       end
 
       def create_classroom(attrs)
-        classroom = Classroom.create(attrs)
-        HMMC::Classroom.new(classroom.attributes)
+        ar_classroom = Classroom.create(attrs)
+        HMMC::Classroom.new(ar_classroom.attributes)
       end
 
       def get_school(id)
-        school = School.find(id)
-        HMMC::School.new(school.attributes)
+        ar_school = School.find(id)
+        HMMC::School.new(ar_school.attributes)
 
       end
 
       def get_user(id)
-        user = User.find(id)
-        HMMC::User.new(user.attributes)
+        ar_user = User.find(id)
+        HMMC::User.new(ar_user.attributes)
       end
 
       def get_classroom(id)
-        classroom = Classroom.find(id)
-        HMMC::Classroom.new(classroom.attributes)
+        ar_classroom = Classroom.find(id)
+        HMMC::Classroom.new(ar_classroom.attributes)
       end
 
-      def update_class_miles(attrs)
-        classroom = Classroom.find(attrs[:id])
+      def update_classroom_miles(attrs)
 
+        # binding.pry
+
+        ar_classroom = Classroom.find(attrs[:classroom_id])
+        ar_classroom.miles = attrs[:miles]
+        ar_classroom.save
+        HMMC::Classroom.new(attrs)
       end
 
     end
