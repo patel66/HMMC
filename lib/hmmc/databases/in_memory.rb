@@ -17,6 +17,7 @@ module HMMC
         @schools = {}
         @classrooms = {}
         @student_rankings = {}
+        @sessions = {}
       end
 
 
@@ -63,6 +64,19 @@ module HMMC
       def get_rank(id)
         student_rank = @student_rankings[id]
         student_rank
+      end
+
+      def create_session(attrs)
+        sid = SecureRandom.uuid 
+        @sessions[sid]= { id: sid, user_id: attrs[:user_id]} 
+      end
+
+      def get_session(sid)
+        @sessions[sid]
+      end
+
+      def delete_session(sid)
+        @sessions.delete[sid]
       end
 
     end

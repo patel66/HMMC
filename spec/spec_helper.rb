@@ -1,6 +1,8 @@
 require 'hmmc' # for some reason this works in rspec
 require './lib/hmmc.rb'
 require_relative 'database/shared/database_spec.rb'
+require_relative 'use_cases/check_sign_in.rb'
+# require_relative 'use_cases/sign_up.rb'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
