@@ -96,6 +96,11 @@ module HMMC
         @sessions.delete[sid]
       end
 
+      def get_user_by_sid(sid)
+        session = @sessions[sid]
+        uid = session[user_id]
+        user = get_user(uid)      
+      end
     end
   end
 end
