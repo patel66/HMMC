@@ -57,6 +57,20 @@ module HMMC
         # School.new(:name => attrs[:name], :user_id => attrs[:user_id], :address => attrs[:address], :city => [:city], :state => attrs[:state], :street => [:street])
       end
 
+      def get_all_schools
+        allschools = schools.values
+      end
+
+      # def get_classrooms_by_school(school_id)
+      #   # get classrooms for school
+      # end
+
+      # def update_school(school)
+      #   school.classrooms.each do |classroom|
+      #     # if classoom does not exist, create it
+      #   end
+      # end
+
       def create_classroom(attrs)
         attrs[:id] = (@classroom_id_counter += 1)
         #classroom.id = (@classroom_id_counter +=1)
@@ -64,12 +78,13 @@ module HMMC
         Classroom.new(attrs)
       end
 
-
-
       def get_classroom(id)
         classroom_attrs = @classrooms[id]
         classroom = Classroom.new(classroom_attrs)
         classroom
+      end
+
+      def get_all_classrooms
       end
 
       def create_ranking(attrs)
@@ -104,10 +119,3 @@ module HMMC
     end
   end
 end
-
-
-
-
-
-
-
