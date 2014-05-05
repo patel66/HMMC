@@ -1,5 +1,5 @@
 module HMMC
-  class ClassRoom < Entity
+  class Classroom < Entity
     attr_accessor :id, :school_id, :miles, :name
 
     def initialize(attrs={})

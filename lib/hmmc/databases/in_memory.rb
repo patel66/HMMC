@@ -55,7 +55,7 @@ module HMMC
       end
 
       def create_classroom(attrs)
-        classroom = ClassRoom.new(:miles => attrs[:miles], :name => attrs[:name],:school_id => attrs[:school_id])
+        classroom = Classroom.new(:miles => attrs[:miles], :name => attrs[:name],:school_id => attrs[:school_id])
         classroom.id = (@classroom_id_counter +=1)
         @classrooms[classroom.id] = classroom
       end
