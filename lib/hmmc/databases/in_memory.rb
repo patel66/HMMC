@@ -47,11 +47,23 @@ module HMMC
       def get_school(id)
         school_attrs = @schools[id]
         return nil if school_attrs.nil?
+
         school = School.new(school_attrs)
+        school.classrooms = get_classrooms_for_school(id)
         school
       end
 
+      def get_classrooms_for_school(sid)
+        school_classrooms = @classrooms.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
+        school_classrooms.map { |attrs| Classroom.new(attrs) }
+      end
 
+      # @classrooms = {
+      #   1 => {
+      #     school_id: 1,
+      #     name: 'Kempner'
+      #   }
+      # }
 
       def get_all_schools
         allschools = schools.values
