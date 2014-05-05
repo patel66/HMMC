@@ -3,20 +3,10 @@ module HMMC
     class InMemory
 
       def initialize(config=nil)
-        # @user_id_counter = 0
-        # @school_id_counter = 0
-        # @classroom_id_counter = 0
-        # @student_rank_id_counter = 0
-        # @users = {}
-        # @schools = {}
-        # @classrooms = {}
-        # @student_rankings = {}
+
         clear_everything
       end
 
-      # def initialize(config=nil)
-      #   clear_everything
-      # end
 
       def clear_everything
         @user_id_counter = 0
@@ -31,7 +21,6 @@ module HMMC
 
 
       def create_user(attrs)
-        # attr_accessor :id, :school, :name, :email, :password
         user = User.new(:name => attrs[:name], :email=> attrs[:email], :password=> attrs[:password])
         user.id = (@user_id_counter +=1)
         @users[user.id] = user
@@ -76,14 +65,13 @@ module HMMC
         student_rank
       end
 
-
     end
   end
 end
 
 
 
-#user sign in
+
 
 
 

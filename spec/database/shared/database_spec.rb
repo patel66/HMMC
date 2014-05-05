@@ -1,5 +1,5 @@
 
-  shared_examples 'a chicken' do
+  shared_examples 'a database' do
     let(:db) { described_class.new }
     before { db.clear_everything }
 
@@ -72,7 +72,7 @@
 
     it "gets the school from the user" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-     school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
       retreived_school = db.get_school(school.id)
       expect(retreived_school.user_id).to eq user.id
 
