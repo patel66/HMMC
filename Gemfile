@@ -4,7 +4,7 @@ ruby '2.1.1'
 # Testing
 gem 'rspec'
 gem 'pry-debugger'
-
+gem 'timecop', '~> 0.7.1'
 
 
 # Core Application
