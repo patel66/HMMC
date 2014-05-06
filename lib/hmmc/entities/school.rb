@@ -1,7 +1,7 @@
 module HMMC
 
   class School < Entity
-    attr_accessor :id, :user_id, :name, :address, :classrooms, :city, :state, :street
+    attr_accessor :id, :user_id, :name, :address, :classrooms, :city, :state, :street, :goal
 
     def initialize(attrs={})
       @classrooms = []
