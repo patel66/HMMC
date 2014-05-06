@@ -25,15 +25,12 @@ module HMMC
     end
 
     def has_school(school)
-      #Valid school, return true for now.
-      return true
+
     end
 
     def validate_email(email)
       # Makes sure email is a valid email address
 
-      /\A(\S+)@(.\S+)\.(\S+)\z/ =~ email
-      binding.pry
     end
 
     def validate_password(password)
