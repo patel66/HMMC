@@ -7,6 +7,13 @@ describe HMMC::CreateUser do
 
   end
 
+  describe '#valid_email?' do
+    it "validates an email" do
+      is_email = subject.valid_email? "this@that.com"
+      expect(is_email).to eq(true)
+    end
+  end
+
   context "error" do
     xit "Checks USER errors" do
 

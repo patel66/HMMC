@@ -23,11 +23,10 @@ describe HMMC::GetSchoolMiles do
     it "ensures it returns miles and school" do
       result = subject.run(:school_id => @school.id)
       expect(@school.classrooms.length).to eq 1
-      expect(result.success?).to eq (true )
-      #expect(result.success?).to eq(true)
-      #expect(result.miles).to eq(10)
+      expect(result.success?).to eq(true)
+      expect(result.miles).to eq(10)
 
-      #expect(result.school.name).to eq("Kempner HighSchool")
+      expect(result.school.name).to eq("Kempner HighSchool")
     end
   end
 end
