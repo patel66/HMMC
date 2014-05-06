@@ -1,7 +1,7 @@
 module HMMC
 
   class School < Entity
-    attr_accessor :id, :user_id, :name, :address, :classrooms, :city, :state, :street, :goal
+    attr_accessor :id, :user_id, :name, :address, :classrooms, :city, :state, :street, :goal, :miles
 
     def initialize(attrs={})
       @classrooms = []
@@ -27,6 +27,8 @@ module HMMC
       @classrooms.sort_by{|classroom| classroom.miles}.reverse
     end
 
+    def get_classroom(name)
+    end
   end
 end
 
