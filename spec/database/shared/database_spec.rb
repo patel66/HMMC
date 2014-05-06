@@ -106,8 +106,8 @@
       classroom2 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "English"})
       classroom3 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
 
-       retreived_classroom = db.get_class_by_name("History")
-       expect(retreived_classroom.name).to eq "History"
+      retreived_classroom = db.get_class_by_name("History")
+      expect(retreived_classroom.name).to eq "History"
 
     end
 

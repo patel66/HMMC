@@ -37,4 +37,4 @@ require_relative "hmmc/use_cases/check_sign_in.rb"
 require_relative "hmmc/use_cases/sign_up.rb"
 require_relative "hmmc/use_cases/create_class_room.rb"
 require_relative "hmmc/use_cases/set_goal.rb"
-
+require_relative "hmmc/use_cases/create_school.rb"
