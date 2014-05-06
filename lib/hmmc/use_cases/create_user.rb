@@ -8,12 +8,13 @@ module HMMC
       password = params[:password]
       school = params[:school]
 
-      if validate_password(password) == false
+      if validate_password(password) == nil
         return failure :invalid_password
       end
-      if validate_email(email)
-        return failure :email_not_valid
-      end
+      # if !validate_email(email)
+
+      return failure :email_not_valid unless valid_email?(email)
+
       if has_school(school)
         return failure :school_doesnt_exist
       end
@@ -25,12 +26,14 @@ module HMMC
     end
 
     def has_school(school)
-
+      #Valid school, return true for now.
+      return true
     end
 
-    def validate_email(email)
+    def valid_email?(email)
       # Makes sure email is a valid email address
 
+      !! (email =~ /\A(\S+)@(.\S+)\.(\S+)\z/)
     end
 
     def validate_password(password)
