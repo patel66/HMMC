@@ -17,4 +17,3 @@ module HMMC
   end
 end
 
-# result = subject.run(:school_id=> classroom.school_id, :classroom => classroom)

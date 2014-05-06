@@ -24,5 +24,3 @@ module HMMC
   end
 end
 
-# result = subject.run(:classroom => history_class, :school => school, :milesclass => 45)
-#    result = subject.run(:classroom => math_class, :school => school, :milesclass => 30)
