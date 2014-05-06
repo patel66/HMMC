@@ -21,7 +21,6 @@ describe HMMC::GetSchoolMiles do
 
   context "success" do
     it "ensures it returns miles and school" do
-      binding.pry
       result = subject.run(:school_id => @school.id)
       expect(@school.classrooms.length).to eq 1
       expect(result.success?).to eq (true )

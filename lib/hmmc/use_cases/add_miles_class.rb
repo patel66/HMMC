@@ -17,6 +17,8 @@ module HMMC
       retreived_school = HMMC.db.get_school(school_id)
       retreived_school.add_classroom(classroom)
       classroom.add_miles(milesclassroom)
+
+      success(:miles => milesclassroom, :school => school)
     end
   end
 end
