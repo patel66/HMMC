@@ -13,9 +13,9 @@ describe HMMC::AddMilesClass do
    # school.add_classroom(history_class)
    # history_class.add_miles(110)
 
-   result = subject.run({:classroom=> history_class, :milesclass=> 10, :school_id => school.id })
+   result = subject.run({:classroom=> history_class, :milesclass=> 101, :school_id => school.id })
    # binding.pry
-   expect(result.success?).to eq true
+   expect(result.success?).to eq false
   end
 
   xit "adds miles to class, also shows up in school" do
@@ -29,7 +29,7 @@ describe HMMC::AddMilesClass do
    result2 = subject.run(:classroom => math_class, :school => school, :milesclass => 30, :school_id => school.id)
    # expect(result.school.total_miles + result2.school.total_miles).to eq 75
    # expect(result.success?).to eq true
-   # expect(result.school.total_miles).to eq 75
+   # expect(result.school.total_miles).to eq 30
 
   end
 

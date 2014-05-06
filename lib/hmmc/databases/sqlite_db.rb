@@ -70,6 +70,10 @@ module HMMC
         HMMC::Classroom.new(attrs)
       end
 
+      def get_class_by_name(attrs)
+        # @classrooms.values.find { |classroom_attrs| classroom_attrs[:name] == name }
+      end
+
     end
   end
 end

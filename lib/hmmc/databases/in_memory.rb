@@ -122,10 +122,12 @@ module HMMC
 
       end
 
-      def get_class_by_name(attrs)
-        @classrooms.values.find { |classroom_attrs| classroom_attrs[:name] == name }
-      end
+      def get_class_by_name(name)
+        want = @classrooms.values.select{|attributes| attributes[:name] == name}
 
+        want[0][:name]
+      end
+# {1=>{:school_id=>1, :miles=>0, :name=>"Math", :id=>1}, 2=>{:school_id=>1, :miles=>0, :name=>"English", :id=>2}, 3=>{:school_id=>1, :miles=>0, :name=>"History", :id=>3}}
     end
   end
 end
