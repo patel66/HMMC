@@ -4,6 +4,7 @@ module HMMC
       #Assume required login information is just email address, password, school
 
       email = params[:email]
+
       password = params[:password]
       school = params[:school]
 
@@ -14,7 +15,7 @@ module HMMC
         return failure :email_not_valid
       end
       if has_school(school)
-        return failure :not_valid_school
+        return failure :school_doesnt_exist
       end
 
       #If all else is good, creates a user model.
@@ -30,12 +31,14 @@ module HMMC
 
     def validate_email(email)
       # Makes sure email is a valid email address
-      email =~ /\A(\S+)@(.+)\.(\S+)\z/
+
+      /\A(\S+)@(.\S+)\.(\S+)\z/ =~ email
+      binding.pry
     end
 
     def validate_password(password)
       # Makes sure password gets passed in as a string, and is longer than 6 characters
-      password.is_a?(string) && password.length > 6
+      password.is_a?(String) && password.length > 6
     end
 
   end
