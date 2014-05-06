@@ -4,14 +4,12 @@ describe HMMC::CreateUser do
   let(:db) {HMMC.db}
   before do
     db.clear_everything
-    @user = db.create_user(:name => "Philip", :email => "this@that.com", :password => "makerL7")
-
   end
 
   context "error" do
     it "ensures school id is valid" do
 
-      result = described_class.run(school_id: "")
+      result = described_class.run(:name => "Philip", :email => "this@that.com", :password => "makerL7", school_id: "")
 
       expect(result.success?).to eq(false)
       expect(result.error).to eq(:school_doesnt_exist)
