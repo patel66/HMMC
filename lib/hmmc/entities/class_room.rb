@@ -1,9 +1,10 @@
 module HMMC
   class Classroom < Entity
-    attr_accessor :id, :school_id, :miles, :name
+    attr_accessor :id, :school_id, :name
+    attr_reader :miles
 
     def initialize(attrs={})
-      @miles = 0
+      @miles ||= 0
       super(attrs)
     end
 
