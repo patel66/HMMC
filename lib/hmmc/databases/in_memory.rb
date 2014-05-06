@@ -110,10 +110,10 @@ module HMMC
 
 
       def update_classroom(attrs)
-        id = attrs.delete(:classroom_id)
-        classroom_data = @classrooms[id]
-        classroom_data.merge!(attrs)
-        Classroom.new(classroom_data)
+        id = attrs[:classroom_id]
+        classroom_attrs = @classrooms[id]
+        classroom_attrs.merge!(attrs)
+        Classroom.new(classroom_attrs)
       end
 
       def get_user_by_sid(sid)
