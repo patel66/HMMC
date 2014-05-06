@@ -63,8 +63,6 @@ module HMMC
         allschools = schools.values
       end
 
-
-
       def create_classroom(attrs)
         # combine with school_update, for adding classe
         # to school, and school_id validation
@@ -109,10 +107,11 @@ module HMMC
       end
 
 
-      def update_classroom_miles(attrs)
-        retreived_classroom = get_classroom(attrs[:classroom_id])
-        retreived_classroom.miles = attrs[:miles]
-        retreived_classroom
+      def update_classroom(attrs)
+        id = attrs[:classroom_id]
+        classroom_attrs = @classrooms[id]
+        classroom_attrs.merge!(attrs)
+        Classroom.new(classroom_attrs)
       end
 
       def get_user_by_sid(sid)
@@ -123,9 +122,9 @@ module HMMC
       end
 
       def get_class_by_name(name)
-        want = @classrooms.values.select{|attributes| attributes[:name] == name}
+        c_room = @classrooms.values.select{|attributes| attributes[:name] == name}
 
-        classroom = Classroom.new(want[0])
+        classroom = Classroom.new(c_room[0])
         classroom
       end
 # {1=>{:school_id=>1, :miles=>0, :name=>"Math", :id=>1}, 2=>{:school_id=>1, :miles=>0, :name=>"English", :id=>2}, 3=>{:school_id=>1, :miles=>0, :name=>"History", :id=>3}}

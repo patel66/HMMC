@@ -7,9 +7,13 @@ module HMMC
 
       return failure :school_does_not_exist if HMMC.db.get_school(school_id) == nil
       return failure :invalid_name if classroomname.empty?
-       success(:classroom => classroom)
+
+      school = HMMC.db.get_school(school_id)
+      cr = HMMC.db.create_classroom(inputs)
+      school.add_classroom(cr)
+      success(:classroom => cr)
+
     end
   end
 end
 
-# result = subject.run(:school_id=> classroom.school_id, :classroom => classroom)

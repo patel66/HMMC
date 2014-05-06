@@ -77,7 +77,7 @@
 
     end
 
-    it "updates a classroom miles" do
+    it "updates a classroom" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
       classroom = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
@@ -86,10 +86,10 @@
       school.add_classroom(classroom)
 
       expect(classroom.miles).to eq 0
+      # binding.pry
+      updated_classroom = db.update_classroom({:classroom_id => classroom.id, :miles => 20})
 
-      updated_classroom = db.update_classroom_miles({:classroom_id => classroom.id, :miles => 20})
-
-      expect(updated_classroom.miles).to eq 20
+      expect(updated_classroom.miles).to eq 20 #0
     end
 
     it "updates a school to have classrooms" do
@@ -103,12 +103,14 @@
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
       classroom1 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "Math"})
+      school.add_classroom(classroom1)
       classroom2 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "English"})
+      school.add_classroom(classroom2)
       classroom3 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
-
+      school.add_classroom(classroom3 )
       retreived_classroom = db.get_class_by_name("History")
       expect(retreived_classroom.name).to eq "History"
-
+      expect(school.classrooms.size).to eq(3)
     end
 
 end

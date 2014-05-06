@@ -60,7 +60,7 @@ module HMMC
         HMMC::Classroom.new(ar_classroom.attributes)
       end
 
-      def update_classroom_miles(attrs)
+      def update_classroom(attrs)
 
         # binding.pry
 
