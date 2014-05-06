@@ -99,4 +99,16 @@
 
     end
 
+    it "gets classroom by name" do
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      classroom1 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "Math"})
+      classroom2 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "English"})
+      classroom3 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
+
+      retreived_classroom = db.get_class_by_name("History")
+      expect(retreived_classroom.name).to eq "History"
+
+    end
+
 end
