@@ -106,10 +106,10 @@
       school.add_classroom(classroom1)
       classroom2 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "English"})
       classroom3 = db.create_classroom({:school_id => school.id, :miles => 0, :name=> "History"})
-
+      # binding.pry
       retreived_classroom = db.get_class_by_name("History")
       expect(retreived_classroom.name).to eq "History"
-      expect(school.classroom.size).to eq(3)
+      expect(school.classrooms.size).to eq(3)
     end
 
 end
