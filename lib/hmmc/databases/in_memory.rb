@@ -63,8 +63,6 @@ module HMMC
         allschools = schools.values
       end
 
-
-
       def create_classroom(attrs)
         # combine with school_update, for adding classe
         # to school, and school_id validation
