@@ -2,7 +2,7 @@ require 'hmmc' # for some reason this works in rspec
 require './lib/hmmc.rb'
 require_relative 'database/shared/database_spec.rb'
 require_relative 'use_cases/check_sign_in.rb'
-require_relative 'use_cases/sign_up.rb'
+# require_relative 'use_cases/sign_up.rb'
 # require_relative 'use_cases/sign_up.rb'
 
 RSpec.configure do |config|
@@ -14,5 +14,10 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
+
+  config.before(:each) do
+    HMMC.instance_variable_set(:@__db_instance, nil)
+  end
+
   config.order = 'random'
 end

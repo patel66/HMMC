@@ -131,8 +131,11 @@ module HMMC
 # {1=>{:school_id=>1, :miles=>0, :name=>"Math", :id=>1}, 2=>{:school_id=>1, :miles=>0, :name=>"English", :id=>2}, 3=>{:school_id=>1, :miles=>0, :name=>"History", :id=>3}}
 
       def get_user_by_email(email)
-        user = @users.values.select{|attributes| attributes[:email] == email}
 
+        user = @users.values.select{|attributes| attributes[:email] == email}
+        user_attributes = user[0]
+        return nil if user_attributes.nil?
+        retreived_user = User.new(user_attributes)
       end
         #  school_attrs = @schools[id]
         # return nil if school_attrs.nil?

@@ -113,7 +113,7 @@
       expect(school.classrooms.size).to eq(3)
     end
 
-    xit "gets user by email" do
+    it "gets user by email" do
       user1 = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       user2 = db.create_user(:name => "Saray", :email=> "Sarah@mail.com", :password => "1234")
 

@@ -6,7 +6,7 @@ module HMMC
       school_state = inputs[:state]
       school_city = inputs[:city]
       school = inputs[:school]
-
+       # validate
       return failure(:invalid_input_no_name) if school_name.empty?
       return failure(:invalid_input_no_name) if school_street.empty?
       return failure(:invalid_input_no_name) if school_state.empty?
