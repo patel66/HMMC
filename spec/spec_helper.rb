@@ -20,4 +20,8 @@ RSpec.configure do |config|
   end
 
   config.order = 'random'
+
+	config.before(:each) do
+		HMMC.instance_variable_set(:@__db_instance, nil)
+	end
 end

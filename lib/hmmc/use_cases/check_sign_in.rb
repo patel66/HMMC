@@ -5,13 +5,10 @@ module HMMC
       email = inputs[:email]
       password = inputs[:password]
 
-      user = HMMC.db.get_user_by_sid(session_id)
-
-      if user == nil
-        return failure :user_not_found
-      else
-        return success
-      end
+      user = HMMC.db.get_user_by_sid(inputs[:session_key])
+      return failure :user_not_found if user == nil
+      
+      return success
     end
   end
 end
