@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   #the root of site routed with "root"
   root 'welcome#index'
 
-
+  resources :schools
+  resources :classrooms
 
 
 
