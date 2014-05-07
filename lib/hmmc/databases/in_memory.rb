@@ -132,7 +132,9 @@ module HMMC
 
       def get_user_by_email(email)
         user = @users.values.select{|attributes| attributes[:email] == email}
-
+        user_attr = user[0]
+        return nil if user_attr.nil?
+        retrieved_user = User.new(user_attr)
       end
         #  school_attrs = @schools[id]
         # return nil if school_attrs.nil?

@@ -17,7 +17,6 @@ require 'spec_helper'
 
    xit "returns success if the user is signed in" do
       @user1 = HMMC.db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-      session = HMMC.db.create_session(@user1.id)
       result = described_class.run(session.id)
       expect(result.success?).to eq(true)
     end
