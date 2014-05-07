@@ -1,57 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+  <title>Web</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+<%= yield %>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "Hundred Million Mile Club" %></a></h1>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "About" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "FAQ" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Contact Us" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Sign In" %></li>
-        </ul>
-      </section>
-    </nav>
-
-
-    <div class='row'>
-      <div class="large-3 columns">
-        <ul class="custom-sidenav-class">
-          <li class="divider"></li>
-          <li><%= link_to "Account" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Add Miles" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Leaderboards" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Hugs" %></li>
-        </ul>
-
-      </div>
-
-      <div class="large-8 columns"> <%= yield %> B O D Y </div>
-    </div>
-
-    <%= javascript_include_tag "application" %>
-  </body>
+</body>
 </html>
