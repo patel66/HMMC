@@ -25,6 +25,8 @@ module HMMC
       result = SignIn.run({ email: "John@mail.com", password: "password" })
       expect(result.success?).to eq(true)
       expect(result.session_id).to be_a(String)
+
+      expect(result.session_id.length > 10).to eq(true)
     end
   end
 end
