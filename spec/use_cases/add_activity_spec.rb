@@ -39,7 +39,6 @@ module HMMC
       result1 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 10, :students => 20, :date => Time.parse("May 8 2014")})
       result2 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 20, :students => 20, :date => Time.parse("May 8 2014")})
       result3 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 30, :students => 20, :date => Time.parse("May 8 2014")})
-      # binding.pry
       expect(result3.school.total_miles_school).to eq 50
     end
 
