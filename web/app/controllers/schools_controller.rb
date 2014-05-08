@@ -14,9 +14,27 @@ class SchoolsController < ApplicationController
     # @school = result.school
     # # /schools/:id(.:format)
     # redirect_to "/schools/#{@school.id}"
-    result = HMMC::SignUp.run(:name => params[:user][:name], :email => params[:user][:email], :password=> params[:user][:password], :school_name => params[:school][:name], :street => params[:school][:street], :city => params[:school][:city], :students=> params[:school][:students])
+
+    user_params = params[:user]
+    school_params = params[:school]
+
+    result = HMMC::SignUp.run(
+      :name => user_params[:name],
+      :email => user_params[:email],
+      :password=> user_params[:password],
+      :school_name => school_params[:name],
+      :street => school_params[:street],
+      :city => school_params[:city],
+      :state=>school_params[:state],
+      :students=> school_params[:students]
+      )
+
     @school = result.school
+    @session = result.session_id
+
     redirect_to "/schools/#{@school.id}"
+
+
   end
 
 
