@@ -27,6 +27,7 @@ require_relative "hmmc/entities/user.rb"
 require_relative "hmmc/entities/school.rb"
 require_relative "hmmc/entities/class_room.rb"
 require_relative "hmmc/entities/student_ranking.rb"
+require_relative "hmmc/entities/activity.rb"
 
 # usecases
 require_relative "hmmc/use_cases/add_miles_class.rb"
