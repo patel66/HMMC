@@ -5,7 +5,7 @@ require 'active_record_tasks'
 require 'yaml'
 require 'timecop'
 require 'securerandom'
-
+require 'time'
 
 module HMMC
   def self.db
