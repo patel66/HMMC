@@ -1,12 +1,8 @@
 source 'https://rubygems.org'
 
-# Adding bootstrap
-gem 'twitter-bootstrap-rails'
+app_gemfile_path = File.expand_path('../../Gemfile', __FILE__)
+eval File.read(app_gemfile_path)
 
-
-
-gem 'better_errors'
-gem 'binding_of_caller'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use SCSS for stylesheets
@@ -30,9 +26,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-# Adding my app's Gemfile
-app_gemfile_path = File.expand_path('../../Gemfile', __FILE__)
-eval File.read(app_gemfile_path)
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

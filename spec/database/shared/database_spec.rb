@@ -12,6 +12,23 @@
 
     end
 
+    it "creates an activity" do
+      activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
+      expect(activity.id).to eq activity.id
+      expect(activity.miles).to eq 10
+      expect(activity.students).to eq 20
+      expect(activity.date).to eq "May 8 2014"
+    end
+
+    it "gets an activity" do
+       #  binding.pry
+      activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
+      retreived_activity = db.get_activity(activity.id)
+      expect(retreived_activity.miles).to eq 10
+      expect(retreived_activity.students).to eq 20
+    end
+
+
     it "create_school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
@@ -113,7 +130,7 @@
       expect(school.classrooms.size).to eq(3)
     end
 
-    xit "gets user by email" do
+    it "gets user by email" do
       user1 = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       user2 = db.create_user(:name => "Saray", :email=> "Sarah@mail.com", :password => "1234")
 

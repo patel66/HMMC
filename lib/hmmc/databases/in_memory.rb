@@ -13,20 +13,30 @@ module HMMC
         @school_id_counter = 0
         @classroom_id_counter = 0
         @student_rank_id_counter = 0
+        @activity_id_counter = 0
         @users = {}
         @schools = {}
         @classrooms = {}
         @student_rankings = {}
         @sessions = {}
+        @activities = {}
       end
 
+      def create_activity(attrs)
+        attrs[:id] = (@activity_id_counter +=1)
+        @activities[:id] = attrs
+        Activity.new(attrs)
+      end
 
       def create_user(attrs)
         attrs[:id] = (@user_id_counter +=1)
-
         @users[attrs[:id]] = attrs
         User.new(:name => attrs[:name], :email => attrs[:email], :password => attrs[:password], :id => attrs[:id])
+      end
 
+      def get_activity(id)
+        activity_attrs = @activities[:id]
+        Activity.new(activity_attrs)
       end
 
       def create_school(attrs)
@@ -56,6 +66,11 @@ module HMMC
       def get_classrooms_for_school(sid)
         school_classrooms = @classrooms.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
         school_classrooms.map { |attrs| Classroom.new(attrs) }
+      end
+
+      def get_activities_for_school(sid)
+        school_activity = @activities.values.select{|activity_attrs| activity_attrs[:school_id] == sid}
+        school_activity.map {|attrs| Activity.new(attrs) }
       end
 
 
@@ -132,7 +147,9 @@ module HMMC
 
       def get_user_by_email(email)
         user = @users.values.select{|attributes| attributes[:email] == email}
-
+        user_attr = user[0]
+        return nil if user_attr.nil?
+        retrieved_user = User.new(user_attr)
       end
         #  school_attrs = @schools[id]
         # return nil if school_attrs.nil?
@@ -140,6 +157,8 @@ module HMMC
         # school = School.new(school_attrs)
         # school.classrooms = get_classrooms_for_school(id)
         # school
+
+
     end
   end
 end
