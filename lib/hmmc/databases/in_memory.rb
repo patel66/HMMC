@@ -19,21 +19,24 @@ module HMMC
         @classrooms = {}
         @student_rankings = {}
         @sessions = {}
-        @activitys = {}
+        @activities = {}
       end
 
       def create_activity(attrs)
         attrs[:id] = (@activity_id_counter +=1)
-        @activitys[:id] = attrs
+        @activities[:id] = attrs
         Activity.new(attrs)
       end
 
       def create_user(attrs)
         attrs[:id] = (@user_id_counter +=1)
-
         @users[attrs[:id]] = attrs
         User.new(:name => attrs[:name], :email => attrs[:email], :password => attrs[:password], :id => attrs[:id])
+      end
 
+      def get_activity(id)
+        activity_attrs = @activities[:id]
+        Activity.new(activity_attrs)
       end
 
       def create_school(attrs)
@@ -63,6 +66,11 @@ module HMMC
       def get_classrooms_for_school(sid)
         school_classrooms = @classrooms.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
         school_classrooms.map { |attrs| Classroom.new(attrs) }
+      end
+
+      def get_activities_for_school(sid)
+        school_activity = @activities.values.select{|activity_attrs| activity_attrs[:school_id] == sid}
+        school_activity.map {|attrs| Activity.new(attrs) }
       end
 
 

@@ -14,15 +14,20 @@
 
     it "creates an activity" do
       activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
-      expect(activity.id).to eq 1
+      expect(activity.id).to eq activity.id
       expect(activity.miles).to eq 10
       expect(activity.students).to eq 20
       expect(activity.date).to eq "May 8 2014"
     end
 
-    xit "gets an activity" do
-      activity = db.create_activity()
+    it "gets an activity" do
+       #  binding.pry
+      activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
+      retreived_activity = db.get_activity(activity.id)
+      expect(retreived_activity.miles).to eq 10
+      expect(retreived_activity.students).to eq 20
     end
+
 
     it "create_school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")

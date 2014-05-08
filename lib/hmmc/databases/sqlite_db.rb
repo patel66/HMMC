@@ -57,7 +57,11 @@ module HMMC
       def get_school(id)
         ar_school = School.find(id)
         HMMC::School.new(ar_school.attributes)
+      end
 
+      def get_activity(id)
+        ar_activity = Activity.find(id)
+        HMMC::Activity.new(ar_activity.attributes)
       end
 
       def get_user(id)
