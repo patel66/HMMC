@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
+  # root 'users#home'
+
+
   resources :schools
   resources :classrooms
   resources :users

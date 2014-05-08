@@ -5,10 +5,7 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    name = params[:name]
-    params[:state]
-    params[:city]
-    params[:street]
+
 
     # result = HMMC::CreateSchool.run(school_params)
     # @school = result.school
@@ -17,8 +14,8 @@ class SchoolsController < ApplicationController
 
     user_params = params[:user]
     school_params = params[:school]
-
-    result = HMMC::SignUp.run(
+    # binding.pry
+    signedup = HMMC::SignUp.run(
       :name => user_params[:name],
       :email => user_params[:email],
       :password=> user_params[:password],
@@ -29,10 +26,12 @@ class SchoolsController < ApplicationController
       :students=> school_params[:students]
       )
 
-    @school = result.school
-    @session = result.session_id
+    @school = signedup.school
+    if signedup.nil? == false
+      # [:flash]
+      redirect_to "/schools/#{@school.id}"
+    end
 
-    redirect_to "/schools/#{@school.id}"
 
 
   end

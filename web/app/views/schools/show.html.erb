@@ -9,9 +9,25 @@
 
   <div id="school-info">
     <h2><%=@school.name%></h2>
-    <h2>Total Miles: <%=@school.total_miles%></h2>
-    <h4><%=@school.city%></h4>
+    <h2>Total Miles: <%=@school.total_miles_school%></h2>
+    <h4><%="State: "@school.state%></h4>
+    <h4><%="City: "@school.city%></h4>
+    <h4><%="Street: "@school.street%></h4>
+    <h4>Number of students</h4>
+    <h4><%=@school.students%></h4>
   </div>
+
+  <ul style="list-style-type: none">
+    CLASS MILES
+    <%@school.activitys.each do |activity| %>
+    <li>
+    <%="Miles ran: " + activity.miles%>
+
+    <%="Students: " + activity.students%>
+    <%="Date: " +activity.date%>
+    </li>
+    <%end%>
+  </ul>
 
   <ul style="list-style-type: none">
     CLASS MILES
