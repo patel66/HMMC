@@ -13,13 +13,20 @@ module HMMC
         @school_id_counter = 0
         @classroom_id_counter = 0
         @student_rank_id_counter = 0
+        @activity_id_counter = 0
         @users = {}
         @schools = {}
         @classrooms = {}
         @student_rankings = {}
         @sessions = {}
+        @activitys = {}
       end
 
+      def create_activity(attrs)
+        attrs[:id] = (@activity_id_counter +=1)
+        @activitys[:id] = attrs
+        Activity.new(attrs)
+      end
 
       def create_user(attrs)
         attrs[:id] = (@user_id_counter +=1)
@@ -142,6 +149,8 @@ module HMMC
         # school = School.new(school_attrs)
         # school.classrooms = get_classrooms_for_school(id)
         # school
+
+
     end
   end
 end

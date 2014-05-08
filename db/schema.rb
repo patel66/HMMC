@@ -36,3 +36,18 @@ ActiveRecord::Schema.define(version: 20140505185926) do
   end
 
 end
+
+    create_table "activities" force:true do |t|
+      t.interger :miles
+      t.integer :students
+      t.datetime :date yyyy/mm/day
+      t.timestamps
+    end
+
+    date = Time.parse("May 8 2014")
+
+
+school landin gpage
+
+
+add miles input:           num studnets :input        :button  time :input

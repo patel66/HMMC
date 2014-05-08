@@ -12,6 +12,14 @@
 
     end
 
+    it "creates an activity" do
+      activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
+      expect(activity.id).to eq 1
+      expect(activity.miles).to eq 10
+      expect(activity.students).to eq 20
+      expect(activity.date).to eq "May 8 2014"
+    end
+
     it "create_school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")

@@ -22,15 +22,25 @@ module HMMC
 
       class School < ActiveRecord::Base
         has_many :classrooms
+        has_many :activities
       end
 
       class Classroom < ActiveRecord::Base
         belongs_to :school
       end
 
+      class Activity < ActiveRecord::Base
+        belongs_to :school
+      end
+
       def create_user(attrs)
         ar_user = User.create(attrs)
         HMMC::User.new(ar_user.attributes)
+      end
+
+      def create_activity(attrs)
+        ar_activity = Activity.create(attrs)
+        HMMC::Activity.new(ar_activity.attributes)
       end
 
       def create_school(attrs)
