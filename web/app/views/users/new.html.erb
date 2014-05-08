@@ -1,5 +1,6 @@
 <h1>Testing user sign up</h1>
 
+<p>New user Registration</p>
 
 <%= form_tag("/schools", method: "post") do %>
 <%= label_tag(:name, "Name:") %>
@@ -9,11 +10,9 @@
 <%= label_tag(:password, "Password:") %>
 <%= text_field(:user, :password) %>
 <% label_tag(:School_Information)%>
-<%= submit_tag("ENTER") %>
-<%end%>
 
 
-<%= form_tag("/schools", method: "post") do %>
+<p>School Information</p>
 <%= label_tag(:school_name, "Name:") %>
 <%= text_field(:school, :name) %>
 <%= label_tag(:state, "State:") %>
@@ -22,7 +21,13 @@
 <%= text_field(:school, :city) %>
 <%= label_tag(:street, "Street:") %>
 <%= text_field(:school, :street) %>
+<%= label_tag(:students,"Number of students in program")%>
+<%= text_field(:school, :students) %>
 <%= submit_tag("ENTER") %>
+
+<%end%>
+
+
 
 
 
