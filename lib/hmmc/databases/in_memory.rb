@@ -52,8 +52,17 @@ module HMMC
         user # not save, so how to get user name etc
       end
 
+      # TO DO: needs test
+      def update_school(attrs)
+        attrs = Hash[attrs.map{ |k, v| [k.to_sym, v] }]
+        # binding.pry
 
 
+        id = attrs[:id]
+        school_attrs = @schools[id]
+        school_attrs.merge!(attrs)
+        School.new(school_attrs)
+      end
 
       def get_school(id)
         school_attrs = @schools[id]
@@ -71,7 +80,7 @@ module HMMC
       end
 
       def get_activities_for_school(sid)
-        school_activity = @activities.values.select{|activity_attrs| activity_attrs[:school_id] == sid}
+        school_activity = @activities.values.select{ |activity_attrs| activity_attrs[:school_id] == sid}
         school_activity.map {|attrs| Activity.new(attrs) }
       end
 

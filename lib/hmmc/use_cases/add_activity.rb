@@ -11,10 +11,11 @@ module HMMC
 			return failure :no_students if students == nil
 			return failure :invalid_number_students if school.students.to_i <= students.to_i
 
-			activity = HMMC.db.create_activity(:miles=> miles, :students => students, :date => date, :school_id => school.id )
+			activity = HMMC.db.create_activity(:miles=> miles, :students => students, :date => date, :school_id => school_id )
 			school.add_activity(activity)
-
-			success(:activity => activity, :school => school)
+			# updated_school = HMMC.db.update_school(school.instance_values)
+			# binding.pry
+			success(:activity => activity, :school => school )
 		end
 	end
 end
