@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #the root of site routed with "root"
   # root 'welcome#index'
 
-  root 'users#new'
+  root 'users#home'
 
   resources :schools
   resources :classrooms
