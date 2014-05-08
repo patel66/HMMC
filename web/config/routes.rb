@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
+  get '/login', to: 'users#login'
+
   resources :schools
   resources :classrooms
   resources :users
