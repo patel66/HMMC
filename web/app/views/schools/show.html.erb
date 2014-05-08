@@ -7,34 +7,35 @@
   input[type="submit"] {border-radius: 100%}
   </style>
 
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
   <div id="school-info">
     <h2><%=@school.name%></h2>
-    <h2>Total Miles: <%=@school.total_miles_school%></h2>
-    <h4><%="State: "@school.state%></h4>
-    <h4><%="City: "@school.city%></h4>
-    <h4><%="Street: "@school.street%></h4>
+    <h2>Total Miles: <%= @school.total_miles_school.to_i %></h2>
+    <h4>State:<%=@school.state %></h4>
+    <h4>City:<%=@school.city %></h4>
+    <h4>Street: <%= @school.street %></h4>
     <h4>Number of students</h4>
     <h4><%=@school.students%></h4>
   </div>
 
   <ul style="list-style-type: none">
-    CLASS MILES
-    <%@school.activitys.each do |activity| %>
+    <% @school.activitys.each do |activity| %>
     <li>
-    <%="Miles ran: " + activity.miles%>
+    <%="Miles ran: #{activity.miles} " %>
 
-    <%="Students: " + activity.students%>
-    <%="Date: " +activity.date%>
+    <%="Students: #{activity.students} "%>
+    <%="Date: #{activity.date}"%>
     </li>
     <%end%>
   </ul>
 
   <ul style="list-style-type: none">
-    CLASS MILES
-    <%@school.classrooms.each do |room| %>
+    <% @school.classrooms.each do |room| %>
     <li>
-    <%=room.name%>
-    <%=room.miles%>
+      <%= room.name %>
+      <%= room.miles %>
     </li>
     <%end%>
   </ul>
@@ -42,12 +43,13 @@
 
 
 
-    <%= form_tag("/classrooms", method: "post") do %>
-    <%= label_tag(:class_name, "Name:") %>
-    <%= text_field(:class, :name) %>
+    <%= form_tag("/activities", method: "post") do %>
+    <%= label_tag(:activity, "Miles:") %>
+    <%= text_field(:activity, :miles) %>
     <%= hidden_field_tag('school_id', params[:id])%>
-    <%= label_tag(:class_name, "Miles:") %>
-    <%= text_field(:class, :miles)%>
+    <%= label_tag(:students, "Number of students:") %>
+    <%= text_field(:activity, :students)%>
+    <%= hidden_field_tag("date", Time.now )%>
     <%= submit_tag("ENTER") %>
     <% end %>
 

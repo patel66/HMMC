@@ -11,10 +11,10 @@ class SchoolsController < ApplicationController
     # @school = result.school
     # # /schools/:id(.:format)
     # redirect_to "/schools/#{@school.id}"
-
+     # binding.pry
     user_params = params[:user]
     school_params = params[:school]
-    # binding.pry
+     binding.pry
     signedup = HMMC::SignUp.run(
       :name => user_params[:name],
       :email => user_params[:email],
@@ -26,18 +26,19 @@ class SchoolsController < ApplicationController
       :students=> school_params[:students]
       )
 
-    @school = signedup.school
-    if signedup.nil? == false
-      # [:flash]
+    if signedup.success?
+      @school = signedup.school
       redirect_to "/schools/#{@school.id}"
+    else
+      @error = signedup.error
+      render 'new'
     end
-
-
 
   end
 
 
   def show
+    flash[:error]
     @school = HMMC.db.get_school(params[:id].to_i)
   end
 

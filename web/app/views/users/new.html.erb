@@ -2,6 +2,10 @@
 
 <p>New user Registration</p>
 
+<%if @error%>
+  <p><%=@error%></p>
+<%end%>
+
 <%= form_tag("/schools", method: "post") do %>
 <%= label_tag(:name, "Name:") %>
 <%= text_field(:user, :name) %>
