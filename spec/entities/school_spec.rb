@@ -97,11 +97,17 @@ describe HMMC::School do
   it "add activity to a school" do
     school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
     activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"),:school_id => school.id)
+    activity2 = db.create_activity(:miles => 30, :students => 20, :date => Time.parse("May 9 2014"),:school_id => school.id)
     expect(school.activitys.size).to eq 0
     school.add_activity(activity)
 
     expect(school.activitys.size).to eq 1
     expect(school.activitys[0].miles).to eq 10
+
+    school.add_activity(activity2)
+    expect(school.activitys.size).to eq 2
+
+    expect(school.total_miles_school).to eq 40
   end
 
 end

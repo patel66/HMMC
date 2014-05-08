@@ -109,6 +109,15 @@
       expect(updated_classroom.miles).to eq 20 #0
     end
 
+    it "updates an activity" do
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
+      school.add_activity(activity)
+
+
+    end
+
     it "updates a school to have classrooms" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
@@ -137,5 +146,6 @@
       retreived_user = db.get_user_by_email(user1.email)
       expect(retreived_user.name).to eq "John"
     end
+
 
 end
