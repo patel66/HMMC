@@ -20,6 +20,10 @@
       expect(activity.date).to eq "May 8 2014"
     end
 
+    xit "gets an activity" do
+      activity = db.create_activity()
+    end
+
     it "create_school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
