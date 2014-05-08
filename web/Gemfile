@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
-<<<<<<< HEAD
 app_gemfile_path = File.expand_path('../../Gemfile', __FILE__)
 eval File.read(app_gemfile_path)
-=======
 gem 'foundation-rails'
->>>>>>> rails-start
+
 
 gem 'better_errors'
 gem 'binding_of_caller'
