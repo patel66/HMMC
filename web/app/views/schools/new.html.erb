@@ -1,58 +1,10 @@
-   <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "Hundred Million Mile Club" %></a></h1>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "About" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "FAQ" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Contact Us" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Sign In" %></li>
-        </ul>
-      </section>
-    </nav>
 
 
-    <div class='row'>
-      <div class="large-3 columns">
-        <ul class="custom-sidenav-class">
-          <li class="divider"></li>
-          <li><%= link_to "Account" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Add Miles" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Leaderboards" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Hugs" %></li>
-        </ul>
-
+    <div class="row">
+      <div class="span6">
+        <h2>About Us</h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.asdf
       </div>
-
-      <div class="large-8 columns"> <%= yield %>
-           <h3>Enter School Info</h3>
-          <%= form_tag("/schools", method: "post") do %>
-          <%= label_tag(:school_name, "Name:") %>
-          <%= text_field(:school, :name) %>
-          <%= label_tag(:state, "State:") %>
-          <%= text_field(:school, :state) %>
-          <%= label_tag(:City, "City:") %>
-          <%= text_field(:school, :city) %>
-          <%= label_tag(:street, "Street:") %>
-          <%= text_field(:school, :street) %>
-          <%= submit_tag("ENTER") %>
-          <% end %>
-       </div>
     </div>
-
-
-
-
-
 
 
