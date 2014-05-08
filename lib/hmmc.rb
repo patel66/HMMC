@@ -5,7 +5,7 @@ require 'active_record_tasks'
 require 'yaml'
 require 'timecop'
 require 'securerandom'
-
+require 'time'
 
 module HMMC
   def self.db
@@ -27,6 +27,7 @@ require_relative "hmmc/entities/user.rb"
 require_relative "hmmc/entities/school.rb"
 require_relative "hmmc/entities/class_room.rb"
 require_relative "hmmc/entities/student_ranking.rb"
+require_relative "hmmc/entities/activity.rb"
 
 # usecases
 require_relative "hmmc/use_cases/add_miles_class.rb"
@@ -37,6 +38,7 @@ require_relative "hmmc/use_cases/check_sign_in.rb"
 require_relative "hmmc/use_cases/sign_in.rb"
 require_relative "hmmc/use_cases/sign_up.rb"
 require_relative "hmmc/use_cases/sign_out.rb"
+require_relative "hmmc/use_cases/add_activity.rb"
 require_relative "hmmc/use_cases/create_class_room.rb"
 require_relative "hmmc/use_cases/set_goal.rb"
 require_relative "hmmc/use_cases/create_school.rb"
