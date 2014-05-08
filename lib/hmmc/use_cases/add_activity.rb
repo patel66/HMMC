@@ -15,7 +15,5 @@ module HMMC
 			school.add_activity(activity)
 			success(:activity => activity, :school => school)
 		end
-	end
+	end 
 end
-
-

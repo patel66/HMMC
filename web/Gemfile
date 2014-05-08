@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'foundation-rails'
+# Adding bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
+
+
 
 gem 'better_errors'
 gem 'binding_of_caller'

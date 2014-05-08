@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="span3">
+    <div class="well sidebar-nav">
+      <h3>Sidebar</h3>
+      <ul class="nav nav-list">
+        <li class="nav-header">Sidebar</li>
+        <li><%= link_to "Philip is cool", "/path1"  %></li>
+        <li><%= link_to "Hubert is cool", "/path2"  %></li>
+        <li><%= link_to "Roenak is cool", "/path3"  %></li>
+      </ul>
+    </div><!--/.well -->
+  </div><!--/span-->
+  <div class="span9">
+    <%= bootstrap_flash %>
+    <%= yield %>
+  </div>
+</div><!--/row-->
+<% parent_layout "application" %>
