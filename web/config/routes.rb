@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   #the root of site routed with "root"
-  root 'welcome#index'
+  # root 'welcome#index'
+
+  root 'users#new'
 
   resources :schools
   resources :classrooms
+  resources :users
 
 
 

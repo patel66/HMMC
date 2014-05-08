@@ -1,0 +1,37 @@
+<h1>Testing user sign up</h1>
+
+
+<%= form_tag("/schools", method: "post") do %>
+<%= label_tag(:name, "Name:") %>
+<%= text_field(:user, :name) %>
+<%= label_tag(:email, "Email:") %>
+<%= text_field(:user, :email) %>
+<%= label_tag(:password, "Password:") %>
+<%= text_field(:user, :password) %>
+<% label_tag(:School_Information)%>
+<%= submit_tag("ENTER") %>
+<%end%>
+
+
+<%= form_tag("/schools", method: "post") do %>
+<%= label_tag(:school_name, "Name:") %>
+<%= text_field(:school, :name) %>
+<%= label_tag(:state, "State:") %>
+<%= text_field(:school, :state) %>
+<%= label_tag(:City, "City:") %>
+<%= text_field(:school, :city) %>
+<%= label_tag(:street, "Street:") %>
+<%= text_field(:school, :street) %>
+<%= submit_tag("ENTER") %>
+
+
+
+
+
+
+
+
+
+
+
+
