@@ -103,7 +103,7 @@ module HMMC
       end
 
       def delete_session(sid)
-        @sessions.delete[sid]
+        @sessions.delete(sid)
       end
 
 
@@ -115,8 +115,9 @@ module HMMC
       end
 
       def get_user_by_sid(sid)
-        session = @sessions[sid]
-        uid = session[user_id]
+        session_attrs = @sessions[sid]
+        return nil if session_attrs.nil?
+        uid = session_attrs[:user_id]
         user = get_user(uid)
 
       end
@@ -128,6 +129,19 @@ module HMMC
         classroom
       end
 # {1=>{:school_id=>1, :miles=>0, :name=>"Math", :id=>1}, 2=>{:school_id=>1, :miles=>0, :name=>"English", :id=>2}, 3=>{:school_id=>1, :miles=>0, :name=>"History", :id=>3}}
+
+      def get_user_by_email(email)
+        user = @users.values.select{|attributes| attributes[:email] == email}
+        user_attr = user[0]
+        return nil if user_attr.nil?
+        retrieved_user = User.new(user_attr)
+      end
+        #  school_attrs = @schools[id]
+        # return nil if school_attrs.nil?
+
+        # school = School.new(school_attrs)
+        # school.classrooms = get_classrooms_for_school(id)
+        # school
     end
   end
 end

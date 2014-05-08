@@ -76,6 +76,10 @@ module HMMC
         HMMC::Classroom.new(ar_classroom.attributes)
       end
 
+      def get_user_by_email(email)
+        ar_user = User.find_by_email(email)
+        HMMC::User.new(ar_user.attributes)
+      end
     end
   end
 end

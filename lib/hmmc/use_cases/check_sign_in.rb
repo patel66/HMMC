@@ -1,14 +1,18 @@
 
 module HMMC
   class CheckSignIn < UseCase
-    def run(session_id)
-      user = HMMC.db.get_user_by_sid(session_id)
+    def run(inputs)
+      email = inputs[:email]
+      password = inputs[:password]
 
-      if user == nil
-        return failure :not_signed_in
-      else
-        return success
-      end
+      user = HMMC.db.get_user_by_sid(inputs[:session_key])
+      return failure :user_not_found if user == nil
+      
+      return success
     end
   end
 end
+
+
+
+

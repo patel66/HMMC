@@ -32,7 +32,6 @@ module HMMC
 
     def valid_email?(email)
       # Makes sure email is a valid email address
-
       !! (email =~ /\A(\S+)@(.\S+)\.(\S+)\z/)
     end
 
