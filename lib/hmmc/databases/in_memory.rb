@@ -130,6 +130,7 @@ module HMMC
         Classroom.new(classroom_attrs)
       end
 
+      # gets a the currently signed in by the session id
       def get_user_by_sid(sid)
         session_attrs = @sessions[sid]
         return nil if session_attrs.nil?

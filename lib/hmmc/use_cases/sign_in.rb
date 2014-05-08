@@ -11,3 +11,17 @@ module HMMC
     end
   end
 end
+
+# def signin
+# session_result = HMMC::SignIn(stuff)
+# session_id = session_result.session_id
+# session[:session_id] = session_id
+# end
+
+# def create_activity
+# session_id = session[:session_id]
+# user = HMMC::Database::InMemory.db.get_user_by_session(session_id)
+# school = HMMC::Database::InMemory.db.get_school_by_user(user.id)
+# # create_activity_result = HMMC::CreateActivity.run(school_id: school.id)
+# create_activity_result = HMMC::CreateActivity.run(school_id: params[:school_id])
+# end

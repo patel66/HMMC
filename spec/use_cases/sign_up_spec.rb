@@ -17,7 +17,7 @@ describe HMMC::SignUp do
 
   it "Can't sign up, if email is already in use" do
 
-    result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd")
+    result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500)
 #
     expect(result.success?).to eq true
 
@@ -35,7 +35,7 @@ describe HMMC::SignUp do
   end
 
   it "throws an error if any of the school parameters are empty" do
-     result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd")
+     result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500)
      expect(result.success?).to eq false
   end
 end
