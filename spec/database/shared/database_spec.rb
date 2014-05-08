@@ -114,7 +114,7 @@
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
       activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
       school.add_activity(activity)
-
+      expect(school.total_miles_school).to eq 10
 
     end
 
