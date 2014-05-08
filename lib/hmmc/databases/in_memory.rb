@@ -59,6 +59,7 @@ module HMMC
         return nil if school_attrs.nil?
 
         school = School.new(school_attrs)
+        school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end

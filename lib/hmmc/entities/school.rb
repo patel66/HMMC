@@ -6,6 +6,7 @@ module HMMC
     def initialize(attrs={})
       @classrooms = []
       @activitys = []
+      @students ||= 0
       super(attrs)
     end
 

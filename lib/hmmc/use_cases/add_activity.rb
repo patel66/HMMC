@@ -12,8 +12,8 @@ module HMMC
 			return failure :invalid_number_students if school.students <= students
 
 			activity = HMMC.db.create_activity(:miles=> miles, :students => students, :date => date, :school_id => school.id )
-			
-			success(:activity => activity)
+			school.add_activity(activity)
+			success(:activity => activity, :school => school)
 		end
-	end 
+	end
 end
