@@ -42,6 +42,17 @@ class SchoolsController < ApplicationController
     @school = HMMC.db.get_school(params[:id].to_i)
   end
 
+  def edit
+
+  end
+
+  def update
+
+    binding.pry
+    @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
+    redirect_to "/schools/#{@school.id}"
+  end
+
   private
   def school_params
     params.require(:school).permit(:name, :state, :street, :city)
