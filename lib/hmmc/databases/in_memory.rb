@@ -49,6 +49,7 @@ module HMMC
 
       def get_user(id)
         user = User.new(@users[id])
+        # user.school = get_school_by_user(user_id)
         user # not save, so how to get user name etc
       end
 
@@ -177,6 +178,14 @@ module HMMC
         # school.classrooms = get_classrooms_for_school(id)
         # school
 
+      def get_school_from_user_id(userid)
+        binding.pry
+        school = @schools.values.select{|attributes| attributes[:user_id] == userid}
+        school_attr = school[0]
+        return nil if school_attr.nil?
+
+        retreived_user = School.new(school_attr)
+      end
 
     end
   end

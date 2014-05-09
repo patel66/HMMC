@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
-  get '/login', to: 'users#login'
+  get 'users/login', to: 'users#login'
+
+  get '/logout', to: 'users#logout'
 
   resources :schools
   resources :classrooms

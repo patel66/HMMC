@@ -26,6 +26,13 @@ class SchoolsController < ApplicationController
       :students=> school_params[:students]
       )
 
+     binding.pry
+
+    # params
+    # session_id = result.session_id
+    # session[:id] = session_id
+    # render 'login'
+
     if signedup.success?
       @school = signedup.school
       redirect_to "/schools/#{@school.id}"
@@ -40,6 +47,7 @@ class SchoolsController < ApplicationController
   def show
     flash[:error]
     @school = HMMC.db.get_school(params[:id].to_i)
+    # result = HMMC::SignIn.run(:email => params[:old_user][:email], :password => [:old_user][:password])
   end
 
   def edit

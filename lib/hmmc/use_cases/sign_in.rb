@@ -7,7 +7,7 @@ module HMMC
       return failure(:incorrect_password) if user.password != inputs[:password]
       session = HMMC.db.create_session(:user_id => user.id)
 
-      success :session_id => session[:id]
+      success :session_id => session[:id], user: user
     end
   end
 end

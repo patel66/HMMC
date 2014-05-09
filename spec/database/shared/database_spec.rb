@@ -168,11 +168,20 @@
     end
 
     it "creates a sesssion key for a user" do
-      binding.pry
+
       user1 = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       session = db.create_session(:user_id => user1.id)
       expect(session[:id].length).should > 15
     end
 
+    it "gets a school from a user id" do
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+
+      retrevied_school = db.get_school_from_user_id(user.id)
+
+      expect(retrevied_school.name).to eq "Kempner HighSchool"
+
+    end
 
 end
