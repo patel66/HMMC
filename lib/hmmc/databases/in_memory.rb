@@ -57,7 +57,6 @@ module HMMC
         attrs = Hash[attrs.map{ |k, v| [k.to_sym, v] }]
         # binding.pry
 
-
         id = attrs[:id]
         school_attrs = @schools[id]
         school_attrs.merge!(attrs)

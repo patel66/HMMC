@@ -14,7 +14,7 @@ class SchoolsController < ApplicationController
      # binding.pry
     user_params = params[:user]
     school_params = params[:school]
-     binding.pry
+
     signedup = HMMC::SignUp.run(
       :name => user_params[:name],
       :email => user_params[:email],
