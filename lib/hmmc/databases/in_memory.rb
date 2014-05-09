@@ -126,6 +126,7 @@ module HMMC
       end
 
       def create_session(attrs)
+
         sid = SecureRandom.uuid
         @sessions[sid]= { id: sid, user_id: attrs[:user_id]}
       end
