@@ -44,9 +44,5 @@ module HMMC
       expect(result4.school.total_miles_school).to eq 160
     end
 
-
-
-
-
  end
 end

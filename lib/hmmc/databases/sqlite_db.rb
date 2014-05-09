@@ -94,6 +94,13 @@ module HMMC
         ar_user = User.find_by_email(email)
         HMMC::User.new(ar_user.attributes)
       end
+
+      def update_school(attrs)
+        ar_school = School.find(attrs[:id])
+        ar_school.students = attrs[:students]
+        ar_school.save
+        HMMC::School.new(attrs)
+      end
     end
   end
 end

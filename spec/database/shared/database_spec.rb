@@ -21,7 +21,7 @@
     end
 
     it "gets an activity" do
-       #  binding.pry
+
       activity = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
       retreived_activity = db.get_activity(activity.id)
       expect(retreived_activity.miles).to eq 10
@@ -103,7 +103,7 @@
       school.add_classroom(classroom)
 
       expect(classroom.miles).to eq 0
-      # binding.pry
+
       updated_classroom = db.update_classroom({:classroom_id => classroom.id, :miles => 20})
 
       expect(updated_classroom.miles).to eq 20 #0
@@ -111,7 +111,7 @@
 
     it "updates a school" do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :students => 200 )
       activity1 = db.create_activity(:miles => 10, :students => 20, :date => Time.parse("May 8 2014"))
       school.add_activity(activity1)
 
@@ -122,6 +122,10 @@
       school.add_activity(activity3)
       expect(school.total_miles_school).to eq 120
       expect(school.activitys.size).to eq 3
+
+      expect(school.students).to eq 200
+      updated_school = db.update_school({:id => school.id, :students => 200})
+      expect(updated_school.students).to eq 200
 
     end
 

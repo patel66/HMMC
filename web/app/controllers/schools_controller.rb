@@ -14,7 +14,7 @@ class SchoolsController < ApplicationController
      # binding.pry
     user_params = params[:user]
     school_params = params[:school]
-     binding.pry
+
     signedup = HMMC::SignUp.run(
       :name => user_params[:name],
       :email => user_params[:email],
@@ -40,6 +40,17 @@ class SchoolsController < ApplicationController
   def show
     flash[:error]
     @school = HMMC.db.get_school(params[:id].to_i)
+  end
+
+  def edit
+
+  end
+
+  def update
+
+    binding.pry
+    @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
+    redirect_to "/schools/#{@school.id}"
   end
 
   private
