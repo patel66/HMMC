@@ -167,5 +167,12 @@
       expect(retreived_user.name).to eq "John"
     end
 
+    it "creates a sesssion key for a user" do
+      binding.pry
+      user1 = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      session = db.create_session(:user_id => user1.id)
+      expect(session[:id].length).should > 15
+    end
+
 
 end
