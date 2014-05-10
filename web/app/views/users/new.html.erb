@@ -6,6 +6,16 @@
 <%end%>
 <h4>Head Coach</h4>
 
+
+  <% flash.each do |name, msg| -%>
+     <%= content_tag :div, msg, class: name %>
+	<% end %>
+
+  <% if @user %>
+		<%= link_to 'school', "schools/#{@school.id}"%>
+	<% end%>
+  
+
 <%= form_tag("/schools", method: "post") do %>
 <%= label_tag(:name, "Name") %>
 <%= text_field(:user, :name) %>

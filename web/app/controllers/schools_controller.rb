@@ -1,17 +1,10 @@
 class SchoolsController < ApplicationController
   layout "signed_in"
   def new
-    @school = HMMC::School.new
+    # @school = HMMC::School.new
   end
 
   def create
-
-
-    # result = HMMC::CreateSchool.run(school_params)
-    # @school = result.school
-    # # /schools/:id(.:format)
-    # redirect_to "/schools/#{@school.id}"
-     # binding.pry
     user_params = params[:user]
     school_params = params[:school]
 
@@ -26,16 +19,14 @@ class SchoolsController < ApplicationController
       :students=> school_params[:students]
       )
 
-     binding.pry
-
-    # params
-    # session_id = result.session_id
-    # session[:id] = session_id
-    # render 'login'
-
     if signedup.success?
       @school = signedup.school
-      redirect_to "/schools/#{@school.id}"
+      @user = signedup.user
+      # redirect_to "/schools/#{@school.id}"
+      flash[:notice] = "Hello #{@user.name} you have successfully signed up"
+
+      # button school landing pg
+      render 'users/new'
     else
       @error = signedup.error
       render 'new'
@@ -45,9 +36,11 @@ class SchoolsController < ApplicationController
 
 
   def show
+    # sign in will go here
     flash[:error]
     @school = HMMC.db.get_school(params[:id].to_i)
-    # result = HMMC::SignIn.run(:email => params[:old_user][:email], :password => [:old_user][:password])
+    # @user = get_user_by_sid(session[:app_id])
+    # @users_school = HMMC.db.get_school_by_user(@user.id)
   end
 
   def edit
@@ -69,28 +62,6 @@ class SchoolsController < ApplicationController
 
 end
 
-# def signin
-# session_result = HMMC::SignIn(stuff)
-# session_id = session_result.session_id
-# session[:session_id] = session_id
-# end
-
-# def create_activity
-# session_id = session[:session_id]
-# user = HMMC::Database::InMemory.db.get_user_by_session(session_id)
-# school = HMMC::Database::InMemory.db.get_school_by_user(user.id)
-# # create_activity_result = HMMC::CreateActivity.run(school_id: school.id)
-# create_activity_result = HMMC::CreateActivity.run(school_id: params[:school_id])
-# end
 
 
-   # result = RabbitDice::CreateGame.run(players: params[:players])
-   #  error = result.error
-   #  @game = result.game
-   #  # render :json => {"example" => "response"}
-   #  # respond_to do |format|
-   #  #   format.html
-   #  #   format.json {render :json => @game}
-   #  # end
 
-   #  redirect_to "/games/#{@game.id}"

@@ -64,12 +64,6 @@ module HMMC
         School.new(school_attrs)
       end
 
-      # def update_classroom(attrs)
-      #   id = attrs[:classroom_id]
-      #   classroom_attrs = @classrooms[id]
-      #   classroom_attrs.merge!(attrs)
-      #   Classroom.new(classroom_attrs)
-      # end
 
       def get_school(id)
         school_attrs = @schools[id]
@@ -171,15 +165,10 @@ module HMMC
         return nil if user_attr.nil?
         retrieved_user = User.new(user_attr)
       end
-        #  school_attrs = @schools[id]
-        # return nil if school_attrs.nil?
 
-        # school = School.new(school_attrs)
-        # school.classrooms = get_classrooms_for_school(id)
-        # school
 
       def get_school_from_user_id(userid)
-        binding.pry
+        # binding.pry
         school = @schools.values.select{|attributes| attributes[:user_id] == userid}
         school_attr = school[0]
         return nil if school_attr.nil?

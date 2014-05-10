@@ -1,7 +1,7 @@
 <div style="text-align:center">
   <h3>Login</h3>
 
-  <%= form_tag("/userin", method: "get") do %>
+  <%= form_tag("/sessions", method: "post") do %>
   <%= label_tag(:email, "Email") %>
   <%= text_field(:user, :email) %>
   <%= label_tag(:password, "Password") %>
@@ -13,3 +13,4 @@
 
 
 </div>
+
