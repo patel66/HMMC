@@ -8,11 +8,16 @@ Rails.application.routes.draw do
 
   root 'users#home'
 
+  get 'login', to: 'sessions#new'
+  # post 'login', to: 'users#login'
+  get 'logout', to: 'sessions#destroy'
+  get 'userin', to: 'users#userin'
+
   resources :schools
   resources :classrooms
   resources :users
-
-
+  resources :activities
+  resources :sessions, :only => [:create]
 
 
 

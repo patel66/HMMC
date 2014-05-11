@@ -49,9 +49,20 @@ module HMMC
 
       def get_user(id)
         user = User.new(@users[id])
+        # user.school = get_school_by_user(user_id)
         user # not save, so how to get user name etc
       end
 
+      # TO DO: needs test
+      def update_school(attrs)
+        attrs = Hash[attrs.map{ |k, v| [k.to_sym, v] }]
+        # binding.pry
+
+        id = attrs[:id]
+        school_attrs = @schools[id]
+        school_attrs.merge!(attrs)
+        School.new(school_attrs)
+      end
 
 
       def get_school(id)
@@ -59,7 +70,7 @@ module HMMC
         return nil if school_attrs.nil?
 
         school = School.new(school_attrs)
-        school.activitys = get_activities_for_school(id)
+        # school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end
@@ -70,8 +81,8 @@ module HMMC
       end
 
       def get_activities_for_school(sid)
-        school_activity = @activities.values.select{|activity_attrs| activity_attrs[:school_id] == sid}
-        school_activity.map {|attrs| Activity.new(attrs) }
+        school_classrooms = @activities.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
+        school_classrooms.map { |attrs| Activity.new(attrs) }
       end
 
 
@@ -110,6 +121,7 @@ module HMMC
       end
 
       def create_session(attrs)
+
         sid = SecureRandom.uuid
         @sessions[sid]= { id: sid, user_id: attrs[:user_id]}
       end
@@ -153,13 +165,16 @@ module HMMC
         return nil if user_attr.nil?
         retrieved_user = User.new(user_attr)
       end
-        #  school_attrs = @schools[id]
-        # return nil if school_attrs.nil?
 
-        # school = School.new(school_attrs)
-        # school.classrooms = get_classrooms_for_school(id)
-        # school
 
+      def get_school_from_user_id(userid)
+        # binding.pry
+        school = @schools.values.select{|attributes| attributes[:user_id] == userid}
+        school_attr = school[0]
+        return nil if school_attr.nil?
+
+        retreived_user = School.new(school_attr)
+      end
 
     end
   end

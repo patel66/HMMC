@@ -1,27 +1,62 @@
 class SchoolsController < ApplicationController
   layout "application"
   def new
-    @school = HMMC::School.new
+    # @school = HMMC::School.new
   end
 
   def create
-    name = params[:name]
-    params[:state]
-    params[:city]
-    params[:street]
+    user_params = params[:user]
+    school_params = params[:school]
 
-    # result = HMMC::CreateSchool.run(school_params)
-    # @school = result.school
-    # # /schools/:id(.:format)
-    # redirect_to "/schools/#{@school.id}"
-    result = HMMC::SignUp.run(:name => params[:user][:name], :email => params[:user][:email], :password=> params[:user][:password], :school_name => params[:school][:name], :street => params[:school][:street], :city => params[:school][:city], :students=> params[:school][:students])
-    @school = result.school
-    redirect_to "/schools/#{@school.id}"
+    signedup = HMMC::SignUp.run(
+      :name => user_params[:name],
+      :email => user_params[:email],
+      :password=> user_params[:password],
+      :school_name => school_params[:name],
+      :street => school_params[:street],
+      :city => school_params[:city],
+      :state=>school_params[:state],
+      :students=> school_params[:students]
+      )
+
+    if signedup.success?
+      @school = signedup.school
+      @user = signedup.user
+      # redirect_to "/schools/#{@school.id}"
+      flash[:notice] = "Hello #{@user.name} you have successfully signed up"
+
+      # button school landing pg
+      render 'users/new'
+    else
+      @error = signedup.error
+      render 'new'
+    end
+
   end
 
 
   def show
+    # sign in will go here
+    flash[:error]
+    params
+    # binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
+    @user = HMMC.db.get_user_by_sid(session[:app_sid])
+    if @user != nil
+     @users_school = HMMC.db.get_school_from_user_id(@user.id)
+    end
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+    binding.pry
+    @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
+    redirect_to "/schools/#{@school.id}"
   end
 
   private
@@ -32,28 +67,6 @@ class SchoolsController < ApplicationController
 
 end
 
-# def signin
-# session_result = HMMC::SignIn(stuff)
-# session_id = session_result.session_id
-# session[:session_id] = session_id
-# end
-
-# def create_activity
-# session_id = session[:session_id]
-# user = HMMC::Database::InMemory.db.get_user_by_session(session_id)
-# school = HMMC::Database::InMemory.db.get_school_by_user(user.id)
-# # create_activity_result = HMMC::CreateActivity.run(school_id: school.id)
-# create_activity_result = HMMC::CreateActivity.run(school_id: params[:school_id])
-# end
 
 
-   # result = RabbitDice::CreateGame.run(players: params[:players])
-   #  error = result.error
-   #  @game = result.game
-   #  # render :json => {"example" => "response"}
-   #  # respond_to do |format|
-   #  #   format.html
-   #  #   format.json {render :json => @game}
-   #  # end
 
-   #  redirect_to "/games/#{@game.id}"

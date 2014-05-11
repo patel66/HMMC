@@ -1,0 +1,15 @@
+<div style="text-align:center">
+  <h3>Login</h3>
+
+  <%= form_tag("/userin", method: "get") do %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field(:user, :email) %>
+  <%= label_tag(:password, "Password") %>
+  <%= text_field(:user, :password) %>
+  <br>
+  <%= submit_tag("ENTER") %>
+  <%end%>
+
+
+
+</div>
