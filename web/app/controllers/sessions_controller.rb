@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     # binding.pry
     puts session[:app_sid]
     result = HMMC::SignOut.run(:session_key => session[:app_sid])
-    binding.pry
+    # binding.pry
     if result.success?
       # success :deleted => true, :user => user
       @user = result.user

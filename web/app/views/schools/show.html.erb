@@ -40,7 +40,8 @@
     <%end%>
   </ul>
 
-<%= if school.id == @users_school.id %>
+<% if @users_school %>
+<% if @school.id == @users_school.id %>
 
   <p>Edit total number of students in program</p>
   <%=form_tag("/schools/#{params[:id]}", method:"put") do %>
@@ -61,11 +62,11 @@
   <%= hidden_field_tag("date", Time.now )%>
   <%= submit_tag("ENTER") %>
   <% end %>
-  <button></button>
-<% else %>
-<% end %>
 
 
+
+<%end%>
+<%end%>
 
 
 

@@ -38,9 +38,14 @@ class SchoolsController < ApplicationController
   def show
     # sign in will go here
     flash[:error]
+    params
+    # binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
-    # @user = get_user_by_sid(session[:app_id])
-    # @users_school = HMMC.db.get_school_by_user(@user.id)
+    @user = HMMC.db.get_user_by_sid(session[:app_sid])
+    if @user != nil
+     @users_school = HMMC.db.get_school_from_user_id(@user.id)
+    end
+
   end
 
   def edit
