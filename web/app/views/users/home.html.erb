@@ -11,34 +11,16 @@
       </div>
       <div class="modal-body">
 
-        <div class="row">
-          <div class="span5">
-            <%= form_tag("/schools", method: "post") do %>
-            <%= label_tag(:name, "Name:") %>
-            <%= text_field(:user, :name) %>
-            <%= label_tag(:email, "Email:") %>
-            <%= text_field(:user, :email) %>
-            <%= label_tag(:password, "Password:") %>
-            <%= text_field(:user, :password) %>
-            <% label_tag(:School_Information)%>
-          </div>
-          <div class="span5">
-            <p>School Information</p>
-            <%= label_tag(:school_name, "Name:") %>
-            <%= text_field(:school, :name) %>
-            <%= label_tag(:state, "State:") %>
-            <%= text_field(:school, :state) %>
-            <%= label_tag(:City, "City:") %>
-            <%= text_field(:school, :city) %>
-            <%= label_tag(:street, "Street:") %>
-            <%= text_field(:school, :street) %>
-            <%= label_tag(:students,"Number of students in program")%>
-            <%= text_field(:school, :students) %>
-            <%= submit_tag("ENTER") %>
 
-            <%end%>
-          </div>
-        </div>
+  <%= form_tag("/sessions", method: "post") do %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field(:user, :email) %>
+  <%= label_tag(:password, "Password") %>
+  <%= text_field(:user, :password) %>
+  <br>
+  <%= submit_tag("ENTER") %>
+  <%end%>
+
 
       </div>
       <div class="modal-footer">
