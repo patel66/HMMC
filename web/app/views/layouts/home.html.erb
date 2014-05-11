@@ -53,7 +53,7 @@
               <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
               <li><%= link_to "About", "/path2"  %></li>
               <li><%= link_to "Contact", "/path3"  %></li>
-              <li><%= link_to "Sign Out", "/logout"  %></li>
+              <li><%= link_to "Create Account", "/logout"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -69,5 +69,34 @@
 
     </div> <!-- /container -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        </div>
+        <div class="modal-body">
+
+
+          <%= form_tag("/sessions", method: "post") do %>
+          <%= label_tag(:email, "Email") %>
+          <%= text_field(:user, :email) %>
+          <%= label_tag(:password, "Password") %>
+          <%= text_field(:user, :password) %>
+          <br>
+
+
+        <!-- </div> -->
+        <!-- <div class="modal-footer"> -->
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Log In</button>
+          <%end%>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
   </body>
 </html>
