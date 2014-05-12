@@ -15,33 +15,32 @@
 		<%= link_to 'school', "schools/#{@school.id}"%>
 	<% end%>
   
-
-<%= form_tag("/schools", method: "post") do %>
-<%= label_tag(:name, "Name") %>
-<%= text_field(:user, :name) %>
-<%= label_tag(:email, "Email") %>
-<%= text_field(:user, :email) %>
-<%= label_tag(:password, "Password") %>
-<%= text_field(:user, :password) %>
-<% label_tag(:School_Information)%>
-
+  <%= form_tag("/schools", method: "post") do %>
+    <%= label_tag(:name, "Name") %>
+    <%= text_field(:user, :name) %>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field(:user, :email) %>
+    <%= label_tag(:password, "Password") %>
+    <%= text_field(:user, :password) %>
+    <% label_tag(:School_Information)%>
 
 
-<h4>School Registration</h4>
-<%= label_tag(:name, "School Name:") %>
-<%= text_field(:school, :name) %>
-<%= label_tag(:state, "State:") %>
-<%= text_field(:school, :state) %>
-<%= label_tag(:city, "City:") %>
-<%= text_field(:school, :city) %>
-<%= label_tag(:street, "Street:") %>
-<%= text_field(:school, :street) %>
-<%= label_tag(:students, "Number of students:") %>
-<%= text_field(:school, :students) %>
-<% label_tag(:School_Information)%><br>
-<%= submit_tag("ENTER") %>
 
-<%end%>
+    <h4>School Registration</h4>
+    <%= label_tag(:name, "School Name:") %>
+    <%= text_field(:school, :name) %>
+    <%= label_tag(:state, "State:") %>
+    <%= text_field(:school, :state) %>
+    <%= label_tag(:city, "City:") %>
+    <%= text_field(:school, :city) %>
+    <%= label_tag(:street, "Street:") %>
+    <%= text_field(:school, :street) %>
+    <%= label_tag(:students, "Number of students:") %>
+    <%= text_field(:school, :students) %>
+    <% label_tag(:School_Information)%><br>
+    <%= submit_tag("ENTER") %>
+  <%end%>
+
 </div>
 
 

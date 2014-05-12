@@ -38,6 +38,11 @@
 
   </head>
   <body>
+    <% if session[:app_sid].empty? %>
+      You are not signed in
+    <% else %>
+      You are signed in
+    <% end% %>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -50,10 +55,13 @@
           <a class="brand" href="/">HMMC</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
+              <% if session[:app_sid].empty? %>
+                <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
+              <% else %>
+                <li><%= link_to "Sign Out", "/logout"  %></li>
+              <% end% %>
               <li><%= link_to "About", "/path2"  %></li>
-              <li><%= link_to "Contact", "/path3"  %></li>
-              <li><%= link_to "Create Account", "/logout"  %></li>
+              <li><%= link_to "Request Invitation", "/create"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
