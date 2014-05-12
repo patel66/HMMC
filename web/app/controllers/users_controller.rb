@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  layout "application"
   def new
       # user signs up to the site
   end
+
+  # def home
+  # end
 
   def login
 
@@ -51,10 +53,6 @@ class UsersController < ApplicationController
  #      @error = signedup.error
  #      render 'new'
  #    end
-
-  def home
-    render layout: "home"
-  end
 
 end
 # class SignOut < UseCase
