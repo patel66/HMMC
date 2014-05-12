@@ -101,6 +101,11 @@ module HMMC
         ar_school.save
         HMMC::School.new(attrs)
       end
+
+      def get_all_schools
+        School.all
+      end
+
     end
   end
 end

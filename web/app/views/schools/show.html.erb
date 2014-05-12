@@ -41,31 +41,33 @@
   </ul>
 
 <% if @users_school %>
-<% if @school.id == @users_school.id %>
 
-  <p>Edit total number of students in program</p>
-  <%=form_tag("/schools/#{params[:id]}", method:"put") do %>
-    <%=label_tag(:school, "Students:")%>
-    <%=text_field(:school, :students)%>
+  <% if @school.id == @users_school.id %>
+
+    <p>Edit total number of students in program</p>
+    <%=form_tag("/schools/#{params[:id]}", method:"put") do %>
+      <%=label_tag(:school, "Students:")%>
+      <%=text_field(:school, :students)%>
+      <%= hidden_field_tag('school_id', params[:id])%>
+      <%=submit_tag("ENTER")%>
+    <%end%>
+
+
+    <p>Record Activites </p>
+    <%= form_tag("/activities", method: "post") do %>
+    <%= label_tag(:activity, "Miles:") %>
+    <%= text_field(:activity, :miles) %>
     <%= hidden_field_tag('school_id', params[:id])%>
-    <%=submit_tag("ENTER")%>
+    <%= label_tag(:students, "Number of students during activity:") %>
+    <%= text_field(:activity, :students)%>
+    <%= hidden_field_tag("date", Time.now )%>
+    <%= submit_tag("ENTER") %>
+    <% end %>
+
+
+
   <%end%>
 
-
-  <p>Record Activites </p>
-  <%= form_tag("/activities", method: "post") do %>
-  <%= label_tag(:activity, "Miles:") %>
-  <%= text_field(:activity, :miles) %>
-  <%= hidden_field_tag('school_id', params[:id])%>
-  <%= label_tag(:students, "Number of students during activity:") %>
-  <%= text_field(:activity, :students)%>
-  <%= hidden_field_tag("date", Time.now )%>
-  <%= submit_tag("ENTER") %>
-  <% end %>
-
-
-
-<%end%>
 <%end%>
 
 

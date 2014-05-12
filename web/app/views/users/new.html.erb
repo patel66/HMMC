@@ -1,3 +1,18 @@
+<style>
+  #display {
+    width: 200px;
+    background: grey;
+    border-radius: 20%;
+    padding: 3px;
+
+  }
+  #display p {
+    color: black;
+    font-family: sans-serif;
+
+  }
+</style>
+
 <div style="text-align:center">
 <h1>HMMC Registration</h1>
 
@@ -42,11 +57,70 @@
 <%= submit_tag("ENTER") %>
 
 <%end%>
+
+
+
+</div>
+
+<div id="display" style="border-raidus: 10%, padding: 3px, width: 200px">
 </div>
 
 
 
+<div id="searchbox">
+  <label for="userinput">Search School By Name:</label>
+  <input type="text" id="searchword"></input>
+  <button></button>
+</div>
 
+<script type="text/template">
+  <div id="school table">
+    <p>School name + {{name}}</p>
+    <p>State: + {{state}}</p>
+    <p>Page: +
+  </div>
+</script>
+
+<script>
+
+$(document).ready(function(){
+
+  var stuff = Robin.extend({},{"hello": 123})
+  $("#searchbox").on("click","button",function(e){
+    $("#display").text("")
+    var userInput = $("#searchword").val();
+
+    e.preventDefault();
+    console.log(userInput)
+    $.ajax({
+      type: "POST",
+      url: "/schools/search",
+      dataType: "json",
+      data: {"userInput": userInput},
+      success: function(response) {
+        window.response = response;
+        console.log("hi") // append list of school to page
+        // $("#display").append(response.school[0].name)
+        for (var i = 0; i < response.school.length; i++) {
+          $("#display").append("<p> School Name:"+response.school[i].name+"</p>")
+          $("#display").append("<p> State: "+response.school[i].state+"</p>")
+          $("#display").append("<p><a href="+"/schools/"+response.school[i].id+">Link: </a></p>")
+        }
+      }
+    });
+
+  });
+});
+</script>
+
+<!-- ("{{"+prop+"}}","g"); -->
+
+<!-- for (var i = 0; i < response.school.length; i++) {
+  $("#display").append(response.school[i].name)
+  $("#display").append(response.school[i].state)
+
+}
+ -->
 
 
 

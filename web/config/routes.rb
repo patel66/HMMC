@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'userin', to: 'users#userin'
 
+  post 'schools/search', to: 'schools#search'
+
+
   resources :schools
   resources :classrooms
   resources :users
