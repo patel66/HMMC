@@ -123,35 +123,90 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel2">Sign In</h4>
+          <h4 class="modal-title" id="myModalLabel2">Sign Up</h4>
         </div>
         <div class="modal-body">
 
+          <div class="row">
+            <div class="col-md-6">
+              <%= form_tag("/schools", method: "post") do %>
+              <div class="row">
+                <div class="col-xs-6 col-md-3">
+                  <%= label_tag(:name, "Name") %>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <%= text_field(:user, :name) %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-3">
+                  <%= label_tag(:email, "Email") %>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <%= text_field(:user, :email) %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-3">
+                  <%= label_tag(:password, "Password") %>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                  <%= text_field(:user, :password) %>
+                </div>
+              </div>
+              <div class="row">
+                <% label_tag(:School_Information)%>
+              </div>
+            </div> <!-- col-md-6 -->
+            <div class="col-md-6">
+              Level 2: .col-md-6
+                <h4>School Registration</h4>
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+                    <%= label_tag(:name, "School Name:") %>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                    <%= text_field(:school, :name) %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+                    <%= label_tag(:state, "State:") %>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                    <%= text_field(:school, :state) %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+                    <%= label_tag(:city, "City:") %>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                    <%= text_field(:school, :city) %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+                    <%= label_tag(:street, "Street:") %>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                    <%= text_field(:school, :street) %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+                    <%= label_tag(:students, "Number of students:") %>
+                  </div>
+                  <div class="col-xs-6 col-md-3">
+                    <%= text_field(:school, :students) %>
+                  </div>
+                  <% label_tag(:School_Information)%><br>
+                  <%= submit_tag("ENTER") %>
+                </div> <!-- row -->
 
-     <%= form_tag("/schools", method: "post") do %>
-    <%= label_tag(:name, "Name") %>
-    <%= text_field(:user, :name) %>
-    <%= label_tag(:email, "Email") %>
-    <%= text_field(:user, :email) %>
-    <%= label_tag(:password, "Password") %>
-    <%= text_field(:user, :password) %>
-    <% label_tag(:School_Information)%>
+            </div> <!-- col-md-6 -->
+          </div> <!-- row for the entire modal-->
 
-
-
-    <h4>School Registration</h4>
-    <%= label_tag(:name, "School Name:") %>
-    <%= text_field(:school, :name) %>
-    <%= label_tag(:state, "State:") %>
-    <%= text_field(:school, :state) %>
-    <%= label_tag(:city, "City:") %>
-    <%= text_field(:school, :city) %>
-    <%= label_tag(:street, "Street:") %>
-    <%= text_field(:school, :street) %>
-    <%= label_tag(:students, "Number of students:") %>
-    <%= text_field(:school, :students) %>
-    <% label_tag(:School_Information)%><br>
-    <%= submit_tag("ENTER") %>
 
 
 
