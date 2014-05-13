@@ -68,7 +68,7 @@
               <li><%= link_to "Sign Out", "/logout"  %></li>
             <% end% %>
             <li><%= link_to "About", "/path2"  %></li>
-            <li><%= link_to "Request Invitation", "/create"  %></li>
+            <li><a data-toggle="modal" data-target="#signUpModal" >Request Invation</a></li>
 
             <li><a href="#">Link</a></li>
 
@@ -112,7 +112,55 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="submit" class="btn btn-primary">Log In</button>
           <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel2">Sign In</h4>
+        </div>
+        <div class="modal-body">
+
+
+     <%= form_tag("/schools", method: "post") do %>
+    <%= label_tag(:name, "Name") %>
+    <%= text_field(:user, :name) %>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field(:user, :email) %>
+    <%= label_tag(:password, "Password") %>
+    <%= text_field(:user, :password) %>
+    <% label_tag(:School_Information)%>
+
+
+
+    <h4>School Registration</h4>
+    <%= label_tag(:name, "School Name:") %>
+    <%= text_field(:school, :name) %>
+    <%= label_tag(:state, "State:") %>
+    <%= text_field(:school, :state) %>
+    <%= label_tag(:city, "City:") %>
+    <%= text_field(:school, :city) %>
+    <%= label_tag(:street, "Street:") %>
+    <%= text_field(:school, :street) %>
+    <%= label_tag(:students, "Number of students:") %>
+    <%= text_field(:school, :students) %>
+    <% label_tag(:School_Information)%><br>
+    <%= submit_tag("ENTER") %>
+
+
+
         <!-- </div> -->
+        <!-- <div class="modal-footer"> -->
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Log In</button>
+          <%end%>
+        </div>
       </div>
     </div>
   </div>
