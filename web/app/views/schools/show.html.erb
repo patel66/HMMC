@@ -1,10 +1,29 @@
 
-<body style="background-color: steelblue; text-align: center">
+<body style="text-align: center">
 
   <style>
+
   h {color:red;}
   p {color:blue;}
   input[type="submit"] {border-radius: 100%}
+
+  html {
+  width: 100%;
+  height: 100%;
+  }
+
+body {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #00734a;
+  background-image: -moz-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
+  background-image: -webkit-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
+  background-image: radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding-top: 3em;
+}
 
   .coach {
     color: purple;
@@ -17,7 +36,7 @@
   }
 
   label {
-    color: violet;
+    color: black;
     font-family: Garamond;
     font-weight: bold;
     margin: 0 auto;
@@ -29,9 +48,11 @@
     border-radius: 15%;
     background-color: white;
     margin: 0 auto;
+    width: 100px;
+    height: 12px;
   }
 
-  input[type="submit"] {
+/*  input[type="submit"] {
 
   border-top:   2px solid #a3ceda;
   border-left:    2px solid #a3ceda;
@@ -43,26 +64,52 @@
   font-weight:    bold;
   color:      #2d525d;
 
+  }*/
+
+  input[type="submit"] {
+  background:#016ABC;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+
+
+  }
+
+
+  input[type="submit"]:hover{
+  background:#016ABC;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
   }
 
   .miles {
+    width:150px;
 
-    margin: 0 auto: ;
+
+    margin: 0 auto;
+    border-radius: 10%;
+    background: -moz-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -ms-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -o-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), color-stop(0.25, #444), color-stop(0.5, #b6b6b8), color-stop(0.75, #444), to(transparent));
+    background: -webkit-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+
   }
 
 /* make inline block */
-.coach div {
+  .coach div {
     display:inline-block;
     margin: 10px 5px;
     border-radius: 10%;
     padding: 5px;
-}
+  }
 
-.coach p {
-
-  margin: 25px 0 0 0;
-
-}
+  .coach p {
+    margin: 25px 0 0 0;
+  }
 
 
   .account {
@@ -90,7 +137,6 @@
 
     /*float:right;*/
     /*margin: 0 auto;*/
-
 
   }
 
@@ -203,16 +249,16 @@
     <%= label_tag(:activity, "Miles:") %>
     <%= text_field(:activity, :miles) %>
     <%= hidden_field_tag('school_id', params[:id])%>
-    <%= label_tag(:students, "Number of students during activity:") %>
-    <%= text_field(:activity, :students)%><br>
+    <%= label_tag(:students, "Number of students: ") %>
+    <%= text_field(:activity, :students, placeholder: "Students")%><br>
     <%= hidden_field_tag("date", Time.now )%>
-    <%= submit_tag("ENTER") %>
+    <%= submit_tag("ADD") %>
     <% end %>
     </div>
 
 <div class="coach" style="clear:both">
   <div class="account">
-    <p>Edit Account</p>
+    <p>Students</p>
   </div>
   <div class="add">
     <p>Add Miles</p>
@@ -251,7 +297,7 @@
     // Hide submenus
      $(".miles").hide();
      $(".add").on("click",function(){
-       $(".miles").slideToggle();
+       $(".miles").slideToggle(1000);
      });
      $(".account").on("mouseenter",function(){
         $(this).addClass("highlight")
