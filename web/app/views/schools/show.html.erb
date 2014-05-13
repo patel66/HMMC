@@ -205,16 +205,18 @@ body {
 
   </div>
 
-  <ul style="list-style-type: none">
-    <% @school.activitys.each do |activity| %>
-    <li>
-    <%="Miles ran: #{activity.miles} " %>
+  <div class="historylist"
+    <ul style="list-style-type: none">
+      <% @school.activitys.each do |activity| %>
+      <li>
+      <%="Miles ran: #{activity.miles} " %>
 
-    <%="Students: #{activity.students} "%>
-    <%="Date: #{activity.date}"%>
-    </li>
-    <%end%>
-  </ul>
+      <%="Students: #{activity.students} "%>
+      <%="Date: #{activity.date}"%>
+      </li>
+      <%end%>
+    </ul>
+  </div>
 
   <ul style="list-style-type: none">
     <% @school.classrooms.each do |room| %>
