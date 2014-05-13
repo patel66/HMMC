@@ -1,20 +1,5 @@
 @import "bootstrap";
 
-body {
-  padding-top: 80px;
-};
-li {
-  cursor: pointer; cursor: hand;
-};
-
-.nav-pills {
-  position: fixed;
-}
-
-.nav-pills > li > a {
-  background-color: #6599FF;
-  }
-
 
 // Set the correct sprite paths
 // @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
@@ -31,7 +16,7 @@ li {
 // @import "fontawesome/font-awesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+// @import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
 //

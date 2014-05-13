@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+//= require activities
+//= require classrooms
+//= require schools
+//= require sessions
+//= require users
