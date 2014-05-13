@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#use bcrypt password hash
+gem 'bcrypt-ruby', '~> 3.1.5'
+
 # Adding bootstrap
 gem "therubyracer"
 gem "less-rails"

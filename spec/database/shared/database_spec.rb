@@ -8,7 +8,7 @@
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       expect(user.name).to eq "John"
       expect(user.email).to eq "John@mail.com"
-      expect(user.password).to eq "123"
+      expect(user.password).to be_a(String)
 
     end
 

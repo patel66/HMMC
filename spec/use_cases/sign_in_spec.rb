@@ -9,6 +9,7 @@ module HMMC
 
     it "Returns an error if the user is not found" do
       result = SignIn.run({ email: "nope@notfound.com", password: "password" })
+     
       expect(result.success?).to eq(false)
       expect(result.error).to eq(:email_not_found)
     end
