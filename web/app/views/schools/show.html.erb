@@ -5,19 +5,137 @@
   h {color:red;}
   p {color:blue;}
   input[type="submit"] {border-radius: 100%}
+
+  .coach {
+    color: purple;
+    width:400px;
+    padding: 5px;
+    background: orange;
+    display:inline-block;
+    margin: 0 auto;
+    border-radius: 20%;
+  }
+
+  label {
+    color: violet;
+    font-family: Garamond;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+
+  input[type="text"] {
+    color: lightgreen;
+    font-family: sans-serif;
+    border-radius: 15%;
+    background-color: white;
+    margin: 0 auto;
+  }
+
+  input[type="submit"] {
+
+  border-top:   2px solid #a3ceda;
+  border-left:    2px solid #a3ceda;
+  border-right:   2px solid #4f6267;
+  border-bottom:    2px solid #4f6267;
+  padding:    10px 20px !important;
+  font-size:    14px !important;
+  background-color: #c4f1fe;
+  font-weight:    bold;
+  color:      #2d525d;
+
+  }
+
+  .miles {
+
+    margin: 0 auto: ;
+  }
+
+/* make inline block */
+.coach div {
+    display:inline-block;
+    margin: 10px 5px;
+    border-radius: 10%;
+    padding: 5px;
+}
+
+.coach p {
+
+  margin: 25px 0 0 0;
+
+}
+
+
+  .account {
+   width:80px;
+   height:80px;
+   background:lightblue;
+   /*float:right;*/
+ /*   margin: 0 auto;*/
+
+  }
+
+  .add{
+    width:80px;
+    height:80px;
+    background: lightgreen;
+
+    /*float:right;*/
+    /*margin: 0 auto;*/
+  }
+
+  .history {
+    width: 80px;
+    height: 80px;
+    background:lightgrey;
+
+    /*float:right;*/
+    /*margin: 0 auto;*/
+
+
+  }
+
+
+    .highlight {
+    -webkit-box-shadow: 0px 0px 3px 5px #f2e1f2;
+    -moz-box-shadow: 0px 0px 3px 5px #f2e1f2;
+    box-shadow: 0px 0px 3px 5px #f2e1f2;
+    }
+
+  .hide {
+    display:none;
+  }
+  .black {
+    background:black;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left: 0;
+    opacity: 0.85;
+    z-index: 1000000000;
+  }
+
   </style>
+
+
 
   <% if flash[:error] %>
     <p><%= flash[:error] %></p>
   <% end %>
+  <div class="black hide"></div>
   <div id="school-info">
     <h2><%=@school.name%></h2>
     <h2>Total Miles: <%= @school.total_miles_school.to_i %></h2>
-    <h4>State:<%=@school.state %></h4>
-    <h4>City:<%=@school.city %></h4>
-    <h4>Street: <%= @school.street %></h4>
-    <h4>Number of students in Club</h4>
-    <h4><%=@school.students%></h4>
+    <button>School Information</button>
+    <div class="popup">
+      <h3>School Information:<h3>
+      <p>State:<%=@school.state %></p>
+      <p>City:<%=@school.city %></p>
+      <p>Street: <%= @school.street %></p>
+      <p>Number of students in Club</p>
+      <p><%=@school.students%></p>
+    </div>
+
   </div>
 
   <ul style="list-style-type: none">
@@ -53,25 +171,133 @@
     <%end%>
 
 
-    <p>Record Activites </p>
-    <%= form_tag("/activities", method: "post") do %>
-    <%= label_tag(:activity, "Miles:") %>
-    <%= text_field(:activity, :miles) %>
-    <%= hidden_field_tag('school_id', params[:id])%>
-    <%= label_tag(:students, "Number of students during activity:") %>
-    <%= text_field(:activity, :students)%>
-    <%= hidden_field_tag("date", Time.now )%>
-    <%= submit_tag("ENTER") %>
-    <% end %>
-
 
 
   <%end%>
 
 <%end%>
 
+    <div class="miles">
+    <%= form_tag("/activities", method: "post") do %>
+    <%= label_tag(:activity, "Miles:") %>
+    <%= text_field(:activity, :miles) %>
+    <%= hidden_field_tag('school_id', params[:id])%>
+    <%= label_tag(:students, "Number of students during activity:") %>
+    <%= text_field(:activity, :students)%><br>
+    <%= hidden_field_tag("date", Time.now )%>
+    <%= submit_tag("ENTER") %>
+    <% end %>
+    </div>
 
+<div class="coach" style="clear:both">
+  <div class="account">
+    <p>Edit Account</p>
+  </div>
+  <div class="add">
+    <p>Add Miles</p>
+  </div>
+  <div class="history">
+    <p>Miles History</p>
+  </div>
+<div style="clear:right"></div>
+</div>
 
-
-
+<button></button>
 </body>
+
+
+
+<script>
+  $(document).ready(function(){
+    $(".coach").hide();
+    $(".coach").show(1000)
+    $("button").on("click",function(){
+
+      $(".coach").slideToggle(1000);
+    });
+
+    // menus
+    // Hide submenus
+     $(".miles").hide();
+     $(".add").on("click",function(){
+       $(".miles").slideToggle();
+     });
+     $(".account").on("mouseenter",function(){
+        $(this).addClass("highlight")
+     })
+     $(".account").on("mouseleave",function(){
+        $(this).removeClass("highlight")
+     })
+
+     $(".add").on("mouseenter",function(){
+        $(this).addClass("highlight")
+     })
+
+     $(".add").on("mouseleave",function(){
+        $(this).removeClass("highlight")
+     })
+
+     $(".history").on("mouseenter",function(){
+        $(this).addClass("highlight")
+     })
+
+     $(".history").on("mouseleave",function(){
+        $(this).removeClass("highlight")
+     })
+
+    // // Toggle nested <ul> (siblings of the link)
+    // $(".nav > li > a").click(function(e) {
+    //     $(this).siblings("ul").slideToggle();
+    //     e.preventDefault();
+    // });
+
+
+    // $(".account").bind('mouseover mouseenter',function(){
+    //     $(this).stop()
+    //     .animate({height:'150px'},
+    //     {queue:false, duration:600, easing: 'swing'})
+    // });
+
+    // //When mouse is removed
+    // $(".account").bind('mouseout mouseleave',function(){
+    //     $(this).stop().animate({height:'50px'},
+    //     {queue:false, duration:600, easing: 'swing'})
+    // });
+
+  // $(".account").mouseenter(function(){
+  //     $(this).animate({
+  //       "top": '10px'
+  //     });
+  //   })
+
+  // });
+
+  // $(".projects a").mouseenter(function() {
+  //   $(this).find('img').animate({
+  //      top: '10px'
+  //   });
+  //  });
+  // $(".projects a").mouseleave(function() {
+  //   $(this).find('img').animate({
+  //     top: '-10px'
+  //   });
+// var baloon = $('.account');
+//    function runIt() {
+//        baloon.animate({top:'+=20'}, 1000);
+//        baloon.animate({top:'-=20'}, 1000, runIt);
+//    }
+
+//    runIt();
+});
+</script>
+<!-- $(document).ready(function() {
+  $(".tour").on("mouseenter", function() {
+    $(this).addClass("highlight");
+    $(this).find(".per-night").animate({"top": "-14px","opacity": "1"}, "fast");
+  });
+  $(".tour").on("mouseleave", function() {
+    $(this).removeClass("highlight");
+    $(this).find(".per-night").animate({"top": "0px","opacity": "0"}, "fast");
+  });
+}); -->
+
