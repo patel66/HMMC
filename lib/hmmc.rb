@@ -6,6 +6,7 @@ require 'yaml'
 require 'timecop'
 require 'securerandom'
 require 'time'
+require 'bcrypt'
 
 module HMMC
   def self.db

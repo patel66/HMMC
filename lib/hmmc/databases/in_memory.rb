@@ -29,9 +29,13 @@ module HMMC
       end
 
       def create_user(attrs)
+        password = attrs.delete(:password)
+        password_digest = BCrypt::Password.create(password)
+        attrs[:password_digest] = password_digest
+
         attrs[:id] = (@user_id_counter +=1)
         @users[attrs[:id]] = attrs
-        User.new(:name => attrs[:name], :email => attrs[:email], :password => attrs[:password], :id => attrs[:id])
+        User.new(:name => attrs[:name], :email => attrs[:email], :password => attrs[:password_digest], :id => attrs[:id])
       end
 
       def get_activity(id)
@@ -89,6 +93,11 @@ module HMMC
       def get_all_schools
         all_schools = @schools.values
         all_schools
+      end
+
+      def get_all_users
+        all_users = @users.values
+        all_users
       end
 
       def create_classroom(attrs)

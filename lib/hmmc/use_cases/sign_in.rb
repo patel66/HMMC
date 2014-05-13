@@ -3,7 +3,8 @@
       def run(inputs)
         user = HMMC.db.get_user_by_email(inputs[:email])
         return failure(:email_not_found) if user == nil
-        return failure(:incorrect_password) if user.password != inputs[:password]
+        b_crypt_pass = BCrypt::Password.new(user.password_digest)
+        return failure(:incorrect_password) if b_crypt_pass != inputs[:password]
 
         session = HMMC.db.create_session(:user_id => user.id)
 
