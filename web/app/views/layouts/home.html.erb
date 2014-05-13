@@ -38,47 +38,37 @@
 
   </head>
   <body>
-   <% if session[:app_sid] %> 
-    <% if session[:app_sid].empty? %>
-      You are not signed in
-    <% else %>
-      You are signed in
-    <% end %>
-   <% end %>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">HMMC</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <% if session[:app_sid] %>  
-                <% if session[:app_sid].empty? %>
-                  <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
-                <% else %>
-                  <li><%= link_to "Sign Out", "/logout"  %></li>
-                <% end %>
-              <%end %>  
-              <li><%= link_to "About", "/path2"  %></li>
-              <li><%= link_to "Request Invitation", "/create"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <header id="header">
+      <div>
+        <div id="logo"><a href=""> HMMC </a></div>
 
-    <div class="container">
+        <nav id="nav">
+          <ul>
+          <li><a href="#slide1" title="Next Section" >Slide 1</a></li>
+          <li><a href="#slide2" title="Next Section">Slide 2</a></li>
+          <li><a href="#slide3" title="Next Section">Slide 3</a></li>
+          <li><a  href="#slide4" title="Next Section">Slide 4</a></li>
+          <li><a href="#slide5" title="Next Section">Slide 5</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+
+     <% if session[:app_sid] %> 
+      <% if session[:app_sid].empty? %>
+        You are not signed in
+      <% else %>
+        You are signed in
+      <% end %>
+     <% end %>
       <%= yield %>
 
       <footer>
         <p>&copy; HMMC 2014</p>
       </footer>
 
-    </div> <!-- /container -->
 
   <!-- Modal -->
   <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
