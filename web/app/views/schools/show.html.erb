@@ -115,6 +115,27 @@
     z-index: 1000000000;
   }
 
+  .popup {
+  background-color: #E3E3E3;
+  width: 300px;
+  position:relative;
+  color: #616167;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: -10px auto;
+  z-index: 1000000001;
+  padding-bottom: 5px;
+ }
+
+ .popup p {
+  color: black;
+  font-size:12px;
+ }
+
+ .popup {
+  display:none;
+ }
+
   </style>
 
 
@@ -126,7 +147,7 @@
   <div id="school-info">
     <h2><%=@school.name%></h2>
     <h2>Total Miles: <%= @school.total_miles_school.to_i %></h2>
-    <button>School Information</button>
+    <button class="school-info">School Information</button>
     <div class="popup">
       <h3>School Information:<h3>
       <p>State:<%=@school.state %></p>
@@ -215,6 +236,16 @@
 
       $(".coach").slideToggle(1000);
     });
+
+    $(".school-info").on("click",function(){
+
+      $(".popup").fadeToggle( "slow", "linear" )
+      $(".black").toggle();
+    })
+    $(".popup").on("click",function(){
+      $(".popup").fadeToggle("slow","linear");
+      $(".black").hide();
+    })
 
     // menus
     // Hide submenus
