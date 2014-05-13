@@ -4,11 +4,16 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    result = HMMC::CreateActivity.run(:miles => params[:activity][:miles].to_i, :students => params[:activity][:students], :date => params[:date], :school_id => params[:school_id].to_i)
 
+
+    result = HMMC::CreateActivity.run(:miles => params[:miles].to_i, :students => params[:students].to_i, :date => params[:date], :school_id => params[:school_id].to_i)
     #result = HMMC::CreateClassRoom.run(:name => params[:class][:name], :school_id => params[:school_id].to_i)
     #HMMC::AddMilesClass.run(:school_id => params[:school_id].to_i, :classroom => result.classroom.id, :milesclass => params[:class][:miles].to_i)
     @school = result.school
-    redirect_to "/schools/#{@school.id}"
+
+    respond_to do |format|
+        format.html
+        format.json  { render :json => { school: @school, schoolmiles: @school.total_miles_school.to_i} }
+    end
   end
 end

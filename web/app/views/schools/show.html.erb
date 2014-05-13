@@ -221,7 +221,7 @@ body {
   <div class="black hide"></div>
   <div id="school-info">
     <h2><%=@school.name%></h2>
-    <h2>Total Miles: <%= @school.total_miles_school.to_i %></h2>
+    <h2>Total Miles: <span class="milesmeter"></span></h2>
     <button class="school-info">School Information</button>
     <div class="popup">
       <h3>School Information:<h3>
@@ -278,7 +278,7 @@ body {
     </div>
 
     <div class="miles">
-    <%= form_tag("/activities", method: "post") do %>
+    <%= form_tag("/activities", method: "post", :class => "miles_form") do %>
     <%= label_tag(:activity, "Miles:") %>
     <%= text_field(:activity, :miles, placeholder: "Miles") %>
     <%= hidden_field_tag('school_id', params[:id])%>
@@ -310,6 +310,7 @@ body {
 
 
 <script>
+var schoolId = <%= "#{@school.id}" %>
   $(document).ready(function(){
     $(".coach").hide();
     $(".coach").show(1000)
@@ -338,6 +339,63 @@ body {
       $(".historylist").fadeToggle("slow","linear");
       $(".black").hide();
     })
+
+    console.log(schoolId)
+    $("input[value='ADD']").on("click",function(e){
+      e.preventDefault();
+      var milesInput = $("#activity_miles").val();
+      var studentInput = $("#activity_students").val();
+      console.log(milesInput)
+      $.ajax({
+        type: 'POST',
+        url: "/activities",
+        dataType: "json",
+        data:{school_id: schoolId, miles: milesInput, students: studentInput, date: $("#date").val()},
+        success: function(data) {
+          console.log(data.schoolmiles)
+          // $(".milesmeter").html(data.schoolmiles).fadeIn(1000)
+          $(".milesmeter").animate({opacity:0})
+            .queue(function(){
+             $(".milesmeter").text(data.schoolmiles)
+                    .dequeue()
+             })
+            .animate({opacity:1});
+
+
+
+        }
+      });
+    })
+
+    $(".button").click(function(){
+    $(this).find("span")
+        .animate({opacity:0})
+        .queue(function(){
+             $(this).text("new text")
+                    .dequeue()
+        })
+        .animate({opacity:1});
+    });
+
+    // $("input[value='roll_dice']").on("click",function(e){
+    // e.preventDefault();
+    // $.ajax({
+    //   type: "PUT",
+    //   url: "/games/" + gameId,
+    //   dataType: "json",
+    //   data:{game_id: gameId, move: "roll_dice"},
+    //   success: function(data) {
+    //     window.data = data;
+    //     console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
+    //      $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
+    //     console.log(data.roll_for_current)
+    //     console.log("shot amount " +data.wound_for_current)
+    //     $("#shot").text(data.game.turns[data.game.turns.length-1].player + " got shot " + data.wound_for_current + " time(s)")
+    //     console.log("food amount " + data.score_for_current)
+    //     $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
+    //     $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
+
+    //   }
 
     // menus
     // Hide submenus
