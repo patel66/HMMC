@@ -44,8 +44,30 @@
       You are signed in
     <% end% %>
 
+<!-- ASDLKJFLKSDFLJKSD -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SDFKJHASDFLKJHSDLFKJHDS -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -89,43 +111,24 @@
     </div> <!-- /container -->
   <!-- Modal -->
   <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-        </div>
-        <div class="modal-body">
+<form class="form-3">
+    <p class="clearfix">
+        <label for="login">Username</label>
+        <input type="text" name="login" id="login" placeholder="Username">
+    </p>
+    <p class="clearfix">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+    </p>
+    <p class="clearfix">
+        <input type="checkbox" name="remember" id="remember">
+        <label for="remember">Remember me</label>
+    </p>
+    <p class="clearfix">
+        <input type="submit" name="submit" value="Sign in">
+    </p>
+</form>?
 
-          <%= form_tag("/sessions", method: "post") do %>
-          <div class="row">
-            <div class="col-md-12">
-              <%= label_tag(:email, "Email") %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <%= text_field(:user, :email) %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <%= label_tag(:password, "Password") %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <%= text_field(:user, :password) %>
-            </div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Log In</button>
-          <%end%>
-
-        </div> <!-- modal body -->
-      </div> <!-- modal content -->
-    </div> <!-- modal dialog -->
   </div> <!-- modal -->
   <!-- End Modal -->
   <!-- Modal -->
