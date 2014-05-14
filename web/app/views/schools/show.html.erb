@@ -3,253 +3,31 @@
 
   <style>
 
-  h {color:red;}
-  p {color:blue;}
-  input[type="submit"] {border-radius: 100%}
-
-  html {
-  width: 100%;
-  height: 100%;
-  }
-
-body {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: #00734a;
-  background-image: -moz-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-image: -webkit-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-image: radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-position: center center;
-  background-repeat: no-repeat;
-  padding-top: 3em;
+  text {
+  font-family: "RamaGothicM-Heavy",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans-serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 16rem;
+  fill: #1072b8;
 }
 
-  .coach {
-    color: purple;
-    width:400px;
-    padding: 5px;
-    background: orange;
-    display:inline-block;
-    margin: 0 auto;
-    border-radius: 20%;
-  }
-
-  label {
-    color: black;
-    font-family: Garamond;
-    font-weight: bold;
-    margin: 0 auto;
-  }
-
-  input[type="text"] {
-    color: lightgreen;
-    font-family: sans-serif;
-    border-radius: 15%;
-    background-color: white;
-    margin: 0 auto;
-    width: 100px;
-    height: 12px;
-  }
-
-/*  input[type="submit"] {
-
-  border-top:   2px solid #a3ceda;
-  border-left:    2px solid #a3ceda;
-  border-right:   2px solid #4f6267;
-  border-bottom:    2px solid #4f6267;
-  padding:    10px 20px !important;
-  font-size:    14px !important;
-  background-color: #c4f1fe;
-  font-weight:    bold;
-  color:      #2d525d;
-
-  }*/
-
-  input[type="submit"] {
-  background:#016ABC;
-  color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-
-
-  }
-
-
-  input[type="submit"]:hover{
-  background:#016ABC;
-  color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
-  }
-
-  .miles {
-    width:150px;
-
-
-    margin: 0 auto;
-    border-radius: 10%;
-    background: -moz-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -ms-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -o-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), color-stop(0.25, #444), color-stop(0.5, #b6b6b8), color-stop(0.75, #444), to(transparent));
-    background: -webkit-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-
-  }
-
-/* make inline block */
-
-  .coach {
-    transition: background-color 0.9s ease;
-    background-color: #C80000  ;
-  }
-
-  .coach:hover {
-    background-color: steelblue;
-  }
-
-  .coach div {
-    display:inline-block;
-    margin: 10px 5px;
-    border-radius: 10%;
-    padding: 5px;
-  }
-
-  .coach p {
-    margin: 25px 0 0 0;
-  }
-
-
-  .students {
-   width:80px;
-   height:80px;
-   background:lightblue;
-   /*float:right;*/
- /*   margin: 0 auto;*/
-
-  }
-
-  .add{
-    width:80px;
-    height:80px;
-    background: lightgreen;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
-  }
-
-  .history {
-    width: 80px;
-    height: 80px;
-    background:lightgrey;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
-
-  }
-
-
-    .highlight {
-    -webkit-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    -moz-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    box-shadow: 0px 0px 3px 5px #f2e1f2;
-    }
-
-  .hide {
-    display:none;
-  }
-  .black {
-    background:black;
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left: 0;
-    opacity: 0.85;
-    z-index: 1000000000;
-  }
-
-  .popup {
-  background-color: #E3E3E3;
-  width: 300px;
-  position:relative;
-  color: #616167;
-  border-radius: 5px;
-  font-size: 12px;
-  margin: -10px auto;
-  z-index: 1000000001;
-  padding-bottom: 5px;
- }
-
- .popup p {
-  color: black;
-  font-size:12px;
- }
-
- .popup {
-  display:none;
- }
-
- .historylist {
-  background-color: #E3E3E3;
-  width: 300px;
-  position:relative;
-  color: #616167;
-  border-radius: 5px;
-  font-size: 12px;
-  margin: -10px auto;
-  z-index: 1000000001;
-  padding-bottom: 5px;
- }
-
- .historylist {
-  display:none;
- }
-
-
-
-.studentsedit input[type="submit"] {
-  margin-top: 5px;
-  display:inline-block;
+#donut {
+  width: 10rem;
+  height: 10rem;
+  margin: 0 auto;
 }
 
-.row {
-
-}
-.studentsedit {
-  display:inline-block;
+path.color0 {
+  fill: #1072b8;
 }
 
-table {
-  font-family: 'Arial';
-  margin: 25px auto;
-  border-collapse: collapse;
-  border: 1px solid #eee;
-  border-bottom: 2px solid #00cccc;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+path.color1 {
+  fill: #35526b;
 }
-table tr:hover {
-  background: #f4f4f4;
-}
-table tr:hover td {
-  color: #555;
-}
-table th, table td {
-  color: #999;
-  border: 1px solid #eee;
-  padding: 12px 35px;
-  border-collapse: collapse;
-}
-table th {
-  background: #00cccc;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-table th.last {
-  border-right: none;
+
+#donut {
+  margin-bottom:10px;
+
 }
 
   </style>
@@ -339,6 +117,10 @@ table th.last {
 
 <%end%>
 
+<div id="donut" data-donut="">
+  "hello"
+</div>
+
   <div class="row">
     <div class="studentsedit">
       <%=form_tag("/schools/#{params[:id]}", method:"put") do %>
@@ -380,10 +162,32 @@ table th.last {
 </body>
 
 
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
+
 var schoolId = <%= "#{@school.id}" %>
   $(document).ready(function(){
+
+    /////////////////////////////////////////
+      var duration   = 2000,
+transition = 100;
+
+
+var goal = 10000; // school's preset goal!
+var total = <%="#{@school.total_miles_school}"%>; // school's total miles
+console.log(total)
+  var num = total/goal * 100
+  drawDonutChart(
+  '#donut',
+  num,
+  160,
+  160,
+  ".35em"
+  );
+
+
+
+    ////////////////////////////////////////
     $(".coach").hide();
     $(".coach").show(1000)
     $("button").on("click",function(){
@@ -415,6 +219,40 @@ var schoolId = <%= "#{@school.id}" %>
     console.log(schoolId)
     $("input[value='ADD']").on("click",function(e){
       e.preventDefault();
+      ////////////////////////////////////////////
+        var msglist = document.getElementById("donut");
+        var x = +$("#activity_miles").val();
+
+        console.log(x)
+        msglist.setAttribute("data-donut","");
+        total+= x
+        console.log(total)
+
+        var show = msglist.getAttribute("data-donut");
+        console.log(num)
+        // per = ((total+parseInt(x))/goal)*100
+
+        msglist.setAttribute("data-donut", num ) ;
+
+         $("#donut").empty();
+
+         var num = total/goal * 100
+         if (num >= 100) {
+          $("#win").text("YOU GUYS DID IT!!!!!")
+         }
+        drawDonutChart(
+        '#donut',
+        num,
+        160,
+        160,
+        ".35em"
+        );
+
+
+
+
+
+      ////////////////////////////////////////////
       var milesInput = $("#activity_miles").val();
       var studentInput = $("#activity_students").val();
       console.log(milesInput)
@@ -525,7 +363,75 @@ var schoolId = <%= "#{@school.id}" %>
 //    }
 
 //    runIt();
+///////////////////////////////////////////////////////////
+function drawDonutChart(element, percent, width, height, text_y) {
+  width = typeof width !== 'undefined' ? width : 200;
+  height = typeof height !== 'undefined' ? height : 200;
+  text_y = typeof text_y !== 'undefined' ? text_y : "-.10em";
+
+  var dataset = {
+        lower: calcPercent(0),
+        upper: calcPercent(percent)
+      },
+      radius = Math.min(width, height) / 2,
+      pie = d3.layout.pie().sort(null),
+      format = d3.format(".0%");
+
+  var arc = d3.svg.arc()
+        .innerRadius(radius - 20)
+        .outerRadius(radius);
+
+  var svg = d3.select(element).append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var path = svg.selectAll("path")
+        .data(pie(dataset.lower))
+        .enter().append("path")
+        .attr("class", function(d, i) { return "color" + i })
+        .attr("d", arc)
+        .each(function(d) { this._current = d; }); // store the initial values
+
+  var text = svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", text_y);
+
+  if (typeof(percent) === "string") {
+    text.text(percent);
+    console.log(percent)
+
+  }
+  else {
+    var progress = 0;
+    var timeout = setTimeout(function () {
+      clearTimeout(timeout);
+      path = path.data(pie(dataset.upper)); // update the data
+      path.transition().duration(duration).attrTween("d", function (a) {
+        // Store the displayed angles in _current.
+        // Then, interpolate from _current to the new angles.
+        // During the transition, _current is updated in-place by d3.interpolate.
+        var i  = d3.interpolate(this._current, a);
+        var i2 = d3.interpolate(progress, percent)
+        this._current = i(0);
+        return function(t) {
+          text.text( format(i2(t) / 100) );
+          return arc(i(t));
+        };
+      }); // redraw the arcs
+    }, 200);
+  }
+};
+
+function calcPercent(percent) {
+  return [percent, 100-percent];
+};
+
+
+
 });
+///////////////////////////////////////////////////////////
 </script>
 <!-- $(document).ready(function() {
   $(".tour").on("mouseenter", function() {
