@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'userin', to: 'users#userin'
   get 'create', to: 'users#new'
 
+  post 'schools/search', to: 'schools#search'
+
+
   resources :schools
   resources :classrooms
   resources :users

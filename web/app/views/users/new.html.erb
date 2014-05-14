@@ -15,14 +15,6 @@
 		<%= link_to 'school', "schools/#{@school.id}"%>
 	<% end%>
   
-  <%= form_tag("/schools", method: "post") do %>
-    <%= label_tag(:name, "Name") %>
-    <%= text_field(:user, :name) %>
-    <%= label_tag(:email, "Email") %>
-    <%= text_field(:user, :email) %>
-    <%= label_tag(:password, "Password") %>
-    <%= text_field(:user, :password) %>
-    <% label_tag(:School_Information)%>
 
 
 

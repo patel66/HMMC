@@ -87,7 +87,8 @@ module HMMC
 
 
       def get_all_schools
-        allschools = schools.values
+        all_schools = @schools.values
+        all_schools
       end
 
       def create_classroom(attrs)

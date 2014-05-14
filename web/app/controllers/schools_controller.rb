@@ -59,6 +59,26 @@ class SchoolsController < ApplicationController
     redirect_to "/schools/#{@school.id}"
   end
 
+
+
+  def search
+
+    @schoolist = HMMC.db.get_all_schools
+    @render_school = []
+    @schoolist.each  do |schoolhash|
+      if schoolhash[:name].include? (params[:userInput])
+        @render_school << schoolhash
+      end
+    end
+
+    binding.pry
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => {school: @render_school} }
+    end
+
+  end
+
   private
   def school_params
     params.require(:school).permit(:name, :state, :street, :city)
