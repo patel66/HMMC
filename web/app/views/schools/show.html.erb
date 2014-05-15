@@ -44,8 +44,8 @@ path.color1 {
   <div class="black hide"></div>
   <div id="school-info">
     <h2><%=@school.name%></h2>
-     <div id="odometer" class="odometer" style="font-size: 70px"><%=@school.total_miles_school%></div>
-    <h2>Total Miles: <span class="milesmeter"></span></h2>
+     <div id="odometer" class="odometer" style="font-size: 70px"><%=@school.total_miles_school%></div><br>
+    <!-- <h2>Total Miles: <span class="milesmeter"></span></h2> -->
     <button class="school-info">School Information</button>
     <div class="popup">
       <h3>School Information:<h3>
@@ -276,12 +276,12 @@ console.log(total)
            odometer.innerHTML = data.schoolmiles
           console.log(data.schoolmiles)
           // $(".milesmeter").html(data.schoolmiles).fadeIn(1000)
-          $(".milesmeter").animate({opacity:0})
-            .queue(function(){
-             $(".milesmeter").text(data.schoolmiles)
-                    .dequeue()
-             })
-            .animate({opacity:1});
+          // $(".milesmeter").animate({opacity:0})
+          //   .queue(function(){
+          //    $(".milesmeter").text(data.schoolmiles)
+          //           .dequeue()
+          //    })
+          //   .animate({opacity:1});
         }
       });
     })
