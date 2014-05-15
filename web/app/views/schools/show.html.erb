@@ -1,3 +1,7 @@
+<!-- <link rel="stylesheet" href="https://raw.githubusercontent.com/HubSpot/odometer/master/themes/odometer-theme-plaza.css"/>
+<script src="http://github.hubspot.com/odometer/odometer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> -->
 
 <body style="text-align: center">
 
@@ -40,6 +44,7 @@ path.color1 {
   <div class="black hide"></div>
   <div id="school-info">
     <h2><%=@school.name%></h2>
+     <div id="odometer" class="odometer" style="font-size: 70px"><%=@school.total_miles_school%></div>
     <h2>Total Miles: <span class="milesmeter"></span></h2>
     <button class="school-info">School Information</button>
     <div class="popup">
@@ -253,8 +258,14 @@ console.log(total)
 
 
       ////////////////////////////////////////////
-      var milesInput = $("#activity_miles").val();
+      var milesInput = +$("#activity_miles").val();
       var studentInput = $("#activity_students").val();
+
+
+      var num = +$("input").val();
+      // odometer.innerHTML = <%@school.total_miles_school%> + milesInput;
+
+
       console.log(milesInput)
       $.ajax({
         type: 'POST',
@@ -262,6 +273,7 @@ console.log(total)
         dataType: "json",
         data:{school_id: schoolId, miles: milesInput, students: studentInput, date: $("#date").val()},
         success: function(data) {
+           odometer.innerHTML = data.schoolmiles
           console.log(data.schoolmiles)
           // $(".milesmeter").html(data.schoolmiles).fadeIn(1000)
           $(".milesmeter").animate({opacity:0})

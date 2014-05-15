@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   post 'schools/search', to: 'schools#search'
 
+  get 'users/admin', to: 'users#admin'
 
   resources :schools
   resources :classrooms
