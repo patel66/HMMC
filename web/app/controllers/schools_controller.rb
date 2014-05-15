@@ -46,7 +46,6 @@ class SchoolsController < ApplicationController
      @users_school = HMMC.db.get_school_from_user_id(@user.id)
     end
 
-     render :layout => 'home'
 
   end
 
@@ -59,6 +58,11 @@ class SchoolsController < ApplicationController
     binding.pry
     @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
     redirect_to "/schools/#{@school.id}"
+  end
+
+  def leaderboard
+
+     render :layout => 'home'
   end
 
   private

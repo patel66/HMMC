@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'userin', to: 'users#userin'
   get 'create', to: 'users#new'
+  get 'schools/leaderboard', to: 'schools#leaderboard'
 
   resources :schools
   resources :classrooms
