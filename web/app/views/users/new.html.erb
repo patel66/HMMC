@@ -93,7 +93,7 @@ $(document).ready(function(){
     e.preventDefault();
     console.log(userInput)
     $.ajax({
-      type: "POST",
+      type: "GET",
       url: "/schools/search",
       dataType: "json",
       data: {"userInput": userInput},

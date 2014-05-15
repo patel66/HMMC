@@ -186,13 +186,32 @@
 
     it "gets all schools " do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-      school1 = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school2 = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school3 = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school4 = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school1 = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school2 = db.create_school(:name=> "Dulles",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school3 = db.create_school(:name=> "Fort Minor",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school4 = db.create_school(:name=> "Cypress",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
 
-      expect(db.get_all_schools.class).should == Array
+      activity = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
+      activity2 = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
+      activity3 = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
+      activity4 = db.create_activity(:miles => 1000, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school4.id)
+      activity5 = db.create_activity(:miles => 100000, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
+      activity6 = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school2.id)
+      activity7 = db.create_activity(:miles => 1000, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school3.id)
 
+      school1.add_activity(activity)
+      school1.add_activity(activity2)
+      school1.add_activity(activity3)
+      school4.add_activity(activity4)
+      school1.add_activity(activity5)
+      school2.add_activity(activity6)
+      school1.add_activity(activity7)
+      expect(school1.activitys.length).to eq 5
+      # expect(school1.total_miles_school).to eq 50
+      schools = db.get_all_schools
+      expect(schools).to be_a(Array)
+      binding.pry
+      expect(schools.map { |school| school.name}).to include('Kempner', 'Dulles', 'Fort Minor', "Cypress")
     end
 
 end

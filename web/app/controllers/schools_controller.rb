@@ -54,7 +54,7 @@ class SchoolsController < ApplicationController
 
   def update
 
-    binding.pry
+    # binding.pry
     @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
     redirect_to "/schools/#{@school.id}"
   end
@@ -71,7 +71,7 @@ class SchoolsController < ApplicationController
       end
     end
 
-    binding.pry
+    # binding.pry
     respond_to do |format|
       format.html  # index.html.erb
       format.json  { render :json => {school: @render_school} }

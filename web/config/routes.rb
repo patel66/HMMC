@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'userin', to: 'users#userin'
 
-  post 'schools/search', to: 'schools#search'
+
+    # get 'schools/search', to: 'schools#search'
 
   get 'users/admin', to: 'users#admin'
 
-  resources :schools
+   resources :schools do
+    get :search, :on => :collection
+  end
   resources :classrooms
   resources :users
   resources :activities

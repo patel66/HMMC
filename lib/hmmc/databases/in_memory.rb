@@ -35,7 +35,7 @@ module HMMC
       end
 
       def get_activity(id)
-        activity_attrs = @activities[:id]
+        activity_attrs = @activities[id]
         Activity.new(activity_attrs)
       end
 
@@ -70,7 +70,7 @@ module HMMC
         return nil if school_attrs.nil?
 
         school = School.new(school_attrs)
-        # school.activitys = get_activities_for_school(id)
+        school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end
@@ -81,14 +81,21 @@ module HMMC
       end
 
       def get_activities_for_school(sid)
-        school_classrooms = @activities.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
-        school_classrooms.map { |attrs| Activity.new(attrs) }
+        school_activities = @activities.values.select { |activities_attrs| activities_attrs[:school_id] == sid }
+        school_activities.map { |attrs| Activity.new(attrs) }
       end
 
 
       def get_all_schools
+
         all_schools = @schools.values
-        all_schools
+        school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
+        school_list.each do |school|
+           # based on that get the acitivites with that schoolid
+          school.activitys = get_activities_for_school(school.id)
+        end
+
+        school_list # Array of school entities
       end
 
       def create_classroom(attrs)
@@ -176,6 +183,8 @@ module HMMC
 
         retreived_user = School.new(school_attr)
       end
+
+
 
     end
   end
