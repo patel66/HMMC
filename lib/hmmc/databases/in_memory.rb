@@ -24,7 +24,7 @@ module HMMC
 
       def create_activity(attrs)
         attrs[:id] = (@activity_id_counter +=1)
-        @activities[:id] = attrs
+        @activities[attrs[:id]] = attrs
         Activity.new(attrs)
       end
 
@@ -45,6 +45,17 @@ module HMMC
         @schools[attrs[:id]] = attrs
         School.new(attrs)
 
+      end
+
+      def get_national_ranking 
+        schools = get_all_schools
+        schools.sort_by()
+      end
+
+      def get_state_ranking 
+      end
+
+      def get_city_ranking 
       end
 
       def get_user(id)
@@ -70,7 +81,7 @@ module HMMC
         return nil if school_attrs.nil?
 
         school = School.new(school_attrs)
-        school.activitys = get_activities_for_school(id)
+        # school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end
@@ -81,21 +92,41 @@ module HMMC
       end
 
       def get_activities_for_school(sid)
-        school_activities = @activities.values.select { |activities_attrs| activities_attrs[:school_id] == sid }
-        school_activities.map { |attrs| Activity.new(attrs) }
+        school_classrooms = @activities.values.select { |classroom_attrs| classroom_attrs[:school_id] == sid }
+        school_classrooms.map { |attrs| Activity.new(attrs) }
       end
 
 
       def get_all_schools
-
         all_schools = @schools.values
+
         school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
         school_list.each do |school|
-           # based on that get the acitivites with that schoolid
           school.activitys = get_activities_for_school(school.id)
         end
 
-        school_list # Array of school entities
+        school_list
+      end
+
+      # get the schools rankings
+      def get_national_ranking
+        schools = get_all_schools
+        schools.sort_by {|school| -school.total_miles_school}
+        return schools
+      end
+
+      def get_state_ranking(state)
+        schools = get_all_schools
+        st_schools = schools.select {|school| school.state == state}
+        st_schools.sort_by {|school| -school.total_miles_school}
+        return st_schools
+      end
+
+      def get_city_ranking(city)
+        schools = get_all_schools
+        s = schools.select {|school| school.city == city}
+        s.sort_by {|school| -school.total_miles_school}
+        return s
       end
 
       def create_classroom(attrs)
@@ -183,8 +214,6 @@ module HMMC
 
         retreived_user = School.new(school_attr)
       end
-
-
 
     end
   end
