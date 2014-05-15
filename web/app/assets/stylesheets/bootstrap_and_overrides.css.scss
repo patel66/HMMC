@@ -1,13 +1,44 @@
+$navbar-default-bg: #84e2fb;
+$navbar-default-color: #0869b2;
+$navbar-default-link-color: #0869b2;
+$navbar-default-link-hover-color: #ffffff;
+$font-family-base: avenir next;
+$navbar-height: 80px;
+$navbar-default-toggle-icon-bar-bg: #075b9a;
+$navbar-default-toggle-border-color: #000000;
 @import "bootstrap";
+
 body {
-  margin-top: 80px;
+  margin-top: 100px;
+  background-color: #00c3f7;
 }
 
-@media screen and (min-width: 768px) {
-    .custom-class {
-        width: 30%; /* either % (e.g. 60%) or px (400px) */
+.navbar  {
+  padding: 0 6%;
+  li {
+    text-align: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    cursor: hand;
+    width: 100px;
+    letter-spacing: .15rem;
+    &:hover {
+      font-size: 2.2rem;
     }
+    a {
+      padding-left: 0;
+      padding-right: 0;
+      margin-right: 1px;
+    }
+  }
+  .navbar-brand{
+    font-size: 3rem;
+    letter-spacing: .1rem;
+  }
 }
+
+
+
 
 .form-3 {
     font-family: 'Ubuntu', 'Lato', sans-serif;

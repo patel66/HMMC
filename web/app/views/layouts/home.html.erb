@@ -77,23 +77,25 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">HMMC</a>
+          <a class="navbar-brand" href="#">L O G O </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="#">Faq</a></li>
+            <li><%= link_to "About", "/path2"  %></li>
+
+            <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
+
             <% if session[:app_sid].empty? %>
               <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
             <% else %>
               <li><%= link_to "Sign Out", "/logout"  %></li>
             <% end% %>
-            <li><%= link_to "About", "/path2"  %></li>
-            <li><a data-toggle="modal" data-target="#signUpModal" >Request Invation</a></li>
-
-            <li><a href="#">Link</a></li>
-
           </ul>
 
 
