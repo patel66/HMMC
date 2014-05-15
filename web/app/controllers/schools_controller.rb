@@ -46,6 +46,8 @@ class SchoolsController < ApplicationController
      @users_school = HMMC.db.get_school_from_user_id(@user.id)
     end
 
+     render :layout => 'home'
+
   end
 
   def edit
