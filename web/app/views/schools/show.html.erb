@@ -1,264 +1,101 @@
 
 <body style="text-align: center">
 
-  <style>
-
-  h {color:red;}
-  p {color:blue;}
-  input[type="submit"] {border-radius: 100%}
-
-  html {
-  width: 100%;
-  height: 100%;
-  }
-
-body {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: #00734a;
-  background-image: -moz-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-image: -webkit-radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-image: radial-gradient(center center, circle contain, #00ce30 70px, #00734a 300px);
-  background-position: center center;
-  background-repeat: no-repeat;
-  padding-top: 3em;
-}
-
-  .coach {
-    color: purple;
-    width:400px;
-    padding: 5px;
-    background: orange;
-    display:inline-block;
-    margin: 0 auto;
-    border-radius: 20%;
-  }
-
-  label {
-    color: black;
-    font-family: Garamond;
-    font-weight: bold;
-    margin: 0 auto;
-  }
-
-  input[type="text"] {
-    color: lightgreen;
-    font-family: sans-serif;
-    border-radius: 15%;
-    background-color: white;
-    margin: 0 auto;
-    width: 100px;
-    height: 12px;
-  }
-
-/*  input[type="submit"] {
-
-  border-top:   2px solid #a3ceda;
-  border-left:    2px solid #a3ceda;
-  border-right:   2px solid #4f6267;
-  border-bottom:    2px solid #4f6267;
-  padding:    10px 20px !important;
-  font-size:    14px !important;
-  background-color: #c4f1fe;
-  font-weight:    bold;
-  color:      #2d525d;
-
-  }*/
-
-  input[type="submit"] {
-  background:#016ABC;
-  color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-
-
-  }
-
-
-  input[type="submit"]:hover{
-  background:#016ABC;
-  color: #fff;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px #eee;
-  }
-
-  .miles {
-    width:150px;
-
-
-    margin: 0 auto;
-    border-radius: 10%;
-    background: -moz-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -ms-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -o-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), color-stop(0.25, #444), color-stop(0.5, #b6b6b8), color-stop(0.75, #444), to(transparent));
-    background: -webkit-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-    background: linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
-
-  }
-
-/* make inline block */
-
-  .coach {
-    transition: background-color 0.9s ease;
-    background-color: #C80000  ;
-  }
-
-  .coach:hover {
-    background-color: steelblue;
-  }
-
-  .coach div {
-    display:inline-block;
-    margin: 10px 5px;
-    border-radius: 10%;
-    padding: 5px;
-  }
-
-  .coach p {
-    margin: 25px 0 0 0;
-  }
-
-
-  .students {
-   width:80px;
-   height:80px;
-   background:lightblue;
-   /*float:right;*/
- /*   margin: 0 auto;*/
-
-  }
-
-  .add{
-    width:80px;
-    height:80px;
-    background: lightgreen;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
-  }
-
-  .history {
-    width: 80px;
-    height: 80px;
-    background:lightgrey;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
-
-  }
-
-
-    .highlight {
-    -webkit-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    -moz-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    box-shadow: 0px 0px 3px 5px #f2e1f2;
-    }
-
-  .hide {
-    display:none;
-  }
-  .black {
-    background:black;
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left: 0;
-    opacity: 0.85;
-    z-index: 1000000000;
-  }
-
-  .popup {
-  background-color: #E3E3E3;
-  width: 300px;
-  position:relative;
-  color: #616167;
-  border-radius: 5px;
-  font-size: 12px;
-  margin: -10px auto;
-  z-index: 1000000001;
-  padding-bottom: 5px;
- }
-
- .popup p {
-  color: black;
-  font-size:12px;
- }
-
- .popup {
-  display:none;
- }
-
- .historylist {
-  background-color: #E3E3E3;
-  width: 300px;
-  position:relative;
-  color: #616167;
-  border-radius: 5px;
-  font-size: 12px;
-  margin: -10px auto;
-  z-index: 1000000001;
-  padding-bottom: 5px;
- }
-
- .historylist {
-  display:none;
- }
-
-
-
-.studentsedit input[type="submit"] {
-  margin-top: 5px;
-  display:inline-block;
-}
-
-.row {
-
-}
-.studentsedit {
-  display:inline-block;
-}
-
-table {
-  font-family: 'Arial';
-  margin: 25px auto;
-  border-collapse: collapse;
-  border: 1px solid #eee;
-  border-bottom: 2px solid #00cccc;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
-}
-table tr:hover {
-  background: #f4f4f4;
-}
-table tr:hover td {
-  color: #555;
-}
-table th, table td {
-  color: #999;
-  border: 1px solid #eee;
-  padding: 12px 35px;
-  border-collapse: collapse;
-}
-table th {
-  background: #00cccc;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-table th.last {
-  border-right: none;
-}
-
-  </style>
-
-
+ 
 
   <% if flash[:error] %>
     <p><%= flash[:error] %></p>
   <% end %>
+
+
+
+
+
+<div>
+  
+  <div>
+    <div>
+      <h2>Student Rankings</h2>
+    </div>
+    <div>
+      <h1>Total Miles: 15,465</h1>
+
+    </div>
+    <div>
+      <div>
+        <h1>School Name</h1>
+        <h2>JFK ELEMENTARY</h2>
+      </div>      
+      <div>
+        <h2>Rank</h2>
+        <h2>3</h2>
+      </div>      
+      <div>
+        <h2>Students</h2>
+        <h2>500</h2>
+      </div>
+      
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <i></i>
+      |
+      <i></i>
+      |
+      <i></i>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="black hide"></div>
   <div id="school-info">
     <h2><%=@school.name%></h2>
