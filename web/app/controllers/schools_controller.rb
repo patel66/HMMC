@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  layout "signed_in"
+  layout "application"
   def new
     # @school = HMMC::School.new
   end
