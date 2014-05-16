@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require robin
-//= require twitter/bootstrap
-//= require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require activities
+//= require classrooms
+//= require schools
+//= require sessions
+//= require users

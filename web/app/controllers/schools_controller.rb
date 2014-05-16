@@ -59,6 +59,10 @@ class SchoolsController < ApplicationController
     redirect_to "/schools/#{@school.id}"
   end
 
+  def leaderboard
+		render :layout => 'home'
+  end
+
 
 
   def search
