@@ -6,6 +6,7 @@ $font-family-base: avenir next;
 $navbar-height: 80px;
 $navbar-default-toggle-icon-bar-bg: #075b9a;
 $navbar-default-toggle-border-color: #000000;
+$table-bg: #ffffff;
 
 // modals
 $modal-content-bg: #75c700;
@@ -95,7 +96,48 @@ body {
 }
 
 
+.leaderTable{
+  width: 100%;
+  opacity: .85;
+  background-color: #f9f9f9;
+  border-radius: 55px;
+  padding: 20px;
+  // border: 20px solid red;
+  .rank {
+    text-align: center;
+    width: 50px;
+    font-size: 2rem;
+    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+    color: yellow;
+    background-color: #155295;
+  }
+  .school{
 
+  }
+  .miles{
+    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+    color: #2daee7;
+  }
+  .leaderHeader{
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 3.9rem;
+    border-top-style:  none;
+    padding: 10px;
+    color: #ad38af;
+  }
+  .tableFooter{
+    height: 100px;
+    border-bottom: 0px;
+  }
+  th, td{
+    border: 1px solid #075b9a;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding:  10px 15px;
+  }
+}
 
 .form-3 {
     font-weight: 400;
