@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'home'
+  # layout 'home'
   def new
       # user signs up to the site
   end

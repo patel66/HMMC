@@ -5,12 +5,17 @@ class SessionsController < ApplicationController
 
   def create
     result = HMMC::SignIn.run(:email => params[:user][:email], :password => params[:user][:password])
-    session_id = result.session_id
-    session[:app_sid] = session_id
-    user = HMMC.db.get_user_by_sid(session_id)
-    @school = HMMC.db.get_school_from_user_id(user.id)
-
-    redirect_to "/schools/#{@school.id}"
+    
+    if result.success? 
+      session_id = result.session_id
+      session[:app_sid] = session_id
+      user = HMMC.db.get_user_by_sid(session_id)
+      @school = HMMC.db.get_school_from_user_id(user.id)
+      redirect_to "/schools/#{@school.id}"
+    else
+      flash[:error] = result.error
+      redirect_to "/"
+    end
   end
 
   def destroy

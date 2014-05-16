@@ -4,6 +4,10 @@ class SchoolsController < ApplicationController
     # @school = HMMC::School.new
   end
 
+  def index
+
+  end
+
   def create
     user_params = params[:user]
     school_params = params[:school]
@@ -26,10 +30,10 @@ class SchoolsController < ApplicationController
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
       # button school landing pg
-      render 'users/new'
+      redirect_to "/"
     else
       @error = signedup.error
-      render 'new'
+      redirect_to "/"
     end
 
   end

@@ -1,10 +1,14 @@
-
-<body>
+<% if flash[:error] %>
+	<script type="text/javascript">$(".form-3").append( <h5><%= flash[:error] %></h5>);</script>
+<%end %>	
 
 <div id="slide1">
 	<!-- 	<embed src="running.mp4" width="320" height="320"> </embed> -->
 		<%= video_tag("running.mp4") %>
 		<div>
+			
+
+
             <h1>Americas's 100 Million</h2>
 		    <h2>Mile Challenge</h1>
 		    <div id="divider"> </div>
@@ -13,7 +17,8 @@
 		</div>
 
 		<div id="hero-unit">
-			<h2>Total Miles</h2>			
+			<h2>Total Miles</h2>
+					
 		</div>
  	</div>
 
@@ -49,6 +54,3 @@
 		  </div>
 		
 
-    </div>
-</body>
-</html>
