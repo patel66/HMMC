@@ -106,6 +106,13 @@ module HMMC
         School.all
       end
 
+      def get_school_from_user_id(userid)
+        ar_school = School.find_by_user_id(userid)
+
+        return nil if ar_school.nil?
+        HMMC::School.new(ar_school.attributes)
+      end
+
     end
   end
 end

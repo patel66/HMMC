@@ -209,7 +209,6 @@
       expect(school1.activitys.length).to eq 5
       # expect(school1.total_miles_school).to eq 50
       schools = db.get_all_schools
-      expect(schools).to be_a(Array)
       expect(schools.map { |school| school.name}).to include('Kempner', 'Dulles', 'Fort Minor', "Cypress")
     end
 
