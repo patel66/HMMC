@@ -1,7 +1,11 @@
 class SchoolsController < ApplicationController
-  layout "signed_in"
+  layout "application"
   def new
     # @school = HMMC::School.new
+  end
+
+  def index
+
   end
 
   def create
@@ -26,10 +30,10 @@ class SchoolsController < ApplicationController
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
       # button school landing pg
-      render 'users/new'
+      redirect_to "/"
     else
       @error = signedup.error
-      render 'new'
+      redirect_to "/"
     end
 
   end
@@ -57,6 +61,10 @@ class SchoolsController < ApplicationController
     # binding.pry
     @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
     redirect_to "/schools/#{@school.id}"
+  end
+
+  def leaderboard
+		render :layout => 'home'
   end
 
 

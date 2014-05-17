@@ -11,8 +11,9 @@ font-family:  avenir next;
 	text-align: center;
 }
 
-body {
-  background-color: #00c3f7;
+body  {
+  background-color: #00c3f6r;
+  margin-top: 100px;
 }
 
 #miles {
@@ -84,15 +85,15 @@ display: block;
     margin: 0 auto;
     border-radius: 20%;
   }
-
+/*
   label {
     color: black;
     font-family: Garamond;
     font-weight: bold;
     margin: 0 auto;
-  }
+  }*/
 
-  input[type="text"] {
+/*  input[type="text"] {
     color: lightgreen;
     font-family: sans-serif;
     border-radius: 15%;
@@ -101,7 +102,7 @@ display: block;
     width: 100px;
     height: 12px;
   }
-
+*/
 /*  input[type="submit"] {
 
   border-top:   2px solid #a3ceda;
@@ -134,7 +135,7 @@ display: block;
   box-shadow: 5px 5px 5px #eee;
   }
 
-  .miles {
+ /* .miles {
     width:150px;
 
 
@@ -147,7 +148,7 @@ display: block;
     background: -webkit-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
     background: linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
 
-  }
+  }*/
 
 /* make inline block */
 
@@ -272,15 +273,16 @@ display: block;
   display:inline-block;
 }
 
-table {
+/*table {
   font-family: 'Arial';
   margin: 25px auto;
   border-collapse: collapse;
   border: 1px solid #eee;
   border-bottom: 2px solid #00cccc;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
-}
-table tr:hover {
+}*/
+
+/*table tr:hover {
   background: #f4f4f4;
 }
 table tr:hover td {
@@ -301,7 +303,7 @@ table th {
 table th.last {
   border-right: none;
 }
-
+*/
 /*
 ==============================================
 CSS3 ANIMATION CHEAT SHEET
