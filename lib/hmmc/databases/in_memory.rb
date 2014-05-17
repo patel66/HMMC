@@ -47,15 +47,15 @@ module HMMC
 
       end
 
-      def get_national_ranking 
+      def get_national_ranking
         schools = get_all_schools
         schools.sort_by()
       end
 
-      def get_state_ranking 
+      def get_state_ranking
       end
 
-      def get_city_ranking 
+      def get_city_ranking
       end
 
       def get_user(id)
@@ -81,7 +81,7 @@ module HMMC
         return nil if school_attrs.nil?
 
         school = School.new(school_attrs)
-        # school.activitys = get_activities_for_school(id)
+         school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end
