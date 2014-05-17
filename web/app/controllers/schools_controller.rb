@@ -28,7 +28,7 @@ class SchoolsController < ApplicationController
       @user = signedup.user
       email = UserMailer.sign_up_mail(@user.id,@school.id)
       email.deliver
-      # redirect_to "/schools/#{@school.id}"
+
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
       # button school landing pg
@@ -40,13 +40,10 @@ class SchoolsController < ApplicationController
 
   end
 
-
-
   def show
-    # sign in will go here
+
     flash[:error]
-    params
-    # binding.pry
+
     @school = HMMC.db.get_school(params[:id].to_i)
     @user = HMMC.db.get_user_by_sid(session[:app_sid])
     if @user != nil
@@ -60,17 +57,14 @@ class SchoolsController < ApplicationController
   end
 
   def update
-
-    # binding.pry
-    @school = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:school][:students].to_i)
-    redirect_to "/schools/#{@school.id}"
+    @school = HMMC.db.get_school(params[:id].to_i)
+    @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:school][:students].to_i)
+    redirect_to "/schools/#{@school1.id}"
   end
 
   def leaderboard
 		render :layout => 'home'
   end
-
-
 
   def search
 
@@ -82,9 +76,8 @@ class SchoolsController < ApplicationController
       end
     end
 
-    # binding.pry
     respond_to do |format|
-      format.html  # index.html.erb
+      format.html
       format.json  { render :json => {school: @render_school} }
     end
 

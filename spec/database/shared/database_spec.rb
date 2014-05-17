@@ -212,7 +212,7 @@
       expect(schools).to be_a(Array)
       expect(schools.map { |school| school.name}).to include('Kempner', 'Dulles', 'Fort Minor', "Cypress")
     end
-    
+
     it 'can rank all schools' do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school1 = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
@@ -263,13 +263,11 @@
       expect(db.get_state_ranking("Texas").size).to eq(2)
       expect(db.get_state_ranking("Texas")[0].total_miles_school).to eq(school1.total_miles_school)
 
-
-
     end
 
     it "can rank by city" do
 
-user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       school1 = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Houston", :user_id => user.id)
       school2 = db.create_school(:name=> "Dulles",:street=>"14777 Voss Rd",:state=>"California",:city=>"Sugar", :user_id => user.id)
       school3 = db.create_school(:name=> "Fort Minor",:street=>"14777 Voss Rd",:state=>"Ohio",:city=>"Austin", :user_id => user.id)
@@ -289,7 +287,7 @@ user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "1
       school4.add_activity(activity4)
       school1.add_activity(activity5)
       school2.add_activity(activity6)
-      binding.pry
+
       expect(db.get_city_ranking("Houston").size).to eq(2)
       expect(db.get_city_ranking("Houston")[0].total_miles_school).to eq(school1.total_miles_school)
     end
