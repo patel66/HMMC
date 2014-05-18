@@ -2,13 +2,16 @@ require 'spec_helper'
 
 module HMMC
   describe 'SignIn' do
+    let(:db) { HMMC.db }
 
     before do
+      db.clear_everything
       @user1 = HMMC.db.create_user(:name => "John", :email=> "John@mail.com", :password => "password")
     end
 
     it "Returns an error if the user is not found" do
       result = SignIn.run({ email: "nope@notfound.com", password: "password" })
+
       expect(result.success?).to eq(false)
       expect(result.error).to eq(:email_not_found)
     end

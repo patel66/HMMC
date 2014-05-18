@@ -3,6 +3,11 @@ require 'spec_helper'
 module HMMC
   describe 'Sign Out' do
 
+  let(:db) { HMMC.db }
+  before do
+    db.clear_everything
+  end
+
     it "returns an error if the session_id is not found" do
       result = SignOut.run(session_key: 999)
       expect(result.success?).to eq false

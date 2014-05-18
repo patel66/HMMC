@@ -124,7 +124,7 @@
       expect(school.activitys.size).to eq 3
 
       expect(school.students).to eq 200
-      updated_school = db.update_school({:id => school.id, :students => 200})
+      updated_school = db.update_school({"id" => school.id, :students => 200})
       expect(updated_school.students).to eq 200
 
     end

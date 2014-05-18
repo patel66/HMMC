@@ -9,11 +9,11 @@ module HMMC
         )
       end
 
-
       def clear_everything
         User.destroy_all
         Classroom.destroy_all
         School.destroy_all
+        Activity.destroy_all
       end
 
       class User < ActiveRecord::Base
@@ -59,17 +59,26 @@ module HMMC
       end
 
       def get_school(id)
-        ar_school = School.find(id)
-        HMMC::School.new(ar_school.attributes)
+        ar_school = School.find_by_id(id)
+        school_entity = HMMC::School.new(ar_school.attributes)
+        school_entity.activitys = get_activities_for_school(id)
+
+        school_entity
       end
 
+      #  def get_activities_for_school(sid)
+      #   ar_activities = Activity.all
+      #   ar_school_activities = ar_activities.where(:school_id => sid)
+      #   ar_school_activities.map {|activity| HMMC::Activity.new(activity.attributes)}
+      # end
+
       def get_activity(id)
-        ar_activity = Activity.find(id)
+        ar_activity = Activity.find_by_id(id)
         HMMC::Activity.new(ar_activity.attributes)
       end
 
       def get_user(id)
-        ar_user = User.find(id)
+        ar_user = User.find_by_id(id)
         HMMC::User.new(ar_user.attributes)
       end
 
@@ -100,7 +109,8 @@ module HMMC
       end
 
       def update_school(attrs)
-        ar_school = School.find(attrs[:id])
+        ar_school = School.find(attrs["id"])
+
         ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)

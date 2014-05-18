@@ -7,12 +7,39 @@ require 'timecop'
 require 'securerandom'
 require 'time'
 
+
 module HMMC
   def self.db
-    @__db_instance ||= Databases::InMemory.new
+    # @__db_instance ||= Databases::InMemory.new
+    @__db_instance ||= Databases::SQLiteDB.new
   end
+
+
 end
 
+
+# module HMMC
+#   def self.db
+#     @__db_instance ||= Databases::InMemory.new
+#     @__db_instance ||= @db_class.new(@env || 'test')
+#   end
+
+#   def self.db_class=(db_class)
+#     @db_class = db_class
+#   end
+
+#   def self.env=(env_name)
+#     @env = env_name
+#   end
+
+# end
+####################
+
+
+
+
+
+####################
 require_relative "hmmc/use_case.rb"
 Dir[File.dirname(__FILE__) + '/use_cases/*.rb'].each {|file| require_relative file }
 Dir[File.dirname(__FILE__) + '/entities/*.rb'].each {|file| require_relative file }
