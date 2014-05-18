@@ -7,7 +7,7 @@
 
         session = HMMC.db.create_session(:user_id => user.id)
 
-        success :session_id => session[:id], user: user
+        success :session_id => session[:session_key], user: user
     end
   end
 end

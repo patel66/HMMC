@@ -171,7 +171,7 @@
 
       user1 = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
       session = db.create_session(:user_id => user1.id)
-      expect(session[:id].length).should > 15
+      expect(session[:session_key].length).should > 15
     end
 
     it "gets a school from a user id" do
