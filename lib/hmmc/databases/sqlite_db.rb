@@ -144,14 +144,20 @@ module HMMC
       def get_national_ranking
         schools = get_all_schools
         schools.sort_by {|school| -school.total_miles_school}
-        return schools
+         schools
       end
 
-      def get_state_ranking (state)
+      def get_state_ranking(state)
         schools = get_all_schools
         state_schools = schools.select{|school| school.state == state}
         state_schools.sort_by {|school| -school.total_miles_school}
-        return state_schools
+        state_schools
+      end
+
+      def get_city_ranking(city)
+        schools = get_all_schools
+        city_school = schools.select{|school| school.city == city}
+        city_school.sort_by {|school| -school.total_miles_school}
       end
 
     end
