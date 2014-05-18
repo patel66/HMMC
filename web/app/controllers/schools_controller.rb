@@ -5,6 +5,18 @@ class SchoolsController < ApplicationController
   end
 
   def index
+    @school = HMMC.db.create_school(
+        name: "Bleyl Middle School", 
+        city: "Houston", 
+        state: "Texas", 
+        goal: 10000, 
+        students: 713, 
+        street: "12241 Grant Road", 
+        miles: 2353
+    )
+
+    
+
 
   end
 

@@ -3,27 +3,28 @@
 
 
 <div class="container">
-	<div class="row slideLeft fadeIn">
-		
+	<div class="row slideLeft hatch">
+	
 		<div class="student-ranking col-md-3">
 			<h2>Student Highlight</h2>
 		</div>
 		<div class="school-stats-section col-md-6">
-			<h1 id="miles">15,465 </h1>
+			<h1 id="miles">
+			<%=@school.miles %> </h1>
 			<h1> Miles Ran</h1>
 
 		</div>
 		<div class="school-info-sidebar col-md-3">
 			<div class="school-details row">
-				<h1>JFK ELEMENTARY</h2>
+				<h1><%@school.name%></h2>
 			</div>			
 			<div class="school-details row">
 				<h2>Rank</h2>
 				<h2>3</h2>
 			</div>			
 			<div class="school-details row">
-				<h2>Students</h2>
-				<h2>500</h2>
+				<h2>Students Participating</h2>
+				<h2><%@school.students%></h2>
 			</div>
 			
 		</div>
@@ -52,3 +53,8 @@
 	</div>	
 </div>
 
+
+<script type="text/javascript">
+	
+
+</script>

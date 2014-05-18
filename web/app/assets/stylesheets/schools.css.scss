@@ -43,15 +43,19 @@ body  {
 
 
 .user-actions  {
-padding-top: 150;
-display: block;
-/*<div class=​"school-details row">​…​</div>​display: block;*/
+  padding-top: 150;
+  display: block;
+  /*<div class=​"school-details row">​…​</div>​display: block;*/
 }
 
+.fa{
+  cursor: pointer;
+  }
 .action-icons {
   display: block;
   margin: 0 auto;
-  font-size: 3em;
+  font-size: 4em;
+
 }
 
   h {color:red;}
