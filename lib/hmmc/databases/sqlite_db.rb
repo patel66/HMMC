@@ -33,6 +33,10 @@ module HMMC
         belongs_to :school
       end
 
+      class Session < ActiveRecord::Base
+
+      end
+
       def create_user(attrs)
         ar_user = User.create(attrs)
         HMMC::User.new(ar_user.attributes)
@@ -159,6 +163,30 @@ module HMMC
         city_school = schools.select{|school| school.city == city}
         city_school.sort_by {|school| -school.total_miles_school}
       end
+
+      def create_session(attrs)
+        sid = SecureRandom.uuid
+        ar_session = Session.create(session_key: sid, user_id: attrs[:user_id])
+
+      end
+
+      #  def create_session(attrs)
+      #   # generate unique crazy id for session
+      #   sid = SecureRandom.uuid
+      #   ar_session = Session.create(session_key: sid, user_id: attrs[:user_id])
+      #   sid
+      # end
+
+      #  def create_user(attrs)
+      #   ar_user = User.create(attrs)
+      #   HMMC::User.new(ar_user.attributes)
+      # end
+
+      #  def create_session(attrs)
+      #   sid = SecureRandom.uuid
+      #   @sessions[sid]= { session_key: sid, user_id: attrs[:user_id]}
+      # end
+
 
     end
   end

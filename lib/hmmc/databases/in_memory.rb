@@ -164,7 +164,6 @@ module HMMC
         return nil if session_attrs.nil?
         uid = session_attrs[:user_id]
         user = get_user(uid)
-
       end
 
       def get_class_by_name(name)
