@@ -103,14 +103,55 @@ module HMMC
       end
 
       def get_all_schools
-        School.all
+        ar_schools = School.all
+        ar_schools_to_entity = ar_schools.map{|school| HMMC::School.new(school.attributes)}
+        ar_schools
+
+         ar_schools_to_entity.each do |school|
+           school.activitys = get_activities_for_school(school.id)
+         end
       end
+
+      def get_activities_for_school(sid)
+        ar_activities = Activity.all
+        ar_school_activities = ar_activities.where(:school_id => sid)
+        ar_school_activities.map {|activity| HMMC::Activity.new(activity.attributes)}
+      end
+
+
+      # def get_all_schools
+      #   all_schools = @schools.values
+
+      #   school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
+      #   school_list.each do |school|
+      #     school.activitys = get_activities_for_school(school.id)
+      #   end
+
+      #   school_list
+      # end
 
       def get_school_from_user_id(userid)
         ar_school = School.find_by_user_id(userid)
-
         return nil if ar_school.nil?
         HMMC::School.new(ar_school.attributes)
+      end
+# map{|activity| activity.miles}.reduce(0,:+)
+#       def get_national_ranking
+#         schools = get_all_schools
+#         schools
+#       end
+
+      def get_national_ranking
+        schools = get_all_schools
+        schools.sort_by {|school| -school.total_miles_school}
+        return schools
+      end
+
+      def get_state_ranking (state)
+        schools = get_all_schools
+        state_schools = schools.select{|school| school.state == state}
+        state_schools.sort_by {|school| -school.total_miles_school}
+        return state_schools
       end
 
     end
