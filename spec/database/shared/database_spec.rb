@@ -310,6 +310,7 @@
 
 
       expect(school1.total_miles_school).to eq 500
-
     end
+
+
 end
