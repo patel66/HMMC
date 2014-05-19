@@ -16,13 +16,22 @@ body  {
   margin-top: 100px;
 }
 
-#miles {
-	font-size: 5em;
-	opacity: .8;
-	margin-bottom: -25px;
+.odometer {
+  opacity: .8;
+  margin-top: 20px;
+  font-size: 150px;
+  margin-bottom: 60px;
 }
 
-.school-details {
+#miles {
+	font-size: 1.8em;
+	opacity: .8;
+	margin-bottom: 125px;
+  position: relative;
+  top: -40px;
+}
+
+.school-info-sidebar {
 	background-color: yellow;
 	box-shadow: 10px 10px 15px #888888;
 	padding: 15px;
@@ -34,11 +43,18 @@ body  {
 	text-align: center;
 }
 
-.student-ranking {
-	background-color: red;
-	padding: 15px;
-	padding-bottom: 345px;
+img {
+  padding: 5px;
+}
+
+.ranking {
+  color: white;
+	background-color: rgb(255, 63, 63);
+	padding: 20px;
+	padding-bottom: 10px;
 	box-shadow: 10px 10px 15px #888888;
+  text-align: center; 
+  font-weight: 4em;
 }
 
 
@@ -57,11 +73,11 @@ display: block;
   h {color:red;}
   p {color:blue;}
   input[type="submit"] {border-radius: 100%}
-
+/*
   html {
   width: 100%;
   height: 100%;
-  }
+  }*/
 
 /*body {
   width: 100%;
@@ -76,7 +92,33 @@ display: block;
   padding-top: 3em;
 }
 */
-  .coach {
+
+/*D3 Graph styling*/
+text {
+  font-family: "RamaGothicM-Heavy",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans-serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 16rem;
+  fill: #1072b8;
+}
+
+#donut {
+  width: 10rem;
+  height: 10rem;
+  margin: 0 auto;
+  position: absolute;
+  left: 170px;
+}
+
+path.color0 {
+  fill: #1072b8;
+}
+
+path.color1 {
+  fill: #35526b;
+}
+
+.coach {
     color: purple;
     width:400px;
     padding: 5px;
