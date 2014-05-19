@@ -97,30 +97,36 @@ body {
 
 
 .leaderTable{
+  border-collapse: separate;
   width: 100%;
   opacity: .85;
-  background-color: #f9f9f9;
+  border: 5px solid #075b9a;
   border-radius: 55px;
   padding: 20px;
-  // border: 20px solid red;
+
+  tr:nth-child(2){
+    font-size: 26px;
+  } tr:nth-child(3) {
+    font-weight: normal;
+    font-size: 24px;
+  }
   .rank {
     text-align: center;
     width: 50px;
     font-size: 2rem;
-    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
-    color: yellow;
-    background-color: #155295;
+    font-family: Arial;
+    color: #d3d31f;
   }
   .school{
 
   }
   .miles{
-    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+    font-family: Arial;
     color: #2daee7;
   }
   .leaderHeader{
+    font-family: 'Slackey', cursive;
     text-align: center;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 3.9rem;
     border-top-style:  none;
     padding: 10px;

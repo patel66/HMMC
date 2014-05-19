@@ -61,7 +61,6 @@ class SchoolsController < ApplicationController
   end
 
   def leaderboard
-
      render :layout => 'home'
   end
 
