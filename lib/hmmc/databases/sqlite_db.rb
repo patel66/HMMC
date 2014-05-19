@@ -60,7 +60,9 @@ module HMMC
 
       def get_school(id)
         ar_school = School.find_by_id(id)
+        return nil if ar_school.nil?
         school_entity = HMMC::School.new(ar_school.attributes)
+
         school_entity.activitys = get_activities_for_school(id)
 
         school_entity
@@ -105,13 +107,16 @@ module HMMC
 
       def get_user_by_email(email)
         ar_user = User.find_by_email(email)
+
+        return nil if ar_user.nil?
         HMMC::User.new(ar_user.attributes)
       end
 
       def update_school(attrs)
         ar_school = School.find(attrs["id"])
-
-        ar_school.students = attrs[:students]
+        ar_school.update(attrs)
+        # attrs[:students] ||=nil
+         ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
       end
