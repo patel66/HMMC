@@ -12,7 +12,8 @@ gem 'activemodel', '~> 4.1'
 
 # Database
 # TODO: ADD ACTIVERECORD GEMS HERE
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg'
 gem 'activerecord', '~> 4.1.0'
 gem 'active_record_tasks', '~> 1.0.3'
 

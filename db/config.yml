@@ -4,9 +4,29 @@
 #   pool: 5
 #   timeout: 5000
 
+# test:
+#   adapter: sqlite3
+#   database: HMMC_test
+#   pool: 5
+#   timeout: 5000
+
+
 test:
-  adapter: sqlite3
+  adapter: postgresql
   database: HMMC_test
-  pool: 5
-  timeout: 5000
+  encoding: unicode
+  host: localhost
+
+development:
+  adapter: postgresql
+  database: HMMC_dev
+  encoding: unicode
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: HMMC_prod
+  encoding: unicode
+  host: localhost
+
 

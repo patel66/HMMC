@@ -68,17 +68,93 @@
 		
 		<div class="col-md-7 col-md-offset-5">
 
-			<div class="user-actions ">
-				<div class="action-icons">
-					<i class="fa fa-plus-square"></i>
-					|
-					<i class="fa fa-user"></i>
-					|
-					<i class="fa fa-history"></i>
-				</div>
-			</div>
-		</div>
-	</div>	
+#donut {
+  margin-bottom:10px;
+
+}
+
+  </style>
+
+
+
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+  <div class="black hide"></div>
+  <div id="school-info">
+    <h2><%=@school.name%></h2>
+    <h2>Total Miles: <span class="milesmeter"></span></h2>
+    <button class="school-info">School Information</button>
+    <div class="popup">
+      <h3>School Information:<h3>
+      <p>State:<%=@school.state %></p>
+      <p>City:<%=@school.city %></p>
+      <p>Street: <%= @school.street %></p>
+      <p>Number of students in Club</p>
+      <p><%=@school.students%></p>
+    </div>
+
+  </div>
+<!--
+  <div class="historylist">
+    <h3>History of Activity:</h3>
+    <ul style="list-style-type: none">
+      <% @school.activitys.each do |activity| %>
+      <li>
+      <%="Miles ran: #{activity.miles} " %>
+
+      <%="Students: #{activity.students} "%>
+      <%="Date: #{activity.date[0..9]}"%>
+      </li>
+      <%end%>
+    </ul>
+  </div> -->
+
+<table class="historylist">
+  <thead>
+    <tr>
+      <th>Miles</th>
+      <th>Students</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <%@school.activitys.each do |activity| %>
+      <tr>
+        <td><%=activity.miles%></td>
+          <td><%= activity.students%></td>
+        <td><%=activity.date[0..9]%></td>
+      </tr>
+    <%end%>
+
+    <% @school.activitys.each do |activity| %>
+        <tr>
+        </tr>
+    <%end%>
+
+    <% @school.activitys.each do |activity| %>
+      <tr>
+      </tr>
+    <%end%>
+
+  </tbody>
+</table>
+
+
+
+<% if @users_school %>
+
+  <% if @school.id == @users_school.id %>
+
+
+
+  <%end%>
+
+<%end%>
+
+<div id="donut" data-donut="">
+  "hello"
 </div>
 
 

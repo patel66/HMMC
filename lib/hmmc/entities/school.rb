@@ -39,7 +39,7 @@ module HMMC
     def total_miles_school
       return 0 if @activitys.empty?
       total_miles = @activitys.map{|activity| activity.miles}.reduce(0,:+)
-      # @miles = total_miles
+      #@miles = total_miles
     end
   end
 end

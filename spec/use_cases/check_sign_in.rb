@@ -5,6 +5,10 @@ require 'spec_helper'
 
   let(:db){HMMC.db}
 
+  before do
+    db.clear_everything
+  end
+
   describe 'CheckSignIn' do
     xit "returns an error if the user is not found" do
       result = described_class.run({ email: "john@mail.com", password: "1234" })
