@@ -45,9 +45,9 @@ module HMMC
 
       result3 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 30, :students => 50, :date => Time.parse("May 9 2014")})
       result4 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 100, :students => 60, :date => Time.parse("May 9 2014")})
-      #result5 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 100, :students => 20, :date => Time.parse("May 9 2014")})
+      result5 = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 100, :students => 20, :date => Time.parse("May 9 2014")})
 
-      expect(result4.school.total_miles_school).to eq 160 # 180
+      expect(result5.school.total_miles_school).to eq 260 # 180
     end
 
 

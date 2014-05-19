@@ -17,6 +17,7 @@ module HMMC
 			school.add_activity(activity)
 
 			# updated_school = HMMC.db.update_school(school.instance_values)
+
 			# school = HMMC.db.get_school(updated_school.id)
 
 			success(:activity => activity, :school => school  )

@@ -116,6 +116,7 @@ module HMMC
         ar_school = School.find(attrs["id"])
         ar_school.update(attrs)
         # attrs[:students] ||=nil
+
          ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
@@ -184,6 +185,24 @@ module HMMC
         ar_session = Session.create(session_key: sid, user_id: attrs[:user_id])
 
       end
+
+      def get_user_by_sid(sid)
+        ar_session = Session.find_by_session_key(sid)
+        return nil if ar_session.nil?
+
+      end
+
+      #  def create_session(attrs)
+      #   sid = SecureRandom.uuid
+      #   @sessions[sid]= { session_key: sid, user_id: attrs[:user_id]}
+      # end
+
+      # def get_user_by_sid(sid)
+      #   session_attrs = @sessions[sid]
+      #   return nil if session_attrs.nil?
+      #   uid = session_attrs[:user_id]
+      #   user = get_user(uid)
+      # end
 
       #  def create_session(attrs)
       #   # generate unique crazy id for session
