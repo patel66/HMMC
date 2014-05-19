@@ -9,7 +9,7 @@ module HMMC
       @school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => @user1.id, :students => 200 )
     end
 
-    xit 'creates a Activity with miles' do
+    it 'creates a Activity with miles' do
 
       result = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 10, :students => 20, :date => Time.parse("May 8 2014")})
 
@@ -17,21 +17,21 @@ module HMMC
     	expect(result.activity.miles).to eq 10
     end
 
-    xit 'returns a failure if too many students have been entered' do
+    it 'returns a failure if too many students have been entered' do
     	result = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 10, :students => 2033, :date => Time.parse("May 8 2014")})
 
     	expect(result.success?).to eq false
     	expect(result.error).to eq :invalid_number_students
     end
 
-    xit 'returns a failure if no students have been entered' do
+    it 'returns a failure if no students have been entered' do
     	result = HMMC::CreateActivity.run({:school_id => @school.id, :miles => 10, :date => Time.parse("May 8 2014")})
 
     	expect(result.success?).to eq false
     	expect(result.error).to eq :no_students
     end
 
-	  xit 'returns a failure if no miles have been entered' do
+	  it 'returns a failure if no miles have been entered' do
     	result = HMMC::CreateActivity.run({:school_id => @school.id, :students => 20, :date => Time.parse("May 8 2014")})
     	expect(result.success?).to eq false
     	expect(result.error).to eq :no_miles

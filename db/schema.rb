@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140518172058) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: true do |t|
     t.integer  "miles"
     t.integer  "students"
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140518172058) do
     t.string  "name"
     t.integer "user_id"
     t.string  "address"
+    t.string  "classrooms"
     t.string  "state"
     t.string  "city"
     t.string  "street"

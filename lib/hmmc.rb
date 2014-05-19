@@ -10,12 +10,37 @@ require 'time'
 
 module HMMC
   def self.db
-    # @__db_instance ||= Databases::InMemory.new
-    @__db_instance ||= Databases::SQLiteDB.new
+    @db_class ||= Databases::InMemory
+    @__db_instance ||= @db_class.new(@env || 'test')
+     # @__db_instance ||= Databases::SQLiteDB.new
   end
 
+  def self.db_class=(db_class)
+    @db_class = db_class
+  end
+
+  def self.env=(env_name)
+    @env = env_name
+  end
 
 end
+
+
+
+
+# module Timeline
+#   def self.db
+#     @db_class ||= Database::InMemory
+#     @__db_instance ||= @db_class.new(@env || 'test')
+#   end
+
+#   def self.db_class=(db_class)
+#     @db_class = db_class
+#   end
+
+#   def self.env=(env_name)
+#     @env = env_name
+#   end
 
 
 # module HMMC

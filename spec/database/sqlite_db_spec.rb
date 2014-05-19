@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HMMC::Databases::SQLiteDB do
+describe HMMC::Databases::PostGres do
 
    it_behaves_like "a database"
 

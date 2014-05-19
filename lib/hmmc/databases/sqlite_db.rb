@@ -1,11 +1,22 @@
 module HMMC
   module Databases
-    class SQLiteDB
+    class PostGres
 
-      def initialize
+      # def initialize
+      #   ActiveRecord::Base.establish_connection(
+      #     :adapter => 'sqlite3',
+      #     :database => 'HMMC_test'
+      #   )
+      # end
+
+       def initialize(env)
+          # binding.pry
+          #TO DO: edit this to work
+        # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
+        # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
         ActiveRecord::Base.establish_connection(
-          :adapter => 'sqlite3',
-          :database => 'HMMC_test'
+          # YAML.load_file("db/config.yml")[env]
+          YAML.load_file('db/config.yml')[env]
         )
       end
 
