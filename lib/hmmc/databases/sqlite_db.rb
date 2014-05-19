@@ -189,8 +189,18 @@ module HMMC
       def get_user_by_sid(sid)
         ar_session = Session.find_by_session_key(sid)
         return nil if ar_session.nil?
-
+        user_id = ar_session[:user_id]
+        user = get_user(user_id)
       end
+
+      def delete_session(sid)
+        ar_session = Session.find_by_session_key(sid)
+        ar_session.destroy
+      end
+
+      # def delete_session(sid)
+      #   @sessions.delete(sid)
+      # end
 
       #  def create_session(attrs)
       #   sid = SecureRandom.uuid
