@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'userin', to: 'users#userin'
   get 'create', to: 'users#new'
   get 'schools/leaderboard', to: 'schools#leaderboard'
+  get 'schools/signup', to: 'schools#signup'
 
   resources :schools
   resources :classrooms

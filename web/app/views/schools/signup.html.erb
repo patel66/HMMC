@@ -1,0 +1,88 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='modal-content'>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Account Information</h4>
+          <%= form_tag("/schools", method: "post") do %>
+          <div class="row">
+            <div class="col-xs-4 col-md-4">
+              <%= label_tag(:name, "Name") %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <%= text_field(:user, :name) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="marginTop"></div>
+            <div class="col-xs-4 col-md-4">
+              <%= label_tag(:email, "Email") %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <%= text_field(:user, :email) %>
+            </div>
+          </div>
+          <!-- Need a Verify Email address option, but right now, it doesnt check against its first counterpart -->
+          <div class="row">
+
+      <!--                 <div class="col-xs-4 col-md-3">
+              <%= label_tag(:email, "Verify") %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <%= text_field(:user, :email) %>
+            </div> -->
+          </div>
+
+          <div class="row">
+            <div class="marginTop"></div>
+            <div class="col-xs-4 col-md-4">
+              <%= label_tag(:password, "Password") %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <%= text_field(:user, :password) %>
+            </div>
+          </div>
+          <!-- Need a Verify Password option, but right now, it doesn't check against its first counterpart -->
+          <div class="row">
+      <!--                 <div class="col-xs-4 col-md-3">
+              <%= label_tag(:password, "Verify") %>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <%= text_field(:user, :password) %>
+            </div> -->
+          </div>
+          <div class="row">
+            <% label_tag(:School_Information)%>
+          </div>
+        </div> <!-- col-md-6 -->
+        <div class="col-md-6">
+            <h4>School Information</h4>
+            <div class="row">
+              <div class="col-xs-4 col-md-3">
+                <%= label_tag(:name, "State:") %>
+              </div>
+              <div class="col-xs-6 col-md-6">
+                <%= text_field(:school, :name) %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4 col-md-3">
+                <%= label_tag(:state, "Zipcode:") %>
+              </div>
+              <div class="col-xs-6 col-md-6">
+                <%= text_field(:school, :state) %>
+              </div>
+            </div>
+
+        </div> <!-- col-md-6 -->
+      </div> <!-- row for the entire modal-->
+
+
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Create</button>
+      <%end%> <!-- end form -->
+
+      <!-- End Modal -->
+    </div>
+  </div> <!-- col-md-12 -->
+</div> <!-- row -->

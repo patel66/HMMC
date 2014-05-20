@@ -64,6 +64,10 @@ class SchoolsController < ApplicationController
      render :layout => 'home'
   end
 
+  def signup
+
+  end
+
   private
   def school_params
     params.require(:school).permit(:name, :state, :street, :city)

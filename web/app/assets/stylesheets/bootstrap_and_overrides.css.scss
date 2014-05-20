@@ -19,6 +19,7 @@ body {
   // #ed1c5d red
 }
 
+
 .boxes{
   pointer-events: none;
   content: "";
@@ -42,10 +43,11 @@ body {
 
 .modal-content {
     font-family: avenir next;
-    border-radius: 0.4em;
-    border: 10px solid #fff;
+    border-radius: 0.0em;
+    border: 0px solid #fff;
     color: #fff;
-    padding-bottom: 40px;
+    padding: 15px 15px 60px 15px;
+    box-shadow: 25px;
     .btn {
       float: right;
       margin: 10px;
