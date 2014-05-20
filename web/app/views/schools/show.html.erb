@@ -8,18 +8,21 @@
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 <div class="container">
-	<div class="row slideLeft hatch">
+	<div class="row slideLeft bigEntrance">
 		
 		<div class="school-info-sidebar col-md-3 box">
 			<div class="school-details row">
-				<h1>JFK ELEMENTARY</h2>
+				<h1><%=@school.name %></h2>
+				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>			
 			<div class="school-details row">
-				<h2>Rank</h2>
-				<h2>3</h2>
+				<h3>National Rank: 3</h3>
+				<h3>State Rank: 2</h3>
+				<h3>City Rank: 1</h3>
+				
 			</div>			
 			<div class="school-details row">
-				<h2>Students</h2>
+				<h2>Students Participating</h2>
 				<h2>500</h2>
 			</div>
 			
@@ -32,9 +35,14 @@
 	 	   <button></button> -->
 
       	<div id="donut" data-donut="30">
-	      </div>
-
+	    		
+	    </div>
+	      <div><h3> Goal of 10000 Miles</h3>
+		</div>
 	    <div id="win"></div>
+
+	    	<div>
+	    	</div>
 	    <!-- input id="goal"></input
 	    <input id="miles"></input>
 	    <button></button> -->
@@ -56,45 +64,23 @@
 			</div>
 
 		</div>
-	</div> <!-- end of row -->
-	<div class="row">
-		<div class="rewards">
-			
-		</div>
-		
-	</div>
+
 
 	<div class="row">
 		
 		<div class="col-md-7 col-md-offset-5">
 
-#donut {
-  margin-bottom:10px;
-
-}
-
-  </style>
-
-
-
-  <% if flash[:error] %>
-    <p><%= flash[:error] %></p>
-  <% end %>
-  <div class="black hide"></div>
-  <div id="school-info">
-    <h2><%=@school.name%></h2>
-    <h2>Total Miles: <span class="milesmeter"></span></h2>
-    <button class="school-info">School Information</button>
-    <div class="popup">
-      <h3>School Information:<h3>
-      <p>State:<%=@school.state %></p>
-      <p>City:<%=@school.city %></p>
-      <p>Street: <%= @school.street %></p>
-      <p>Number of students in Club</p>
-      <p><%=@school.students%></p>
-    </div>
-
-  </div>
+			<div class="user-actions ">
+				<div class="action-icons">
+					<i id="addMiles" class="fa fa-plus-square"></i>
+					|
+					<i id="addStudents" class="fa fa-user"></i>
+					|
+					<i id="history" class="fa fa-history"></i>
+				</div>
+			</div>
+		</div>
+	</div>	
 <!--
   <div class="historylist">
     <h3>History of Activity:</h3>
@@ -142,22 +128,6 @@
 </table>
 
 
-
-<% if @users_school %>
-
-  <% if @school.id == @users_school.id %>
-
-
-
-  <%end%>
-
-<%end%>
-
-<div id="donut" data-donut="">
-  "hello"
-</div>
-
-
  <!-- Odometer Script -->
   <script>
     //     setTimeout(function(){
@@ -172,9 +142,6 @@
   </script>
 
 <!-- Graph script -->
-
-  </head>
-    <body>
 
       <script>
 var duration   = 2000,

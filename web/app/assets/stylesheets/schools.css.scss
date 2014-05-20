@@ -16,12 +16,22 @@ body  {
   margin-top: 100px;
 }
 
+.fa {
+  cursor: pointer;
+}
+
+
 .odometer {
   opacity: .8;
   margin-top: 20px;
   font-size: 150px;
   margin-bottom: 60px;
+  font-size: 7vw; 
 }
+
+div#odometer.odometer.odometer-auto-theme {
+  font-size: 8vw; 
+} 
 
 #miles {
 	font-size: 1.8em;
@@ -32,11 +42,21 @@ body  {
 }
 
 .school-info-sidebar {
-	background-color: #ffe540;
 	box-shadow: 10px 10px 15px #888888;
 	padding: 15px;
-	text-align: center;		
+	text-align: center;	
+  color: rgb(243, 29, 29);
+  font-weight: 4em;	
+  background: rgb(217,242,118); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(217,242,118,1) 31%, rgba(217,242,118,1) 42%, rgba(183,223,45,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(31%,rgba(217,242,118,1)), color-stop(42%,rgba(217,242,118,1)), color-stop(100%,rgba(183,223,45,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(217,242,118,1) 31%,rgba(217,242,118,1) 42%,rgba(183,223,45,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(217,242,118,1) 31%,rgba(217,242,118,1) 42%,rgba(183,223,45,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(217,242,118,1) 31%,rgba(217,242,118,1) 42%,rgba(183,223,45,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(217,242,118,1) 31%,rgba(217,242,118,1) 42%,rgba(183,223,45,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9f276', endColorstr='#b7df2d',GradientType=0 ); /* IE6-9 */
 }
+
 
 .school-stats {
 	margin: 0 auto;
@@ -49,7 +69,15 @@ img {
 
 .ranking {
   color: white;
-	background-color: rgb(255, 63, 63);
+	/*background-color: rgb(255, 63, 63);*/
+  background: rgb(255,63,63); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,63,63,1) 0%, rgba(229,43,46,1) 45%, rgba(237,7,33,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,63,63,1)), color-stop(45%,rgba(229,43,46,1)), color-stop(100%,rgba(237,7,33,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,63,63,1) 0%,rgba(229,43,46,1) 45%,rgba(237,7,33,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,63,63,1) 0%,rgba(229,43,46,1) 45%,rgba(237,7,33,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,63,63,1) 0%,rgba(229,43,46,1) 45%,rgba(237,7,33,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(255,63,63,1) 0%,rgba(229,43,46,1) 45%,rgba(237,7,33,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4245', endColorstr='#ed0721',GradientType=0 ); /* IE6-9 */
 	padding: 20px;
 	padding-bottom: 10px;
 	box-shadow: 10px 10px 15px #888888;
@@ -860,7 +888,7 @@ bigEntrance
   animation-name: bigEntrance;
   -webkit-animation-name: bigEntrance;  
 
-  animation-duration: 1.6s; 
+  animation-duration: 1s; 
   -webkit-animation-duration: 1.6s;
 
   animation-timing-function: ease-out;  
