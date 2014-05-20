@@ -142,8 +142,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
-      coffee-rails
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
@@ -157,6 +155,7 @@ DEPENDENCIES
   active_record_tasks (~> 1.0.3)
   activemodel (~> 4.1)
   activerecord (~> 4.1.0)
+  activesupport
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.1)
@@ -171,5 +170,4 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   timecop (~> 0.7.1)
-  turbolinks
   uglifier (>= 1.3.0)

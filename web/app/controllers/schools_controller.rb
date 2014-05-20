@@ -1,10 +1,40 @@
 class SchoolsController < ApplicationController
   layout "application"
+  require 'active_support/core_ext'
+  require 'rexml/document'
+  require 'net/http'
+
   def new
     # @school = HMMC::School.new
   end
 
   def index
+    # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
+    url = "http://api.greatschools.org/schools/nearby?key=revggwvdiu5ajixg6avnaqxx&state=#{params[:state]}&zip=#{params[:zipcode]}&limit1"
+    # get the XML data as a string
+    binding.pry
+    xml_data = Net::HTTP.get_response(URI.parse(url)).body
+
+    @schools = HMMC.db.get_all_schools
+
+    @schools_by_zip = @schools.select {|school| school.zipcode ==  params[:zipcode]}
+
+
+
+    @hash = Hash.from_xml(xml_data)
+
+    # puts hash.class
+    # @json = @hash.to_json
+    # binding.pry
+    # @hash.each do |key, value|
+    #   puts value
+    # end
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @schools_by_zip }
+      # format.xml { render :xml => {school: xml_data} }
+    end
 
   end
 

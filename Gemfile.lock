@@ -64,6 +64,7 @@ DEPENDENCIES
   active_record_tasks (~> 1.0.3)
   activemodel (~> 4.1)
   activerecord (~> 4.1.0)
+  activesupport
   pg
   pry-debugger
   rspec

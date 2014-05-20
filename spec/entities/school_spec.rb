@@ -32,7 +32,7 @@ describe HMMC::School do
   end
 
 
-  it "Total miles of a school should add up the miles inputed from classrooms " do
+  xit "Total miles of a school should add up the miles inputed from classrooms " do
     user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
     school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :students => 200 )
     history_class = db.create_classroom(:school_id => school.id, :miles=> 0, :name=> "History")

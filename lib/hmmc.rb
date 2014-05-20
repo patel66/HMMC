@@ -10,9 +10,8 @@ require 'time'
 
 module HMMC
   def self.db
-    @db_class ||= Databases::InMemory
+    @db_class ||= HMMC::Databases::PostGres
     @__db_instance ||= @db_class.new(@env || 'test')
-     # @__db_instance ||= Databases::SQLiteDB.new
   end
 
   def self.db_class=(db_class)
@@ -23,8 +22,25 @@ module HMMC
     @env = env_name
   end
 
-end
+  def self.db_seed
+    HMMC.db.clear_everything
 
+    x = HMMC.db.create_school(name: 'Kent Academy', city: "Sugar Land", state: "TX", zipcode: 77478, lat: 29.61962, long: -95.60306, street: "14031 Southwest Freeway" )
+    HMMC.db.create_school(name: 'Excelsior Academy', city: "Sugar Land", state: "TX", zipcode: 77478, lat: 29.627253, long: -95.60415, street: "104 Industrial Blvd, Suite Q" )
+
+    HMMC.db.create_school(name: 'Foothills christian Junior High School', city: 'La Mesa', state: "CA", zipcode: 91942, lat: 32.77495, long:-117.01467, street: "9407 Jericho Road Road")
+    HMMC.db.create_school(name: 'East Region Community School Of Greater El Cajon', city: "La Mesa", state: 'CA', zipcode: 91942, lat: 32.774567, long: -117.01549)
+    HMMC.db.create_school(name: 'Northmont Elementary School', city: "La Mesa", state: 'CA', zipcode: 91942, lat: 32.790028, long: -116.99396, street: "9405 Gregory Street")
+
+    HMMC.db.create_school(name: 'Southeast Middle School', city: "Austin", state: 'TX', zipcode: 78703, lat: 30.2723, long: -97.7559, street: "1111 W 6th St")
+    HMMC.db.create_school(name: 'North Central Elementary School', city: "Austin", state: 'TX', zipcode: 78703, lat: 30.2723, long: -97.7559, street: "1111 W 6th St")
+    HMMC.db.create_school(name: 'Austin H S', city: "Austin", state: 'TX', zipcode: 78703, lat: 30.274014, long: -97.76744, street: "1715 W Cesar Chavez")
+
+    HMMC.db.create_school(name: 'Hostos-Lincoln Academy of Science', city: "Bronx", state: 'NY', zipcode: 10451, lat: 40.818172, long: -73.92789, street: "475 Grand Concourse")
+    HMMC.db.create_school(name: 'Urban Assembly School For Careers In Sports', city: "Bronx", state: 'NY', zipcode: 10451, lat: 40.82278, long: -73.92348, street: "730 Concourse Village W")
+  end
+
+end
 
 
 
