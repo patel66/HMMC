@@ -61,6 +61,7 @@
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#">Faq</a></li>
+             <li><%= link_to "Sign Up with zipcode", "/signupzip"  %></li>
             <li><%= link_to "About", "/path2"  %></li>
 
             <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
@@ -314,48 +315,6 @@ get school input list of schools -->
   <option value="WY">WY</option>
 </select> -->
 
-<form action "/schools", method="POST">
-<label>Name:</label>
-<input id="UserName" type="text"></input>
-<label>Email:<label>
-<input id="UserEmail" type="text"></input>
-<label>Password:<label>
-<input type="password" id="Password"></input>
-
-<label>Zipcode:</label>
-<input id="zipcode" name="zipcode"></input>
-<button id="getschool">Click to get list of schools:</button>
-<select id="school-list">
-</select>
-<input type="submit"></input>
-</form>
-<script type='text/javascript'>
-
- var schoolData = '';
-$('#getschool').on('click', function (e) {
-    e.preventDefault();
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url:'/schools',
-          data: {
-            state: $('#state').val(),
-            zipcode: $('#zipcode').val()
-          },
-          success: function(data) {
-            window.xyz = data
-            // schoolData = data.school
-            console.log(data);
-            for (var i = 0; i < data.length; i ++) {
-              $("#school-list").append("<option id=ChooseSchool>"+data[i].name+"</option>")
-            }
-          }
-        });
-});
-
-
-</script>
-</form>
 
   </body>
 </html>

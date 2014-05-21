@@ -1,0 +1,70 @@
+<style>
+  #signupzipcode {
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+
+<div id="signupzipcode">
+
+  <%= form_tag("/schools", method: "post") do %>
+  <%= label_tag(:Name, "Name") %>
+  <%= text_field(:user, :name) %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field(:user, :email) %>
+  <%= label_tag(:password, "Password") %>
+  <%= text_field(:user, :password) %>
+  <%= label_tag(:zipcode, "Zipcode:") %>
+  <%= text_field(:school, :zipcode) %>
+  <%=button_tag(type: 'button') do%>
+  Get Schools!
+  <%end%>
+  <%= select_tag :select_school %>
+  <%= submit_tag("ENTER") %>
+  <%end%>
+
+<!--   <form action= "/schools", method="POST">
+  <label>Name:</label>
+  <input id="UserName" type="text"></input>
+  <label>Email:<label>
+  <input id="UserEmail" type="text"></input>
+  <label>Password:<label>
+  <input type="password" id="Password"></input>
+
+  <label>Zipcode:</label>
+  <input id="zipcode" name="zipcode"></input>
+  <button id="getschool">Click to get list of schools:</button>
+  <select id="school-list">
+  </select>
+  <input type="submit"></input>
+  </form> -->
+</div>
+
+<script type='text/javascript'>
+
+ var schoolData = '';
+$('button').on('click', function (e) {
+  // $("#select_school").append("<option>pizza</option>");
+    e.preventDefault();
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url:'/schools',
+          data: {
+            state: $('#state').val(),
+            zipcode: $('#school_zipcode').val()
+          },
+          success: function(data) {
+            window.xyz = data
+            // schoolData = data.school
+            console.log(data);
+            for (var i = 0; i < data.length; i ++) {
+              $("#select_school").append("<option id=ChooseSchool>"+data[i].name+"</option>")
+            }
+          }
+        });
+});
+
+
+</script>
+

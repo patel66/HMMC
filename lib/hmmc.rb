@@ -25,7 +25,6 @@ module HMMC
 
   def self.db_seed
     HMMC.db.clear_everything
-
     x = HMMC.db.create_school(name: 'Kent Academy', city: "Sugar Land", state: "TX", zipcode: 77478, lat: 29.61962, long: -95.60306, street: "14031 Southwest Freeway" )
     HMMC.db.create_school(name: 'Excelsior Academy', city: "Sugar Land", state: "TX", zipcode: 77478, lat: 29.627253, long: -95.60415, street: "104 Industrial Blvd, Suite Q" )
 

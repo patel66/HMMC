@@ -52,7 +52,7 @@ module HMMC
         password = attrs.delete(:password)
         password_digest = BCrypt::Password.create(password)
         attrs[:password_digest] = password_digest
-        
+
         ar_user = User.create(attrs)
         HMMC::User.new(ar_user.attributes)
       end
@@ -63,7 +63,6 @@ module HMMC
       end
 
       def create_school(attrs)
-
         ar_school = School.create(attrs)
         HMMC::School.new(ar_school.attributes)
       end
