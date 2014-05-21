@@ -10,7 +10,7 @@ class SchoolsController < ApplicationController
 
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
-    # url = "http://api.greatschools.org/schools/nearby?key=revggwvdiu5ajixg6avnaqxx&state=#{params[:state]}&zip=#{params[:zipcode]}&limit1"
+    # url = "http://api.greatschools.org/schools/nearby?[keygoeshere]#{params[:state]}&zip=#{params[:zipcode]}&limit1"
     # get the XML data as a string
     # binding.pry
     # xml_data = Net::HTTP.get_response(URI.parse(url)).body
