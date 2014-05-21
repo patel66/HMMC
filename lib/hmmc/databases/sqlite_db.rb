@@ -49,6 +49,10 @@ module HMMC
       end
 
       def create_user(attrs)
+        password = attrs.delete(:password)
+        password_digest = BCrypt::Password.create(password)
+        attrs[:password_digest] = password_digest
+        
         ar_user = User.create(attrs)
         HMMC::User.new(ar_user.attributes)
       end

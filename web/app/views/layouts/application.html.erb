@@ -65,11 +65,8 @@
 
             <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
 
-            <% if session[:app_sid].empty? %>
               <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
-            <% else %>
               <li><%= link_to "Sign Out", "/logout"  %></li>
-            <% end% %>
           </ul>
 
 
