@@ -22,5 +22,4 @@ gem 'activesupport'
 #use bcrypt password hash
 gem 'bcrypt-ruby', '~> 3.1.5'
 
-
-
+# Capistrano 

@@ -30,13 +30,12 @@ body  {
 .odometer {
   opacity: .8;
   margin-top: 20px;
-  font-size: 150px;
   margin-bottom: 60px;
-  font-size: 7vw; 
+  font-size: 6vw; 
 }
 
 div#odometer.odometer.odometer-auto-theme {
-  font-size: 8vw; 
+  font-size: 7vw; 
 } 
 
 #miles {
@@ -65,11 +64,12 @@ div#odometer.odometer.odometer-auto-theme {
 
 
 .school-stats {
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 	text-align: center;
+
 }
 
-img {
+.ranking img {
   padding: 5px;
 }
 
@@ -141,7 +141,7 @@ text {
   height: 10rem;
   margin: 0 auto;
   position: absolute;
-  left: 170px;
+  left: 100px;
 }
 
 path.color0 {
