@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 .bundle
 vendor/bundle
 .DS_Store
 Gemfile.lock
 *.db
 HMMC_test
-=======
-HMMC_test
 HMMC_test.db
 vendor/bundle
->>>>>>> 18033d22ac0ed7a18389dd5e00456e222d9b240c

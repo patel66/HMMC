@@ -96,7 +96,6 @@ module HMMC
         school_list
       end
 
-<<<<<<< HEAD
       def get_all_users
         all_users = @users.values
         all_users
@@ -105,9 +104,8 @@ module HMMC
       def create_classroom(attrs)
         # combine with school_update, for adding classe
         # to school, and school_id validation
-=======
->>>>>>> development
-
+      end
+      
       def get_national_ranking
         schools = get_all_schools
         schools.sort_by {|school| -school.total_miles_school}
