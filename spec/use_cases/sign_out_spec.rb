@@ -9,7 +9,7 @@ module HMMC
   end
 
     it "returns an error if the session_id is not found" do
-      result = SignOut.run(session_key: 999)
+      result = SignOut.run(session_key: "999aksdfl2348")
       expect(result.success?).to eq false
       expect(result.error).to eq :session_not_found
     end

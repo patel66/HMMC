@@ -102,7 +102,7 @@ module HMMC
 
       def update_classroom(attrs)
 
-        # binding.pry
+
 
         ar_classroom = Classroom.find(attrs[:classroom_id])
         ar_classroom.miles = attrs[:miles]
@@ -135,12 +135,13 @@ module HMMC
 
       def get_all_schools
         ar_schools = School.all
-        ar_schools_to_entity = ar_schools.map{|school| HMMC::School.new(school.attributes)}
-        ar_schools
 
-         ar_schools_to_entity.each do |school|
-           school.activitys = get_activities_for_school(school.id)
-         end
+        ar_schools_to_entity = ar_schools.map {|school| HMMC::School.new(school.attributes)}
+        # ar_schools
+
+        ar_schools_to_entity.each do |school|
+         school.activitys = get_activities_for_school(school.id)
+        end
       end
 
       def get_activities_for_school(sid)
@@ -198,6 +199,7 @@ module HMMC
       end
 
       def get_user_by_sid(sid)
+
         ar_session = Session.find_by_session_key(sid)
         return nil if ar_session.nil?
         user_id = ar_session[:user_id]

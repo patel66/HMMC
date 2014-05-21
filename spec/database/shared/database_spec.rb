@@ -46,9 +46,12 @@
 
 
     it "gets a school" do
-      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land")
+      school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :zipcode =>77478, :lat => 34.4567, :long => -90.45456 )
       retreived_school = db.get_school(school.id)
       expect(retreived_school.name).to eq "Kempner HighSchool"
+      expect(retreived_school.street).to eq "14777 Voss Rd"
+      expect(retreived_school.state).to eq "Texas"
+      expect(retreived_school.city).to eq "Sugar Land"
     end
 
     it "creates a classroom" do
@@ -73,14 +76,16 @@
     end
 
     xit "creates a student ranking" do
-      school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"})
+      user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+      school = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :students => 1500)
       student_rank = db.create_ranking(:school_id => school.id, :students => {:Joe=> 0, :Jessica=> 20, :Bob=>25})
       expect(student_rank.school_id).to eq school.id
       expect(student_rank.students.class).should == Hash
     end
 
     xit "gets a student ranking " do
-       school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"})
+       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
+       school = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :students => 1500)
        student_rank = db.create_ranking(:school_id => school.id, :students => {:Joe=> 0, :Jessica=> 20, :Bob=>25})
        retreived_rank = db.get_rank(student_rank.id)
        expect(retreived_rank.school_id).to eq school.id
@@ -191,10 +196,11 @@
 
     it "gets all schools " do
       user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-      school1 = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school2 = db.create_school(:name=> "Dulles",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school3 = db.create_school(:name=> "Fort Minor",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
-      school4 = db.create_school(:name=> "Cypress",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id)
+      school1 = db.create_school(:name=> "Kempner",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :zipcode => 77478, :lat => 34.3439)
+
+      school2 = db.create_school(:name=> "Dulles",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :zipcode => 91942, :lat => 34.3439)
+      school3 = db.create_school(:name=> "Fort Minor",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :zipcode => 78701, :lat => 53.2342)
+      school4 = db.create_school(:name=> "Cypress",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :user_id => user.id, :zipcode => 77478, :lat => 41.245)
 
       activity = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
       activity2 = db.create_activity(:miles => 100, :students => 20, :date => Time.parse("May 8 2014"), :school_id => school1.id)
@@ -215,6 +221,8 @@
       # expect(school1.total_miles_school).to eq 50
       schools = db.get_all_schools
       expect(schools.map { |school| school.name}).to include('Kempner', 'Dulles', 'Fort Minor', "Cypress")
+      expect(schools.map { |school| school.zipcode}).to include(77478,91942,78701)
+      expect(schools.map { |school| school.lat}).to include(34.3439,34.3439,53.2342,41.245)
     end
 
     it 'can rank all schools' do

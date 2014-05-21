@@ -38,6 +38,13 @@ describe HMMC::SignUp do
      result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500)
      expect(result.success?).to eq false
   end
+
+  it "creates a school with a user id" do
+    result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500, :zipcode => 77478, :lat => 32.456, :long => -95.422)
+    expect(result.success?).to eq true
+    expect(result.school.zipcode).to eq 77478
+    expect(result.school.lat).to eq 32.456
+  end
 end
  # school_name = inputs[:school_name]
  #      school_street = inputs[:street]
