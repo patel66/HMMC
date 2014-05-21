@@ -102,7 +102,7 @@ module HMMC
 
       def update_classroom(attrs)
 
-        # binding.pry
+
 
         ar_classroom = Classroom.find(attrs[:classroom_id])
         ar_classroom.miles = attrs[:miles]
@@ -135,6 +135,7 @@ module HMMC
 
       def get_all_schools
         ar_schools = School.all
+
         ar_schools_to_entity = ar_schools.map {|school| HMMC::School.new(school.attributes)}
         # ar_schools
 

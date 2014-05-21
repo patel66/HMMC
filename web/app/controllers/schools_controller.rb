@@ -10,18 +10,22 @@ class SchoolsController < ApplicationController
 
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
-    url = "http://api.greatschools.org/schools/nearby?key=revggwvdiu5ajixg6avnaqxx&state=#{params[:state]}&zip=#{params[:zipcode]}&limit1"
+    # url = "http://api.greatschools.org/schools/nearby?key=revggwvdiu5ajixg6avnaqxx&state=#{params[:state]}&zip=#{params[:zipcode]}&limit1"
     # get the XML data as a string
-    binding.pry
-    xml_data = Net::HTTP.get_response(URI.parse(url)).body
+    # binding.pry
+    # xml_data = Net::HTTP.get_response(URI.parse(url)).body
+
 
     @schools = HMMC.db.get_all_schools
 
-    @schools_by_zip = @schools.select {|school| school.zipcode ==  params[:zipcode]}
+    @schools_by_zip = @schools.select {|school| school.zipcode ==  params[:zipcode].to_i}
+    # display on the page;
+    # person selects school, will get the school paramters
+    # you need to populate shit ton of seed in your data
+    puts @schools_by_zip
 
 
-
-    @hash = Hash.from_xml(xml_data)
+    # @hash = Hash.from_xml(xml_data)
 
     # puts hash.class
     # @json = @hash.to_json

@@ -14,6 +14,9 @@ module HMMC
       school_state = inputs[:state]
       school_city = inputs[:city]
       school_students = inputs[:students]
+      zipcode = inputs[:zipcode]
+      lat = inputs[:lat]
+      long = inputs[:long]
 
       check_if_email_taken = HMMC.db.get_user_by_email(email)
       return failure :invalid_name if name.empty?
@@ -28,7 +31,7 @@ module HMMC
 
       new_user = HMMC.db.create_user(:name=> name, :email=> email, :password => password)
 
-      new_school = HMMC.db.create_school(:name => school_name, :street => school_street, :city => school_city, :state => school_state, :user_id => new_user.id, :students => school_students)
+      new_school = HMMC.db.create_school(:name => school_name, :street => school_street, :city => school_city, :state => school_state, :user_id => new_user.id, :students => school_students, :zipcode => inputs[:zipcode], :lat => inputs[:lat], :long => inputs[:long])
       success(:user => new_user,:school => new_school)
     end
   end
