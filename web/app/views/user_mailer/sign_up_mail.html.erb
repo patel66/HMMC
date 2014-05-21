@@ -1,0 +1,41 @@
+<!-- <h1>UserMailer#sign_up_mail</h1>
+
+<p>
+  <%= @greeting %>, find me in app/views/user_mailer/sign_up_mail.html.erb
+</p> -->
+
+<h1>Welcome to the Hundread Million Mile Club <%=@user.name%>!</h1>
+
+<p>Thank you for registering with the application. This application allows you to
+reguluate your school's miles in the club. It is meant to encourage particpation by building a network of schools in the HMMC club. The app will allow your schools to record it's miles and reward those schools show reach certain milestones. More importantly, the app allows your school to connect with other schools as you can see your own school's rankings. The aim is motivate children in the club to exercise and live a healtherfir lifestyle by having recogniation in a social newtwork of other schools in the program.<br>
+
+<br> To use the application, all you need to do is sign in with your email and password from the home page: www.HMMC.com <br>
+
+The sign-in tab is found at the top of the home page. Once you have signed in with your proper credentials you will be taken to your schools personal page where you can enter the number of miles the students ran, review exercise history, as well as edit the total number of students in the program.<br>
+
+<br>On your schools personal page you can :<br>
+
+<br>:: Enter a mile input and student input which represents how much the students ran, as well as the number of students partipating.<br>
+
+::You can set a personal goal for the school, which will increment the piegraph the closer you get to your school's personal goal.<br>
+
+::View the national, state, and city ranking of your school in terms of total miles<br>
+
+::View the accumlated badges and trophies as your schools reaches milestones<br>
+</p>
+
+<p>We hope you enjoy using the app and that it starts a habit for your students to exercse, be healthy, and ultimatly take care for their body. If you have any questions please email
+Nate@gmail.com</p>
+
+<p>Below is your school information:</p>
+Name: <%=@school.name%><br>
+State: <%=@school.state%><br>
+Street: <%=@school.street%><br>
+Number of students in program:<%=@school.students%><br>
+
+<p>Below is your login information:</p>
+Email: <%=@user.email%><br>
+Password: <%=@user.password%>
+
+
+<p>Sincercley, the HMMC team</p>

@@ -5,10 +5,15 @@ describe HMMC::AddMilesClass do
   let(:db) {HMMC.db}
 
 
+  before do
+    db.clear_everything
+  end
 
-  it "can't add 100 miles to a classroom in one input" do
+
+  xit "can't add 100 miles to a classroom in one input" do
    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
-   school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 0, :user_id => user.id)
+   school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"}, :user_id => user.id)
+
    history_class = db.create_classroom(:miles => 0, :name=>"History", :school_id=>school.id)
    # school.add_classroom(history_class)
    # history_class.add_miles(110)
@@ -18,7 +23,7 @@ describe HMMC::AddMilesClass do
    expect(result.success?).to eq false
   end
 
-  it "adds miles to class, also shows up in school" do
+  xit "adds miles to class, also shows up in school" do
    user = db.create_user(:name => "John", :email=> "John@mail.com", :password => "123")
    school = db.create_school(:name=> "Kempner HighSchool", :address=> {:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land"},:miles=> 100, :user_id => user.id)
    history_class = db.create_classroom(:miles => 0, :name=>"History", :school_id=>school.id)

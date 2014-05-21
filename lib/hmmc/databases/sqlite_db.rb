@@ -1,19 +1,30 @@
 module HMMC
   module Databases
-    class SQLiteDB
+    class PostGres
 
-      def initialize
+      # def initialize
+      #   ActiveRecord::Base.establish_connection(
+      #     :adapter => 'sqlite3',
+      #     :database => 'HMMC_test'
+      #   )
+      # end
+
+       def initialize(env)
+          # binding.pry
+          #TO DO: edit this to work
+        # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
+        # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
         ActiveRecord::Base.establish_connection(
-          :adapter => 'sqlite3',
-          :database => 'HMMC_test'
+          # YAML.load_file("db/config.yml")[env]
+          YAML.load_file('db/config.yml')[env]
         )
       end
-
 
       def clear_everything
         User.destroy_all
         Classroom.destroy_all
         School.destroy_all
+        Activity.destroy_all
       end
 
       class User < ActiveRecord::Base
@@ -31,6 +42,10 @@ module HMMC
 
       class Activity < ActiveRecord::Base
         belongs_to :school
+      end
+
+      class Session < ActiveRecord::Base
+
       end
 
       def create_user(attrs)
@@ -55,17 +70,28 @@ module HMMC
       end
 
       def get_school(id)
-        ar_school = School.find(id)
-        HMMC::School.new(ar_school.attributes)
+        ar_school = School.find_by_id(id)
+        return nil if ar_school.nil?
+        school_entity = HMMC::School.new(ar_school.attributes)
+
+        school_entity.activitys = get_activities_for_school(id)
+
+        school_entity
       end
 
+      #  def get_activities_for_school(sid)
+      #   ar_activities = Activity.all
+      #   ar_school_activities = ar_activities.where(:school_id => sid)
+      #   ar_school_activities.map {|activity| HMMC::Activity.new(activity.attributes)}
+      # end
+
       def get_activity(id)
-        ar_activity = Activity.find(id)
+        ar_activity = Activity.find_by_id(id)
         HMMC::Activity.new(ar_activity.attributes)
       end
 
       def get_user(id)
-        ar_user = User.find(id)
+        ar_user = User.find_by_id(id)
         HMMC::User.new(ar_user.attributes)
       end
 
@@ -92,19 +118,130 @@ module HMMC
 
       def get_user_by_email(email)
         ar_user = User.find_by_email(email)
+
+        return nil if ar_user.nil?
         HMMC::User.new(ar_user.attributes)
       end
 
       def update_school(attrs)
-        ar_school = School.find(attrs[:id])
-        ar_school.students = attrs[:students]
+        ar_school = School.find(attrs["id"])
+        ar_school.update(attrs)
+        # attrs[:students] ||=nil
+
+         ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
       end
 
       def get_all_schools
-        School.all
+        ar_schools = School.all
+        ar_schools_to_entity = ar_schools.map{|school| HMMC::School.new(school.attributes)}
+        ar_schools
+
+         ar_schools_to_entity.each do |school|
+           school.activitys = get_activities_for_school(school.id)
+         end
       end
+
+      def get_activities_for_school(sid)
+        ar_activities = Activity.all
+        ar_school_activities = ar_activities.where(:school_id => sid)
+        ar_school_activities.map {|activity| HMMC::Activity.new(activity.attributes)}
+      end
+
+
+      # def get_all_schools
+      #   all_schools = @schools.values
+
+      #   school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
+      #   school_list.each do |school|
+      #     school.activitys = get_activities_for_school(school.id)
+      #   end
+
+      #   school_list
+      # end
+
+      def get_school_from_user_id(userid)
+        ar_school = School.find_by_user_id(userid)
+        return nil if ar_school.nil?
+        HMMC::School.new(ar_school.attributes)
+      end
+# map{|activity| activity.miles}.reduce(0,:+)
+#       def get_national_ranking
+#         schools = get_all_schools
+#         schools
+#       end
+
+      def get_national_ranking
+        schools = get_all_schools
+        schools.sort_by {|school| -school.total_miles_school}
+         schools
+      end
+
+      def get_state_ranking(state)
+        schools = get_all_schools
+        state_schools = schools.select{|school| school.state == state}
+        state_schools.sort_by {|school| -school.total_miles_school}
+        state_schools
+      end
+
+      def get_city_ranking(city)
+        schools = get_all_schools
+        city_school = schools.select{|school| school.city == city}
+        city_school.sort_by {|school| -school.total_miles_school}
+      end
+
+      def create_session(attrs)
+        sid = SecureRandom.uuid
+        ar_session = Session.create(session_key: sid, user_id: attrs[:user_id])
+
+      end
+
+      def get_user_by_sid(sid)
+        ar_session = Session.find_by_session_key(sid)
+        return nil if ar_session.nil?
+        user_id = ar_session[:user_id]
+        user = get_user(user_id)
+      end
+
+      def delete_session(sid)
+        ar_session = Session.find_by_session_key(sid)
+        ar_session.destroy
+      end
+
+      # def delete_session(sid)
+      #   @sessions.delete(sid)
+      # end
+
+      #  def create_session(attrs)
+      #   sid = SecureRandom.uuid
+      #   @sessions[sid]= { session_key: sid, user_id: attrs[:user_id]}
+      # end
+
+      # def get_user_by_sid(sid)
+      #   session_attrs = @sessions[sid]
+      #   return nil if session_attrs.nil?
+      #   uid = session_attrs[:user_id]
+      #   user = get_user(uid)
+      # end
+
+      #  def create_session(attrs)
+      #   # generate unique crazy id for session
+      #   sid = SecureRandom.uuid
+      #   ar_session = Session.create(session_key: sid, user_id: attrs[:user_id])
+      #   sid
+      # end
+
+      #  def create_user(attrs)
+      #   ar_user = User.create(attrs)
+      #   HMMC::User.new(ar_user.attributes)
+      # end
+
+      #  def create_session(attrs)
+      #   sid = SecureRandom.uuid
+      #   @sessions[sid]= { session_key: sid, user_id: attrs[:user_id]}
+      # end
+
 
     end
   end

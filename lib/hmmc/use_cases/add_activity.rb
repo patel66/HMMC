@@ -9,13 +9,17 @@ module HMMC
 			school = HMMC.db.get_school(school_id)
 			return failure :no_miles if miles == nil
 			return failure :no_students if students == nil
+
 			return failure :invalid_number_students if school.students.to_i <= students.to_i
-			# binding.pry
+
 			activity = HMMC.db.create_activity(:miles=> miles, :students => students, :date => date, :school_id => school.id )
+
 			school.add_activity(activity)
-			updated_school = HMMC.db.update_school(school.instance_values)
-			school = HMMC.db.get_school(updated_school.id)
-			# binding.pry
+
+			# updated_school = HMMC.db.update_school(school.instance_values)
+
+			# school = HMMC.db.get_school(updated_school.id)
+
 			success(:activity => activity, :school => school  )
 		end
 	end

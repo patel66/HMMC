@@ -6,17 +6,22 @@ Rails.application.routes.draw do
   #the root of site routed with "root"
   # root 'welcome#index'
 
-  root 'users#new'
+  root 'users#home'
 
   get 'login', to: 'sessions#new'
-  # post 'login', to: 'users#login'
   get 'logout', to: 'sessions#destroy'
   get 'userin', to: 'users#userin'
+  get 'create', to: 'users#new'
+  get 'schools/leaderboard', to: 'schools#leaderboard'
 
-  post 'schools/search', to: 'schools#search'
 
+    # get 'schools/search', to: 'schools#search'
 
-  resources :schools
+  get 'users/admin', to: 'users#admin'
+
+   resources :schools do
+    get :search, :on => :collection
+  end
   resources :classrooms
   resources :users
   resources :activities

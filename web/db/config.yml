@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: HMMC_dev
+  encoding: unicode
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: HMMC_prod
+  encoding: unicode
+  host: localhost

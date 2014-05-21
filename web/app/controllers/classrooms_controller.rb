@@ -1,4 +1,5 @@
 class ClassroomsController < ApplicationController
+  layout "application"
   def new
 
   end

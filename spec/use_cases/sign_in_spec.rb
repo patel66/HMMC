@@ -2,8 +2,10 @@ require 'spec_helper'
 
 module HMMC
   describe 'SignIn' do
+    let(:db) { HMMC.db }
 
     before do
+      db.clear_everything
       @user1 = HMMC.db.create_user(:name => "John", :email=> "John@mail.com", :password => "password")
     end
 

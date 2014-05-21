@@ -3,10 +3,9 @@ module HMMC
     class InMemory
 
       def initialize(config=nil)
-
+        # binding.pry
         clear_everything
       end
-
 
       def clear_everything
         @user_id_counter = 0
@@ -24,7 +23,7 @@ module HMMC
 
       def create_activity(attrs)
         attrs[:id] = (@activity_id_counter +=1)
-        @activities[:id] = attrs
+        @activities[attrs[:id]] = attrs
         Activity.new(attrs)
       end
 
@@ -39,7 +38,7 @@ module HMMC
       end
 
       def get_activity(id)
-        activity_attrs = @activities[:id]
+        activity_attrs = @activities[id]
         Activity.new(activity_attrs)
       end
 
@@ -53,15 +52,12 @@ module HMMC
 
       def get_user(id)
         user = User.new(@users[id])
-        # user.school = get_school_by_user(user_id)
-        user # not save, so how to get user name etc
+        user
       end
 
       # TO DO: needs test
       def update_school(attrs)
         attrs = Hash[attrs.map{ |k, v| [k.to_sym, v] }]
-        # binding.pry
-
         id = attrs[:id]
         school_attrs = @schools[id]
         school_attrs.merge!(attrs)
@@ -72,9 +68,8 @@ module HMMC
       def get_school(id)
         school_attrs = @schools[id]
         return nil if school_attrs.nil?
-
         school = School.new(school_attrs)
-        # school.activitys = get_activities_for_school(id)
+        school.activitys = get_activities_for_school(id)
         school.classrooms = get_classrooms_for_school(id)
         school
       end
@@ -92,9 +87,16 @@ module HMMC
 
       def get_all_schools
         all_schools = @schools.values
-        all_schools
+
+        school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
+        school_list.each do |school|
+          school.activitys = get_activities_for_school(school.id)
+        end
+
+        school_list
       end
 
+<<<<<<< HEAD
       def get_all_users
         all_users = @users.values
         all_users
@@ -103,9 +105,31 @@ module HMMC
       def create_classroom(attrs)
         # combine with school_update, for adding classe
         # to school, and school_id validation
+=======
+>>>>>>> development
 
+      def get_national_ranking
+        schools = get_all_schools
+        schools.sort_by {|school| -school.total_miles_school}
+        return schools
+      end
+
+      def get_state_ranking(state)
+        schools = get_all_schools
+        st_schools = schools.select {|school| school.state == state}
+        st_schools.sort_by {|school| -school.total_miles_school}
+        return st_schools
+      end
+
+      def get_city_ranking(city)
+        schools = get_all_schools
+        s = schools.select {|school| school.city == city}
+        s.sort_by {|school| -school.total_miles_school}
+        return s
+      end
+
+      def create_classroom(attrs)
         attrs[:id] = (@classroom_id_counter += 1)
-
         @classrooms[attrs[:id]] = attrs
         Classroom.new(attrs)
       end
@@ -131,9 +155,8 @@ module HMMC
       end
 
       def create_session(attrs)
-
         sid = SecureRandom.uuid
-        @sessions[sid]= { id: sid, user_id: attrs[:user_id]}
+        @sessions[sid]= { session_key: sid, user_id: attrs[:user_id]}
       end
 
       def get_session(sid)
@@ -144,7 +167,6 @@ module HMMC
         @sessions.delete(sid)
       end
 
-
       def update_classroom(attrs)
         id = attrs[:classroom_id]
         classroom_attrs = @classrooms[id]
@@ -152,13 +174,11 @@ module HMMC
         Classroom.new(classroom_attrs)
       end
 
-      # gets a the currently signed in by the session id
       def get_user_by_sid(sid)
         session_attrs = @sessions[sid]
         return nil if session_attrs.nil?
         uid = session_attrs[:user_id]
         user = get_user(uid)
-
       end
 
       def get_class_by_name(name)
@@ -167,7 +187,6 @@ module HMMC
         classroom = Classroom.new(c_room[0])
         classroom
       end
-# {1=>{:school_id=>1, :miles=>0, :name=>"Math", :id=>1}, 2=>{:school_id=>1, :miles=>0, :name=>"English", :id=>2}, 3=>{:school_id=>1, :miles=>0, :name=>"History", :id=>3}}
 
       def get_user_by_email(email)
         user = @users.values.select{|attributes| attributes[:email] == email}
@@ -176,13 +195,10 @@ module HMMC
         retrieved_user = User.new(user_attr)
       end
 
-
       def get_school_from_user_id(userid)
-        # binding.pry
         school = @schools.values.select{|attributes| attributes[:user_id] == userid}
         school_attr = school[0]
         return nil if school_attr.nil?
-
         retreived_user = School.new(school_attr)
       end
 

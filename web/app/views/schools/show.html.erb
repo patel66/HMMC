@@ -1,303 +1,257 @@
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-plaza.css" />
+    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-<body style="background-color: steelblue; text-align: center">
+<div class="container">
+	<div class="row slideLeft bigEntrance">
+		
+		<div class="school-info-sidebar col-md-3 box">
+			<div class="school-details row">
+				<h1><%=@school.name %></h2>
+				<h5><%=@school.city + ", "+@school.state %></h5>
+			</div>			
+			<div class="school-details row">
+				<h3>National Rank: 3</h3>
+				<h3>State Rank: 2</h3>
+				<h3>City Rank: 1</h3>
+				
+			</div>			
+			<div class="school-details row">
+				<h2>Students Participating</h2>
+				<h2>500</h2>
+			</div>
+			
+		</div>
+		<div class="school-stats-section col-md-6">
+			<!-- <h1 id="miles">15,465 </h1> -->
+			<div id="odometer" class="odometer" style="font-size: 100px">63255</div>
+			<!-- <h4 id="miles"> Miles Ran</h4> -->
+    		<!-- <input></input>
+	 	   <button></button> -->
 
-  <style>
-  h {color:red;}
-  p {color:blue;}
-  input[type="submit"] {border-radius: 100%}
+      	<div id="donut" data-donut="30">
+	    		
+	    </div>
+	      <div><h3> Goal of 10000 Miles</h3>
+		</div>
+	    <div id="win"></div>
 
-  .coach {
-    color: purple;
-    width:400px;
-    padding: 5px;
-    background: orange;
-    display:inline-block;
-    margin: 0 auto;
-    border-radius: 20%;
-  }
+	    	<div>
+	    	</div>
+	    <!-- input id="goal"></input
+	    <input id="miles"></input>
+	    <button></button> -->
+ 
+		</div>
 
-  label {
-    color: violet;
-    font-family: Garamond;
-    font-weight: bold;
-    margin: 0 auto;
-  }
+		<div class="ranking col-md-3 box">
+			<h1>Achievements</h1>
+			<div class="achievements">	
+				<%=image_tag('reach.png') %>
+				<%=image_tag('1.png') %>
+				<%=image_tag('Veteran.png') %>
+				<%=image_tag('1k.png') %>
+				<%=image_tag('5k.png') %>
+				<%=image_tag('10k.png') %>
+				<%=image_tag('20k.png') %>
+				<%=image_tag('25k.png')%>
+				<%=image_tag('50k.png') %>
+			</div>
 
-  input[type="text"] {
-    color: lightgreen;
-    font-family: sans-serif;
-    border-radius: 15%;
-    background-color: white;
-    margin: 0 auto;
-  }
-
-  input[type="submit"] {
-
-  border-top:   2px solid #a3ceda;
-  border-left:    2px solid #a3ceda;
-  border-right:   2px solid #4f6267;
-  border-bottom:    2px solid #4f6267;
-  padding:    10px 20px !important;
-  font-size:    14px !important;
-  background-color: #c4f1fe;
-  font-weight:    bold;
-  color:      #2d525d;
-
-  }
-
-  .miles {
-
-    margin: 0 auto: ;
-  }
-
-/* make inline block */
-.coach div {
-    display:inline-block;
-    margin: 10px 5px;
-    border-radius: 10%;
-    padding: 5px;
-}
-
-.coach p {
-
-  margin: 25px 0 0 0;
-
-}
-
-
-  .account {
-   width:80px;
-   height:80px;
-   background:lightblue;
-   /*float:right;*/
- /*   margin: 0 auto;*/
-
-  }
-
-  .add{
-    width:80px;
-    height:80px;
-    background: lightgreen;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
-  }
-
-  .history {
-    width: 80px;
-    height: 80px;
-    background:lightgrey;
-
-    /*float:right;*/
-    /*margin: 0 auto;*/
+		</div>
 
 
-  }
+	<div class="row">
+		
+		<div class="col-md-7 col-md-offset-5">
 
+			<div class="user-actions ">
+				<div class="action-icons">
+					<i id="addMiles" class="fa fa-plus-square"></i>
+					|
+					<i id="addStudents" class="fa fa-user"></i>
+					|
+					<i id="history" class="fa fa-history"></i>
+				</div>
+			</div>
+		</div>
+	</div>	
+<!--
+  <div class="historylist">
+    <h3>History of Activity:</h3>
+    <ul style="list-style-type: none">
+      <% @school.activitys.each do |activity| %>
+      <li>
+      <%="Miles ran: #{activity.miles} " %>
 
-    .highlight {
-    -webkit-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    -moz-box-shadow: 0px 0px 3px 5px #f2e1f2;
-    box-shadow: 0px 0px 3px 5px #f2e1f2;
-    }
+      <%="Students: #{activity.students} "%>
+      <%="Date: #{activity.date[0..9]}"%>
+      </li>
+      <%end%>
+    </ul>
+  </div> -->
 
-  .hide {
-    display:none;
-  }
-  .black {
-    background:black;
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    left: 0;
-    opacity: 0.85;
-    z-index: 1000000000;
-  }
+<table class="historylist">
+  <thead>
+    <tr>
+      <th>Miles</th>
+      <th>Students</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
 
-  </style>
+    <%@school.activitys.each do |activity| %>
+      <tr>
+        <td><%=activity.miles%></td>
+          <td><%= activity.students%></td>
+        <td><%=activity.date[0..9]%></td>
+      </tr>
+    <%end%>
 
-
-
-  <% if flash[:error] %>
-    <p><%= flash[:error] %></p>
-  <% end %>
-  <div class="black hide"></div>
-  <div id="school-info">
-    <h2><%=@school.name%></h2>
-    <h2>Total Miles: <%= @school.total_miles_school.to_i %></h2>
-    <button>School Information</button>
-    <div class="popup">
-      <h3>School Information:<h3>
-      <p>State:<%=@school.state %></p>
-      <p>City:<%=@school.city %></p>
-      <p>Street: <%= @school.street %></p>
-      <p>Number of students in Club</p>
-      <p><%=@school.students%></p>
-    </div>
-
-  </div>
-
-  <ul style="list-style-type: none">
     <% @school.activitys.each do |activity| %>
-    <li>
-    <%="Miles ran: #{activity.miles} " %>
-
-    <%="Students: #{activity.students} "%>
-    <%="Date: #{activity.date}"%>
-    </li>
-    <%end%>
-  </ul>
-
-  <ul style="list-style-type: none">
-    <% @school.classrooms.each do |room| %>
-    <li>
-      <%= room.name %>
-      <%= room.miles %>
-    </li>
-    <%end%>
-  </ul>
-
-<% if @users_school %>
-
-  <% if @school.id == @users_school.id %>
-
-    <p>Edit total number of students in program</p>
-    <%=form_tag("/schools/#{params[:id]}", method:"put") do %>
-      <%=label_tag(:school, "Students:")%>
-      <%=text_field(:school, :students)%>
-      <%= hidden_field_tag('school_id', params[:id])%>
-      <%=submit_tag("ENTER")%>
+        <tr>
+        </tr>
     <%end%>
 
+    <% @school.activitys.each do |activity| %>
+      <tr>
+      </tr>
+    <%end%>
+
+  </tbody>
+</table>
 
 
-
-  <%end%>
-
-<%end%>
-
-    <div class="miles">
-    <%= form_tag("/activities", method: "post") do %>
-    <%= label_tag(:activity, "Miles:") %>
-    <%= text_field(:activity, :miles) %>
-    <%= hidden_field_tag('school_id', params[:id])%>
-    <%= label_tag(:students, "Number of students during activity:") %>
-    <%= text_field(:activity, :students)%><br>
-    <%= hidden_field_tag("date", Time.now )%>
-    <%= submit_tag("ENTER") %>
-    <% end %>
-    </div>
-
-<div class="coach" style="clear:both">
-  <div class="account">
-    <p>Edit Account</p>
-  </div>
-  <div class="add">
-    <p>Add Miles</p>
-  </div>
-  <div class="history">
-    <p>Miles History</p>
-  </div>
-<div style="clear:right"></div>
-</div>
-
-<button></button>
-</body>
-
-
-
-<script>
-  $(document).ready(function(){
-    $(".coach").hide();
-    $(".coach").show(1000)
+ <!-- Odometer Script -->
+  <script>
+    //     setTimeout(function(){
+    //     odometer.innerHTML = 456;
+    // }, 1000);
+    // odometer.innerHTML = school total miles + num
     $("button").on("click",function(){
+      var num = +$("input").val();
+      odometer.innerHTML = num;
+    })
 
-      $(".coach").slideToggle(1000);
-    });
+  </script>
 
-    // menus
-    // Hide submenus
-     $(".miles").hide();
-     $(".add").on("click",function(){
-       $(".miles").slideToggle();
-     });
-     $(".account").on("mouseenter",function(){
-        $(this).addClass("highlight")
-     })
-     $(".account").on("mouseleave",function(){
-        $(this).removeClass("highlight")
-     })
+<!-- Graph script -->
 
-     $(".add").on("mouseenter",function(){
-        $(this).addClass("highlight")
-     })
+      <script>
+var duration   = 2000,
+transition = 100;
 
-     $(".add").on("mouseleave",function(){
-        $(this).removeClass("highlight")
-     })
+var goal = 10000; // school's preset goal! // have input for this
+var total = 2342; // school's total miles // from backend!!
 
-     $(".history").on("mouseenter",function(){
-        $(this).addClass("highlight")
-     })
+  var num = total/goal * 100
+  drawDonutChart(
+  '#donut',
+  num,
+  260,
+  260,
+  ".45em"
+  );
 
-     $(".history").on("mouseleave",function(){
-        $(this).removeClass("highlight")
-     })
+$("button").on("click",function(){
+  var msglist = document.getElementById("donut");
+  var x = +$("input").val();
 
-    // // Toggle nested <ul> (siblings of the link)
-    // $(".nav > li > a").click(function(e) {
-    //     $(this).siblings("ul").slideToggle();
-    //     e.preventDefault();
-    // });
+  console.log(x)
+  msglist.setAttribute("data-donut","");
+  total+= x
+  console.log(total)
 
+  var show = msglist.getAttribute("data-donut");
+  console.log(num)
+  // per = ((total+parseInt(x))/goal)*100
 
-    // $(".account").bind('mouseover mouseenter',function(){
-    //     $(this).stop()
-    //     .animate({height:'150px'},
-    //     {queue:false, duration:600, easing: 'swing'})
-    // });
+  msglist.setAttribute("data-donut", num ) ;
 
-    // //When mouse is removed
-    // $(".account").bind('mouseout mouseleave',function(){
-    //     $(this).stop().animate({height:'50px'},
-    //     {queue:false, duration:600, easing: 'swing'})
-    // });
+   $("#donut").empty();
 
-  // $(".account").mouseenter(function(){
-  //     $(this).animate({
-  //       "top": '10px'
-  //     });
-  //   })
+   var num = total/goal * 100
+   if (num >= 100) {
+    $("#win").text("YOU GUYS DID IT!!!!!")
+   }
+  drawDonutChart(
+  '#donut',
+  num,
+  260,
+  260,
+  ".45em"
+  );
 
-  // });
-
-  // $(".projects a").mouseenter(function() {
-  //   $(this).find('img').animate({
-  //      top: '10px'
-  //   });
-  //  });
-  // $(".projects a").mouseleave(function() {
-  //   $(this).find('img').animate({
-  //     top: '-10px'
-  //   });
-// var baloon = $('.account');
-//    function runIt() {
-//        baloon.animate({top:'+=20'}, 1000);
-//        baloon.animate({top:'-=20'}, 1000, runIt);
-//    }
-
-//    runIt();
 });
-</script>
-<!-- $(document).ready(function() {
-  $(".tour").on("mouseenter", function() {
-    $(this).addClass("highlight");
-    $(this).find(".per-night").animate({"top": "-14px","opacity": "1"}, "fast");
-  });
-  $(".tour").on("mouseleave", function() {
-    $(this).removeClass("highlight");
-    $(this).find(".per-night").animate({"top": "0px","opacity": "0"}, "fast");
-  });
-}); -->
 
+
+function drawDonutChart(element, percent, width, height, text_y) {
+  width = typeof width !== 'undefined' ? width : 200;
+  height = typeof height !== 'undefined' ? height : 200;
+  text_y = typeof text_y !== 'undefined' ? text_y : "-.10em";
+
+  var dataset = {
+        lower: calcPercent(0),
+        upper: calcPercent(percent)
+      },
+      radius = Math.min(width, height) / 2,
+      pie = d3.layout.pie().sort(null),
+      format = d3.format(".0%");
+
+  var arc = d3.svg.arc()
+        .innerRadius(radius - 20)
+        .outerRadius(radius);
+
+  var svg = d3.select(element).append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var path = svg.selectAll("path")
+        .data(pie(dataset.lower))
+        .enter().append("path")
+        .attr("class", function(d, i) { return "color" + i })
+        .attr("d", arc)
+        .each(function(d) { this._current = d; }); // store the initial values
+
+  var text = svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", text_y);
+
+  if (typeof(percent) === "string") {
+    text.text(percent);
+    console.log(percent)
+
+  }
+  else {
+    var progress = 0;
+    var timeout = setTimeout(function () {
+      clearTimeout(timeout);
+      path = path.data(pie(dataset.upper)); // update the data
+      path.transition().duration(duration).attrTween("d", function (a) {
+        // Store the displayed angles in _current.
+        // Then, interpolate from _current to the new angles.
+        // During the transition, _current is updated in-place by d3.interpolate.
+        var i  = d3.interpolate(this._current, a);
+        var i2 = d3.interpolate(progress, percent)
+        this._current = i(0);
+        return function(t) {
+          text.text( format(i2(t) / 100) );
+          return arc(i(t));
+        };
+      }); // redraw the arcs
+    }, 200);
+  }
+};
+
+function calcPercent(percent) {
+  return [percent, 100-percent];
+};
+</script>
