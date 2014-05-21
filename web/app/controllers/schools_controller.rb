@@ -8,6 +8,9 @@ class SchoolsController < ApplicationController
 
   end
 
+  def search
+  end
+
   def create
     user_params = params[:user]
     school_params = params[:school]
