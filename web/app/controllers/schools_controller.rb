@@ -47,48 +47,53 @@ class SchoolsController < ApplicationController
 
   def create
 
-
+    binding.pry
     @schools = HMMC.db.get_all_schools
-    @schools_by_zip = @schools.select {|school| school.zipcode ==  params[:school][:zipcode].to_i}
+    @schools_by_zip = @schools.select {|school| school.zipcode ==  params["validate-number"].to_i}
 
-    selected_school = @schools_by_zip.select{|school| school.name == params[:select_school]}
+    selected_school = @schools_by_zip.select{|school| school.name == params["validate-select"]}
 
 
     user_params = params[:user]
+
+
+
     school_params = params[:school]
 
     signedup = HMMC::SignUp.run(
-      :name => user_params[:name],
-      :email => user_params[:email],
-      :password=> user_params[:password],
+      :name => params["validate-text"],
+      :email => params["validate-email"],
+      :password=> params["validate-length"],
       :school_name => selected_school[0].name,
       :street => selected_school[0].street,
       :city => selected_school[0].city,
       :state=>selected_school[0].state,
-      :students=> 30,
+      :students=> 500,
       :lat => selected_school[0].lat,
       :long => selected_school[0].long
       )
 
-    binding.pry
-    @user = signedup.user
-    session[:app_sid] = signedup.session_id
 
-    render "schools/aftersignup"
+
+    @user = signedup.user
+
 
     if signedup.success?
       @school = signedup.school
       @user = signedup.user
+
+      session[:app_sid] = signedup.session_id
       email = UserMailer.sign_up_mail(@user.id,@school.id)
       email.deliver
 
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
+      render "schools/aftersignup"
       # button school landing pg
-      # redirect_to "/registration-complete" # congrats page, on this page link to school landing, + other links
     else
       @error = signedup.error
-      # redirect_to "/"
+      flash[:notice] = "Please fill in all of the input labels"
+      render "schools/signup"
     end
 
   end

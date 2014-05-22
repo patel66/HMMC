@@ -89,6 +89,7 @@ module HMMC
         all_schools = @schools.values
 
         school_list = all_schools.map {|school_attrs| School.new(school_attrs)}
+        school_list = school_list.select {|school| school.user_id.nil? == false}
         school_list.each do |school|
           school.activitys = get_activities_for_school(school.id)
         end
@@ -105,7 +106,7 @@ module HMMC
         # combine with school_update, for adding classe
         # to school, and school_id validation
       end
-      
+
       def get_national_ranking
         schools = get_all_schools
         schools.sort_by {|school| -school.total_miles_school}
@@ -198,6 +199,17 @@ module HMMC
         school_attr = school[0]
         return nil if school_attr.nil?
         retreived_user = School.new(school_attr)
+      end
+
+      def get_all_schools_sign_up
+        ar_schools = School.all
+
+        ar_schools_to_entity = ar_schools.map {|school| HMMC::School.new(school.attributes)}
+        # ar_schools
+        schools_we_want = ar_schools_to_entity.select {|school| school.user_id.nil? == false}
+        schools_we_want.each do |school|
+         school.activitys = get_activities_for_school(school.id)
+        end
       end
 
     end

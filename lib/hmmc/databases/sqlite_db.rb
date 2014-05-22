@@ -142,10 +142,23 @@ module HMMC
         ar_schools_to_entity = ar_schools.map {|school| HMMC::School.new(school.attributes)}
         # ar_schools
 
-        ar_schools_to_entity.each do |school|
+        ar_schools_to_entity .each do |school|
          school.activitys = get_activities_for_school(school.id)
         end
       end
+
+        def get_all_schools_sign_up
+        ar_schools = School.all
+
+        ar_schools_to_entity = ar_schools.map {|school| HMMC::School.new(school.attributes)}
+        # ar_schools
+        schools_we_want = ar_schools_to_entity.select {|school| school.user_id.nil? == false}
+        schools_we_want.each do |school|
+         school.activitys = get_activities_for_school(school.id)
+        end
+      end
+
+
 
       def get_activities_for_school(sid)
         ar_activities = Activity.all
@@ -177,20 +190,20 @@ module HMMC
 #       end
 
       def get_national_ranking
-        schools = get_all_schools
+        schools = get_all_schools_sign_up
         schools.sort_by {|school| -school.total_miles_school}
          schools
       end
 
       def get_state_ranking(state)
-        schools = get_all_schools
+        schools = get_all_schools_sign_up
         state_schools = schools.select{|school| school.state == state}
         state_schools.sort_by {|school| -school.total_miles_school}
         state_schools
       end
 
       def get_city_ranking(city)
-        schools = get_all_schools
+        schools = get_all_schools_sign_up
         city_school = schools.select{|school| school.city == city}
         city_school.sort_by {|school| -school.total_miles_school}
       end
