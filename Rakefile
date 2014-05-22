@@ -56,7 +56,7 @@ namespace :db do
     HMMC.db.create_school(name: 'Ridgetop Elementary School', city: "Austin", state: "TX", zipcode: 78751, lat: 30.311517, long: -97.716143, street: "5005 Caswell Ave" )
     HMMC.db.create_school(name: 'Kealing Middle School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.269754, long: -97.722135, street: "1607 Pennsylvania Ave" )
     HMMC.db.create_school(name: 'Martin Middle School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.252654, long: -97.730451, street: "1601 Haskell St" )
-    HMMC.db.create_school(name: 'Metz Elementary School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.30.254583, long: -97.722044, street: "84 Robert Martinez Jr St" )
+    HMMC.db.create_school(name: 'Metz Elementary School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.254583, long: -97.722044, street: "84 Robert Martinez Jr St" )
     HMMC.db.create_school(name: 'Travis Heights Elementary School', city: "Austin", state: "TX", zipcode: 78704, lat: 30.241598, long: -97.746116, street: "2010 Alameda Dr" )
 
     HMMC.db.create_school(name: 'Dr Bryan C Jack Elementary School', city: "Flint", state: "TX", zipcode: 75762, lat: 32.230457, long: -95.34982, street: "17199 FM 2493" )

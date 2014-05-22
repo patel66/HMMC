@@ -9,33 +9,33 @@
 
 <div class="container">
 	<div class="row slideLeft bigEntrance">
-		
+
 		<div class="school-info-sidebar col-md-3 box">
 			<div class="school-details row">
 				<h1><%=@school.name %></h2>
 				<h5><%=@school.city + ", "+@school.state %></h5>
-			</div>			
+			</div>
 			<div class="school-details row">
 				<h3>National Rank: 3</h3>
 				<h3>State Rank: 2</h3>
 				<h3>City Rank: 1</h3>
-				
-			</div>			
+
+			</div>
 			<div class="school-details row">
 				<h2>Students Participating</h2>
 				<h2><%=@school.students%></h2>
 			</div>
-			
+
 		</div>
 		<div class="school-stats-section col-md-6">
 			<!-- <h1 id="miles">15,465 </h1> -->
-			<div id="odometer" class="odometer" >63255</div>
+			<div id="odometer" class="odometer"><%=@school.total_miles_school%></div>
 			<!-- <h4 id="miles"> Miles Ran</h4> -->
     		<!-- <input></input>
 	 	   <button></button> -->
 
       	<div id="donut" data-donut="30">
-	    		
+
 	    </div>
 	      <div class="goal"><h3> Of Goal Met</h3>
 		</div>
@@ -46,12 +46,12 @@
 	    <!-- input id="goal"></input
 	    <input id="miles"></input>
 	    <button></button> -->
- 
+
 		</div>
 
 		<div class="ranking col-md-3 box">
 			<h1>Achievements</h1>
-			<div class="achievements">	
+			<div class="achievements">
 				<%=image_tag('reach.png') %>
 				<%=image_tag('1.png') %>
 				<%=image_tag('Veteran.png') %>
@@ -72,15 +72,15 @@
 			<div class="user-actions ">
 				<div class="action-icons">
 					<i id="addMiles" class="fa fa-plus-square"></i>
-					
+
 					<i id="addStudents" class="fa fa-child"></i>
-					
+
 					<i id="history" class="fa fa-calendar"></i>
 				</div>
 			</div>
 
 		</div>
-	</div>	
+	</div>
 
 	<div  class="addMiles" >
 		<div class="row">
@@ -88,14 +88,16 @@
 		  <form class="form-horizontal">
 		    <fieldset>
 		      <!-- Mile input-->
-		      
+
 		      <div class="row">
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Miles</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="mile" name="mile" type="number" placeholder="Enter Miles Ran" class="form-control input-lg">
+                <input id="school_page_id" name="school_id" type="hidden" value=<%=params[:id]%>>
+                <input id="date_for_activity" name="date_activity" type="hidden" value=<%=Time.now%>>
 			        </div>
 		      	</div>
 		      </div>
@@ -104,15 +106,15 @@
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Students</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="studentsP" name="studentsP" type="number" placeholder="Students Participating" class="form-control input-lg">
 			        </div>
 		      	</div>
-		      </div>		
+		      </div>
 
 		      <!-- Button (Double) -->
-		      
+
 		      <div class="form-group">
 		        <label class="col-md-3 control-label" for="log"></label>
 		      <div class="col-md-6">
@@ -138,43 +140,43 @@
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Total Students</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="students" name="students" type="number" value="<%=@school.students %>" class="form-control input-lg">
 			        </div>
-		      	</div>	
+		      	</div>
 		      </div>
 			  <div class="row">
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Goal</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="schoolGoal" name="schoolGoal" type="number" value="<%=@school.goal%>" class="form-control input-lg">
 			        </div>
-		      	</div>	
-		      </div> 
+		      	</div>
+		      </div>
 		      <div class="row">
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Coach</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="name" name="name" type="text" value="<%=@user.name %>" class="form-control input-lg">
 			        </div>
-		      	</div>	
+		      	</div>
 		      </div>
 		      <div class="row">
 		      	<div class="col-md-6 col-md-offset-3">
 			        <div class="col-md-6">
 			        	<h3>Email</h3>
-			        </div> 
+			        </div>
 			        <div class="col-md-6">
 			          <input id="email" name="email" type="text" value="<%=@user.email %>" class="form-control input-lg">
 			        </div>
-		      	</div>	
+		      	</div>
 		      </div>
-  		
+
 		      <!-- Button (Double) -->
 		      <div class="form-group">
 		        <label class="col-md-3 control-label" for="save"></label>
@@ -231,9 +233,11 @@
   </tbody>
 </table>
 
+<%school_miles = @school.total_miles_school%>
 
  <!-- Odometer Script -->
   <script>
+  var school_total = <%=school_miles%>
     //     setTimeout(function(){
     //     odometer.innerHTML = 456;
     // }, 1000);
@@ -244,7 +248,7 @@
     	$(".profile").hide();
     	$(".history").hide();
 		$(window).scrollTop(y+150);
-    }); 
+    });
 
     $("#addStudents").on("click", function(){
     	$(".profile").slideToggle();
@@ -260,18 +264,74 @@
 		$(window).scrollTop(y+150);
     });
 
-    $("button").on("click",function(){
-      var num = +$("input").val();
-      odometer.innerHTML = num;
-    });
+     // the original click
+    // $("button").on("click",function(){
+    //   var num = +$("input").val();
+    //   odometer.innerHTML = num;
+    // });
 
+// $("input[value='roll_dice']").on("click",function(e){
+//     e.preventDefault();
+//     $.ajax({
+//       type: "PUT",
+//       url: "/games/" + gameId,
+//       dataType: "json",
+//       data:{game_id: gameId, move: "roll_dice"},
+//       success: function(data) {
+//         window.data = data;
+//         console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
+//          $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
+//         console.log(data.roll_for_current)
+//         console.log("shot amount " +data.wound_for_current)
+//         $("#shot").text(data.game.turns[data.game.turns.length-1].player + " got shot " + data.wound_for_current + " time(s)")
+//         console.log("food amount " + data.score_for_current)
+//         $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
+//         $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
+
+//       }
+//     });
+
+//   });
+
+  $("#log").on("click",function(e){
+    var miles = +$("#mile").val();
+    var students = +$("#studentsP").val();
+    var activity_date = $("#date_for_activity").val();
+    var school_id_page = $("#school_page_id").val();
+
+    console.log(miles)
+    e.preventDefault();
+     $.ajax({
+      headers: {
+      'X-Transaction': 'POST Example',
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      type: "POST",
+      dataType: "json",
+      url: "/activities",
+      data: {miles: miles, students: students, school_id: school_id_page, date: activity_date},
+      success: function(data) {
+        odometer.innerHTML = data.schoolmiles
+        // window.data = data;
+        // console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
+        //  $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
+        // console.log(data.roll_for_current)
+        // console.log("shot amount " +data.wound_for_current)
+        // $("#shot").text(data.game.turns[data.game.turns.length-1].player + " got shot " + data.wound_for_current + " time(s)")
+        // console.log("food amount " + data.score_for_current)
+        // $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
+        // $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
+        console.log(data);
+      }
+    });
+  });
   </script>
 
 <!-- Graph script -->
 
-      <script>
-var duration   = 2000,
-transition = 100;
+<script>
+ var duration   = 2000;
+ var transition = 100;
 
 var goal = 10000; // school's preset goal! // have input for this
 var total = 2342; // school's total miles // from backend!!
@@ -285,37 +345,38 @@ var total = 2342; // school's total miles // from backend!!
   ".45em"
   );
 
-$("button").on("click",function(e){
-  e.preventDefault();	
-  var msglist = document.getElementById("donut");
-  var x = +$("input").val();
+// original click
+// $("button").on("click",function(e){
+//   e.preventDefault();
+//   var msglist = document.getElementById("donut");
+//   var x = +$("input").val();
 
-  console.log(x)
-  msglist.setAttribute("data-donut","");
-  total+= x
-  console.log(total)
+//   console.log(x)
+//   msglist.setAttribute("data-donut","");
+//   total+= x
+//   console.log(total)
 
-  var show = msglist.getAttribute("data-donut");
-  console.log(num)
-  // per = ((total+parseInt(x))/goal)*100
+//   var show = msglist.getAttribute("data-donut");
+//   console.log(num)
+//   // per = ((total+parseInt(x))/goal)*100
 
-  msglist.setAttribute("data-donut", num ) ;
+//   msglist.setAttribute("data-donut", num ) ;
 
-   $("#donut").empty();
+//    $("#donut").empty();
 
-   var num = total/goal * 100
-   if (num >= 100) {
-    $("#win").text("YOU GUYS DID IT!!!!!")
-   }
-  drawDonutChart(
-  '#donut',
-  num,
-  260,
-  260,
-  ".45em"
-  );
+//    var num = total/goal * 100
+//    if (num >= 100) {
+//     $("#win").text("YOU GUYS DID IT!!!!!")
+//    }
+//   drawDonutChart(
+//   '#donut',
+//   num,
+//   260,
+//   260,
+//   ".45em"
+//   );
 
-});
+// });
 
 
 function drawDonutChart(element, percent, width, height, text_y) {
