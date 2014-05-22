@@ -75,6 +75,7 @@ class SchoolsController < ApplicationController
 
 
 
+
     @user = signedup.user
 
 
@@ -97,7 +98,6 @@ class SchoolsController < ApplicationController
     end
 
   end
-
   def show
 
     flash[:error]

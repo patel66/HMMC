@@ -105,8 +105,6 @@ module HMMC
 
       def update_classroom(attrs)
 
-
-
         ar_classroom = Classroom.find(attrs[:classroom_id])
         ar_classroom.miles = attrs[:miles]
         ar_classroom.save
@@ -134,6 +132,11 @@ module HMMC
          ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
+      end
+
+      def get_all_users
+        ar_users = User.all
+        ar_user_to_entity= ar_users.map {|user| HMMC::User.new(user.attributes)}
       end
 
       def get_all_schools
