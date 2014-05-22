@@ -44,7 +44,20 @@ describe HMMC::SignUp do
     expect(result.success?).to eq true
     expect(result.school.zipcode).to eq 77478
     expect(result.school.lat).to eq 32.456
+    expect(result.school.long).to eq -95.422
   end
+
+  it "Creates a session and returns a session_id" do
+      # HMMC.db.create_session(useruser.id)
+      # binding.pry
+      result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500, :zipcode => 77478, :lat => 32.456, :long => -95.422)
+      # result = SignIn.run({ email: "John@mail.com", password: "password" })
+      expect(result.success?).to eq(true)
+      expect(result.session_id).to be_a(String)
+
+      expect(result.session_id.length > 10).to eq(true)
+  end
+
 end
  # school_name = inputs[:school_name]
  #      school_street = inputs[:street]

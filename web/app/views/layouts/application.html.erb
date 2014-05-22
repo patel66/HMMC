@@ -61,14 +61,13 @@
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#">Faq</a></li>
+             <li><%= link_to "Sign Up", "/signupzip"  %></li>
             <li><%= link_to "About", "/path2"  %></li>
 
-            <% if session[:app_sid].empty? %>
-              <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
+            <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
+
               <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
-            <% else %>
               <li><%= link_to "Sign Out", "/logout"  %></li>
-            <% end% %>
           </ul>
 
 

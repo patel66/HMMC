@@ -10,14 +10,14 @@ class SchoolsController < ApplicationController
 
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
-    # url = "http://api.greatschools.org/schools/nearby?[keygoeshere]#{params[:state]}&zip=#{params[:zipcode]}&limit1"
+
     # get the XML data as a string
     # binding.pry
     # xml_data = Net::HTTP.get_response(URI.parse(url)).body
 
 
-    @schools = HMMC.db.get_all_schools
 
+    @schools = HMMC.db.get_all_schools
     @schools_by_zip = @schools.select {|school| school.zipcode ==  params[:zipcode].to_i}
     # display on the page;
     # person selects school, will get the school paramters
@@ -46,33 +46,54 @@ class SchoolsController < ApplicationController
   end
 
   def create
+
+    binding.pry
+    @schools = HMMC.db.get_all_schools
+    @schools_by_zip = @schools.select {|school| school.zipcode ==  params["validate-number"].to_i}
+
+    selected_school = @schools_by_zip.select{|school| school.name == params["validate-select"]}
+
+
     user_params = params[:user]
+
+
+
     school_params = params[:school]
 
     signedup = HMMC::SignUp.run(
-      :name => user_params[:name],
-      :email => user_params[:email],
-      :password=> user_params[:password],
-      :school_name => school_params[:name],
-      :street => school_params[:street],
-      :city => school_params[:city],
-      :state=>school_params[:state],
-      :students=> school_params[:students]
+      :name => params["validate-text"],
+      :email => params["validate-email"],
+      :password=> params["validate-length"],
+      :school_name => selected_school[0].name,
+      :street => selected_school[0].street,
+      :city => selected_school[0].city,
+      :state=>selected_school[0].state,
+      :students=> 500,
+      :lat => selected_school[0].lat,
+      :long => selected_school[0].long
       )
+
+
+
+    @user = signedup.user
+
 
     if signedup.success?
       @school = signedup.school
       @user = signedup.user
+
+      session[:app_sid] = signedup.session_id
       email = UserMailer.sign_up_mail(@user.id,@school.id)
       email.deliver
 
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
+      render "schools/aftersignup"
       # button school landing pg
-      redirect_to "/"
     else
       @error = signedup.error
-      redirect_to "/"
+      flash[:notice] = "Please fill in all of the input labels"
+      render "schools/signup"
     end
 
   end
@@ -117,6 +138,14 @@ class SchoolsController < ApplicationController
       format.html
       format.json  { render :json => {school: @render_school} }
     end
+
+  end
+
+  def signup
+
+  end
+
+  def aftersignup
 
   end
 

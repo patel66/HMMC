@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   get 'userin', to: 'users#userin'
   get 'create', to: 'users#new'
   get 'schools/leaderboard', to: 'schools#leaderboard'
-
-
+  get 'signupzip', to: 'schools#signup'
+  get 'registration-complete', to: 'schools#aftersignup'
     # get 'schools/search', to: 'schools#search'
 
   get 'users/admin', to: 'users#admin'
