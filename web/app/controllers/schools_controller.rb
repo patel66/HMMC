@@ -8,6 +8,10 @@ class SchoolsController < ApplicationController
     # @school = HMMC::School.new
   end
 
+  def test
+
+  end
+
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
 
