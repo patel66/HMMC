@@ -23,7 +23,7 @@
 			</div>			
 			<div class="school-details row">
 				<h2>Students Participating</h2>
-				<h2>500</h2>
+				<h2><%=@school.students%></h2>
 			</div>
 			
 		</div>
@@ -37,7 +37,7 @@
       	<div id="donut" data-donut="30">
 	    		
 	    </div>
-	      <div><h3> Goal of 10000 Miles</h3>
+	      <div id="goal"><h3> Of Goal Met</h3>
 		</div>
 	    <div id="win"></div>
 
@@ -67,21 +67,53 @@
 
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-6 col-md-offset-3">
 
 			<div class="user-actions ">
 				<div class="action-icons">
 					<i id="addMiles" class="fa fa-plus-square"></i>
 					
-					<i id="addStudents" class="fa fa-user"></i>
+					<i id="addStudents" class="fa fa-child"></i>
 					
-					<i id="history" class="fa fa-history"></i>
+					<i id="history" class="fa fa-calendar"></i>
 				</div>
 			</div>
 
-			<div class="addMiles">
-				<form>
-					<input type="number" name="addMiles" class="addMiles" value="Enter Miles" >
+			<div class="addMiles" style="display: none">
+				<form >
+					<label>MILES</label>
+					<br>
+					<input type="number" name="miles" class="newMiles" placeholder="Enter Miles"><br>
+					<label># Students that Participated</label>
+					<br>
+					<input type="number" name="students" class="newstudents" placeholder="How many students? ">
+					<button> Submit </button>
+				</form>
+			</div>
+			<div class="addStudents" style="display: none">
+				<h2><%=@school.name %></h2>
+				<h3><%=@school.street %></h3>
+				<h3><%=@school.city + ", " + @school.state %></h3>
+				<form >
+					<label>Total Students</label>
+					<input type="number" name="totalStudents" class="totalStudents" placeholder="<%=@school.students %>">
+					<br>
+					<label>Name</label>
+					<input name="name" class="name" placeholder="<%=@user.name%>">
+					<br>
+					<label>Email</label>
+					<input type="text" name="email" class="email" value="<%=@user.email %>" />
+					<br>
+					<label>Mile Goal</label>
+					<input  type="number" name="goal" class="goal" placeholder="<%=@school.goal %>" /> 	
+					<br>
+					<button> Save </button>
+				</form>
+			</div>
+			<div class="history" style="display: none">
+				<form >
+					<input type="number" name="miles" class="newMiles" placeholder="Enter Miles">
+					<button> Submit </button>
 				</form>
 			</div>
 		</div>
@@ -139,10 +171,26 @@
     //     odometer.innerHTML = 456;
     // }, 1000);
     // odometer.innerHTML = school total miles + num
+    var y = $(window).scrollTop();  //your current y position on the page
+    $("#addMiles").on("click", function(){
+    	$(".addMiles").slideToggle();
+		$(window).scrollTop(y+150);
+    }); 
+
+    $("#addStudents").on("click", function(){
+    	$(".addStudents").slideToggle();
+		$(window).scrollTop(y+150);
+    });
+
+     $("#history").on("click", function(){
+    	$(".history").slideToggle();
+		$(window).scrollTop(y+150);
+    });
+
     $("button").on("click",function(){
       var num = +$("input").val();
       odometer.innerHTML = num;
-    })
+    });
 
   </script>
 
@@ -164,7 +212,8 @@ var total = 2342; // school's total miles // from backend!!
   ".45em"
   );
 
-$("button").on("click",function(){
+$("button").on("click",function(e){
+  e.preventDefault();	
   var msglist = document.getElementById("donut");
   var x = +$("input").val();
 

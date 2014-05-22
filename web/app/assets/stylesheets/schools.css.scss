@@ -20,8 +20,7 @@ body  {
   cursor: pointer;
   font-size: 8rem;
   padding: 10px;
-  margin-left: 15px;
-  margin-top: 100px;
+ 
 }
 
 #map {
@@ -29,7 +28,6 @@ body  {
   height: 500px;
   /*background-color: white;*/
 }
-
 
 .odometer {
   opacity: .8;
@@ -95,10 +93,23 @@ div#odometer.odometer.odometer-auto-theme {
   font-weight: 4em;
 }
 
+#goal {
+  margin-top: 10%; 
+}
+
+.addStudents {
+  text-align: center;
+}
+
+.addStudents form label{
+  margin: 0 auto;
+}
 
 .user-actions  {
 padding-top: 150;
-display: block;
+display: block; 
+text-align: center;
+
 /*<div class=​"school-details row">​…​</div>​display: block;*/
 }
 
@@ -143,9 +154,7 @@ text {
 #donut {
   width: 10rem;
   height: 10rem;
-  margin: 0 auto;
-  position: absolute;
-  left: 100px;
+  padding-left: 28%;
 }
 
 path.color0 {
