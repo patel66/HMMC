@@ -8,6 +8,10 @@ class SchoolsController < ApplicationController
     # @school = HMMC::School.new
   end
 
+  def test
+
+  end
+
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
     # url = "http://api.greatschools.org/schools/nearby?[keygoeshere]#{params[:state]}&zip=#{params[:zipcode]}&limit1"
