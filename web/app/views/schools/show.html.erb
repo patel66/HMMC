@@ -16,7 +16,7 @@
 				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>
 			<div class="school-details row">
-				<h3>National Rank: 3</h3>
+				<h3>National Rank: <%=@rank%></h3>
 				<h3>State Rank: 2</h3>
 				<h3>City Rank: 1</h3>
 
@@ -323,6 +323,7 @@
         console.log(data);
       }
     });
+
 
 
   var msglist = document.getElementById("donut");

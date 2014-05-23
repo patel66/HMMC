@@ -195,7 +195,7 @@ module HMMC
       def get_national_ranking
         schools = get_all_schools_sign_up
         schools.sort_by {|school| -school.total_miles_school}
-         schools
+        schools
       end
 
       def get_state_ranking(state)

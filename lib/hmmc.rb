@@ -38,6 +38,13 @@ module HMMC
 
     HMMC.db.create_school(name: 'Hostos-Lincoln Academy of Science', city: "Bronx", state: 'NY', zipcode: 10451, lat: 40.818172, long: -73.92789, street: "475 Grand Concourse")
     HMMC.db.create_school(name: 'Urban Assembly School For Careers In Sports', city: "Bronx", state: 'NY', zipcode: 10451, lat: 40.82278, long: -73.92348, street: "730 Concourse Village W")
+
+    HMMC.db.create_school(name: 'St. Austin Catholic School', city: "Austin", state: "TX", zipcode: 78705, lat: 30.2795675, long: -97.7340782, street: "1911 San Antonio St" )
+    HMMC.db.create_school(name: 'Ridgetop Elementary School', city: "Austin", state: "TX", zipcode: 78751, lat: 30.311517, long: -97.716143, street: "5005 Caswell Ave" )
+    HMMC.db.create_school(name: 'Kealing Middle School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.269754, long: -97.722135, street: "1607 Pennsylvania Ave" )
+    HMMC.db.create_school(name: 'Martin Middle School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.252654, long: -97.730451, street: "1601 Haskell St" )
+    HMMC.db.create_school(name: 'Metz Elementary School', city: "Austin", state: "TX", zipcode: 78702, lat: 30.254583, long: -97.722044, street: "84 Robert Martinez Jr St" )
+    HMMC.db.create_school(name: 'Travis Heights Elementary School', city: "Austin", state: "TX", zipcode: 78704, lat: 30.241598, long: -97.746116, street: "2010 Alameda Dr" )
   end
 
 end

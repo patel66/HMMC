@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
+
     result = HMMC::SignIn.run(:email => params[:user][:email], :password => params[:user][:password])
     if result.success?
       session_id = result.session_id
