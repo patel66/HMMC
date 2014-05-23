@@ -130,7 +130,7 @@
   <p class="clearfix"><%= label_tag(:email, "Email") %></p>
   <p class="clearfix"><%= text_field(:user, :email) %></p>
   <p class="clearfix"><%= label_tag(:password, "Password") %></p>
-  <p class="clearfix"><%= text_field(:user, :password) %></p>
+  <p class="clearfix"><%= password_field(:user, :password) %></p>
   <br>
   <%= submit_tag("ENTER") %>
   <%end%>
@@ -190,7 +190,7 @@
                   <%= label_tag(:password, "Password") %>
                 </div>
                 <div class="col-xs-6 col-md-6">
-                  <%= text_field(:user, :password) %>
+                  <%= password_field(:user, :password) %>
                 </div>
               </div>
               <!-- Need a Verify Password option, but right now, it doesn't check against its first counterpart -->
