@@ -20,6 +20,6 @@ gem 'active_record_tasks', '~> 1.0.3'
 gem 'activesupport'
 
 #use bcrypt password hash
-gem 'bcrypt-ruby', '~> 3.1.5'
+gem 'bcrypt', '~> 3.1.5'
 
 # Capistrano 

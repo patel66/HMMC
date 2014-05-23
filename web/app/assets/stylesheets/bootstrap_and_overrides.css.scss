@@ -19,6 +19,24 @@ body {
   // #ed1c5d red
 }
 
+.whitespace{
+  background-color: white;
+  opacity: .85;
+  height: 100vh
+}
+
+.congratulations{
+  width: 80%;
+  height: 100px;
+  background-color: #a6ef18;
+}
+
+.thatLine {
+  border-bottom: 1px solid gray;
+  line-height: 0;
+  width: 75%;
+}
+
 .signup {
   background-color: white;
 
