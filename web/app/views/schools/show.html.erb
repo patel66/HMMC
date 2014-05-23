@@ -17,8 +17,8 @@
 			</div>
 			<div class="school-details row">
 				<h3>National Rank: <span id="display_nat_rank"></span></h3>
-				<h3>State Rank: 2</h3>
-				<h3>City Rank: 1</h3>
+				<h3>State Rank: 5 </h3>
+				<h3>City Rank: <span id="display_city_rank"></span></h3>
 
 			</div>
 			<div class="school-details row">
@@ -320,7 +320,8 @@
       success: function(data) {
         window.xyz = data
         odometer.innerHTML = data.schoolmiles
-        $("#display_nat_rank").text(data.rank)
+        $("#display_nat_rank").text(data.national_rank)
+        $("#display_city_rank").text(data.city_rank)
         console.log(data);
       }
     });
