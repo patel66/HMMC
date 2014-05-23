@@ -51,7 +51,6 @@ class SchoolsController < ApplicationController
 
   def create
 
-    binding.pry
     @schools = HMMC.db.get_all_schools
     @schools_by_zip = @schools.select {|school| school.zipcode ==  params["validate-number"].to_i}
 

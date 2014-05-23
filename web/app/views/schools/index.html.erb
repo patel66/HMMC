@@ -1,21 +1,26 @@
 <div id="map" class="map">
-	
+
 </div>
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
 <script type="text/javascript">
-	
+
 	var map = L.map('map', {
     center: [30.25, -97.75], //Austin!
     zoom: 13
 	});
 
 	L.tileLayer(
-    'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg'
+    'https://{s}.tiles.mapbox.com/v3/eleanor.mnyzxgvi/{z}/{x}/{y}.png'
 	).addTo(map);
-	
+
+  <% @schools.each do |school| %>
+    L.marker([<%=school.lat%>, <%=school.long%>])
+    .bindPopup("<%=school.name%>")
+    .addTo(map)
+  <% end %>
 </script>
 
 
