@@ -132,7 +132,7 @@ class SchoolsController < ApplicationController
      #  end
      # end
 
-     puts @users_school.state
+     # puts @users_school.state
     end
 
   end

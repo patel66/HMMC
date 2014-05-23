@@ -16,7 +16,7 @@
 				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>
 			<div class="school-details row">
-				<h3>National Rank: <%=@rank%></h3>
+				<h3>National Rank: <span id="display_nat_rank"></span></h3>
 				<h3>State Rank: 2</h3>
 				<h3>City Rank: 1</h3>
 
@@ -318,8 +318,9 @@
       url: "/activities",
       data: {miles: miles, students: students, school_id: school_id_page, date: activity_date},
       success: function(data) {
+        window.xyz = data
         odometer.innerHTML = data.schoolmiles
-
+        $("#display_nat_rank").text(data.rank)
         console.log(data);
       }
     });
