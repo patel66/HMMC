@@ -78,6 +78,7 @@ class SchoolsController < ApplicationController
 
 
 
+
     @user = signedup.user
 
 
@@ -100,15 +101,38 @@ class SchoolsController < ApplicationController
     end
 
   end
-
   def show
 
     flash[:error]
 
+# rank = ""
+# array.each_index do |index|
+# if array[index] == 3
+# rank = index
+# end
+# end
+# [1, 2, 3, 4]
+# rank
+# 2
+# rank+1
+# 3
+    binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
     @user = HMMC.db.get_user_by_sid(session[:app_sid])
+
     if @user != nil
-     @users_school = HMMC.db.get_school_from_user_id(@user.id)
+     # @users_school = HMMC.db.get_school_from_user_id(@user.id)
+     # national_rank = HMMC.db.get_national_ranking
+     # @schools = HMMC.db.get_all_schools_sign_up
+     # @rank = ""
+     # national_rank.each_index do |index|
+     #  if national_rank[index].id == @users_school.id
+     #    @rank = index + 1
+
+     #  end
+     # end
+
+     puts @users_school.state
     end
 
   end

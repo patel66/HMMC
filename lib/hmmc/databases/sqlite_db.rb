@@ -105,8 +105,6 @@ module HMMC
 
       def update_classroom(attrs)
 
-
-
         ar_classroom = Classroom.find(attrs[:classroom_id])
         ar_classroom.miles = attrs[:miles]
         ar_classroom.save
@@ -134,6 +132,11 @@ module HMMC
          ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
+      end
+
+      def get_all_users
+        ar_users = User.all
+        ar_user_to_entity= ar_users.map {|user| HMMC::User.new(user.attributes)}
       end
 
       def get_all_schools
@@ -192,7 +195,7 @@ module HMMC
       def get_national_ranking
         schools = get_all_schools_sign_up
         schools.sort_by {|school| -school.total_miles_school}
-         schools
+        schools
       end
 
       def get_state_ranking(state)
