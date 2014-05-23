@@ -237,6 +237,13 @@
 
  <!-- Odometer Script -->
   <script>
+    var duration   = 2000;
+    var transition = 100;
+
+    var goal = 10000; // school's preset goal! // have input for this
+    var total = school_total; // school's total miles // from backend!!
+
+  var num = total/goal * 100
   var school_total = <%=school_miles%>
     //     setTimeout(function(){
     //     odometer.innerHTML = 456;
@@ -312,31 +319,54 @@
       data: {miles: miles, students: students, school_id: school_id_page, date: activity_date},
       success: function(data) {
         odometer.innerHTML = data.schoolmiles
-        // window.data = data;
-        // console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
-        //  $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
-        // console.log(data.roll_for_current)
-        // console.log("shot amount " +data.wound_for_current)
-        // $("#shot").text(data.game.turns[data.game.turns.length-1].player + " got shot " + data.wound_for_current + " time(s)")
-        // console.log("food amount " + data.score_for_current)
-        // $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
-        // $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
+
         console.log(data);
       }
     });
+
+
+  var msglist = document.getElementById("donut");
+  var x = +$("#mile").val();
+
+  console.log(x)
+  msglist.setAttribute("data-donut","");
+  total+= x
+  console.log(total)
+
+  var show = msglist.getAttribute("data-donut");
+  console.log(num)
+  // per = ((total+parseInt(x))/goal)*100
+
+  msglist.setAttribute("data-donut", num ) ;
+
+   $("#donut").empty();
+
+   var num = total/goal * 100
+   if (num >= 100) {
+    $("#win").text("YOU GUYS DID IT!!!!!")
+   }
+  drawDonutChart(
+  '#donut',
+  num,
+  260,
+  260,
+  ".45em"
+  );
+
   });
-  </script>
+
 
 <!-- Graph script -->
 
-<script>
+
  var duration   = 2000;
  var transition = 100;
 
 var goal = 10000; // school's preset goal! // have input for this
-var total = 2342; // school's total miles // from backend!!
+var total = school_total; // school's total miles // from backend!!
 
   var num = total/goal * 100
+
   drawDonutChart(
   '#donut',
   num,
@@ -346,37 +376,37 @@ var total = 2342; // school's total miles // from backend!!
   );
 
 // original click
-// $("button").on("click",function(e){
-//   e.preventDefault();
-//   var msglist = document.getElementById("donut");
-//   var x = +$("input").val();
+$("button").on("click",function(e){
+  // e.preventDefault();
+  // var msglist = document.getElementById("donut");
+  // var x = +$("#mile").val();
 
-//   console.log(x)
-//   msglist.setAttribute("data-donut","");
-//   total+= x
-//   console.log(total)
+  // console.log(x)
+  // msglist.setAttribute("data-donut","");
+  // total+= x
+  // console.log(total)
 
-//   var show = msglist.getAttribute("data-donut");
-//   console.log(num)
-//   // per = ((total+parseInt(x))/goal)*100
+  // var show = msglist.getAttribute("data-donut");
+  // console.log(num)
+  // // per = ((total+parseInt(x))/goal)*100
 
-//   msglist.setAttribute("data-donut", num ) ;
+  // msglist.setAttribute("data-donut", num ) ;
 
-//    $("#donut").empty();
+  //  $("#donut").empty();
 
-//    var num = total/goal * 100
-//    if (num >= 100) {
-//     $("#win").text("YOU GUYS DID IT!!!!!")
-//    }
-//   drawDonutChart(
-//   '#donut',
-//   num,
-//   260,
-//   260,
-//   ".45em"
-//   );
+  //  var num = total/goal * 100
+  //  if (num >= 100) {
+  //   $("#win").text("YOU GUYS DID IT!!!!!")
+  //  }
+  // drawDonutChart(
+  // '#donut',
+  // num,
+  // 260,
+  // 260,
+  // ".45em"
+  // );
 
-// });
+});
 
 
 function drawDonutChart(element, percent, width, height, text_y) {
