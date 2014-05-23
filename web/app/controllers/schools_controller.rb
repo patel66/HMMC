@@ -60,7 +60,7 @@ class SchoolsController < ApplicationController
     user_params = params[:user]
 
 
-    # binding.pry
+
     school_params = params[:school]
 
     signedup = HMMC::SignUp.run(

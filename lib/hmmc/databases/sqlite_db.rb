@@ -184,8 +184,15 @@ module HMMC
       def get_school_from_user_id(userid)
         ar_school = School.find_by_user_id(userid)
         return nil if ar_school.nil?
-        HMMC::School.new(ar_school.attributes)
+        school_entity = HMMC::School.new(ar_school.attributes)
+        school_entity.activitys = get_activities_for_school(school_entity.id)
+
+        school_entity
+
       end
+
+
+
 # map{|activity| activity.miles}.reduce(0,:+)
 #       def get_national_ranking
 #         schools = get_all_schools
