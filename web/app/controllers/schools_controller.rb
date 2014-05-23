@@ -60,7 +60,7 @@ class SchoolsController < ApplicationController
     user_params = params[:user]
 
 
-    binding.pry
+    # binding.pry
     school_params = params[:school]
 
     signedup = HMMC::SignUp.run(
@@ -116,7 +116,7 @@ class SchoolsController < ApplicationController
 # 2
 # rank+1
 # 3
-    binding.pry
+#    binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
     @user = HMMC.db.get_user_by_sid(session[:app_sid])
 
@@ -132,7 +132,7 @@ class SchoolsController < ApplicationController
      #  end
      # end
 
-     puts @users_school.state
+     #puts @users_school.state
     end
 
   end

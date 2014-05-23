@@ -16,26 +16,46 @@ body {
   margin-top: 100px;
   background-color: #00c3f7;
   overflow-x: hidden;
-  // #ad38af purple
-  // #ed1c5d red
+}
+
+.cursive {
+  font-family: 'Pacifico', cursive;
 }
 
 .whitespace{
-  background-color: white;
-  opacity: .85;
-  height: 100vh
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background-color: rgba(255,255,255,0.85);
+  min-height: 100vh;
 }
 
 .congratulations{
   width: 80%;
-  height: 100px;
-  background-color: #a6ef18;
+  background-color: #5cb85c;
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin: 0px auto;
+  border-radius: 5px;
+  border-radius: 8px;
+}
+
+.emptybox{
+  border-radius: 5px;
+  border: 2px solid black;
+  &:hover {
+    background-color: red;
+  }
 }
 
 .thatLine {
   border-bottom: 1px solid gray;
   line-height: 0;
   width: 75%;
+  display: inline-block;
+
 }
 
 .signup {
