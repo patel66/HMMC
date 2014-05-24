@@ -28,7 +28,6 @@ class ActivitiesController < ApplicationController
 
    @schools_in_city = @schools.select{|school| school.city == @users_school.city}
    @schools_in_city_sorted = @schools_in_city.sort_by {|school| -school.total_miles_school}
-   binding.pry
    @schools_in_city_sorted.each_index do |index|
       if @schools_in_city_sorted[index].id == @users_school.id
         @cityrank = index + 1
