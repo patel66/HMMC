@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # the root of site routed with "root"
   # root 'welcome#index'
 
-  root 'users#home'
+  root 'schools#index'
 
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'

@@ -113,6 +113,7 @@ $('#school-search').on('click', function (e) {
     success: function(data) {
       window.xyz = data
       $("#validate-select").empty();
+      $("#validate-select").append("<option value='' disabled selected style='display:none;'>Choose School</option>")
       for (var i = 0; i < data.length; i ++) {
         $("#validate-select").append("<option id=ChooseSchool>"+data[i].name+"</option>")
       }

@@ -225,7 +225,7 @@ module HMMC
       end
 
       def get_user_by_sid(sid)
-
+        binding.pry
         ar_session = Session.find_by_session_key(sid)
         return nil if ar_session.nil?
         user_id = ar_session[:user_id]

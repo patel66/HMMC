@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
     result = HMMC::SignOut.run(:session_key => session[:app_sid])
     session[:app_sid].clear
 
-    session[:app_sid].clear
     if result.success?
 
       @user = result.user
