@@ -145,7 +145,7 @@ class SchoolsController < ApplicationController
   end
 
   def leaderboard
-
+    @top_school_array = HMMC.db.get_national_ranking
   end
 
   def search
