@@ -111,34 +111,15 @@
   <!-- Modal -->
   <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
 
-<!-- <form class="form-3">
-    <p class="clearfix">
-        <label for="login">Email</label>
-        <input type="text" name="login" id="login" placeholder="Username">
+    <%= form_tag("/sessions", method: "post", class: 'form-3') do %>
+    <p class="clearfix"><%= label_tag(:email, "Email") %>
+    <%= text_field(:user, :email) %>
+    <%= label_tag(:password, "Password") %>
+    <%= password_field(:user, :password) %>
     </p>
-    <p class="clearfix">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-    </p>
-    <p class="clearfix">
-        <input type="checkbox" name="remember" id="remember">
-        <label for="remember">Remember me</label>
-    </p>
-    <p class="clearfix">
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <input type="submit" name="submit" value="Sign in" action="/schools" method="post">
-    </p>
-
-</form> -->
-
-  <%= form_tag("/sessions", method: "post", class: 'form-3') do %>
-  <p class="clearfix"><%= label_tag(:email, "Email") %></p>
-  <p class="clearfix"><%= text_field(:user, :email) %></p>
-  <p class="clearfix"><%= label_tag(:password, "Password") %></p>
-  <p class="clearfix"><%= password_field(:user, :password) %></p>
-  <br>
-  <%= submit_tag("ENTER") %>
-  <%end%>
+    <br>
+    <%= submit_tag("ENTER") %>
+    <%end%>
 
 
   </div> <!-- modal -->
@@ -148,125 +129,7 @@
   <% end %>
 
 
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true" style="display:none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel2">Sign Up</h4>
-        </div>
-        <div class="modal-body">
 
-          <div class="row">
-            <div class="col-md-6">
-              <h4>Account Information</h4>
-              <%= form_tag("/schools", method: "post") do %>
-              <div class="row">
-                <div class="col-xs-4 col-md-3">
-                  <%= label_tag(:name, "Name") %>
-                </div>
-                <div class="col-xs-6 col-md-6">
-                  <%= text_field(:user, :name) %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="marginTop"></div>
-                <div class="col-xs-4 col-md-3">
-                  <%= label_tag(:email, "Email") %>
-                </div>
-                <div class="col-xs-6 col-md-6">
-                  <%= text_field(:user, :email) %>
-                </div>
-              </div>
-              <!-- Need a Verify Email address option, but right now, it doesnt check against its first counterpart -->
-              <div class="row">
-
-<!--                 <div class="col-xs-4 col-md-3">
-                  <%= label_tag(:email, "Verify") %>
-                </div>
-                <div class="col-xs-6 col-md-6">
-                  <%= text_field(:user, :email) %>
-                </div> -->
-              </div>
-
-              <div class="row">
-                <div class="marginTop"></div>
-                <div class="col-xs-4 col-md-3">
-                  <%= label_tag(:password, "Password") %>
-                </div>
-                <div class="col-xs-6 col-md-6">
-                  <%= password_field(:user, :password) %>
-                </div>
-              </div>
-              <!-- Need a Verify Password option, but right now, it doesn't check against its first counterpart -->
-              <div class="row">
-<!--                 <div class="col-xs-4 col-md-3">
-                  <%= label_tag(:password, "Verify") %>
-                </div>
-                <div class="col-xs-6 col-md-6">
-                  <%= text_field(:user, :password) %>
-                </div> -->
-              </div>
-              <div class="row">
-                <% label_tag(:School_Information)%>
-              </div>
-            </div> <!-- col-md-6 -->
-            <div class="col-md-6">
-                <h4>School Information</h4>
-                <div class="row">
-                  <div class="col-xs-4 col-md-3">
-                    <%= label_tag(:name, "School Name:") %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= text_field(:school, :name) %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 col-md-3">
-                    <%= label_tag(:state, "State:") %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= text_field(:school, :state) %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 col-md-3">
-                    <%= label_tag(:city, "City:") %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= text_field(:school, :city) %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 col-md-3">
-                    <%= label_tag(:street, "Street:") %>
-                  </div>
-                  <div class="col-xs-6 col-md-6">
-                    <%= text_field(:school, :street) %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 col-md-3">
-                    <%= label_tag(:students, "Number of students:") %>
-                  </div>
-                  <div class="col-xs-6 col-md-3">
-                    <%= text_field(:school, :students) %>
-                  </div>
-                  <% label_tag(:School_Information)%><br>
-                </div> <!-- row -->
-
-            </div> <!-- col-md-6 -->
-          </div> <!-- row for the entire modal-->
-
-
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Log In</button>
-          <%end%> <!-- end form -->
-        </div> <!-- modal body -->
-      </div> <!-- modal content -->
-    </div> <!-- modal dialog -->
-  </div> <!-- modal -->
-  <!-- End Modal -->
 
 
   </body>
