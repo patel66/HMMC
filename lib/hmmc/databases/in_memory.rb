@@ -3,7 +3,6 @@ module HMMC
     class InMemory
 
       def initialize(config=nil)
-        # binding.pry
         clear_everything
       end
 

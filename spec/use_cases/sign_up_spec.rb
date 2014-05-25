@@ -48,8 +48,6 @@ describe HMMC::SignUp do
   end
 
   it "Creates a session and returns a session_id" do
-      # HMMC.db.create_session(useruser.id)
-      # binding.pry
       result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500, :zipcode => 77478, :lat => 32.456, :long => -95.422)
       # result = SignIn.run({ email: "John@mail.com", password: "password" })
       expect(result.success?).to eq(true)

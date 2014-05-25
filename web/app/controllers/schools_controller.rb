@@ -16,7 +16,6 @@ class SchoolsController < ApplicationController
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
 
     # get the XML data as a string
-    # binding.pry
     # xml_data = Net::HTTP.get_response(URI.parse(url)).body
 
 
@@ -33,7 +32,6 @@ class SchoolsController < ApplicationController
 
     # puts hash.class
     # @json = @hash.to_json
-    # binding.pry
     # @hash.each do |key, value|
     #   puts value
     # end
@@ -116,7 +114,6 @@ class SchoolsController < ApplicationController
 # 2
 # rank+1
 # 3
-#    binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
     @user = HMMC.db.get_user_by_sid(session[:app_sid])
 

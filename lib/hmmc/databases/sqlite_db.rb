@@ -10,7 +10,6 @@ module HMMC
       # end
 
        def initialize(env)
-          # binding.pry
           #TO DO: edit this to work
         # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
         # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
@@ -225,7 +224,6 @@ module HMMC
       end
 
       def get_user_by_sid(sid)
-        binding.pry
         ar_session = Session.find_by_session_key(sid)
         return nil if ar_session.nil?
         user_id = ar_session[:user_id]

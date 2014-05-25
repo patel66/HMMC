@@ -38,7 +38,7 @@ describe HMMC::AddMilesClass do
    # subject.run(:classroom => math_class, :school => school, :milesclass => 30, :school_id => school.id)
    # expect(result.school.total_miles + result2.school.total_miles).to eq 75
    result2 = subject.run(:classroom => math_class.id, :school => school, :milesclass => 70, :school_id => school.id)
-   # binding.pry
+
    expect(result2.success?).to eq true
    expect(result2.school.total_miles).to eq 135
 
