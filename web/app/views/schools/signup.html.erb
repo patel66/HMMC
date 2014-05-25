@@ -29,9 +29,7 @@
     border-color: rgb(212, 63, 58);
 }
 
-form {
-  width:200px;
-}
+
 
 </style>
 
@@ -41,56 +39,68 @@ form {
 
 <div class="container">
 
-  <h2>Hundread Million Mile Club Registration</h2>
 
   <div class="row">
-    <div class="col-xs-6 col-md-6">
-      <%= form_tag("/schools", method: 'post') do %>
+    <div class='col-md-2'>
+    </div>
+    <div class="col-md-8 whitespace" style="padding: 30px;">
+      <div class='row'>
 
-      <div class="form-group">
-        <%= label_tag(:Name, "Coach") %>
-        <div class="input-group">
-          <%=text_field(:user, :name, :class=>"form-control", :id=>"validate-text", :name=>"validate-text", :required => true)%>  <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-      </div>
+        <h2 style="text-align: center">Hundred Million Mile Club Registration</h2>
+        <br>
+        <span class="thatLine"> </span>
+        <br> <br> <br>
+        <div class="col-md-6">
+          <%= form_tag("/schools", method: 'post') do %>
 
-      <div class="form-group">
-        <%= label_tag(:email, "Email") %>
-        <div class="input-group" data-validate="email">
-          <%=text_field(:user, :name, :class=>"form-control", :id=>"validate-email", :name=>"validate-email", :required => true)%>
-          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-      </div>
+          <div class="form-group">
+            <%= label_tag(:Name, "Coach") %>
+            <div class="input-group">
+              <%=text_field(:user, :name, :class=>"form-control", :id=>"validate-text", :name=>"validate-text", :required => true)%>  <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag(:email, "Email") %>
+            <div class="input-group" data-validate="email">
+              <%=text_field(:user, :name, :class=>"form-control", :id=>"validate-email", :name=>"validate-email", :required => true)%>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
 
 
-      <div class="form-group">
-        <%= label_tag(:password, "Password") %>
-        <div class="input-group" data-validate="length" data-length="6">
-          <%= password_field(:user, :password, :class=> 'form-control', :name=>"validate-length", :id=>'validate-length', :placeholder=>"Password", :required=> true) %><span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-      </div>
+          <div class="form-group">
+            <%= label_tag(:password, "Password") %>
+            <div class="input-group" data-validate="length" data-length="6">
+              <%= password_field(:user, :password, :class=> 'form-control', :name=>"validate-length", :id=>'validate-length', :placeholder=>"Password", :required=> true) %><span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+        </div> <!-- col-md-6 -->
+        <div class='col-md-6'>
+          <div class="form-group">
+            <%= label_tag(:zipcode, "Zipcode:") %>
+            <div class="input-group" data-validate="number">
+              <%= text_field(:school, :zipcode, :class=> 'form-control', :name=>"validate-number", :placeholder=>"School Zipcode", :required=> true) %>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+            <button id="school-search">Search School</button>
+          </div>
 
-      <div class="form-group">
-        <%= label_tag(:zipcode, "Zipcode:") %>
-        <div class="input-group" data-validate="number">
-          <%= text_field(:school, :zipcode, :class=> 'form-control', :name=>"validate-number", :placeholder=>"School Zipcode", :required=> true) %>
-          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-        <button id="school-search">Search School</button>
-      </div>
+          <div class="form-group">
+            <%= label_tag(:select_school, "Select school:") %>
+            <div class="input-group">
+              <select class="form-control" name="validate-select" id="validate-select" placeholder="Validate Select" required>
+              </select>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <%= label_tag(:select_school, "Select school:") %>
-        <div class="input-group">
-          <select class="form-control" name="validate-select" id="validate-select" placeholder="Validate Select" required>
-          </select>
-          <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary col-xs-12" disabled>Submit</button>
-      <%end%>
-
+          <button type="submit" class="btn btn-primary col-xs-12" disabled>Submit</button>
+          <%end%>
+        </div> <!-- col-md-6 -->
+      </div> <!-- row -->
+    </div> <!-- col-md-8 -->
+    <div class='col-md-2'>
     </div>
   </div>
 </div>
