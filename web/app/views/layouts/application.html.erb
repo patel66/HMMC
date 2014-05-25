@@ -71,9 +71,9 @@
                 <li><%= link_to "Sign Up", "/signupzip"  %></li>
               <% else %>
 
-                <% school_id = HMMC.db.get_user_by_sid(session[:app_sid]) %>
-
-                <li><%= link_to "School", "/schools/" + school_id.to_s %></li>
+                <% user_id = HMMC.db.get_user_by_sid(session[:app_sid]) %>
+                <% school_id = HMMC.db.get_school_from_user_id(user_id.id) %>
+                <li><%= link_to "School", "/schools/" + school_id.id.to_s %></li>
                 <li><%= link_to "Sign Out", "/logout"  %></li>
 
               <% end%>
