@@ -2,6 +2,188 @@
 	<script type="text/javascript">$(".form-3").append( <h5><%= flash[:error] %></h5>);</script>
 <%end %>	
 
+<style type="text/css">
+	.container {
+		width: 102%;
+		margin-left: -11px;
+		margin-top: -20px;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	h1{
+		font-weight: normal;
+		font-size: 50px;
+		text-align: center;
+		color: fff;
+		margin: 0;
+		padding: 0;
+	}
+
+	h2{
+		font-weight: normal;
+		font-size: 40px;
+		text-align: center;
+		color: fff;
+		margin: 0;
+		padding: 0;
+	}
+
+	.center {
+		margin: 0 auto;
+	}
+
+	.content{
+		margin: 0 auto;
+		width: 960px;
+	}
+
+	.clear {
+		clear: both;
+	}
+
+	#header{
+		width: 100%;
+		background: black;
+		/*background: red;*/
+		height: 80px;
+		position: fixed;
+	}
+
+	#nav {
+		width: 410px;
+		float: right;
+		margin-top: 20px;
+	}
+
+	#logo a{
+		color: #fff;
+		text-decoration: none;
+		float: left;
+		font-size: 30px;
+		margin-top: 20px;
+		font-family: "WellFleet";
+		font-weight: bold;
+	}
+
+	#nav ul{
+		list-style: none;
+		display: block;
+		margin: 0 auto;
+		list-style: none;
+	}
+
+	#nav li{
+		margin-top: 9px;
+		float: left;
+		padding-left: 21px;
+	}
+
+	#nav li a{
+		color:	#fff;
+		opacity: .8;
+		font-size: 16px;
+		text-decoration: none;
+	}
+
+	#nav li a.active{
+		color:	#fff;
+		opacity: 1;
+		border-bottom: 2px solid #fff;
+
+	}	
+
+	#nav li a.hover{
+		color:	#fff;
+		opacity: 1;
+	}
+
+	.quotes {
+		font-family: 'Goudy Bookletter 1911', serif;
+	    font-weight: normal;
+	    font-size: 30px;
+	    text-align: left;
+	    margin: 50px auto;
+	}
+
+
+	.qoutes_container {
+		width: 800px;
+		margin: 0 auto;
+	}
+
+	#hero-unit {
+		width: 500px;
+		display: block;
+		height: 200px;
+		background: white;
+		/*position: fixed;*/
+		margin: 0 auto;
+		border-radius: 7px;
+	}
+
+
+	#divider {
+		width: 300px;
+		height: 38px;
+		margin: 0px auto 27px auto;
+	}
+
+	#ribbon {
+		/*background: url(image_path('img/ribbon.png'))*/
+	}
+
+
+	#slide1, #slide2{ width: 100%; }
+	#slide1{
+		background-color: #84e2fb;
+		color: #fff;
+		height:  862px;
+		margin: 0;
+		padding: 120px 0 260px 0;
+		background-size: cover;
+	}
+
+	#slide2{
+		background-color: #fff;
+		color: #333333;
+		height: 300px;
+		margin: 0 auto;
+		overflow: hidden;
+		padding: 200px 0;
+	}
+
+	#slide3{
+		background: url(image_path('img/slide3.jpg')) 50% 0 no-repeat fixed;
+		background:blue;
+		color: #fff;
+		height: 600px;
+		padding: 170px 0 0 0;
+		background-size: cover;
+	}
+
+	#slide4{
+		background-color: #fff;
+		color: #333333;
+		height: 300px;
+		padding: 200px 0;
+	}
+
+	#slide5{
+		background: blue;
+		height: 200px;
+		margin: 0 auto;
+		padding: 250px 0;
+		color: #fff;
+		background-size: cover;
+	}
+
+</style>
+
 <div id="slide1">
 	<!-- 	<embed src="running.mp4" width="320" height="320"> </embed> -->
 		
@@ -20,6 +202,8 @@
 			<h2>Total Miles</h2>
 					
 		</div>
+
+		<a href="#slide2"><div id="about">More Info</div></a>
  	</div>
 
 	<div id="slide2">
