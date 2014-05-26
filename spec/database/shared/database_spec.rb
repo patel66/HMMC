@@ -46,7 +46,6 @@
 
 
     it "gets a school" do
-      # binding.pry
       school = db.create_school(:name=> "Kempner HighSchool",:street=>"14777 Voss Rd",:state=>"Texas",:city=>"Sugar Land", :zipcode =>77478, :lat => 34.4567, :long => -90.45456 )
       retreived_school = db.get_school(school.id)
       expect(retreived_school.name).to eq "Kempner HighSchool"

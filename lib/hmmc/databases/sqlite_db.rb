@@ -10,7 +10,6 @@ module HMMC
       # end
 
        def initialize(env)
-          # binding.pry
           #TO DO: edit this to work
         # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
         # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
@@ -105,8 +104,6 @@ module HMMC
 
       def update_classroom(attrs)
 
-
-
         ar_classroom = Classroom.find(attrs[:classroom_id])
         ar_classroom.miles = attrs[:miles]
         ar_classroom.save
@@ -134,6 +131,11 @@ module HMMC
          ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
+      end
+
+      def get_all_users
+        ar_users = User.all
+        ar_user_to_entity= ar_users.map {|user| HMMC::User.new(user.attributes)}
       end
 
       def get_all_schools
@@ -181,8 +183,15 @@ module HMMC
       def get_school_from_user_id(userid)
         ar_school = School.find_by_user_id(userid)
         return nil if ar_school.nil?
-        HMMC::School.new(ar_school.attributes)
+        school_entity = HMMC::School.new(ar_school.attributes)
+        school_entity.activitys = get_activities_for_school(school_entity.id)
+
+        school_entity
+
       end
+
+
+
 # map{|activity| activity.miles}.reduce(0,:+)
 #       def get_national_ranking
 #         schools = get_all_schools
@@ -192,7 +201,7 @@ module HMMC
       def get_national_ranking
         schools = get_all_schools_sign_up
         schools.sort_by {|school| -school.total_miles_school}
-         schools
+        schools
       end
 
       def get_state_ranking(state)
@@ -215,7 +224,6 @@ module HMMC
       end
 
       def get_user_by_sid(sid)
-
         ar_session = Session.find_by_session_key(sid)
         return nil if ar_session.nil?
         user_id = ar_session[:user_id]

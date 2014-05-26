@@ -8,11 +8,14 @@ class SchoolsController < ApplicationController
     # @school = HMMC::School.new
   end
 
+  def test
+
+  end
+
   def index
     # "state"=>"CA", "zipcode"=>"91942", "action"=>"index", "controller"=>"schools"}
 
     # get the XML data as a string
-    # binding.pry
     # xml_data = Net::HTTP.get_response(URI.parse(url)).body
 
 
@@ -29,7 +32,6 @@ class SchoolsController < ApplicationController
 
     # puts hash.class
     # @json = @hash.to_json
-    # binding.pry
     # @hash.each do |key, value|
     #   puts value
     # end
@@ -47,7 +49,6 @@ class SchoolsController < ApplicationController
 
   def create
 
-    binding.pry
     @schools = HMMC.db.get_all_schools
     @schools_by_zip = @schools.select {|school| school.zipcode ==  params["validate-number"].to_i}
 
@@ -75,6 +76,7 @@ class SchoolsController < ApplicationController
 
 
 
+
     @user = signedup.user
 
 
@@ -97,15 +99,37 @@ class SchoolsController < ApplicationController
     end
 
   end
-
   def show
 
     flash[:error]
 
+# rank = ""
+# array.each_index do |index|
+# if array[index] == 3
+# rank = index
+# end
+# end
+# [1, 2, 3, 4]
+# rank
+# 2
+# rank+1
+# 3
     @school = HMMC.db.get_school(params[:id].to_i)
     @user = HMMC.db.get_user_by_sid(session[:app_sid])
+
     if @user != nil
-     @users_school = HMMC.db.get_school_from_user_id(@user.id)
+     # @users_school = HMMC.db.get_school_from_user_id(@user.id)
+     # national_rank = HMMC.db.get_national_ranking
+     # @schools = HMMC.db.get_all_schools_sign_up
+     # @rank = ""
+     # national_rank.each_index do |index|
+     #  if national_rank[index].id == @users_school.id
+     #    @rank = index + 1
+
+     #  end
+     # end
+
+     # puts @users_school.state
     end
 
   end
@@ -115,13 +139,22 @@ class SchoolsController < ApplicationController
   end
 
   def update
+
+    binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
     @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:school][:students].to_i)
-    redirect_to "/schools/#{@school1.id}"
+    # redirect_to "/schools/#{@school1.id}"
+
+     respond_to do |format|
+      format.html
+      format.json { render :json => @school1.students }
+      # format.xml { render :xml => {school: xml_data} }
+    end
+
   end
 
   def leaderboard
-		render :layout => 'home'
+    @top_school_array = HMMC.db.get_national_ranking
   end
 
   def search

@@ -1,4 +1,4 @@
-/vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/patches/disable-building-tests.patch
-/vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/patches/do-not-imply-vfp3-and-armv7.patch
-/vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/patches/fPIC-for-static.patch
-/vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/patches/gcc48-wno-unused-local-typedefs.patch
+/vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/patches/disable-building-tests.patch
+/vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/patches/do-not-imply-vfp3-and-armv7.patch
+/vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/patches/fPIC-for-static.patch
+/vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/patches/gcc48-wno-unused-local-typedefs.patch

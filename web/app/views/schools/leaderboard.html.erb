@@ -1,16 +1,21 @@
+<link href='http://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 <div class='row'>
-  <div class='col-md-3'>
+  <div class='col-md-2'>
   </div>
-
-  <div class='col-md-6'>
+  <div class='col-md-8'>
 <table class='leaderTable'>
     <tr>
       <th COLSPAN="3" class='leaderHeader'> Top SCHOOLS
       </th>
     </tr>
+    <% school_array = @top_school_array[0..4] %>
     <tr>   <th class='rank'>Rank</th>      <th>School</th>      <th class='mile'>Miles</th>      </tr>
+    <% school_array.each do |school| %>
 
-    <tr>   <td class='rank'>1</td>      <td>Morningside Elementary</td>      <td class='miles'>Data 2</td>      </tr>
+      <tr>   <td class='rank'>1</td>      <td><%= school.name %> </td>      <td class='miles'> <%= school.miles %> </td>      </tr>
+
+    <% end %>
+
     <tr>   <td class='rank'>2</td>      <td>Bobcat Elementary</td>           <td class='miles'>Data 2</td>      </tr>
     <tr>   <td class='rank'>3</td>      <td>Peters Colony </td>              <td class='miles'>Data 2</td>      </tr>
     <tr>   <td class='rank'>4</td>      <td>Cypress Elementary</td>          <td class='miles'>Data 2</td>      </tr>
@@ -25,6 +30,6 @@
 </table>
   </div>
 
-  <div class='col-md-3'>
+  <div class='col-md-2'>
   </div>
 </div>

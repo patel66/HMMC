@@ -15,10 +15,72 @@ $modal-content-bg: #75c700;
 body {
   margin-top: 100px;
   background-color: #00c3f7;
-  // #ad38af purple
-  // #ed1c5d red
+  overflow-x: hidden;
 }
 
+@-webkit-keyframes thumb {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(0.9); }
+  100% { -webkit-transform: scale(1); }
+}
+
+
+
+.cursive {
+  font-family: 'Pacifico', cursive;
+}
+
+.whitespace{
+  padding-top: 60px;
+  padding-bottom: 100px;
+  background-color: rgba(255,255,255,0.85);
+  min-height: 100vh;
+}
+
+.congratulations{
+  width: 80%;
+  background-color: #5cb85c;
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin: 0px auto;
+  border-radius: 5px;
+  border-radius: 8px;
+}
+
+.emptybox{
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid black;
+  max-width: 500px;
+  color: white;
+  text-decoration: none;
+  background-color: #d7f896;
+  &:hover {
+  font-size: 2.8rem;
+  -webkit-animation-name: thumb;
+  -webkit-animation-duration: 200ms;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-timing-function: linear;
+  }
+}
+
+.thatLine {
+  border-bottom: 1px solid gray;
+  line-height: 0;
+  width: 75%;
+  display: inline-block;
+  margin: 0px 12%;
+}
+
+.signup {
+  background-color: white;
+
+}
 .boxes{
   pointer-events: none;
   content: "";
@@ -42,10 +104,11 @@ body {
 
 .modal-content {
     font-family: avenir next;
-    border-radius: 0.4em;
-    border: 10px solid #fff;
+    border-radius: 0.0em;
+    border: 0px solid #fff;
     color: #fff;
-    padding-bottom: 40px;
+    padding: 15px 15px 60px 15px;
+    box-shadow: 25px;
     .btn {
       float: right;
       margin: 10px;
@@ -97,30 +160,36 @@ body {
 
 
 .leaderTable{
+  border-collapse: separate;
   width: 100%;
   opacity: .85;
-  background-color: #f9f9f9;
+  border: 5px solid #075b9a;
   border-radius: 55px;
   padding: 20px;
-  // border: 20px solid red;
+
+  tr:nth-child(2){
+    font-size: 26px;
+  } tr:nth-child(3) {
+    font-weight: normal;
+    font-size: 24px;
+  }
   .rank {
     text-align: center;
     width: 50px;
     font-size: 2rem;
-    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
-    color: yellow;
-    background-color: #155295;
+    font-family: Arial;
+    color: #d3d31f;
   }
   .school{
 
   }
   .miles{
-    font-family: "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+    font-family: Arial;
     color: #2daee7;
   }
   .leaderHeader{
+    font-family: 'Henny Penny', cursive;
     text-align: center;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 3.9rem;
     border-top-style:  none;
     padding: 10px;

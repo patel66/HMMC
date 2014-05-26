@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    result = HMMC::SignIn.run(:email => params[:user][:email], :password => params[:user][:password])
 
+    result = HMMC::SignIn.run(:email => params[:user][:email], :password => params[:user][:password])
     if result.success?
       session_id = result.session_id
       session[:app_sid] = session_id
@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
     result = HMMC::SignOut.run(:session_key => session[:app_sid])
     session[:app_sid].clear
 
-    session[:app_sid].clear
     if result.success?
 
       @user = result.user

@@ -1,4 +1,18 @@
-<h1>Congrats!</h1>
-<h3><%=@user.name%></h3>
-<h3>Your school <%=@school.name%> has been registered</h3>
-<%= link_to "Your school's homepage", "schools/#{@school.id}"%></li> -->
+<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+<div class='row'>
+  <div class='col-md-12 whitespace'>
+    <div class='congratulations'> Successfully Joined! </div>
+    <br><br>
+    <span class='thatLine'> </span>
+    <div style="text-align: center; padding: 10px 17%;">
+    <h1>Congratulations, <%=@user.name%>!!</h1>
+    <h3>Your school, <span class='cursive'><%=@school.name%>, </span> has been successfully registered to the Hundred Million Mile Club!
+      <br><br>
+      Get active right now by adding miles at your
+      <br>
+      <div class='emptybox'><%= link_to "Your school's homepage", "schools/#{@school.id}"%></div>
+    </h3>
+    </div>
+  </div>
+</div>

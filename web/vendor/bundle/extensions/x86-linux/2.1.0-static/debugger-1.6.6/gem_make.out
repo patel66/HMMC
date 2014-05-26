@@ -22,5 +22,5 @@ ruby_debug.c:178:2: warning: #warning "ruby 2.0.0-p0 GET_THREAD is a function." 
 linking shared-object ruby_debug.so
 
 make "DESTDIR=" install
-/usr/bin//install -c -m 0755 ruby_debug.so ./.gem.20140506-8209-peob3k
+/usr/bin//install -c -m 0755 ruby_debug.so ./.gem.20140526-3020-1401ypw
 installing default ruby_debug libraries

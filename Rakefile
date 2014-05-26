@@ -25,5 +25,24 @@ end
 
 # Run this AFTER you've configured
 ActiveRecordTasks.load_tasks
+Rake::Task["db:seed"].clear
+
+task :load_app do
+  puts "Loading application"
+  # [code to require and set up your application would go here]
+  # require './lib/my_app.rb'
+  require './lib/hmmc.rb'
+end
+
+namespace :db do
+
+  task :seed => ['db:migrate', :load_app] do
+    puts "Seeding database"
+    # [code to seed your database would go here]
+    # MyApp.db.create_user(:name => 'Bob')
+    # rake db:seed
 
 
+    puts HMMC.db.get_all_schools
+  end
+end

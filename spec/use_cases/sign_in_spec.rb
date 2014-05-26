@@ -11,7 +11,7 @@ module HMMC
 
     it "Returns an error if the user is not found" do
       result = SignIn.run({ email: "nope@notfound.com", password: "password" })
-     
+
       expect(result.success?).to eq(false)
       expect(result.error).to eq(:email_not_found)
     end
@@ -24,7 +24,6 @@ module HMMC
 
     it "Creates a session and returns a session_id" do
       # HMMC.db.create_session(useruser.id)
-      # binding.pry
       result = SignIn.run({ email: "John@mail.com", password: "password" })
       expect(result.success?).to eq(true)
       expect(result.session_id).to be_a(String)
