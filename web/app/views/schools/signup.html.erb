@@ -140,7 +140,8 @@ $('#school-search').on('click', function (e) {
 <script>
 $(document).ready(function() {
   $('.input-group input[required], .input-group textarea[required], .input-group select[required]').on('keyup change', function() {
-    var $form = $(this).closest('form'),
+    // var $form = $(this).closest('form'),
+    var $form = $("button[type='submit']")
     $group = $(this).closest('.input-group'),
     $addon = $group.find('.input-group-addon'),
     $icon = $addon.find('span'),
@@ -169,9 +170,9 @@ $(document).ready(function() {
     }
 
     if ($form.find('.input-group-addon.danger').length == 0) {
-      $form.find('[type="submit"]').prop('disabled', false);
+      $form.prop('disabled', false);
     }else{
-      $form.find('[type="submit"]').prop('disabled', true);
+      $form.prop('disabled', true);
     }
 
   });

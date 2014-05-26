@@ -139,9 +139,18 @@ class SchoolsController < ApplicationController
   end
 
   def update
+
+    binding.pry
     @school = HMMC.db.get_school(params[:id].to_i)
     @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:school][:students].to_i)
-    redirect_to "/schools/#{@school1.id}"
+    # redirect_to "/schools/#{@school1.id}"
+
+     respond_to do |format|
+      format.html
+      format.json { render :json => @school1.students }
+      # format.xml { render :xml => {school: xml_data} }
+    end
+
   end
 
   def leaderboard

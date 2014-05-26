@@ -66,17 +66,15 @@
             <li><%= link_to "About", "/path2"  %></li>
 
            <!--  <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li> -->
-              <% if session[:app_sid].nil? == true || session[:app_sid].empty? == true  %>
+
                 <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
                 <li><%= link_to "Sign Up", "/signupzip"  %></li>
-              <% else %>
 
-                <% user_id = HMMC.db.get_user_by_sid(session[:app_sid]) %>
-                <% school_id = HMMC.db.get_school_from_user_id(user_id.id) %>
-                <li><%= link_to "School", "/schools/" + school_id.id.to_s %></li>
+
+
                 <li><%= link_to "Sign Out", "/logout"  %></li>
 
-              <% end%>
+
           </ul>
 
 

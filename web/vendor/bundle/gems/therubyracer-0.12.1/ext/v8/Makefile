@@ -30,8 +30,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20140508-3031-69m6c6
-sitelibdir = $(DESTDIR)./.gem.20140508-3031-69m6c6
+sitearchdir = $(DESTDIR)./.gem.20140526-3020-16ld4gi
+sitelibdir = $(DESTDIR)./.gem.20140526-3020-16ld4gi
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -79,11 +79,11 @@ debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings  
 CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) -O3 -march=native  $(ARCH_FLAG)
-INCFLAGS = -I. -I/vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
+INCFLAGS = -I. -I/vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = -D_FILE_OFFSET_BITS=64
 CPPFLAGS =  -I/home/vagrant/.rbenv/versions/2.1.1/include  $(DEFS) $(cppflags) -Wall -g -rdynamic
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = /vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_base.a /vagrant/hccmphilstuff/hmmc/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_snapshot.a -L. -L/home/vagrant/.rbenv/versions/2.1.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
+ldflags  = /vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_base.a /vagrant/hccmphillystuff/HMMC/web/vendor/bundle/gems/libv8-3.16.14.3/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_snapshot.a -L. -L/home/vagrant/.rbenv/versions/2.1.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
 dldflags =  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
