@@ -38,6 +38,7 @@ namespace :db do
 
   task :seed => ['db:migrate', :load_app] do
     puts "Seeding database"
+    HMMC.env = ENV['RAILS_ENV'] || 'development'
     # [code to seed your database would go here]
     # MyApp.db.create_user(:name => 'Bob')
     # rake db:seed
