@@ -13,11 +13,9 @@ module HMMC
           #TO DO: edit this to work
         # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
         # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
-
-        ActiveRecord::Base.establish_connection(
-          # YAML.load_file("db/config.yml")[env]
-          YAML.load_file('db/config.yml')[env]
-        )
+        db_config = YAML.load_file('db/config.yml')[env]
+        puts "GOT CONFIG: #{db_config}"
+        ActiveRecord::Base.establish_connection(db_config)
       end
 
       def clear_everything
