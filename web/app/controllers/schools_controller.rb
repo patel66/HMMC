@@ -87,8 +87,10 @@ class SchoolsController < ApplicationController
       @user = signedup.user
 
       session[:app_sid] = signedup.session_id
-      email = UserMailer.sign_up_mail(@user.id,@school.id)
-      email.deliver
+     
+      # TURNED OFF EMAIL
+      # email = UserMailer.sign_up_mail(@user.id,@school.id)
+      # email.deliver
 
       flash[:notice] = "Hello #{@user.name} you have successfully signed up"
 
