@@ -102,20 +102,50 @@ class SchoolsController < ApplicationController
   def show
 
     flash[:error]
+    # getting school from the url and all schools that have signed up
+    @users_school = HMMC.db.get_school(params[:id].to_i)
+    @schools = HMMC.db.get_all_schools_sign_up
+    @user =   HMMC.db.get_user_by_sid(session[:app_sid])
 
-# rank = ""
-# array.each_index do |index|
-# if array[index] == 3
-# rank = index
-# end
-# end
-# [1, 2, 3, 4]
-# rank
-# 2
-# rank+1
-# 3
+    # sort all schools and takes 5 of them
+    @sorted_schools = @schools.sort_by {|school| -school.total_miles_school}
+    binding.pry
+    @nationalrank = ""
+    @sorted_schools.each_index do |index|
+      if @sorted_schools[index].id == @users_school.id
+        @nationalrank = index + 1
+      end
+    end
+
+    @nationalrank
+    @national_ranked_school_table  = @sorted_schools.take(5)
+
+    # get all schools based on the pages city for the school, sorts them
+    @schools_in_city = @schools.select{|school| school.city == @users_school.city}
+    @schools_in_city_sorted = @schools_in_city.sort_by {|school| -school.total_miles_school}
+
+    @schools_in_city_sorted.each_index do |index|
+      if @schools_in_city_sorted[index].id == @users_school.id
+        @cityrank = index + 1
+      end
+    end
+
+
+    # takes 5 schools
+    @city_ranked_school_table = @schools_in_city_sorted.take(5)
+
+    @schools_in_state = @schools.select{|school| school.state == @users_school.state}
+    @schools_in_state_sorted = @schools_in_state.sort_by {|school| -school.total_miles_school}
+    @schools_in_state_sorted.each_index do |index|
+      if @schools_in_state_sorted[index].id == @users_school.id
+        @staterank = index + 1
+      end
+    end
+
+    @state_ranked_school_table = @schools_in_state_sorted.take(5)
+
+
     @school = HMMC.db.get_school(params[:id].to_i)
-    @user = HMMC.db.get_user_by_sid(session[:app_sid])
 
     if @user != nil
      # @users_school = HMMC.db.get_school_from_user_id(@user.id)
@@ -140,14 +170,15 @@ class SchoolsController < ApplicationController
 
   def update
 
-    binding.pry
+
     @school = HMMC.db.get_school(params[:id].to_i)
-    @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:school][:students].to_i)
+    binding.pry
+    @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:students].to_i)
     # redirect_to "/schools/#{@school1.id}"
 
      respond_to do |format|
       format.html
-      format.json { render :json => @school1.students }
+        format.json { render :json => {students:  @school1.students } }
       # format.xml { render :xml => {school: xml_data} }
     end
 
