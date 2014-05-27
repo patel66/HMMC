@@ -24,9 +24,4 @@ development:
   host: localhost
 
 production:
-  adapter: postgresql
-  database: HMMC_prod
-  encoding: unicode
-  host: localhost
-
-
+  url: <%= ENV['DATABASE_URL'] %>
