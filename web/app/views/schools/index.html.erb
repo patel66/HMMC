@@ -1,28 +1,227 @@
-<div id="map" class="map">
-
-</div>
-
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
-<script type="text/javascript">
 
-	var map = L.map('map', {
-    center: [30.25, -97.75], //Austin!
-    zoom: 13
-	});
+<% if flash[:error] %>
+	<script type="text/javascript">$(".form-3").append( <h5><%= flash[:error] %></h5>);</script>
+<%end %>
 
-	L.tileLayer(
-    'https://{s}.tiles.mapbox.com/v3/eleanor.mnyzxgvi/{z}/{x}/{y}.png'
-	).addTo(map);
+<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-train-station.css" />
+<script src="http://github.hubspot.com/odometer/odometer.js"></script>
 
-  <% @schools.each do |school| %>
-    L.marker([<%=school.lat%>, <%=school.long%>])
-    .bindPopup("<%=school.name%>")
-    .addTo(map)
-  <% end %>
-</script>
+<style type="text/css">
+	.navbar-default {
+     border-color: #84e2fb;
+     height: 
+  	}
+
+	.container {
+		width: 102%;
+		margin-left: -11px;
+		margin-top: -20px;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	h1{
+		font-weight: normal;
+		font-size: 50px;
+		text-align: center;
+		color: fff;
+		margin: 0;
+		padding: 0;
+	}
+
+	h2{
+		font-weight: normal;
+		font-size: 40px;
+		text-align: center;
+		color: fff;
+		margin: 0;
+		padding: 0;
+	}
+
+	.center {
+		margin: 0 auto;
+	}
+
+	.content{
+		margin: 0 auto;
+		width: 960px;
+	}
+
+	.clear {
+		clear: both;
+	}
+
+	#header{
+		width: 100%;
+		background: black;
+		/*background: red;*/
+		height: 80px;
+		position: fixed;
+	}
+
+	#nav {
+		width: 410px;
+		float: right;
+		margin-top: 20px;
+	}
+
+	#logo a{
+		color: #fff;
+		text-decoration: none;
+		float: left;
+		font-size: 30px;
+		margin-top: 20px;
+		font-family: "WellFleet";
+		font-weight: bold;
+	}
+
+	#nav ul{
+		list-style: none;
+		display: block;
+		margin: 0 auto;
+		list-style: none;
+	}
+
+	#nav li{
+		margin-top: 9px;
+		float: left;
+		padding-left: 21px;
+	}
+
+	#nav li a{
+		color:	#fff;
+		opacity: .8;
+		font-size: 16px;
+		text-decoration: none;
+	}
+
+	#nav li a.active{
+		color:	#fff;
+		opacity: 1;
+		border-bottom: 2px solid #fff;
+
+	}	
+
+	#nav li a.hover{
+		color:	#fff;
+		opacity: 1;
+	}
+
+	.quotes {
+		font-family: 'Goudy Bookletter 1911', serif;
+	    font-weight: normal;
+	    font-size: 30px;
+	    text-align: left;
+	    margin: 50px auto;
+	}
+
+
+	.qoutes_container {
+		width: 800px;
+		margin: 0 auto;
+	}
+
+	#hero-unit {
+		text-align: center;
+		display: block;
+		height: 200px;
+		/*position: fixed;*/
+		margin: 0 auto;
+	}
+
+
+	#divider {
+		width: 300px;
+		height: 38px;
+		margin: 0px auto 27px auto;
+	}
+
+	#ribbon {
+		/*background: url(image_path('img/ribbon.png'))*/
+	}
 
 
 
+</style>
 
+	<div id="slide1">
+	<!-- 	<embed src="running.mp4" width="320" height="320"> </embed> -->
+		
+		<div class="row slideDown">
+		        <h1 class="welcome"> Welcome to America's</h2>
+			<div class="col-md-5 col-md-offset-5">
+				<%=image_tag('100MMClogo.png', height: '250', width: '250', class: 'big-logo') %>
+
+		<!-- 
+			    <h2>Mile Challenge</h1> -->
+
+			   <div id="divider"> </div>
+		       <div id="ribbon"></div>
+		       <div id="new_year"> </div>
+			</div>
+		</div>
+
+			<div id="hero-unit">
+				<div class="odometer" id="odometer">
+				</div>	
+				<script type="text/javascript">
+					var totalMiles = <%=@total_miles%>
+
+					setInterval(function(){
+
+						$("#odometer").html(totalMiles) 
+						totalMiles += 1
+					}, 1500);
+				</script>	
+			</div>
+
+		<a href="#slide2"><div id="about">More Info</div></a>
+ 	</div>
+
+	
+   <div id="slide3">
+
+		<div id="big-logo">
+			
+		    <%=image_tag('ASAPlogo.png', height: '75%', width: '75%' ) %>
+
+		</div>
+    </div>
+
+    <div id="slide2">
+		<div >
+		</div>
+    </div>
+
+	<div class="col-md-12 map-container">
+           
+		<div id="map" class="map" style="width: 101%">
+	  	</div>
+	</div>
+
+
+			<script type="text/javascript">
+
+				var map = L.map('map', {
+			    center: [37.25, -97.75], //Austin!
+			    zoom: 4,
+				});
+
+				L.tileLayer(
+			    'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
+				).addTo(map);
+
+			  <% @registered_schools.each do |school| %>
+			    L.marker([<%=school.lat%>, <%=school.long%>])
+			    .bindPopup("<a href='/schools/<%=school.id%>' + ><%=school.name %></a>")
+			    .addTo(map)
+			  <% end %>
+			  map.scrollWheelZoom.disable();
+			</script>
