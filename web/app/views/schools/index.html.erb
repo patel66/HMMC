@@ -47,190 +47,101 @@
 		margin: 0 auto;
 	}
 
-	.content{
-		margin: 0 auto;
-		width: 960px;
-	}
+  .navbar-default {
+    background-color: rgba(255,255,255,1);
+    border: none;
+  }
 
-	.clear {
-		clear: both;
-	}
+  .main {
+    background-color: rgba(255,255,255,.6);
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
 
-	#header{
-		width: 100%;
-		background: black;
-		/*background: red;*/
-		height: 80px;
-		position: fixed;
-	}
+  .main h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
 
-	#nav {
-		width: 410px;
-		float: right;
-		margin-top: 20px;
-	}
+  .signup {
+    text-transform: uppercase;
+    padding: 10px 15px 6px 15px;
+    border: none;
+    background-color: #94c1e5;
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    margin-top: 15px;
+    transition: background-color 0.5s ease;
+  }
 
-	#logo a{
-		color: #fff;
-		text-decoration: none;
-		float: left;
-		font-size: 30px;
-		margin-top: 20px;
-		font-family: "WellFleet";
-		font-weight: bold;
-	}
+  .signup:hover {
+    background-color: #D2E495;
+  }
 
-	#nav ul{
-		list-style: none;
-		display: block;
-		margin: 0 auto;
-		list-style: none;
-	}
+  footer {
+    display: none;
+  }
 
-	#nav li{
-		margin-top: 9px;
-		float: left;
-		padding-left: 21px;
-	}
+  .map-container {
+    text-align: center;
+    background-color: rgba(255,255,255,.6);
+    margin-bottom: 30px;
+    padding: 55px 0 50px 60px;
+  }
 
-	#nav li a{
-		color:	#fff;
-		opacity: .8;
-		font-size: 16px;
-		text-decoration: none;
-	}
+  #map {
+    width: 95%;
+    height: 370px;
+  }
 
-	#nav li a.active{
-		color:	#fff;
-		opacity: 1;
-		border-bottom: 2px solid #fff;
-
-	}	
-
-	#nav li a.hover{
-		color:	#fff;
-		opacity: 1;
-	}
-
-	.quotes {
-		font-family: 'Goudy Bookletter 1911', serif;
-	    font-weight: normal;
-	    font-size: 30px;
-	    text-align: left;
-	    margin: 50px auto;
-	}
-
-
-	.qoutes_container {
-		width: 800px;
-		margin: 0 auto;
-	}
-
-	#hero-unit {
-		text-align: center;
-		display: block;
-		height: 200px;
-		/*position: fixed;*/
-		margin: 0 auto;
-	}
-
-
-	#divider {
-		width: 300px;
-		height: 38px;
-		margin: 0px auto 27px auto;
-	}
-
-	#ribbon {
-		/*background: url(image_path('img/ribbon.png'))*/
-	}
-
-
+  .boxes {
+    display: none;
+  }
 
 </style>
 
-	<div id="slide1">
-	<!-- 	<embed src="running.mp4" width="320" height="320"> </embed> -->
-		
-		<div class="row slideDown">
-		        <h1 class="welcome"> Welcome to America's</h2>
-			<div class="col-md-5 col-md-offset-5">
-				<%=image_tag('100MMClogo.png', height: '250', width: '250', class: 'big-logo') %>
+<div class="row">
+  <div class="col-md-12 main">
+    <h1>Hundred Million Miles Challenge</h1>
+    Is your school up for the challenge?
+    <br>
+    Commit to be fit.
+    <p></p>
+    <a href="/signupzip"><button class="signup">Sign Up</button></a>
 
-		<!-- 
-			    <h2>Mile Challenge</h1> -->
+  </div>
+</div>
 
-			   <div id="divider"> </div>
-		       <div id="ribbon"></div>
-		       <div id="new_year"> </div>
-			</div>
-		</div>
-
-			<div id="hero-unit">
-				<div class="odometer" id="odometer">
-				</div>	
-				<script type="text/javascript">
-					var totalMiles = <%=@total_miles%>
-
-					setInterval(function(){
-
-						$("#odometer").html(totalMiles) 
-						totalMiles += 1
-					}, 1500);
-				</script>	
-			</div>
-
-		<a href="#slide2"><div id="about">More Info</div></a>
- 	</div>
-
-	
-   <div id="slide3">
-
-		<div>
-			
-		    <%=image_tag('ASAPlogo.png', height: '75%', width: '75%' ) %>
-
-		</div>
-    </div>
-
-    <div id="slide2">
-		<div >
-		</div>
-    </div>
-
-	<div id="slide5">
-		<div>
-           
-			<div id="map" class="map">
-
-			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-			<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-
-			<script type="text/javascript">
-
-				var map = L.map('map', {
-			    center: [30.25, -97.75], //Austin!
-			    zoom: 4
-				});
-
-				L.tileLayer(
-			    'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
-				).addTo(map);
-
-			  <% @schools.each do |school| %>
-			    L.marker([<%=school.lat%>, <%=school.long%>])
-			    .bindPopup("<%=school.name%>")
-			    .addTo(map)
-			  <% end %>
-			</script>
+<div class="row">
+  <div class="col-md-12 map-container">
+    <div id="map" class="map"></div>
+  </div>
+</div>
 
 
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
+<script type="text/javascript">
 
+  var map = L.map('map', {
+    center: [30.25, -97.75], //Austin!
+    zoom: 13
+  });
 
+  L.tileLayer(
+    'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
+  ).addTo(map);
 
-		  </div>
-		
-	</div>
-
+  <% @schools.each do |school| %>
+    L.marker([<%=school.lat%>, <%=school.long%>])
+    .bindPopup("<%=school.name%>")
+    .addTo(map)
+  <% end %>
+</script>
 

@@ -124,11 +124,11 @@ module HMMC
       end
 
       def update_school(attrs)
-        ar_school = School.find(attrs["id"])
-        ar_school.update(attrs)
-        # attrs[:students] ||=nil
+        ar_school = School.find(attrs[:id])
+        # ar_school.update(attrs)
+        # # attrs[:students] ||=nil
 
-         ar_school.students = attrs[:students]
+        ar_school.students = attrs[:students]
         ar_school.save
         HMMC::School.new(attrs)
       end

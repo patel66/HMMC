@@ -79,12 +79,21 @@ border-right: 1px solid rgba(0,0,0,0.25);
   .flat-table-2 {
     background: #f06060;
   }
+
+   .flat-table-1 {
+    background: #336ca6;
+    display:none;
+  }
+
+  .flat-table-1 tr:hover {
+    background: rgba(0,0,0,0.19);
+  }
 </style>
 
 <table class="flat-table flat-table-3">
   <thead>
     <th COLSPAN="3" style="text-align:center">
-       State Rankings
+       National Rankings
     </th>
    </TR>
   </thead>
@@ -94,34 +103,26 @@ border-right: 1px solid rgba(0,0,0,0.25);
     <th>Total Miles</th>
   </thead>
   <tbody>
+<% if @national_ranked_school_table.nil? == false %>
+<%@national_ranked_school_table.each_index do |index| %>
     <tr>
-      <td>1</td>
-      <td>Kempner High</td>
-      <td>1620</td>
+      <td><%=index + 1%></td>
+      <td><a href="/schools/<%=@national_ranked_school_table[index].id%>"><%=@national_ranked_school_table[index].name%></a></td>
+      <td><%=@national_ranked_school_table[index].total_miles_school%></td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Spring elementary</td>
-      <td>1420</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Claremont H.S.</td>
-      <td>987</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Lincoln Bay Prep</td>
-      <td>534</td>
-    </tr>
+<%end%>
+<%end%>
   </tbody>
 </table>
+
+
+
 
 
 <table class="flat-table flat-table-2">
   <thead>
     <th COLSPAN="3" style="text-align:center">
-       City Rankings
+       City Rankings: <%=@users_school.city%>
     </th>
    </TR>
   </thead>
@@ -131,16 +132,40 @@ border-right: 1px solid rgba(0,0,0,0.25);
     <th>Total Miles </th>
   </thead>
   <tbody>
+   <% if @city_ranked_school_table.nil? == false %>
     <tr>
-      <td>1</td>
-      <td>Fort Worth High</td>
-      <td>1295</td>
+      <%@city_ranked_school_table.each_index do |index| %>
+      <td><%=index + 1%></td>
+      <td><a href="/schools/<%=@city_ranked_school_table[index].id%>"><%=@city_ranked_school_table[index].name%></a></td>
+      <td><%=@city_ranked_school_table[index].total_miles_school%></td>
     </tr>
+      <%end%>
+    <%end%>
+  </tbody>
+</table>
+
+<table class="flat-table flat-table-1">
+  <thead>
+    <th COLSPAN="3" style="text-align:center">
+       State Rankings: <%=@users_school.state%>
+    </th>
+   </TR>
+  </thead>
+  <thead>
+    <th>Rank</th>
+    <th>School</th>
+    <th>Total Miles </th>
+  </thead>
+  <tbody>
+   <% if @state_ranked_school_table.nil? == false %>
     <tr>
-      <td>2</td>
-      <td>Dulles Porter High</td>
-      <td>1150</td>
+      <%@state_ranked_school_table.each_index do |index| %>
+      <td><%=index + 1%></td>
+      <td><a href="/schools/<%=@state_ranked_school_table[index].id%>"><%=@state_ranked_school_table[index].name%></a></td>
+      <td><%=@state_ranked_school_table[index].total_miles_school%></td>
     </tr>
+      <%end%>
+    <%end%>
   </tbody>
 </table>
 
@@ -156,14 +181,14 @@ border-right: 1px solid rgba(0,0,0,0.25);
 				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>
 			<div class="school-details row">
-				<h3>National Rank: <span id="display_nat_rank"></span></h3>
-				<a id="show-state" href="#" title="Click to show State Rankings"><h3 id="state_rank">State Rank: 5</h3></a>
-				<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"></span></h3></a>
+				<a id="show-national" href="#" title="Click to show State Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
+				<h3 id="state_rank">State Rank: <span id="display_state_rank"><%=@staterank%> </span></h3>
+				<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"><%=@cityrank%></span></h3></a>
 
 			</div>
 			<div class="school-details row">
 				<h2>Students Participating</h2>
-				<h2><%=@school.students%></h2>
+				<h2 id="students_number"><%=@school.students%></h2>
 			</div>
 
 		</div>
@@ -195,12 +220,12 @@ border-right: 1px solid rgba(0,0,0,0.25);
 				<%=image_tag('reach.png') %>
 				<%=image_tag('1.png') %>
 				<%=image_tag('Veteran.png') %>
-				<%=image_tag('1k.png') %>
-				<%=image_tag('5k.png') %>
-				<%=image_tag('10k.png') %>
-				<%=image_tag('20k.png') %>
-				<%=image_tag('25k.png')%>
-				<%=image_tag('50k.png') %>
+				<%=image_tag('1k.png', class: "1k_icon") %>
+				<%=image_tag('5k.png', class: "5k_icon") %>
+				<%=image_tag('10k.png', class: "10k_icon") %>
+				<%=image_tag('20k.png', class: "20k_icon") %>
+				<%=image_tag('25k.png', class: "25k_icon")%>
+				<%=image_tag('50k.png', class: "50k_icon") %>
 			</div>
 
 		</div>
@@ -369,15 +394,53 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
  <!-- Odometer Script -->
   <script>
+var school_total_miles = <%=@school.total_miles_school%>
+console.log(school_total_miles)
+  $(".1k_icon").css({ opacity: 0.2 });
+  $(".5k_icon").css({ opacity: 0.2 });
+  $(".10k_icon").css({ opacity: 0.2 });
+  $(".20k_icon").css({ opacity: 0.2 });
+  $(".25k_icon").css({ opacity: 0.2 });
+  $(".50k_icon").css({ opacity: 0.2 });
+
+if (school_total_miles >= 1000) {
+  $(".1k_icon").css({ opacity: 1 });
+}
+
+if (school_total_miles >= 5000) {
+  $(".5k_icon").css({ opacity: 1 });
+}
+
+if (school_total_miles >= 10000) {
+  $(".10k_icon").css({ opacity: 1 });
+}
+
+if (school_total_miles >= 20000) {
+  $(".20k_icon").css({ opacity: 1 });
+}
+if (school_total_miles >= 25000) {
+  $(".25k_icon").css({ opacity: 1 });
+}
+
+if (school_total_miles >= 50000) {
+  $(".50k_icon").css({ opacity: 1 });
+}
 
   $("#save").on("click",function(e){
-
+    e.preventDefault();
+    // alert("/schools/" + <%=@school.id%>);
      $.ajax({
-      type: "PUT",
+      type: "put",
+      headers: {
+      'X-Transaction': 'POST Example',
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
       url: "/schools/" + <%=@school.id%>,
       dataType: "json",
-      data:{student: $('#students').val()},
+      //contentType: "application/json",
+      data: {students: $('#students').val()},
       success: function(data) {
+        $("#students_number").text(data.students)
         // window.data = data;
         // console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
         //  $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
@@ -388,9 +451,14 @@ border-right: 1px solid rgba(0,0,0,0.25);
         // $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
         // $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
         console.log("hi")
+      },
+      error: function(data) {
+        console.log(data);
+        alert(data);
       }
     });
   })
+
     var duration   = 2000;
     var transition = 100;
 
@@ -428,7 +496,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
      $( ".selector" ).tooltip({ position: { my: "left+15 center", at: "right center" } });
    $(function() {
-      $( "#show-state" ).tooltip({
+      $( "#show-national" ).tooltip({
         position: { my: "left+15 center", at: "right center" },
         show: {
           effect: "slideToggle",
@@ -467,7 +535,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
 //   });
 
-  $("#state_rank").on("click",function(e){
+  $("#show-national").on("click",function(e){
     $('.flat-table-3 ').bPopup({
       easing: 'easeOutBack', //uses jQuery easing plugin
       speed: 1250,
@@ -482,6 +550,14 @@ border-right: 1px solid rgba(0,0,0,0.25);
       transition: 'slideDown'
     })
 
+  })
+
+  $("#state_rank").on("click",function(e){
+    $(".flat-table-1").bPopup({
+      easing: 'easeOutBack',
+      speed:1250,
+      transition: 'slideDown'
+    })
   })
 
     $(".fa-calendar").on("click",function(e){
@@ -515,7 +591,30 @@ border-right: 1px solid rgba(0,0,0,0.25);
         odometer.innerHTML = data.schoolmiles
         $("#display_nat_rank").text(data.national_rank)
         $("#display_city_rank").text(data.city_rank)
+        $("#display_state_rank").text(data.state_rank)
         console.log(data);
+        if (data.schoolmiles >= 1000) {
+          $(".1k_icon").css({ opacity: 1 });
+        }
+
+        if (data.schoolmiles >= 5000) {
+          $(".5k_icon").css({ opacity: 1 });
+        }
+
+        if (data.schoolmiles >= 10000) {
+          $(".10k_icon").css({ opacity: 1 });
+        }
+
+        if (data.schoolmiles >= 20000) {
+          $(".20k_icon").css({ opacity: 1 });
+        }
+        if (data.schoolmiles >= 25000) {
+          $(".25k_icon").css({ opacity: 1 });
+        }
+
+        if (data.schoolmiles >= 50000) {
+          $(".50k_icon").css({ opacity: 1 });
+        }
       }
     });
 
@@ -572,7 +671,7 @@ var total = school_total; // school's total miles // from backend!!
   );
 
 // original click
-$("button").on("click",function(e){
+// $("button").on("click",function(e){
   // e.preventDefault();
   // var msglist = document.getElementById("donut");
   // var x = +$("#mile").val();
@@ -602,7 +701,7 @@ $("button").on("click",function(e){
   // ".45em"
   // );
 
-});
+// });
 
 
 function drawDonutChart(element, percent, width, height, text_y) {

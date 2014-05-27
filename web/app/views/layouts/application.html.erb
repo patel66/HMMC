@@ -72,6 +72,8 @@
                 <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
                 <li><%= link_to "Sign Up", "/signupzip"  %></li>
 
+                  <% school_id = HMMC.db.get_user_by_sid(session[:app_sid]) %>
+                 <li><%= link_to "School", "/schools/" + school_id.to_s %></li>
 
 
                 <li><%= link_to "Sign Out", "/logout"  %></li>
