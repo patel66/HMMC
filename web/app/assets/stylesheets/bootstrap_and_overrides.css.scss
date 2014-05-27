@@ -12,6 +12,9 @@ $table-bg: #ffffff;
 $modal-content-bg: #75c700;
 @import "bootstrap";
 
+html {
+  overflow-x: hidden;
+}
 body {
   margin-top: 100px;
   background-color: #00c3f7;
