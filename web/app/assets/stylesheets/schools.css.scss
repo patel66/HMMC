@@ -1,8 +1,65 @@
 // Place all the styles related to the schools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome {
+  font-size: 7vw;
+  text-transform: uppercase;
+  font-weight: 100;
 
+}
 
+.logo {
+  margin-top: -39px;
+}
+
+.big-logo {
+  margin-left: -15px;
+}
+
+#slide1, #slide2{ width: 100%; }
+#slide1{
+  background-color: #84e2fb;
+  color: #fff;
+  height:  862px;
+  margin: 0;
+  padding: 120px 0 260px 0;
+  background-size: cover;
+}
+
+#slide2{
+  background-color: white;
+  height: 200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 200px 0;
+}
+
+#slide3{
+  background:blue;
+  background: url(image_path('100MMCkidsrun1.jpg')) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 600px;
+  padding: 170px 0 0 0;
+  background-size: cover;
+}
+
+#slide4{
+  background-color: #fff;
+  color: #333333;
+  height: 300px;
+  padding: 200px 0;
+}
+
+#slide5{
+  background: blue;
+  margin: 0 auto;
+  color: #fff;
+  background-size: cover;
+}
+
+#slide5 #map{
+  width: 100%;
+}
 
 .addMiles {
   display: none;

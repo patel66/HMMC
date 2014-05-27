@@ -27,6 +27,8 @@ class SchoolsController < ApplicationController
     # you need to populate shit ton of seed in your data
     puts @schools_by_zip
 
+    @registered_schools = HMMC.db.get_all_schools_sign_up
+    @total_miles = @registered_schools.map {|school| school.total_miles_school}.reduce(0,:+)
 
     # @hash = Hash.from_xml(xml_data)
 
