@@ -19,7 +19,7 @@ ActiveRecordTasks.configure do |config|
   config.db_dir = 'db'
   config.db_config_path = 'db/config.yml'
   # In terminal, can set environment, for example, by doing DB_ENV=test
-  config.env = ENV['DB_ENV'] || 'test'
+  config.env = ENV['RAILS_ENV'] || ENV['DB_ENV'] || 'development'
   # config.env = 'test'
 end
 
