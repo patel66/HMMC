@@ -88,6 +88,12 @@ border-right: 1px solid rgba(0,0,0,0.25);
   .flat-table-1 tr:hover {
     background: rgba(0,0,0,0.19);
   }
+
+  .goalamount {
+    position:relative;
+    top:-130px;
+
+  }
 </style>
 
 <table class="flat-table flat-table-3">
@@ -181,7 +187,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>
 			<div class="school-details row">
-				<a id="show-national" href="#" title="Click to show State Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
+				<a id="show-national" href="#" title="Click to show National Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
 				<h3 id="state_rank">State Rank: <span id="display_state_rank"><%=@staterank%> </span></h3>
 				<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"><%=@cityrank%></span></h3></a>
 
@@ -202,7 +208,8 @@ border-right: 1px solid rgba(0,0,0,0.25);
       	<div id="donut" data-donut="30">
 
 	    </div>
-	      <div class="goal"><h3> Of Goal Met</h3>
+        <!-- <div class="goalamount"><h3>Goal: 100000</h3> -->
+	      <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display">10000</span></h3>
 		</div>
 	    <div id="win"></div>
 
@@ -230,13 +237,14 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
 		</div>
 
-    <% if session[:app_sid].empty? == false %> 
-      
+    <% if session[:app_sid].empty? == false %>
+
         <% if @c_school.id == params[:id].to_i%>
             <div class="row">
               <div class="col-md-6 col-md-offset-3">
 
                 <div class="user-actions ">
+                  <!-- <div class="goalamount"><h3>Goal: 100000</h3></div> -->
                   <div class="action-icons">
                     <i id="addMiles" class="fa fa-plus-square"></i>
 
@@ -442,9 +450,12 @@ if (school_total_miles >= 50000) {
       url: "/schools/" + <%=@school.id%>,
       dataType: "json",
       //contentType: "application/json",
-      data: {students: $('#students').val()},
+      data: {students: $('#students').val(), goals :$("#schoolGoal").val()},
       success: function(data) {
         $("#students_number").text(data.students)
+        // goal = data.goals
+        // console.log(goal)
+        $("#goal_display").text(data.goals)
         // window.data = data;
         // console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
         //  $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
@@ -641,9 +652,9 @@ if (school_total_miles >= 50000) {
    $("#donut").empty();
 
    var num = total/goal * 100
-   if (num >= 100) {
-    $("#win").text("YOU GUYS DID IT!!!!!")
-   }
+   // if (num >= 100) {
+   //  $("#win").text("YOU GUYS DID IT!!!!!")
+   // }
   drawDonutChart(
   '#donut',
   num,

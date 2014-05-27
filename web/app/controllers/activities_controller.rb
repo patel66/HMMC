@@ -54,10 +54,11 @@ class ActivitiesController < ApplicationController
 
 
 
+
     @school = result.school
     respond_to do |format|
         format.html
-        format.json  { render :json => { school: @school, schoolmiles: @school.total_miles_school.to_i, national_rank:@nationalrank, city_rank: @cityrank, state_rank: @staterank} }
+        format.json  { render :json => { school: @school, schoolmiles: @school.total_miles_school.to_i, national_rank:@nationalrank, city_rank: @cityrank, state_rank: @staterank, goals: params[:goals].to_i} }
     end
   end
 

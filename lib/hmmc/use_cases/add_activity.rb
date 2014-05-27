@@ -9,7 +9,7 @@ module HMMC
 			school = HMMC.db.get_school(school_id)
 			return failure :no_miles if miles == nil
 			return failure :no_students if students == nil
-
+      return failure :too_many_miles if miles >= 5000
 			return failure :invalid_number_students if school.students.to_i <= students.to_i
 
 			activity = HMMC.db.create_activity(:miles=> miles, :students => students, :date => date, :school_id => school.id )

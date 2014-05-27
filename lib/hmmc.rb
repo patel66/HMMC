@@ -61,10 +61,26 @@ module HMMC
     HMMC.db.create_school(name: 'Good Shepherd School', city: "Tyler", state: "TX", zipcode: 78701, lat: 32.322685, long: -95.3071, street: "2525 Old Jacksonville Rd" )
     HMMC.db.create_school(name: 'Travis Heights Elementary School', city: "Tyler", state: "TX", zipcode: 78703, lat: 32.2953, long: -95.28692, street: "1340 Shiloh Rd" )
 
+    HMMC.db.create_school(name: 'Watterson-Lake School', city: "Cleveland", state: "OH", zipcode: 44102, lat: 41.48147, long: -81.73625, street: "1422 West 74th St" )
+    HMMC.db.create_school(name: 'Joseph M Gallagher School', city: "Cleveland", state: "OH", zipcode: 44102, lat: 41.480988, long: -81.73173, street: "6601 Franklin Blvd" )
+    HMMC.db.create_school(name: 'Luther Memorial Elementary School', city: "Cleveland", state: "OH", zipcode: 44102, lat: 41.473827, long: -81.74402, street: "8607 Sauer Ave" )
+
+    HMMC.db.create_school(name: 'Susan Miller Dorsey Senior High School', city: "Los Angeles", state: "CA", zipcode: 90016, lat: 34.02296, long: -118.3478, street: "3537 Farmdale Avenue" )
+    HMMC.db.create_school(name: 'Cienega Elementary School', city: "Los Angeles", state: "CA", zipcode: 90016, lat: 34.032394, long: -118.35393, street: "2611 South Orange Drive" )
+    HMMC.db.create_school(name: 'Little Lamb-Lamb of God Christian School', city: "Los Angeles", state: "CA", zipcode: 90016, lat: 34.019184, long: -118.35609, street: "3717 South La Brea Avenue" )
+
+    HMMC.db.create_school(name: 'International Studies Academy', city: "San Francisco", state: "CA", zipcode: 94107, lat: 37.76169, long: -122.400665, street: "655 De Haro Street" )
+    HMMC.db.create_school(name: 'Live Oak School', city: "San Francisco", state: "CA", zipcode: 94107, lat: 37.76354, long: -122.39906, street: "1555 Mariposa Street" )
+    HMMC.db.create_school(name: 'KIPP San Francisco College Preparatory', city: "San Francisco", state: "CA", zipcode: 94107, lat: 37.761875, long: -122.40112, street: "655 De Haro Street" )
+
+    HMMC.db.create_school(name: 'Plainfield Elementary School', city: "Des Plaines", state: "IL", zipcode: 60018, lat: 42.019043, long: -87.90232, street: "1850 Plainfield Drive")
+    HMMC.db.create_school(name: 'Maine West High School', city: "Des Plaines", state: "IL", zipcode: 60018, lat: 42.021496, long: -87.906906, street: "1755 South Wolf Road" )
+    HMMC.db.create_school(name: 'South Elementary School', city: "Des Plaines", state: "IL", zipcode: 60018, lat: 42.020138, long: -87.88577, street: "1535 Everett Avenue" )
+
+
   end
 
 end
-
 
 
 # module Timeline
