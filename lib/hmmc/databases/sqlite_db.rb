@@ -13,10 +13,25 @@ module HMMC
           #TO DO: edit this to work
         # config_path = File.join(File.dirname(__FILE__), '../../../db/config.yml')
         # puts "USING: #{env} - #{YAML.load_file(config_path)[env]}"
-        ActiveRecord::Base.establish_connection(
-          # YAML.load_file("db/config.yml")[env]
-          YAML.load_file('db/config.yml')[env]
-        )
+
+        if ENV['DATABASE_URL']
+          db = URI.parse(ENV['DATABASE_URL'])
+
+          ActiveRecord::Base.establish_connection(
+              :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+              :host     => db.host,
+              :username => db.user,
+              :password => db.password,
+              :database => db.path[1..-1],
+              :encoding => 'utf8'
+          )
+        else
+          ActiveRecord::Base.establish_connection(
+            # YAML.load_file("db/config.yml")[env]
+            YAML.load_file('db/config.yml')[env]
+          )
+        end
+
       end
 
       def clear_everything
