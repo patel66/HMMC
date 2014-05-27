@@ -62,22 +62,23 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="#">Faq</a></li>
+            <li><a href="#map">Map</a></li>
 
 
-            <li><%= link_to "About", "/path2"  %></li>
+            <li><%= link_to "About", "#big-logo"  %></li>
 
            <!--  <li><a data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li> -->
-
+                <% if session[:app_sid].nil? == true || session[:app_sid].empty? == true%>
                 <li><a data-toggle="modal" data-target="#signInModal" >Sign In</a></li>
                 <li><%= link_to "Sign Up", "/signupzip"  %></li>
 
-                  <% school_id = HMMC.db.get_user_by_sid(session[:app_sid]) %>
-                 <li><%= link_to "School", "/schools/" + school_id.to_s %></li>
-
+               <%else%> 
+                  <% @user= HMMC.db.get_user_by_sid(session[:app_sid]) %>
+                  <% @school = HMMC.db.get_school_from_user_id(@user.id)%>
+                 <li><%= link_to "School", "/schools/" + @school.id.to_s %></li>
 
                 <li><%= link_to "Sign Out", "/logout"  %></li>
-
+               <%end%>
 
           </ul>
 
@@ -103,7 +104,7 @@
       <footer>
         <div class='row'>
           <div class='col-md12 col-md-offset-6'>
-            <p>&copy; HMMC 2014</p>
+            <!-- <p>&copy; HMMC 2014</p> -->
           </div> <!-- col -->
         </div> <!-- row -->
       </footer>

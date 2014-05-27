@@ -111,7 +111,6 @@ class SchoolsController < ApplicationController
 
     # sort all schools and takes 5 of them
     @sorted_schools = @schools.sort_by {|school| -school.total_miles_school}
-    binding.pry
     @nationalrank = ""
     @sorted_schools.each_index do |index|
       if @sorted_schools[index].id == @users_school.id
@@ -148,6 +147,11 @@ class SchoolsController < ApplicationController
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
+    
+    if session[:app_sid].empty? == false
+      @coach = HMMC.db.get_user_by_sid(session[:app_sid]) 
+      @c_school = HMMC.db.get_school_from_user_id(@coach.id) 
+    end
 
     if @user != nil
      # @users_school = HMMC.db.get_school_from_user_id(@user.id)
@@ -174,7 +178,6 @@ class SchoolsController < ApplicationController
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
-    binding.pry
     @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:students].to_i)
     # redirect_to "/schools/#{@school1.id}"
 

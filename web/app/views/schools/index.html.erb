@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
 
 <% if flash[:error] %>
@@ -186,7 +188,7 @@
 	
    <div id="slide3">
 
-		<div>
+		<div id="big-logo">
 			
 		    <%=image_tag('ASAPlogo.png', height: '75%', width: '75%' ) %>
 
@@ -198,37 +200,28 @@
 		</div>
     </div>
 
-	<div id="slide5">
-		<div>
+	<div class="col-md-12 map-container">
            
-			<div id="map" class="map">
+		<div id="map" class="map" style="width: 101%">
+	  	</div>
+	</div>
 
-			<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-			<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
 			<script type="text/javascript">
 
 				var map = L.map('map', {
-			    center: [30.25, -97.75], //Austin!
-			    zoom: 4
+			    center: [37.25, -97.75], //Austin!
+			    zoom: 4,
 				});
 
 				L.tileLayer(
 			    'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
 				).addTo(map);
 
-			  <% @schools.each do |school| %>
+			  <% @registered_schools.each do |school| %>
 			    L.marker([<%=school.lat%>, <%=school.long%>])
-			    .bindPopup("<%=school.name%>")
+			    .bindPopup("<a href='/schools/<%=school.id%>' + ><%=school.name %></a>")
 			    .addTo(map)
 			  <% end %>
+			  map.scrollWheelZoom.disable();
 			</script>
-
-
-
-
-
-
-		  </div>
-		
-	</div>
