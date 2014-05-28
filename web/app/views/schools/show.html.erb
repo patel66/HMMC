@@ -246,11 +246,11 @@ border-right: 1px solid rgba(0,0,0,0.25);
                 <div class="user-actions ">
                   <!-- <div class="goalamount"><h3>Goal: 100000</h3></div> -->
                   <div class="action-icons">
-                    <i id="addMiles" class="fa fa-plus-square"></i>
+                    <a id="add-those-miles" title="Add miles to your school!"><i id="addMiles" class="fa fa-plus-square"></i></a>
 
-                    <i id="addStudents" class="fa fa-child"></i>
+                    <a id="account-information" title="Account Information"><i id="addStudents" class="fa fa-child"></i></a>
 
-                    <i id="history" class="fa fa-calendar"></i>
+                    <a id="calender-information" title="Calender"><i id="history" class="fa fa-calendar"></i></a>
                   </div>
                 </div>
 
@@ -516,6 +516,27 @@ if (school_total_miles >= 50000) {
         show: {
           effect: "slideToggle",
           delay: 250
+        }
+      });
+      $( "#add-those-miles" ).tooltip({
+        position: { my: "left center", at: "left-50 top+100" },
+        show: {
+          effect: "slideToggle",
+          delay: 150
+        }
+      });
+      $( "#account-information" ).tooltip({
+        position: { my: "left center", at: "left-40 top+100" },
+        show: {
+          effect: "slideToggle",
+          delay: 150
+        }
+      });
+      $( "#calender-information" ).tooltip({
+        position: { my: "left center", at: "left+10 top+100" },
+        show: {
+          effect: "slideToggle",
+          delay: 150
         }
       });
     });
