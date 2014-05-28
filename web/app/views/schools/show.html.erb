@@ -217,9 +217,9 @@ border-right: 1px solid rgba(0,0,0,0.25);
 		<div class="ranking col-md-3 box">
 			<h1>Achievements</h1>
 			<div class="achievements">
-				<%=image_tag('reach.png') %>
-				<%=image_tag('1.png') %>
-				<%=image_tag('Veteran.png') %>
+				<a id="reach_icon" title="100% of kids Participating!"><%=image_tag('reach.png') %></a>
+				<a id="one_icon" title="Enrolled in HMMC!"><%=image_tag('1.png') %></a>
+				<a id="veteran_icon" title="Kids have been running for over a month!"><%=image_tag('Veteran.png') %></a>
 				<%=image_tag('1k.png', class: "1k_icon") %>
 				<%=image_tag('5k.png', class: "5k_icon") %>
 				<%=image_tag('10k.png', class: "10k_icon") %>
@@ -500,6 +500,27 @@ if (school_total_miles >= 50000) {
 
      $( ".selector" ).tooltip({ position: { my: "left+15 center", at: "right center" } });
    $(function() {
+      $( "#reach_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
+      $( "#veteran_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
+      $( "#one_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
       $( "#show-national" ).tooltip({
         position: { my: "left+15 center", at: "right center" },
         show: {

@@ -66,7 +66,6 @@ module HMMC
 end
 
 
-
 # module Timeline
 #   def self.db
 #     @db_class ||= Database::InMemory
