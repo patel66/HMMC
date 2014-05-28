@@ -14,13 +14,14 @@
 
 .big-logo {
   margin-left: -15px;
+
 }
 
 #slide1, #slide2{ width: 100%; }
 #slide1{
   background-color: #84e2fb;
   color: #fff;
-  height:  862px;
+  height:  870px;
   margin: 0;
   padding: 120px 0 260px 0;
   background-size: cover;
@@ -28,15 +29,14 @@
 
 #slide2{
   background-color: white;
-  height: 200px;
+  height: 630px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 200px 0;
 }
 
 #slide3{
   background:blue;
-  background: url(image_path('100MMCkidsrun1.jpg')) 50% 0 no-repeat fixed;
+  background: url(image_path('100MMCkidsrun2.jpg')) 50% 0 no-repeat fixed;
   color: #fff;
   height: 600px;
   padding: 170px 0 0 0;
@@ -113,31 +113,6 @@ legend {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * {
 /*border: blue solid 1px;*/
 font-family:  avenir next;
@@ -177,16 +152,19 @@ div#odometer.odometer.odometer-auto-theme {
 }
 
 #miles {
-	font-size: 1.8em;
+	font-size: 4vw;
 	opacity: .8;
-	margin-bottom: 125px;
   position: relative;
   top: -40px;
+  font-weight: 100;
+  color: white;
+  margin-bottom: -15px;
+  margin-top: -15px;
 }
 
 .school-info-sidebar {
   box-shadow: 10px 10px 15px #888888;
-  padding: 15px;
+  padding: 19px;
   text-align: center;
   color: rgb(243, 29, 29);
   font-weight: 4em;
@@ -235,6 +213,8 @@ fa:hover{
 
 .goal {
   margin-top: 10%;
+  color: #1072b8;
+  font-weight: 100;
 }
 
 .addStudents {

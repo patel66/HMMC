@@ -17,7 +17,7 @@
 
 	.container {
 		width: 102%;
-		margin-left: -11px;
+		margin-left: -15px;
 		margin-top: -20px;
 	}
 
@@ -154,7 +154,39 @@
 		margin-top: -15px;
 	}
 
+	.signup {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 15px 6px 15px;
+    border: none;
+    background-color: #94c1e5;
+    color: white;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    transition: background-color 0.5s ease;
+  	}
+  
+  	.signup:hover {   
+    background-color: #D2E495;
+ 	}
 
+ 	.info{
+ 		padding: 8px;
+ 		text-align: center;
+ 		font-weight: 100; 
+ 	}
+
+ 	.find{
+ 		padding: 5px;
+ 	}
+
+ 	#big-logo {
+ 		/*margin-left: -36px;*/
+		margin-top: -75px;	
+		margin-bottom: -75px;
+ 	}
 </style>
 
 	<div id="slide1">
@@ -166,9 +198,6 @@
 				<div class="col-md-5 col-md-offset-5">
 				<%=image_tag('100MMClogo.png', height: '250', width: '250', class: 'big-logo') %>
 			</div>
-		   <div class="col-md-6"> 
-		   		<h3> ARE YOU UP FOR THE CHALLENGE? </h3>
-		   </div>
 			</div>
 		</div>
 
@@ -186,26 +215,42 @@
 				</script>	
 			</div>
 			<h3 class="totalm">TOTAL MILES RAN</h3>
-		
+			
  	</div>
 
 	
    <div id="slide3">
 
-		<div id="big-logo">
-			
-		    <%=image_tag('ASAPlogo.png', height: '75%', width: '75%' ) %>
+		
 
-		</div>
+		
     </div>
 
     <div id="slide2">
-		<div >
+    	<div class="row">
+    		<div id="big-logo"  class="col-md-offset-3 col-xs-offset-1">
+			
+		    <%=image_tag('ASAPlogo.png', height: '50%', width: '70%' ) %>
+
+			</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-md-6 col-md-offset-3">
+    			<h4 class="info">America’s 100 Million Mile Challenge will aggregate the efforts of individual students and schools participating in 100 Mile Club to achieve a truly ambitious national goal - 100 million miles during the 2014/15 school year. </h4>	
+    		</div>
+    	</div>
+		<div class="row">
+
+			<div class="col-md-offset-5 col-xs-offset-1">
+				<a href="/signupzip"><button class="signup"><h5>Join the Challenge!</h5></button></a>
+			</div>
+		</div>
+		<div class="row find">
+			<h2 style="margin-top: 15px"> FIND YOUR SCHOOL ON THE MAP</h2>
 		</div>
     </div>
 
-	<div class="col-md-12 map-container">
-           
+	<div class="map-container">
 		<div id="map" class="map" style="width: 101%">
 	  	</div>
 	</div>
