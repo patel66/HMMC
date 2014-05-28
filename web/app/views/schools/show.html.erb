@@ -209,7 +209,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
 	    </div>
         <!-- <div class="goalamount"><h3>Goal: 100000</h3> -->
-	      <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display">10000</span></h3>
+	      <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display"><%=@school.goal%></span></h3>
 		</div>
 	    <div id="win"></div>
 
@@ -224,7 +224,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 		<div class="ranking col-md-3 box">
 			<h1>Achievements</h1>
 			<div class="achievements">
-				<%=image_tag('reach.png') %>
+				<%=image_tag('reach.png', class: "reach_icon") %>
 				<%=image_tag('1.png') %>
 				<%=image_tag('Veteran.png') %>
 				<%=image_tag('1k.png', class: "1k_icon") %>
@@ -415,6 +415,7 @@ console.log(school_total_miles)
   $(".25k_icon").css({ opacity: 0.2 });
   $(".50k_icon").css({ opacity: 0.2 });
 
+
 if (school_total_miles >= 1000) {
   $(".1k_icon").css({ opacity: 1 });
 }
@@ -450,7 +451,7 @@ if (school_total_miles >= 50000) {
       url: "/schools/" + <%=@school.id%>,
       dataType: "json",
       //contentType: "application/json",
-      data: {students: $('#students').val(), goals :$("#schoolGoal").val()},
+      data: {students: $('#students').val(), goal :$("#schoolGoal").val()},
       success: function(data) {
         $("#students_number").text(data.students)
           goal = data.goals
@@ -477,7 +478,7 @@ if (school_total_miles >= 50000) {
     var duration   = 2000;
     var transition = 100;
 
-    var goal = 10000; // school's preset goal! // have input for this
+    var goal = <%=@school.goal%>; // school's preset goal! // have input for this
     var total = school_total; // school's total miles // from backend!!
 
   var num = total/goal * 100
@@ -693,7 +694,7 @@ if (school_total_miles >= 50000) {
  var duration   = 2000;
  var transition = 100;
 
-var goal = 10000; // school's preset goal! // have input for this
+var goal = <%=@school.goal%>; // school's preset goal! // have input for this
 var total = school_total; // school's total miles // from backend!!
 
   var num = total/goal * 100

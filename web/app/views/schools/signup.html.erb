@@ -107,7 +107,14 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary col-xs-12" disabled>Submit</button>
+           <div class="form-group">
+            <%= label_tag(:Goal, "Personal Goal:") %>
+            <div class="input-group" data-validate="number">
+              <%= text_field(:school, :goal, :class=> 'form-control', :name=>"validate-goal", :placeholder=>"Set personal mile pledge", :required=> true) %>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+
+          <button style="margin-top:10px"type="submit" class="btn btn-primary col-xs-12" disabled>Submit</button>
           <%end%>
         </div> <!-- col-md-6 -->
       </div> <!-- row -->
