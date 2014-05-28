@@ -40,11 +40,12 @@ describe HMMC::SignUp do
   end
 
   it "creates a school with a user id" do
-    result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500, :zipcode => 77478, :lat => 32.456, :long => -95.422)
+    result = described_class.run(:name=> "John",:email=> "John@mail.com",:password=> "1234", :school_name => "Kempner High School", :state => "Texas", :city => "Sugar Land", :street =>"14777 Voss Rd", :students => 500, :zipcode => 77478, :lat => 32.456, :long => -95.422, :goal => 1200)
     expect(result.success?).to eq true
     expect(result.school.zipcode).to eq 77478
     expect(result.school.lat).to eq 32.456
     expect(result.school.long).to eq -95.422
+    expect(result.school.goal).to eq 1200
   end
 
   it "Creates a session and returns a session_id" do

@@ -129,6 +129,7 @@ module HMMC
         # # attrs[:students] ||=nil
 
         ar_school.students = attrs[:students]
+        ar_school.goal = attrs[:goal]
         ar_school.save
         HMMC::School.new(attrs)
       end

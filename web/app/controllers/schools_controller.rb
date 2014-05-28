@@ -60,7 +60,6 @@ class SchoolsController < ApplicationController
     user_params = params[:user]
 
 
-
     school_params = params[:school]
 
     signedup = HMMC::SignUp.run(
@@ -73,8 +72,10 @@ class SchoolsController < ApplicationController
       :state=>selected_school[0].state,
       :students=> 500,
       :lat => selected_school[0].lat,
-      :long => selected_school[0].long
+      :long => selected_school[0].long,
+      :goal => params["validate-goal"].to_i
       )
+
 
 
 
@@ -149,10 +150,10 @@ class SchoolsController < ApplicationController
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
-    
+
     if session[:app_sid].empty? == false
-      @coach = HMMC.db.get_user_by_sid(session[:app_sid]) 
-      @c_school = HMMC.db.get_school_from_user_id(@coach.id) 
+      @coach = HMMC.db.get_user_by_sid(session[:app_sid])
+      @c_school = HMMC.db.get_school_from_user_id(@coach.id)
     end
 
     if @user != nil
@@ -180,12 +181,13 @@ class SchoolsController < ApplicationController
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
-    @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => @school.students.to_i + params[:students].to_i)
+    binding.pry
+    @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:students].to_i, :goal => params[:goal].to_i)
     # redirect_to "/schools/#{@school1.id}"
 
      respond_to do |format|
       format.html
-        format.json { render :json => {students:  @school1.students } }
+        format.json { render :json => {students:  @school1.students, goals: @school1.goal } }
       # format.xml { render :xml => {school: xml_data} }
     end
 

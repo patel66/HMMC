@@ -88,6 +88,12 @@ border-right: 1px solid rgba(0,0,0,0.25);
   .flat-table-1 tr:hover {
     background: rgba(0,0,0,0.19);
   }
+
+  .goalamount {
+    position:relative;
+    top:-130px;
+
+  }
 </style>
 
 <table class="flat-table flat-table-3">
@@ -181,7 +187,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
 				<h5><%=@school.city + ", "+@school.state %></h5>
 			</div>
 			<div class="school-details row">
-				<a id="show-national" href="#" title="Click to show State Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
+				<a id="show-national" href="#" title="Click to show National Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
 				<h3 id="state_rank">State Rank: <span id="display_state_rank"><%=@staterank%> </span></h3>
 				<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"><%=@cityrank%></span></h3></a>
 
@@ -201,7 +207,8 @@ border-right: 1px solid rgba(0,0,0,0.25);
       	<div id="donut" data-donut="30">
 
 	    </div>
-	      <div class="goal"><h3> Of Goal Met</h3>
+        <!-- <div class="goalamount"><h3>Goal: 100000</h3> -->
+	      <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display"><%=@school.goal%></span></h3>
 		</div>
 	    <div id="win"></div>
 
@@ -216,9 +223,9 @@ border-right: 1px solid rgba(0,0,0,0.25);
 		<div class="ranking col-md-3 box">
 			<h1>Achievements</h1>
 			<div class="achievements">
-				<%=image_tag('reach.png') %>
-				<%=image_tag('1.png') %>
-				<%=image_tag('Veteran.png') %>
+				<a id="reach_icon" title="100% of kids Participating!"><%=image_tag('reach.png') %></a>
+				<a id="one_icon" title="Enrolled in HMMC!"><%=image_tag('1.png') %></a>
+				<a id="veteran_icon" title="Kids have been running for over a month!"><%=image_tag('Veteran.png') %></a>
 				<%=image_tag('1k.png', class: "1k_icon") %>
 				<%=image_tag('5k.png', class: "5k_icon") %>
 				<%=image_tag('10k.png', class: "10k_icon") %>
@@ -236,6 +243,7 @@ border-right: 1px solid rgba(0,0,0,0.25);
               <div class="col-md-6 col-md-offset-3">
 
                 <div class="user-actions ">
+                  <!-- <div class="goalamount"><h3>Goal: 100000</h3></div> -->
                   <div class="action-icons">
                     <a id="add-those-miles" title="Add miles to your school!"><i id="addMiles" class="fa fa-plus-square"></i></a>
 
@@ -406,6 +414,7 @@ console.log(school_total_miles)
   $(".25k_icon").css({ opacity: 0.2 });
   $(".50k_icon").css({ opacity: 0.2 });
 
+
 if (school_total_miles >= 1000) {
   $(".1k_icon").css({ opacity: 1 });
 }
@@ -441,9 +450,12 @@ if (school_total_miles >= 50000) {
       url: "/schools/" + <%=@school.id%>,
       dataType: "json",
       //contentType: "application/json",
-      data: {students: $('#students').val()},
+      data: {students: $('#students').val(), goal :$("#schoolGoal").val()},
       success: function(data) {
         $("#students_number").text(data.students)
+          goal = data.goals
+        // console.log(goal)
+        $("#goal_display").text(data.goals)
         // window.data = data;
         // console.log("The current player is " + data.game.turns[data.game.turns.length-1].player)
         //  $("#current_player").text("Hey " + data.game.turns[data.game.turns.length-1].player + " make a move!")
@@ -465,7 +477,7 @@ if (school_total_miles >= 50000) {
     var duration   = 2000;
     var transition = 100;
 
-    var goal = 10000; // school's preset goal! // have input for this
+    var goal = <%=@school.goal%>; // school's preset goal! // have input for this
     var total = school_total; // school's total miles // from backend!!
 
   var num = total/goal * 100
@@ -499,6 +511,27 @@ if (school_total_miles >= 50000) {
 
      $( ".selector" ).tooltip({ position: { my: "left+15 center", at: "right center" } });
    $(function() {
+      $( "#reach_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
+      $( "#veteran_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
+      $( "#one_icon" ).tooltip({
+        position: { my: "left+15 center", at: "right center" },
+        show: {
+          effect: "slideToggle",
+          delay: 250
+        }
+      });
       $( "#show-national" ).tooltip({
         position: { my: "left+15 center", at: "right center" },
         show: {
@@ -661,9 +694,9 @@ if (school_total_miles >= 50000) {
    $("#donut").empty();
 
    var num = total/goal * 100
-   if (num >= 100) {
-    $("#win").text("YOU GUYS DID IT!!!!!")
-   }
+   // if (num >= 100) {
+   //  $("#win").text("YOU GUYS DID IT!!!!!")
+   // }
   drawDonutChart(
   '#donut',
   num,
@@ -681,7 +714,7 @@ if (school_total_miles >= 50000) {
  var duration   = 2000;
  var transition = 100;
 
-var goal = 10000; // school's preset goal! // have input for this
+var goal = <%=@school.goal%>; // school's preset goal! // have input for this
 var total = school_total; // school's total miles // from backend!!
 
   var num = total/goal * 100
