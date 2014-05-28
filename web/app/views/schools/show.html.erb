@@ -179,62 +179,63 @@ border-right: 1px solid rgba(0,0,0,0.25);
 
 
 <div class="container">
-	<div class="row slideLeft bigEntrance">
+<div class="row slideLeft bigEntrance">
 
-		<div class="school-info-sidebar col-md-3 box">
-			<div class="school-details row">
-				<h1><%=@school.name %></h2>
-				<h5><%=@school.city + ", "+@school.state %></h5>
-			</div>
-			<div class="school-details row">
-				<a id="show-national" href="#" title="Click to show National Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
-				<h3 id="state_rank">State Rank: <span id="display_state_rank"><%=@staterank%> </span></h3>
-				<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"><%=@cityrank%></span></h3></a>
+<div class="school-info-sidebar col-md-3 box">
+<div class="school-details row">
+<h1><%=@school.name %></h2>
+<h5><%=@school.city + ", "+@school.state %></h5>
+</div>
+<div class="school-details row">
+<a id="show-national" href="#" title="Click to show National Rankings"><h3>National Rank: <span id="display_nat_rank"><%=@nationalrank%></span></h3></a>
+<h3 id="state_rank">State Rank: <span id="display_state_rank"><%=@staterank%> </span></h3>
+<a id="city_rank" href="#" title="Click to show City Rankings"><h3 id="city_rank">City Rank: <span id="display_city_rank"><%=@cityrank%></span></h3></a>
 
-			</div>
-			<div class="school-details row">
-				<h2>Students Participating</h2>
-				<h2 id="students_number"><%=@school.students%></h2>
-			</div>
+</div>
+<div class="school-details row">
+<h2>Students Participating</h2>
+<h2 id="students_number"><%=@school.students%></h2>
+</div>
 
-		</div>
-		<div class="school-stats-section col-md-6">
-			<!-- <h1 id="miles">15,465 </h1> -->
-			<div id="odometer" class="odometer"><%=@school.total_miles_school%></div>
-			<h4 id="miles">Total Miles Ran</h4>
-    		
+</div>
+<div class="school-stats-section col-md-6">
+<!-- <h1 id="miles">15,465 </h1> -->
+<div id="odometer" class="odometer"><%=@school.total_miles_school%></div>
+<!-- <h4 id="miles"> Miles Ran</h4> -->
+    <!-- <input></input>
+  <button></button> -->
 
-      	<div id="donut" data-donut="30">
+      <div id="donut" data-donut="30">
 
-	    </div>
+   </div>
         <!-- <div class="goalamount"><h3>Goal: 100000</h3> -->
-	      <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display"><%=@school.goal%></span></h3>
-		</div>
-	    <div id="win"></div>
+     <div class="goal"><h3 style ="padding-top:8px"> Of Goal Met </h3><h3 class="goalamount">Goal: <span id="goal_display"><%=@school.goal%></span></h3>
+</div>
+   <div id="win"></div>
 
-	    	<div>
-	    	</div>
-	    <!-- input id="goal"></input
-	    <input id="miles"></input>
-	    <button></button> -->
+    <div>
+    </div>
+   <!-- input id="goal"></input
+   <input id="miles"></input>
+   <button></button> -->
 
-		</div>
+</div>
 
-		<div class="ranking col-md-3 box">
-			<h1>Achievements</h1>
-			<div class="achievements">
-				<a id="reach_icon" title="100% of kids Participating!"><%=image_tag('reach.png') %></a>
-				<a id="one_icon" title="Enrolled in HMMC!"><%=image_tag('1.png') %></a>
-				<a id="veteran_icon" title="Kids have been running for over a month!"><%=image_tag('Veteran.png') %></a>
-				<%=image_tag('1k.png', class: "1k_icon") %>
-				<%=image_tag('5k.png', class: "5k_icon") %>
-				<%=image_tag('10k.png', class: "10k_icon") %>
-				<%=image_tag('20k.png', class: "20k_icon") %>
-				<%=image_tag('25k.png', class: "25k_icon")%>
-				<%=image_tag('50k.png', class: "50k_icon") %>
-			</div>
+<div class="ranking col-md-3 box">
+<h1>Achievements</h1>
+<div class="achievements">
+<a id="reach_icon" title="100% of kids Participating!"><%=image_tag('reach.png') %></a>
+<a id="one_icon" title="Enrolled in HMMC!"><%=image_tag('1.png') %></a>
+<a id="veteran_icon" title="Kids have been running for over a month!"><%=image_tag('Veteran.png') %></a>
+<%=image_tag('1k.png', class: "1k_icon") %>
+<%=image_tag('5k.png', class: "5k_icon") %>
+<%=image_tag('10k.png', class: "10k_icon") %>
+<%=image_tag('20k.png', class: "20k_icon") %>
+<%=image_tag('25k.png', class: "25k_icon")%>
+<%=image_tag('50k.png', class: "50k_icon") %>
+</div>
 
-		</div>
+</div>
 
     <% if session[:app_sid].empty? == false %>
 
@@ -466,6 +467,8 @@ if (school_total_miles >= 50000) {
         // $("#food").text(data.game.turns[data.game.turns.length-1].player + " got food, " + data.score_for_current + " rabbit liver(s) collected")
         // $(".score_board #"+data.game.turns[data.game.turns.length-1].player+"").after().text(data.game_score)
         console.log("hi")
+        $(".profile").hide();
+
       },
       error: function(data) {
         console.log(data);
@@ -488,24 +491,24 @@ if (school_total_miles >= 50000) {
     // odometer.innerHTML = school total miles + num
     var y = $(window).scrollTop();  //your current y position on the page
     $("#addMiles").on("click", function(){
-    	$(".addMiles").slideToggle();
-    	$(".profile").hide();
-    	$(".history").hide();
-		$(window).scrollTop(y+150);
+    $(".addMiles").slideToggle();
+    $(".profile").hide();
+    $(".history").hide();
+$(window).scrollTop(y+150);
     });
 
     $("#addStudents").on("click", function(){
-    	$(".profile").slideToggle();
-    	$(".addMiles").hide();
-    	$(".history").hide();
-		$(window).scrollTop(y+150);
+    $(".profile").slideToggle();
+    $(".addMiles").hide();
+    $(".history").hide();
+$(window).scrollTop(y+150);
     });
 
      $("#history").on("click", function(){
-    	$(".history").slideToggle();
-    	$(".addMiles").hide();
-    	$(".profile").hide();
-		$(window).scrollTop(y+150);
+    $(".history").slideToggle();
+    $(".addMiles").hide();
+    $(".profile").hide();
+$(window).scrollTop(y+150);
     });
 
 
@@ -704,6 +707,7 @@ if (school_total_miles >= 50000) {
   260,
   ".45em"
   );
+  $(".addMiles").hide();
 
   });
 

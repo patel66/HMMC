@@ -181,7 +181,6 @@ class SchoolsController < ApplicationController
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
-    binding.pry
     @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:students].to_i, :goal => params[:goal].to_i)
     # redirect_to "/schools/#{@school1.id}"
 
