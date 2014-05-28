@@ -453,7 +453,7 @@ if (school_total_miles >= 50000) {
       data: {students: $('#students').val(), goals :$("#schoolGoal").val()},
       success: function(data) {
         $("#students_number").text(data.students)
-        // goal = data.goals
+          goal = data.goals
         // console.log(goal)
         $("#goal_display").text(data.goals)
         // window.data = data;

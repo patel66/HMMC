@@ -176,11 +176,11 @@ class SchoolsController < ApplicationController
 
   def update
 
-    binding.pry
+
     @school = HMMC.db.get_school(params[:id].to_i)
     @school1 = HMMC.db.update_school(:id => params[:id].to_i, :students => params[:students].to_i)
     # redirect_to "/schools/#{@school1.id}"
-    binding.pry
+
      respond_to do |format|
       format.html
         format.json { render :json => {students:  @school1.students, goals: params[:goals].to_i } }
