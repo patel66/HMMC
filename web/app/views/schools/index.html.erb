@@ -267,7 +267,7 @@
 			    'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'
 				).addTo(map);
 
-			  <% @registered_schools.each do |school| %>
+			  <% @all_schools.each do |school| %>
 			    L.marker([<%=school.lat%>, <%=school.long%>])
 			    .bindPopup("<a href='/schools/<%=school.id%>' + ><%=school.name %></a>")
 			    .addTo(map)

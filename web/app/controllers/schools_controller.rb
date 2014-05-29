@@ -27,7 +27,9 @@ class SchoolsController < ApplicationController
     # you need to populate shit ton of seed in your data
     puts @schools_by_zip
 
-    @registered_schools = HMMC.db.get_all_schools_sign_up
+     @registered_schools = HMMC.db.get_all_schools_sign_up
+     @all_schools = HMMC.db.get_all_schools 
+
     @total_miles = @registered_schools.map {|school| school.total_miles_school}.reduce(0,:+)
 
     # @hash = Hash.from_xml(xml_data)
@@ -122,7 +124,7 @@ class SchoolsController < ApplicationController
     end
 
     @nationalrank
-    @national_ranked_school_table  = @sorted_schools.take(5)
+    @national_ranked_school_table  = @sorted_schools.take(20)
 
     # get all schools based on the pages city for the school, sorts them
     @schools_in_city = @schools.select{|school| school.city == @users_school.city}
@@ -136,7 +138,7 @@ class SchoolsController < ApplicationController
 
 
     # takes 5 schools
-    @city_ranked_school_table = @schools_in_city_sorted.take(5)
+    @city_ranked_school_table = @schools_in_city_sorted.take(20)
 
     @schools_in_state = @schools.select{|school| school.state == @users_school.state}
     @schools_in_state_sorted = @schools_in_state.sort_by {|school| -school.total_miles_school}
@@ -146,7 +148,7 @@ class SchoolsController < ApplicationController
       end
     end
 
-    @state_ranked_school_table = @schools_in_state_sorted.take(5)
+    @state_ranked_school_table = @schools_in_state_sorted.take(20)
 
 
     @school = HMMC.db.get_school(params[:id].to_i)
