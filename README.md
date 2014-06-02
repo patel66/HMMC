@@ -1,6 +1,8 @@
 HMMC
 ====
 
+Hosted at: <http://hmmc.herokuapp.com/>
+
 Hundred Million Mile Challenge 
 
 An exercise app for logging amount of miles as well as number of students participating for middle and elementary schools across the US. Schools can see their ranking as well as badges for certain milestones reached. Created by <a href="https://recruit.makersquare.com/users/133">Hubert Nguyen</a>, Ronak Patel, and Philip Gheno.  
@@ -8,7 +10,15 @@ An exercise app for logging amount of miles as well as number of students partic
 Tech
 ====
 
-Hosted at: <http://107.170.216.105/>
+Server-side: Ruby on Rails, PostgreSQL with ActiveRecord, bcrypt
+
+Client-side: d3 javaScript, jQuery, Bootstrap 
+
+APIs: Mapbox, Leaflet
+
+Testing: RSpec
+
+Deployment: DigitalOcean, Heroku
 
 #################
 User Stories MVP#
