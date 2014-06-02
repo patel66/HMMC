@@ -3,6 +3,8 @@ HMMC
 
 Hundred Million Mile Challenge 
 
+An exercise app for logging amount of miles as well as number of students participating for middle and elementary schools across the US. Schools can see their ranking as well as badges for certain milestones reached. Created by Hubert Nguyen, Ronak Patel, and Philip Gheno.  <a href="http://google.com">hello</a>
+
 Hosted at: <http://107.170.216.105/>
 
 #################
