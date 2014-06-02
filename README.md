@@ -35,28 +35,25 @@ Session
 ![alt tag](http://s21.postimg.org/vsqioxwg7/entities.png)
 
 
-#################
-User Stories MVP#
-#################
+User Interface
+====
 
-1. As a coach, I want to log in and see my school's miles.
-2. As a coach, I want to add miles to my school.
-3. As a coach, I want to manually add student miles to a display leaderboard.
-4. As a coach, I want to see my school's total miles and student rankings
-5. As a visitor, I want to see other school's miles in my city.
-6. As a visitor, I want to see how my school ranks with other schools in my city.
+A user can sign up to the app with a name, email and password. They select a school they are associated with by inputting a zipcode and selecting a school from a drop down list. 
 
+The user can enter miles on their schools interface and the odometer will record the total miles a school has thus far. 
+Schools can be ranked by National, State, and City tiers. Badges can be earned as well for certain milestones. 
 
-#############################################
-User Stories Possible Feature Implementation#
-#############################################
+Purpose
+====
 
-1. As a coach, I want to send challenges to schools in my city.
-2. As a coach, I want to reward students in the leaderboard.
-3. As a coach, I want to add in miles to classrooms in my school.
-4. As a coach, I want to see the top-ranking of classrooms in my school.
-5. As a coach, I want to reward topranking classrooms in terms of miles in my school.
-6. As a coach, I want my school to be rewarded if our school wins the challenge
-7. As a coach, I want to add in other exercise methods that students do aside from running.
-8. As a coach, I want to reward students who eat healthy
+The goal is to get students across the US to exercise and faciliate both a sense of community through the club as well as friendly compeition between schools. 
+
+Future goals
+==== 
+
+1. Incorporate an API from MyEdReach for more accurate school validation upon signup. 
+2. Addition of an Admin page to monitor overall progress of schools by miles, goals, student partipating etc. 
+3. Resolve some issues with margin and padding for responsive version of the app. 
+4. Inclusion of a more robust search option to select schools not only through the map, but by state, city, name etc. 
+
 
