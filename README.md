@@ -29,3 +29,5 @@ User Stories Possible Feature Implementation#
 6. As a coach, I want my school to be rewarded if our school wins the challenge
 7. As a coach, I want to add in other exercise methods that students do aside from running.
 8. As a coach, I want to reward students who eat healthy
+
+![alt tag](http://s21.postimg.org/vsqioxwg7/entities.png)
