@@ -23,6 +23,17 @@ Deployment: DigitalOcean, Heroku
 
 ![alt tag](http://s27.postimg.org/8pqpbmntv/tech_stack_3.png)
 
+Enities 
+====
+
+Activity
+School
+Classroom
+User
+Session
+
+![alt tag](http://s21.postimg.org/vsqioxwg7/entities.png)
+
 
 #################
 User Stories MVP#
@@ -49,4 +60,3 @@ User Stories Possible Feature Implementation#
 7. As a coach, I want to add in other exercise methods that students do aside from running.
 8. As a coach, I want to reward students who eat healthy
 
-![alt tag](http://s21.postimg.org/vsqioxwg7/entities.png)
