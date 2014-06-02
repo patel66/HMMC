@@ -20,6 +20,10 @@ Testing: RSpec
 
 Deployment: DigitalOcean, Heroku
 
+
+![alt tag](http://s27.postimg.org/8pqpbmntv/tech_stack_3.png)
+
+
 #################
 User Stories MVP#
 #################
